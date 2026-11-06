@@ -691,27 +691,46 @@ function demoShop(){
     { id: 'p5', code: 'p5', name: 'Dontodent Toothpaste', brand: 'Dontodent', category: 'Skin', description: '', image: '', price: null, stock: 0, incoming: 0, preorder: false }
   ]};
 }
-/* ---------- installable app (PWA) ---------- */
+/* ---------- installable app (PWA) ----------
+   The install button only shows when the app can really be installed:
+   - Android / computer: only when the browser offers installing (it stops offering once LUMIA is installed),
+     and never if the phone reports the LUMIA app is already there.
+   - iPhone (Safari can't tell us): until the customer says she installed it.
+   - Inside the installed app: never. */
 let installEvt = null;
+const INSTALLED_KEY = 'lumia_installed';
 const showInstall = on => { $('installBtn').hidden = !on; $('installBtn2').hidden = !on; };
-const standalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+const standalone = () => ['standalone', 'fullscreen', 'minimal-ui', 'window-controls-overlay'].some(m => matchMedia(`(display-mode: ${m})`).matches) || navigator.standalone === true;
 const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+const inAppBrowser = /FBAN|FBAV|Instagram|WhatsApp|Line\//i.test(navigator.userAgent);
+const markInstalled = () => { store.set(INSTALLED_KEY, Date.now()); showInstall(false); };
 if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
-window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; if (!standalone()) showInstall(true); });
-window.addEventListener('appinstalled', () => { showInstall(false); installEvt = null; toast('تم تثبيت تطبيق LUMIA على جهازك'); });
-if (isIOS && !standalone()) showInstall(true);
-if (!standalone() && !isIOS) setTimeout(() => { if (!installEvt) showInstall(true); }, 2500);
+if (standalone()) store.set(INSTALLED_KEY, Date.now());
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault(); installEvt = e;
+  // the browser offers installing, so it is NOT installed on this device (any old flag is out of date)
+  try { localStorage.removeItem(INSTALLED_KEY); } catch (x) {}
+  if (!standalone()) showInstall(true);
+});
+window.addEventListener('appinstalled', () => { installEvt = null; markInstalled(); toast('تم تثبيت تطبيق LUMIA على جهازك'); });
+if (isIOS && !standalone() && !inAppBrowser && !store.get(INSTALLED_KEY, 0)) showInstall(true);
+if (navigator.getInstalledRelatedApps) navigator.getInstalledRelatedApps().then(apps => { if (apps && apps.length) markInstalled(); }).catch(() => {});
 const doInstall = async () => {
-  if (installEvt) { installEvt.prompt(); const r = await installEvt.userChoice.catch(() => null); if (r && r.outcome === 'accepted') showInstall(false); installEvt = null; return; }
-  const steps = isIOS
-    ? ['اضغط على زر المشاركة <b>⬆︎</b> أسفل الشاشة في Safari.', 'اختر <b>«إضافة إلى الشاشة الرئيسية»</b>.', 'اضغط <b>«إضافة»</b>، وستجد أيقونة LUMIA على شاشتك.']
-    : ['افتح قائمة المتصفح <b>⋮</b> في الأعلى.', 'اختر <b>«تثبيت التطبيق»</b> أو <b>«إضافة إلى الشاشة الرئيسية»</b>.', 'اضغط <b>«تثبيت»</b>، وستجد أيقونة LUMIA على شاشتك.'];
+  if (installEvt) {
+    installEvt.prompt();
+    const r = await installEvt.userChoice.catch(() => null);
+    installEvt = null;
+    if (r && r.outcome === 'accepted') markInstalled(); else showInstall(false);
+    return;
+  }
+  const steps = ['اضغط على زر المشاركة <b>⬆︎</b> أسفل الشاشة في Safari.', 'اختر <b>«إضافة إلى الشاشة الرئيسية»</b>.', 'اضغط <b>«إضافة»</b>، وستجد أيقونة LUMIA على شاشتك.'];
   $('sheet').innerHTML = `<div class="scrim" data-a="scrim"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>
     <div class="sh-top"><h2>تثبيت تطبيق LUMIA</h2><button class="x" data-a="close" aria-label="إغلاق">${IC.x}</button></div>
     <p class="small" style="margin:0 0 6px">أضف المتجر إلى شاشتك الرئيسية لتفتحه بلمسة واحدة مثل أي تطبيق.</p>
     <ol class="ios-steps">${steps.map(x => `<li><span>${x}</span></li>`).join('')}</ol>
-    <button class="cta" data-a="close">حسناً</button></div></div>`;
+    <button class="cta" id="iosDone">تم التثبيت</button><button class="ghost" data-a="close">لاحقاً</button></div></div>`;
   U.sheet = { type: 'help' }; document.body.style.overflow = 'hidden';
+  $('iosDone').addEventListener('click', () => { markInstalled(); closeSheet(); });
 };
 $('installBtn').addEventListener('click', doInstall);
 $('installBtn2').addEventListener('click', doInstall);
