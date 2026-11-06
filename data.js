@@ -1,0 +1,1 @@
+window.SHOP_DATA = {"storeName":"LUMIA","whatsapp":"201021742187","intro":"","preorderNote":"طلب مسبق: يصل خلال أسبوعين إلى ثلاثة أسابيع","showPrices":true,"updated":"2026-11-06","deliveryNote":"","paymentNote":"","facebook":"","instagram":"","products":[]};

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LUMIA · Imported Gems</title>
+<meta name="description" content="منتجات أصلية مستوردة من ألمانيا: Balea وMivolis وEssence وغيرها. تصفّح المنتجات واطلب عبر واتساب.">
+<meta name="theme-color" content="#695851">
+<meta property="og:title" content="LUMIA · Imported Gems">
+<meta property="og:description" content="منتجات أصلية مستوردة من ألمانيا. تصفّح المنتجات واطلب عبر واتساب.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://lumia-store.github.io/logo.jpg">
+<meta property="og:url" content="https://lumia-store.github.io/">
+<link rel="icon" href="logo.jpg">
+<link rel="apple-touch-icon" href="logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Reem+Kufi:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: full-bleed taupe brand header (logo + flight line) → sticky search/filter bar → photo-led product grid → how-to-order steps → footer.
+   Content is right-aligned (RTL); the header is centered like the logo itself. */
+:root{
+  --taupe:#695851; --blush:#e4c0b0;
+  --page:#f6efea; --tile:#ffffff; --well:#efe3dc; --ink:#3b302b; --muted:#8a7a72; --line:#e6d8cf;
+  --primary:#695851; --on-primary:#f8e8df; --soft:#efe2da;
+  --ok:#5d6e4e; --way:#86677a; --pre:#695851; --off:#b0a39c;
+  --f-display:"Reem Kufi", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --f-body:"IBM Plex Sans Arabic", system-ui, "Segoe UI", Tahoma, sans-serif;
+  --f-latin:"Cormorant Garamond", "IBM Plex Sans Arabic", Georgia, serif;
+  --r-lg:22px; --r-md:14px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --page:#1b1614; --tile:#241d1a; --well:#2f2622; --ink:#f2e7e1; --muted:#a8978e; --line:#3a2f2a;
+    --primary:#e4c0b0; --on-primary:#3b2d27; --soft:#33292470;
+    --ok:#a3b78f; --way:#cfa9bd; --pre:#e4c0b0; --off:#6f625b;
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--page);color:var(--ink);font:400 15px/1.65 var(--f-body)}
+button,input,textarea{font:inherit;color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}
+
+/* ---------- brand header ---------- */
+.hero{background:var(--taupe);color:var(--blush);text-align:center;padding-top:env(safe-area-inset-top)}
+.hero .wrap{padding-block:10px 34px;display:flex;flex-direction:column;align-items:center}
+.logo{width:min(300px,72vw);aspect-ratio:1080/1052;object-fit:cover;margin-bottom:-18px}
+.tag{margin:0;font:400 clamp(16px,4.2vw,19px)/1.7 var(--f-display);max-width:28ch;text-wrap:balance;color:#f1d6c9}
+.route{display:flex;align-items:center;gap:12px;width:min(420px,100%);margin-top:18px;font:500 13px/1 var(--f-body);color:#e9cbbd}
+.route .ln{position:relative;flex:1;height:22px}
+.route .ln::before{content:"";position:absolute;inset:50% 0 auto;border-top:1px dashed #e4c0b088}
+.plane{position:absolute;top:50%;right:0;width:22px;height:22px;transform:translate(0,-50%);color:var(--blush)}
+.plane svg{width:100%;height:100%;transform:rotate(-90deg)}
+@media (prefers-reduced-motion:no-preference){
+  .plane{animation:fly 2.6s cubic-bezier(.45,.05,.3,1) .4s both}
+  @keyframes fly{from{right:0;opacity:0}12%{opacity:1}to{right:calc(100% - 22px);opacity:1}}
+}
+@media (prefers-reduced-motion:reduce){ .plane{right:calc(50% - 11px)} }
+
+/* ---------- search + filters ---------- */
+.bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--page) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+.bar.stuck{border-bottom-color:var(--line)}
+.bar .wrap{padding-block:14px 10px;display:grid;gap:10px}
+.search{display:flex;align-items:center;gap:10px;background:var(--tile);border:1px solid var(--line);border-radius:999px;padding:0 16px;height:46px}
+.search svg{width:18px;height:18px;color:var(--muted);flex:none}
+.search input{flex:1;min-width:0;border:0;background:none;outline:none;height:100%}
+.search input::placeholder{color:var(--muted)}
+.filters{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none;align-items:center}
+.filters::-webkit-scrollbar{display:none}
+.seg{display:flex;background:var(--soft);border-radius:999px;padding:3px;flex:none}
+.seg button{border:0;background:none;border-radius:999px;padding:6px 14px;font-size:13.5px;color:var(--muted);cursor:pointer;white-space:nowrap}
+.seg button.on{background:var(--tile);color:var(--ink);font-weight:500;box-shadow:0 1px 3px #3b302b1f}
+.cats{display:flex;gap:16px;flex:none}
+.cats button{border:0;background:none;padding:6px 0;font-size:13.5px;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:1.5px solid transparent}
+.cats button.on{color:var(--ink);border-bottom-color:var(--primary)}
+.sort{flex:none;margin-inline-start:auto;border:1px solid var(--line);background:var(--tile);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--ink)}
+.howinfo{margin-top:26px;display:grid;gap:8px;color:var(--muted);font-size:14px;max-width:70ch}
+.howinfo b{color:var(--ink);font-weight:600}
+footer a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#e4c0b066}
+footer .soc{display:flex;gap:16px}
+
+/* ---------- product grid ---------- */
+main.wrap{padding-block:8px 40px}
+.count{margin:6px 0 14px;font-size:13px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}
+@media (min-width:700px){ .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:30px 20px} }
+.p .sz{font-size:12.5px;color:var(--muted);margin-top:-4px}
+@media (min-width:1000px){ .grid{grid-template-columns:repeat(4,minmax(0,1fr))} }
+.p{display:flex;flex-direction:column;gap:8px;min-width:0}
+.p .ph{position:relative;aspect-ratio:4/5;border-radius:var(--r-lg);background:var(--well);overflow:hidden;cursor:pointer;border:0;padding:0;width:100%}
+.p .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+@media (hover:hover){ .p .ph:hover img{transform:scale(1.035)} }
+.noimg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:16px;text-align:center;font:italic 500 clamp(20px,5vw,28px)/1.1 var(--f-latin);color:var(--pre);opacity:.8}
+.p.sold .ph{opacity:.55}
+.add{position:absolute;left:10px;bottom:10px;width:40px;height:40px;border-radius:50%;border:0;background:var(--tile);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 10px #3b302b29}
+.add svg{width:18px;height:18px}
+.step{position:absolute;left:10px;bottom:10px;display:flex;align-items:center;background:var(--primary);color:var(--on-primary);border-radius:999px;height:40px;padding:0 4px;box-shadow:0 2px 10px #3b302b33}
+.step button{width:32px;height:32px;border:0;background:none;color:inherit;font-size:19px;line-height:1;cursor:pointer;border-radius:50%}
+.step b{min-width:22px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums}
+.p .brand{font-size:12.5px;color:var(--muted);line-height:1.2}
+.p .nm{margin:0;font:600 17px/1.25 var(--f-latin);letter-spacing:.1px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer;text-align:start}
+.p .meta{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.price{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.price small{font-weight:400;font-size:12px;color:var(--muted);margin-inline-start:3px}
+.av{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);white-space:nowrap}
+.av i{width:7px;height:7px;border-radius:50%;background:var(--c);flex:none}
+.av.pre i{background:none;border:1.5px solid var(--c)}
+.av.low{color:var(--ok);font-weight:500}
+.empty{padding:60px 10px;text-align:center;color:var(--muted)}
+.empty b{display:block;font:500 18px var(--f-display);color:var(--ink);margin-bottom:4px}
+
+/* ---------- how to order ---------- */
+.how{border-top:1px solid var(--line)}
+.how .wrap{padding-block:40px 34px}
+.how h2{margin:0 0 22px;font:500 22px/1.3 var(--f-display)}
+.steps{display:grid;gap:22px;margin:0;padding:0;list-style:none;counter-reset:s}
+@media (min-width:700px){ .steps{grid-template-columns:repeat(3,1fr);gap:28px} }
+.steps li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;counter-increment:s}
+.steps li::before{content:counter(s);grid-row:span 2;width:34px;height:34px;border-radius:50%;border:1px solid var(--primary);color:var(--primary);display:flex;align-items:center;justify-content:center;font:500 15px var(--f-display)}
+.steps b{font-weight:600}
+.steps span{color:var(--muted);font-size:14px}
+footer{background:var(--taupe);color:#ecd2c5;padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justify-content:space-between;font-size:13.5px}
+footer .mk{font:400 19px/1 var(--f-latin);letter-spacing:6px;color:var(--blush)}
+footer .num{direction:ltr;unicode-bidi:isolate;user-select:all;font-variant-numeric:tabular-nums}
+
+/* ---------- cart pill ---------- */
+.cartbar{position:fixed;left:0;right:0;bottom:0;z-index:10;padding:0 max(16px,env(safe-area-inset-left)) calc(14px + env(safe-area-inset-bottom));pointer-events:none}
+.cartbar button{pointer-events:auto;display:flex;align-items:center;gap:12px;width:100%;max-width:520px;margin:0 auto;border:0;background:var(--primary);color:var(--on-primary);border-radius:999px;padding:13px 22px;font-weight:500;cursor:pointer;box-shadow:0 10px 30px #3b302b47;transform:translateY(0);transition:transform .25s}
+.cartbar button .sum{margin-inline-start:auto;font-weight:600;font-variant-numeric:tabular-nums}
+.cartbar .n{background:var(--on-primary);color:var(--primary);border-radius:999px;min-width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;padding:0 7px}
+
+/* ---------- sheets ---------- */
+.scrim{position:fixed;inset:0;z-index:20;background:#2a211dab;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--page);width:100%;max-width:560px;max-height:92vh;max-height:92dvh;overflow-y:auto;border-radius:26px 26px 0 0;padding:10px max(20px,env(safe-area-inset-left)) calc(24px + env(safe-area-inset-bottom));animation:up .26s cubic-bezier(.2,.8,.2,1)}
+@media (min-width:700px){ .scrim{align-items:center} .sheet{border-radius:26px;max-height:88vh} }
+@keyframes up{from{transform:translateY(24px);opacity:.4}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){ .sheet{animation:none} }
+.grab{width:40px;height:4px;border-radius:4px;background:var(--line);margin:0 auto 10px}
+.sh-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.sh-top h2{margin:0;font:500 20px/1.3 var(--f-display)}
+.x{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--tile);cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none}
+.x svg{width:16px;height:16px}
+.big{aspect-ratio:1;border-radius:var(--r-lg);overflow:hidden;background:var(--well)}
+.big img{width:100%;height:100%;object-fit:cover}
+.pv h3{margin:16px 0 2px;font:600 25px/1.2 var(--f-latin);text-align:start}
+.pv .row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}
+.pv .price{font-size:19px}
+.pv p{margin:12px 0 0;color:var(--muted);white-space:pre-wrap}
+.note{margin-top:10px;font-size:13.5px;color:var(--muted);background:var(--soft);border-radius:var(--r-md);padding:10px 12px}
+.cta{width:100%;border:0;border-radius:999px;background:var(--primary);color:var(--on-primary);padding:15px;font-weight:600;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:16px}
+.cta:disabled{opacity:.45;cursor:default}
+.cta svg{width:20px;height:20px}
+.ghost{width:100%;border:1px solid var(--line);border-radius:999px;background:none;padding:13px;font-weight:500;cursor:pointer;margin-top:10px}
+.qty{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--tile)}
+.qty button{width:34px;height:34px;border:0;border-radius:50%;background:none;font-size:19px;cursor:pointer;color:var(--ink)}
+.qty b{min-width:20px;text-align:center;font-variant-numeric:tabular-nums}
+.line{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.line .th{width:64px;height:76px;border-radius:12px;overflow:hidden;background:var(--well)}
+.line .th img{width:100%;height:100%;object-fit:cover}
+.line .th .noimg{font-size:14px;padding:4px}
+.line .t{min-width:0}
+.line .t b{display:block;font:600 16px/1.25 var(--f-latin);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:start}
+.line .t span{font-size:12.5px;color:var(--muted)}
+.tot{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0 4px;font-weight:600}
+.tot .price{font-size:19px}
+label.fl{display:block;font-size:13px;color:var(--muted);margin:14px 0 6px}
+.f{width:100%;border:1px solid var(--line);background:var(--tile);border-radius:var(--r-md);padding:12px 14px;outline:none}
+.f:focus{border-color:var(--primary)}
+.small{font-size:13px;color:var(--muted)}
+.done{text-align:center;padding:10px 0 4px}
+.done b{display:block;font:500 20px var(--f-display);margin:6px 0}
+/* ---------- product page ---------- */
+.pdp{position:fixed;inset:0;z-index:15;background:var(--page);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.pdp-top{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:10px;padding:calc(10px + env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 10px max(16px,env(safe-area-inset-left));background:color-mix(in srgb,var(--page) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.pdp-top .mk{flex:1;text-align:center;font:500 17px/1 var(--f-latin);letter-spacing:6px;color:var(--ink)}
+.ib{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--tile);display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;flex:none;color:var(--ink)}
+.ib svg{width:18px;height:18px}
+.ib .n{position:absolute;top:-5px;left:-5px;min-width:20px;height:20px;border-radius:999px;background:var(--primary);color:var(--on-primary);font-size:11.5px;font-weight:600;display:flex;align-items:center;justify-content:center;padding:0 5px}
+.pdp-body{max-width:1120px;margin:0 auto;padding:6px max(16px,env(safe-area-inset-right)) calc(110px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));display:grid;gap:22px}
+@media (min-width:860px){ .pdp-body{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:start;padding-bottom:60px} .gal{position:sticky;top:76px} }
+.track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:var(--r-lg);background:var(--well);scrollbar-width:none;direction:ltr}
+.track::-webkit-scrollbar{display:none}
+.track > *{flex:0 0 100%;scroll-snap-align:center;aspect-ratio:1}
+.track img{width:100%;height:100%;object-fit:cover}
+.track .noimg{font-size:clamp(30px,8vw,48px)}
+.thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto;scrollbar-width:none}
+.thumbs button{width:60px;height:60px;flex:none;border-radius:12px;overflow:hidden;border:1.5px solid transparent;padding:0;background:var(--well);cursor:pointer}
+.thumbs button img{width:100%;height:100%;object-fit:cover}
+.thumbs button.on{border-color:var(--primary)}
+.dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.dots i{width:6px;height:6px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--primary)}
+@media (min-width:860px){ .dots{display:none} }
+@media (max-width:859px){ .thumbs{display:none} }
+.info .brandlink{border:0;background:none;padding:0;color:var(--muted);font-size:14px;cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
+.info h1{margin:6px 0 4px;font:600 clamp(27px,6vw,36px)/1.15 var(--f-latin);text-align:start;text-wrap:balance}
+.info .size{color:var(--muted);font-size:14px}
+.pricebox{display:flex;align-items:baseline;gap:6px 12px;flex-wrap:wrap;margin:16px 0 6px}
+.pricebox .price{font-size:28px}
+.unit{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;padding:6px 12px;border-radius:999px;background:var(--soft);color:var(--ink)}
+.buy{display:flex;gap:10px;align-items:center;margin-top:20px}
+.buy .cta{margin:0;flex:1}
+.deliv{margin-top:16px;border:1px solid var(--line);border-radius:var(--r-md);padding:12px 14px;display:grid;gap:6px;font-size:14px}
+.deliv div{display:flex;gap:10px;align-items:flex-start}
+.deliv svg{width:18px;height:18px;flex:none;margin-top:3px;color:var(--muted)}
+.feat{margin:22px 0 4px;padding:0;list-style:none;display:grid;gap:8px}
+.feat li{display:flex;gap:12px}
+.feat li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--primary);margin-top:10px}
+.accs{margin-top:22px}
+details.acc{border-top:1px solid var(--line)}
+details.acc:last-child{border-bottom:1px solid var(--line)}
+details.acc summary{list-style:none;cursor:pointer;padding:16px 0;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary::after{content:"+";font-weight:300;font-size:24px;line-height:1;color:var(--muted)}
+details.acc[open] summary::after{content:"−"}
+details.acc .c{padding:0 0 18px;color:var(--muted);white-space:pre-wrap;max-width:68ch}
+details.acc .c.lat{direction:ltr;text-align:left;font-size:13.5px;line-height:1.75}
+.pdp-body > *{min-width:0}
+.related{grid-column:1/-1;margin-top:10px}
+.related h2{font:500 21px/1.3 var(--f-display);margin:0 0 14px}
+.rel{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,44%);gap:14px;overflow-x:auto;scrollbar-width:none;padding-bottom:6px}
+.rel::-webkit-scrollbar{display:none}
+@media (min-width:700px){ .rel{grid-auto-columns:220px} }
+.buybar{position:fixed;left:0;right:0;bottom:0;z-index:4;display:flex;align-items:center;gap:12px;background:var(--tile);border-top:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
+.buybar .price{font-size:19px}
+.buybar .cta{margin:0;flex:1;padding:13px}
+@media (min-width:860px){ .buybar{display:none} }
+.toast{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:40;background:var(--ink);color:var(--page);padding:10px 18px;border-radius:999px;font-size:14px;max-width:88vw;text-align:center}
+.loading{padding:70px 0;text-align:center;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <img class="logo" src="logo.jpg" alt="LUMIA — Imported Gems" width="300" height="292">
+    <p class="tag" id="tag">منتجات أصلية نستوردها خصيصاً من ألمانيا، وتصل إليك مع المسافرين حتى باب منزلك</p>
+    <div class="route" aria-hidden="true"><span>ألمانيا</span><span class="ln"><span class="plane"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></span></span><span>القاهرة</span></div>
+  </div>
+</header>
+
+<div class="bar" id="bar">
+  <div class="wrap">
+    <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="ابحث عن منتج أو علامة تجارية" autocomplete="off" aria-label="البحث"></label>
+    <div class="filters" id="filters"></div>
+  </div>
+</div>
+
+<main class="wrap"><div id="grid"><div class="loading">جارٍ التحميل…</div></div></main>
+
+<section class="how">
+  <div class="wrap">
+    <h2>طريقة الطلب</h2>
+    <ol class="steps">
+      <li><b>اختيار المنتجات</b><span>تُسلَّم المنتجات المتوفرة فوراً، أما منتجات الطلب المسبق فتُحضَر مع أول رحلة قادمة.</span></li>
+      <li><b>إرسال الطلب عبر واتساب</b><span>تُكتب رسالة الطلب تلقائياً بكامل التفاصيل، ولا يلزم سوى الضغط على «إرسال».</span></li>
+      <li><b>التأكيد والتوصيل</b><span>نتواصل معك لتأكيد الإجمالي وموعد التوصيل.</span></li>
+    </ol>
+    <div class="howinfo" id="howinfo"></div>
+  </div>
+</section>
+<footer><div class="wrap"><span class="mk">LUMIA</span><span>واتساب: <span class="num" id="wa"></span></span><span class="soc" id="soc"></span><span id="upd"></span></div></footer>
+
+<div id="page"></div>
+<div id="cartbar"></div>
+<div id="sheet"></div>
+
+<script>
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money = v => Math.round(v).toLocaleString('en-US');
+const $ = id => document.getElementById(id);
+const IC = {
+  plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
+  x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+  wa: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>'
+};
+
+let D = null;
+const U = { q: '', cat: '', av: 'all', sort: 'avail', sheet: null, sent: false };
+const store = {
+  get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+};
+let cart = store.get('lumia_cart', {});
+const form = Object.assign({ name: '', phone: '', addr: '', notes: '' }, store.get('lumia_me', {}));
+
+/* ---------- data ---------- */
+function load(){
+  if (window.SHOP_DATA) return start(window.SHOP_DATA);
+  const s = document.createElement('script');
+  s.src = 'data.js?v=' + Date.now();
+  s.onload = () => window.SHOP_DATA ? start(window.SHOP_DATA) : start(demoShop());
+  s.onerror = () => start(demoShop());
+  document.head.appendChild(s);
+}
+function start(d){
+  D = d;
+  if (D.intro) $('tag').textContent = D.intro;
+  const num = String(D.whatsapp || '').replace(/\D/g, '');
+  $('wa').textContent = num ? '+' + num.replace(/^(\d{2})(\d{2})(\d{4})(\d+)$/, '$1 $2 $3 $4') : '';
+  if (D.updated) { try { $('upd').textContent = 'آخر تحديث: ' + new Date(D.updated).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long' }); } catch (e) {} }
+  $('howinfo').innerHTML = [D.deliveryNote ? `<div><b>التوصيل:</b> ${esc(D.deliveryNote)}</div>` : '', D.paymentNote ? `<div><b>الدفع:</b> ${esc(D.paymentNote)}</div>` : ''].join('');
+  $('soc').innerHTML = [D.facebook ? `<a href="${esc(D.facebook)}" target="_blank" rel="noopener">فيسبوك</a>` : '', D.instagram ? `<a href="${esc(D.instagram)}" target="_blank" rel="noopener">إنستجرام</a>` : ''].join('');
+  Object.keys(cart).forEach(id => { if (!byId(id) || !avail(byId(id)).can) delete cart[id]; });
+  store.set('lumia_cart', cart);
+  renderFilters(); renderGrid(); renderCart(); route();
+}
+const byId = id => D.products.find(p => p.id === id);
+function imgSrc(u){ u = String(u || ''); if (u.startsWith('drive:')) return 'https://lh3.googleusercontent.com/d/' + u.slice(6) + '=w800'; return u; }
+const pic = (p, cls = '') => p.image
+  ? `<img src="${esc(imgSrc(p.image))}" alt="${esc(p.name)}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'noimg',textContent:${esc(JSON.stringify(p.brand || 'LUMIA'))}}))">`
+  : `<div class="noimg ${cls}">${esc(p.brand || 'LUMIA')}</div>`;
+
+/* ---------- availability ---------- */
+function avail(p){
+  if (p.stock > 0) {
+    const low = p.stock <= 2;
+    return { k: 'in', c: 'var(--ok)', can: true, low,
+      label: p.stock === 1 ? 'القطعة الأخيرة' : p.stock === 2 ? 'آخر قطعتين' : `متوفر · ${p.stock} قطع` };
+  }
+  if (p.incoming > 0) return { k: 'way', c: 'var(--way)', can: true, label: 'قيد الشحن' };
+  if (p.preorder) return { k: 'pre', c: 'var(--pre)', can: true, label: 'طلب مسبق' };
+  return { k: 'off', c: 'var(--off)', can: false, label: 'غير متوفر حالياً' };
+}
+const avHtml = a => `<span class="av ${a.k === 'pre' ? 'pre' : ''} ${a.low ? 'low' : ''}" style="--c:${a.c}"><i></i>${a.label}</span>`;
+const maxQty = p => (p.preorder || p.incoming > 0) ? 50 : p.stock;
+const split = (p, q) => { const now = Math.min(q, Math.max(0, p.stock)); return { now, later: q - now }; };
+
+function setQty(id, q){
+  const p = byId(id); if (!p) return;
+  const max = maxQty(p);
+  if (q > max) { toast(max ? `الكمية المتاحة ${max} فقط` : 'هذا المنتج غير متوفر حالياً'); q = max; }
+  q = Math.max(0, q);
+  if (q) cart[id] = q; else delete cart[id];
+  U.sent = false; store.set('lumia_cart', cart);
+  renderGrid(); renderCart(); if (U.page) renderPage(); if (U.sheet) renderSheet();
+}
+
+/* ---------- filters + grid ---------- */
+function renderFilters(){
+  const cats = [...new Set(D.products.map(p => p.category).filter(Boolean))];
+  $('filters').innerHTML = `<div class="seg" role="tablist">${[['all','الكل'],['now','متوفر الآن'],['pre','طلب مسبق']]
+      .map(([k, l]) => `<button data-a="av" data-k="${k}" class="${U.av === k ? 'on' : ''}" role="tab" aria-selected="${U.av === k}">${l}</button>`).join('')}</div>
+    ${cats.length > 1 ? `<div class="cats">${['', ...cats].map(c => `<button data-a="cat" data-k="${esc(c)}" class="${U.cat === c ? 'on' : ''}">${c ? esc(c) : 'جميع الأقسام'}</button>`).join('')}</div>` : ''}
+    <select class="sort" id="sort" aria-label="ترتيب المنتجات">${[['avail', 'المتوفر أولاً'], ['low', 'السعر: من الأقل'], ['high', 'السعر: من الأعلى'], ['brand', 'العلامة التجارية']].map(([k, l]) => `<option value="${k}" ${U.sort === k ? 'selected' : ''}>${l}</option>`).join('')}</select>`;
+}
+function visible(){
+  const q = U.q.trim().toLowerCase();
+  let list = D.products.filter(p => (!U.cat || p.category === U.cat) && (!q || [p.name, p.brand, p.category, p.description].join(' ').toLowerCase().includes(q)));
+  if (U.av === 'now') list = list.filter(p => p.stock > 0);
+  if (U.av === 'pre') list = list.filter(p => p.stock <= 0 && (p.preorder || p.incoming > 0));
+  const rank = p => p.stock > 0 ? 0 : p.incoming > 0 ? 1 : p.preorder ? 2 : 3;
+  const price = p => p.price || (U.sort === 'low' ? Infinity : -1);
+  if (U.sort === 'low') return list.sort((a, b) => price(a) - price(b) || rank(a) - rank(b));
+  if (U.sort === 'high') return list.sort((a, b) => price(b) - price(a) || rank(a) - rank(b));
+  if (U.sort === 'brand') return list.sort((a, b) => String(a.brand).localeCompare(String(b.brand)) || a.name.localeCompare(b.name));
+  return list.sort((a, b) => rank(a) - rank(b) || String(a.brand).localeCompare(String(b.brand)) || a.name.localeCompare(b.name));
+}
+function control(p){
+  const q = cart[p.id] || 0, a = avail(p);
+  if (q) return `<div class="step"><button data-a="inc" data-id="${p.id}" aria-label="زيادة">+</button><b>${q}</b><button data-a="dec" data-id="${p.id}" aria-label="تقليل">−</button></div>`;
+  return a.can ? `<button class="add" data-a="inc" data-id="${p.id}" aria-label="إضافة ${esc(p.name)} إلى الطلب">${IC.plus}</button>` : '';
+}
+function card(p){
+  const a = avail(p);
+  return `<article class="p ${a.can ? '' : 'sold'}">
+      <div class="ph" data-a="view" data-id="${p.id}" role="button" tabindex="0" aria-label="${esc(p.name)}">${pic(p)}${control(p)}</div>
+      ${p.brand ? `<div class="brand">${esc(p.brand)}</div>` : ''}
+      <h3 class="nm" dir="auto" data-a="view" data-id="${p.id}">${esc(p.name)}</h3>
+      ${p.size ? `<div class="sz" dir="auto">${esc(p.size)}</div>` : ''}
+      <div class="meta">${p.price ? `<span class="price">${money(p.price)}<small>ج.م</small></span>` : '<span class="small">السعر عند الطلب</span>'}${avHtml(a)}</div>
+    </article>`;
+}
+function renderGrid(){
+  const list = visible();
+  if (!D.products.length) { $('grid').innerHTML = '<div class="empty"><b>تُضاف المنتجات قريباً</b>يسعدنا تواصلك معنا عبر واتساب حتى ذلك الحين.</div>'; return; }
+  if (!list.length) { $('grid').innerHTML = '<div class="empty"><b>لا توجد نتائج</b>جرّب كلمة بحث أخرى أو أزل عامل التصفية.</div>'; return; }
+  $('grid').innerHTML = `<div class="count">${list.length} منتج</div><div class="grid">${list.map(card).join('')}</div>`;
+}
+
+/* ---------- cart ---------- */
+function totals(){
+  let sum = 0, unpriced = 0, count = 0;
+  for (const [id, q] of Object.entries(cart)) { const p = byId(id); if (!p) continue; count += q; if (p.price) sum += p.price * q; else unpriced++; }
+  return { sum, unpriced, count };
+}
+function renderCart(){
+  const t = totals();
+  $('cartbar').innerHTML = t.count && !U.sheet && !U.page ? `<div class="cartbar"><button data-a="cart"><span class="n">${t.count}</span><span>طلبك</span><span class="sum">${t.sum ? money(t.sum) + ' ج.م' + (t.unpriced ? ' +' : '') : 'إتمام الطلب'}</span></button></div>` : '';
+}
+
+/* ---------- sheets ---------- */
+function openSheet(s){ U.sheet = s; renderSheet(); renderCart(); document.body.style.overflow = 'hidden'; }
+function closeSheet(){ U.sheet = null; $('sheet').innerHTML = ''; document.body.style.overflow = U.page ? 'hidden' : ''; renderCart(); if (U.page) renderPage(); }
+function renderSheet(){
+  const keep = document.querySelector('.sheet')?.scrollTop;
+  const fid = document.activeElement?.id;
+  $('sheet').innerHTML = `<div class="scrim" data-a="scrim"><div class="sheet" role="dialog" aria-modal="true">${cartHtml()}</div></div>`;
+  if (keep != null) document.querySelector('.sheet').scrollTop = keep;
+  if (fid && $(fid)) $(fid).focus();
+}
+function cartHtml(){
+  const ids = Object.keys(cart), t = totals();
+  if (!ids.length && !U.sent) return `<div class="grab"></div><div class="sh-top"><h2>طلبك</h2><button class="x" data-a="close" aria-label="إغلاق">${IC.x}</button></div><div class="empty"><b>طلبك فارغ</b>اضغط على علامة + بجوار أي منتج لإضافته.</div>`;
+  if (U.sent) return `<div class="grab"></div><div class="sh-top"><span></span><button class="x" data-a="close" aria-label="إغلاق">${IC.x}</button></div>
+    <div class="done"><b>تم فتح واتساب برسالة طلبك</b><div class="small">إذا لم تُرسَل الرسالة، يمكنك فتح واتساب مرة أخرى.</div></div>
+    <button class="cta" data-a="send">${IC.wa} فتح واتساب مرة أخرى</button><button class="ghost" data-a="clear">تم الإرسال، بدء طلب جديد</button>`;
+  const later = ids.some(id => split(byId(id), cart[id]).later > 0);
+  return `<div class="grab"></div><div class="sh-top"><h2>طلبك</h2><button class="x" data-a="close" aria-label="إغلاق">${IC.x}</button></div>
+    ${ids.map(id => { const p = byId(id), q = cart[id], s = split(p, q);
+      const st = s.later === 0 ? 'متوفر' : s.now === 0 ? (p.incoming > 0 ? 'قيد الشحن' : 'طلب مسبق') : `${s.now} متوفر + ${s.later} طلب مسبق`;
+      return `<div class="line"><div class="th">${pic(p)}</div><div class="t"><b dir="auto">${esc(p.name)}</b><span>${st}${p.price ? ' · ' + money(p.price * q) + ' ج.م' : ''}</span></div>
+        <div class="qty"><button data-a="inc" data-id="${id}" aria-label="زيادة">+</button><b>${q}</b><button data-a="dec" data-id="${id}" aria-label="تقليل">−</button></div></div>`; }).join('')}
+    <div class="tot"><span>الإجمالي${t.unpriced ? ' <span class="small">(دون المنتجات التي يُحدَّد سعرها عند الطلب)</span>' : ''}</span><span class="price">${money(t.sum)}<small>ج.م</small></span></div>
+    ${later ? `<div class="note">${esc(D.preorderNote || 'تُحضَر منتجات الطلب المسبق مع أول رحلة قادمة.')}</div>` : ''}
+    ${D.deliveryNote || D.paymentNote ? `<div class="note">${[D.deliveryNote ? '<b>التوصيل:</b> ' + esc(D.deliveryNote) : '', D.paymentNote ? '<b>الدفع:</b> ' + esc(D.paymentNote) : ''].filter(Boolean).join('<br>')}</div>` : ''}
+    <label class="fl" for="fn">الاسم</label><input class="f" id="fn" data-f="name" value="${esc(form.name)}" autocomplete="name">
+    <label class="fl" for="fp">رقم الهاتف</label><input class="f" id="fp" data-f="phone" inputmode="tel" dir="ltr" style="text-align:right" value="${esc(form.phone)}" placeholder="01xxxxxxxxx" autocomplete="tel">
+    <label class="fl" for="fa">العنوان</label><input class="f" id="fa" data-f="addr" value="${esc(form.addr)}" autocomplete="street-address">
+    <label class="fl" for="fo">ملاحظات <span class="small">(اختيارية)</span></label><textarea class="f" id="fo" data-f="notes" rows="2">${esc(form.notes)}</textarea>
+    <button class="cta" data-a="send">${IC.wa} إرسال الطلب عبر واتساب</button>
+    <div class="small" style="text-align:center;margin-top:10px">سيُفتح واتساب برسالة جاهزة تتضمن جميع التفاصيل.</div>`;
+}
+
+/* ---------- product page ---------- */
+const TAG_AR = { vegan: 'نباتي بالكامل', natural: 'مكونات طبيعية', sensitive: 'للبشرة الحساسة', nofragrance: 'خالٍ من العطور', noparaben: 'خالٍ من البارابين', nosilicone: 'خالٍ من السيليكون', kids: 'مناسب للأطفال' };
+const PI = {
+  back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>',
+  bag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>',
+  share: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg>',
+  box: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg>',
+  truck: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>',
+  card: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg>',
+  chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>'
+};
+/* price per 100 ml / 100 g (or per litre / kg), like the unit price on German drugstore shelves */
+function unitPrice(p){
+  if (!p.price || !p.size) return '';
+  const m = /([\d.,]+)\s*(ml|g|l|kg|مل|جم|جرام|لتر|كجم)\b/i.exec(p.size);
+  if (!m) return '';
+  let v = parseFloat(m[1].replace(',', '.')), u = m[2].toLowerCase();
+  if (!v) return '';
+  if (u === 'l' || u === 'لتر') { v *= 1000; u = 'ml'; }
+  if (u === 'kg' || u === 'كجم') { v *= 1000; u = 'g'; }
+  const isMl = u === 'ml' || u === 'مل';
+  if (v >= 1000) return `${money(p.price / v * 1000)} ج.م / ${isMl ? 'لتر' : 'كجم'}`;
+  return `${money(p.price / v * 100)} ج.م / 100 ${isMl ? 'مل' : 'جم'}`;
+}
+function related(p){
+  const others = D.products.filter(x => x.id !== p.id && avail(x).can);
+  const same = others.filter(x => x.brand && x.brand === p.brand);
+  const cat = others.filter(x => !same.includes(x) && x.category && x.category === p.category);
+  return { list: [...same, ...cat].slice(0, 8), title: same.length ? `المزيد من ${p.brand}` : 'قد يعجبك أيضاً' };
+}
+function pageHtml(){
+  const p = byId(U.page), a = avail(p), q = cart[p.id] || 0, t = totals();
+  const imgs = (p.images && p.images.length ? p.images : (p.image ? [p.image] : []));
+  const slides = imgs.length ? imgs.map((u, i) => `<img src="${esc(imgSrc(u))}" alt="${esc(p.name)} ${i + 1}" ${i ? 'loading="lazy"' : ''}>`).join('') : `<div class="noimg">${esc(p.brand || 'LUMIA')}</div>`;
+  const up = unitPrice(p), rel = related(p);
+  const delivery = a.k === 'in' ? 'متوفر لدينا الآن، ويُجهَّز فور تأكيد الطلب.'
+    : a.k === 'way' ? 'قيد الشحن مع الرحلة القادمة، ويُسلَّم فور وصوله.'
+    : a.k === 'pre' ? (D.preorderNote || 'طلب مسبق: يُحضَر خصيصاً لك مع أول رحلة قادمة.')
+    : 'غير متوفر حالياً. يمكنك التواصل معنا عبر واتساب للاستفسار عن موعد توفره.';
+  const accs = [
+    ['الوصف', p.description, false],
+    ['طريقة الاستخدام', p.usage, false],
+    ['المكونات', p.ingredients, true],
+    ['تحذيرات', p.warnings, false]
+  ].filter(x => String(x[1] || '').trim());
+  const buyCtl = a.can
+    ? (q ? `<div class="qty"><button data-a="inc" data-id="${p.id}" aria-label="زيادة">+</button><b>${q}</b><button data-a="dec" data-id="${p.id}" aria-label="تقليل">−</button></div><button class="cta" data-a="cart">إتمام الطلب</button>`
+         : `<button class="cta" data-a="inc" data-id="${p.id}">إضافة إلى الطلب</button>`)
+    : `<button class="cta" disabled>غير متوفر حالياً</button>`;
+  return `<div class="pdp" id="pdp" role="dialog" aria-label="${esc(p.name)}">
+    <div class="pdp-top"><button class="ib" data-a="back" aria-label="رجوع">${PI.back}</button><span class="mk">LUMIA</span>
+      <button class="ib" data-a="share" aria-label="مشاركة المنتج">${PI.share}</button>
+      <button class="ib" data-a="cart" aria-label="طلبك">${PI.bag}${t.count ? `<span class="n">${t.count}</span>` : ''}</button></div>
+    <div class="pdp-body">
+      <div class="gal">
+        <div class="track" id="track">${slides}</div>
+        ${imgs.length > 1 ? `<div class="dots" id="dots">${imgs.map((_, i) => `<i class="${i ? '' : 'on'}"></i>`).join('')}</div>
+        <div class="thumbs" id="thumbs">${imgs.map((u, i) => `<button class="${i ? '' : 'on'}" data-a="slide" data-i="${i}" aria-label="صورة ${i + 1}"><img src="${esc(imgSrc(u))}" alt=""></button>`).join('')}</div>` : ''}
+      </div>
+      <div class="info">
+        ${p.brand ? `<button class="brandlink" data-a="brand" data-k="${esc(p.brand)}">${esc(p.brand)}</button>` : ''}
+        <h1 dir="auto">${esc(p.name)}</h1>
+        ${p.size ? `<div class="size" dir="auto">${esc(p.size)}</div>` : ''}
+        <div class="pricebox">${p.price ? `<span class="price">${money(p.price)}<small>ج.م</small></span>${up ? `<span class="unit">(${up})</span>` : ''}` : '<span class="small">يُحدَّد السعر عند تأكيد الطلب</span>'}</div>
+        ${avHtml(a)}
+        <div class="badges"><span class="badge">🇩🇪 أصلي من ألمانيا</span>${(p.tags || []).filter(k => TAG_AR[k]).map(k => `<span class="badge">${TAG_AR[k]}</span>`).join('')}</div>
+        <div class="buy">${buyCtl}</div>
+        <div class="deliv"><div>${PI.box}<span>${esc(delivery)}</span></div>${D.deliveryNote ? `<div>${PI.truck}<span>${esc(D.deliveryNote)}</span></div>` : ''}${D.paymentNote ? `<div>${PI.card}<span>${esc(D.paymentNote)}</span></div>` : ''}<div>${PI.chat}<span>يُرسَل الطلب عبر واتساب، ونؤكد معك الإجمالي وموعد التوصيل.</span></div></div>
+        ${p.features && p.features.length ? `<ul class="feat">${p.features.map(f => `<li dir="auto">${esc(f)}</li>`).join('')}</ul>` : ''}
+        ${accs.length ? `<div class="accs">${accs.map(([h, c, lat], i) => `<details class="acc" ${i === 0 ? 'open' : ''}><summary>${h}</summary><div class="c ${lat ? 'lat' : ''}" dir="${lat ? 'ltr' : 'auto'}">${esc(c)}</div></details>`).join('')}</div>` : ''}
+      </div>
+      ${rel.list.length ? `<section class="related"><h2>${esc(rel.title)}</h2><div class="rel">${rel.list.map(card).join('')}</div></section>` : ''}
+    </div>
+    <div class="buybar">${p.price ? `<span class="price">${money(p.price)}<small>ج.م</small></span>` : ''}${a.can ? (q ? `<button class="cta" data-a="cart">إتمام الطلب (${t.count})</button>` : `<button class="cta" data-a="inc" data-id="${p.id}">إضافة إلى الطلب</button>`) : '<button class="cta" disabled>غير متوفر حالياً</button>'}</div>
+  </div>`;
+}
+let lastPage = null;
+function renderPage(){
+  if (!U.page) { $('page').innerHTML = ''; lastPage = null; document.title = 'LUMIA · Imported Gems'; if (!U.sheet) document.body.style.overflow = ''; return; }
+  const keep = U.page === lastPage ? $('pdp')?.scrollTop : 0;
+  const slide = U.page === lastPage ? U.slide || 0 : 0;
+  $('page').innerHTML = pageHtml(); lastPage = U.page; U.slide = slide;
+  document.title = byId(U.page).name + ' · LUMIA';
+  document.body.style.overflow = 'hidden';
+  $('pdp').scrollTop = keep || 0;
+  const tr = $('track');
+  if (tr && slide) tr.scrollLeft = tr.clientWidth * slide;
+  tr && tr.addEventListener('scroll', () => {
+    const i = Math.round(tr.scrollLeft / tr.clientWidth); if (i === U.slide) return; U.slide = i;
+    document.querySelectorAll('#dots i, #thumbs button').forEach(el => el.classList.toggle('on', +(el.dataset.i ?? [...el.parentNode.children].indexOf(el)) === i));
+  }, { passive: true });
+}
+function route(){
+  const m = /^#p-(.+)$/.exec(location.hash);
+  const id = m ? decodeURIComponent(m[1]) : null;
+  U.page = id && D && byId(id) ? id : null;
+  if (U.page && U.sheet) closeSheet();
+  renderPage(); renderCart();
+}
+window.addEventListener('hashchange', route);
+
+function orderMessage(){
+  const now = [], later = [];
+  for (const [id, q] of Object.entries(cart)) { const p = byId(id), s = split(p, q);
+    if (s.now) now.push(`▫️ ${s.now} × ${p.name} [${p.code}]`);
+    if (s.later) later.push(`▫️ ${s.later} × ${p.name} [${p.code}]`); }
+  const t = totals(), L = [];
+  L.push(`🛍️ طلب جديد — ${D.storeName}`);
+  L.push(`👤 الاسم: ${form.name.trim()}`);
+  if (form.phone.trim()) L.push(`📱 رقم الهاتف: ${form.phone.trim()}`);
+  if (form.addr.trim()) L.push(`📍 العنوان: ${form.addr.trim()}`);
+  L.push('━━━━━━━━━━');
+  if (now.length) { L.push('✅ متوفر:'); L.push(...now); }
+  if (later.length) { L.push('⏳ طلب مسبق:'); L.push(...later); }
+  L.push('━━━━━━━━━━');
+  if (t.sum) L.push(`💰 الإجمالي: ${money(t.sum)} ج.م${t.unpriced ? ' + منتجات يُحدَّد سعرها لاحقاً' : ''}`);
+  if (form.notes.trim()) L.push(`📝 ملاحظات: ${form.notes.trim()}`);
+  return L.join('\n');
+}
+
+let tt;
+function toast(m){ document.querySelector('.toast')?.remove(); clearTimeout(tt); const t = document.createElement('div'); t.className = 'toast'; t.textContent = m; document.body.appendChild(t); tt = setTimeout(() => t.remove(), 2300); }
+
+const A = {
+  inc: d => { const first = !cart[d.id]; setQty(d.id, (cart[d.id] || 0) + 1); if (first && cart[d.id] && !U.sheet) toast('أُضيف المنتج إلى طلبك'); },
+  dec: d => setQty(d.id, (cart[d.id] || 0) - 1),
+  view: d => { U.fromGrid = true; location.hash = 'p-' + encodeURIComponent(d.id); },
+  back: () => { if (U.fromGrid) { U.fromGrid = false; history.back(); } else { history.replaceState(null, '', location.pathname + location.search); route(); } },
+  brand: d => { history.replaceState(null, '', location.pathname + location.search); U.fromGrid = false; route(); U.q = d.k; $('q').value = d.k; U.cat = ''; U.av = 'all'; renderFilters(); renderGrid(); $('bar').scrollIntoView(); },
+  slide: d => { const tr = $('track'); tr.scrollTo({ left: tr.clientWidth * +d.i, behavior: 'smooth' }); },
+  share: async () => {
+    const p = byId(U.page), url = location.href;
+    try { if (navigator.share) { await navigator.share({ title: p.name + ' · LUMIA', url }); return; } } catch (e) { return; }
+    try { await navigator.clipboard.writeText(url); toast('تم نسخ رابط المنتج'); } catch (e) { toast(url); }
+  },
+  cart: () => openSheet({ type: 'cart' }),
+  close: () => closeSheet(),
+  scrim: (d, el, e) => { if (e.target === el) closeSheet(); },
+  av: d => { U.av = d.k; renderFilters(); renderGrid(); },
+  cat: d => { U.cat = d.k; renderFilters(); renderGrid(); },
+  clear: () => { cart = {}; store.set('lumia_cart', cart); U.sent = false; closeSheet(); renderGrid(); toast('شكراً لك، سنتواصل معك قريباً'); },
+  send: () => {
+    if (!form.name.trim()) { toast('يرجى كتابة الاسم أولاً'); $('fn')?.focus(); return; }
+    if (!Object.keys(cart).length) { toast('طلبك فارغ'); return; }
+    store.set('lumia_me', form);
+    const num = String(D.whatsapp || '').replace(/\D/g, '');
+    window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(orderMessage()), '_blank');
+    U.sent = true; renderSheet();
+  }
+};
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-a]'); if (!el) return;
+  // the +/− controls sit on top of the photo: don't also open the product
+  if (el.dataset.a === 'view' && e.target.closest('.add,.step')) return;
+  A[el.dataset.a] && A[el.dataset.a](el.dataset, el, e);
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { if (U.sheet) closeSheet(); else if (U.page) A.back(); }
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.ph[data-a=view]')) { e.preventDefault(); A.view(e.target.dataset); }
+});
+document.addEventListener('input', e => { const f = e.target.dataset.f; if (f) form[f] = e.target.value; });
+$('q').addEventListener('input', e => { U.q = e.target.value; renderGrid(); });
+document.addEventListener('change', e => { if (e.target.id === 'sort') { U.sort = e.target.value; renderGrid(); } });
+new IntersectionObserver(([en]) => $('bar').classList.toggle('stuck', !en.isIntersecting), { threshold: 0 }).observe(document.querySelector('.hero'));
+
+/* sample data, only used when the page is opened without its data file */
+function demoShop(){
+  return { storeName: 'LUMIA', whatsapp: '201021742187', intro: '', preorderNote: 'طلب مسبق: يصل خلال أسبوعين إلى ثلاثة أسابيع', showPrices: true, updated: new Date().toISOString(), products: [
+    { id: 'p1', code: 'p1', name: 'Balea Shampoo Repair 300ml', brand: 'Balea', category: 'Hair', size: '300 ml', description: 'شامبو للشعر الجاف والمصبوغ', features: ['يرمّم الشعر التالف', 'بالكيراتين'], tags: ['vegan'], image: '', images: [], price: 495, stock: 3, incoming: 0, preorder: true },
+    { id: 'p2', code: 'p2', name: 'Mivolis Magnesium 400', brand: 'Mivolis', category: 'Vitamins', description: '', image: '', price: 580, stock: 0, incoming: 4, preorder: true },
+    { id: 'p3', code: 'p3', name: 'Essence Lash Princess Mascara', brand: 'Essence', category: 'Makeup', description: '', image: '', price: 365, stock: 1, incoming: 0, preorder: false },
+    { id: 'p4', code: 'p4', name: 'Sundance Sun Spray SPF50', brand: 'Sundance', category: 'Skin', description: '', image: '', price: 540, stock: 0, incoming: 0, preorder: true },
+    { id: 'p5', code: 'p5', name: 'Dontodent Toothpaste', brand: 'Dontodent', category: 'Skin', description: '', image: '', price: null, stock: 0, incoming: 0, preorder: false }
+  ]};
+}
+load();
+</script>
+</body>
+</html>
