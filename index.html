@@ -9,10 +9,15 @@
 <meta property="og:title" content="LUMIA · Imported Gems">
 <meta property="og:description" content="منتجات أصلية مستوردة من ألمانيا. تصفّح المنتجات واطلب عبر واتساب.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://lumia-store.github.io/logo.jpg">
+<meta property="og:image" content="https://lumia-store.github.io/icon-512.png">
 <meta property="og:url" content="https://lumia-store.github.io/">
-<link rel="icon" href="logo.jpg">
-<link rel="apple-touch-icon" href="logo.jpg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="LUMIA">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Reem+Kufi:wght@400;500;600&display=swap" rel="stylesheet">
@@ -46,27 +51,81 @@ img{max-width:100%;display:block}
 :focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:8px}
 .wrap{max-width:1120px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}
 
-/* ---------- brand header ---------- */
-.hero{background:var(--taupe);color:var(--blush);text-align:center;padding-top:env(safe-area-inset-top)}
-.hero .wrap{padding-block:10px 34px;display:flex;flex-direction:column;align-items:center}
-.logo{width:min(300px,72vw);aspect-ratio:1080/1052;object-fit:cover;margin-bottom:-18px}
-.tag{margin:0;font:400 clamp(16px,4.2vw,19px)/1.7 var(--f-display);max-width:28ch;text-wrap:balance;color:#f1d6c9}
-.route{display:flex;align-items:center;gap:12px;width:min(420px,100%);margin-top:18px;font:500 13px/1 var(--f-body);color:#e9cbbd}
+/* ---------- brand header ----------
+   One continuous taupe field: transparent logo, tagline, flight line, two actions, and a fan of real product
+   photos. A soft curve hands over to the catalog so the header reads as part of the page, not a box on top. */
+.hero{position:relative;overflow:hidden;color:var(--blush);padding-top:env(safe-area-inset-top);
+  background:radial-gradient(110% 75% at 50% 0%,#7d6a62 0%,#695851 48%,#584842 100%)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:radial-gradient(40% 35% at 80% 20%,rgba(228,192,176,.16),transparent 70%),radial-gradient(35% 30% at 15% 75%,rgba(228,192,176,.10),transparent 70%)}
+.topline{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-block:12px 0}
+.topline .mk{display:flex;align-items:center;gap:8px;font:500 15px/1 var(--f-latin);letter-spacing:5px;color:#f1d6c9;opacity:0;transition:opacity .3s}
+.topline .mk img{width:30px;height:30px}
+.install{display:inline-flex;align-items:center;gap:8px;border:1px solid #e4c0b070;background:rgba(255,255,255,.07);color:#f6e3da;border-radius:999px;padding:8px 14px 8px 12px;font-size:13px;font-weight:500;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);margin-inline-start:auto}
+.install svg{width:17px;height:17px}
+.install:hover{background:rgba(255,255,255,.13)}
+.hero-in{position:relative;z-index:1;display:grid;gap:8px;align-items:center;padding-block:4px 22px}
+.hero-copy{display:flex;flex-direction:column;align-items:center;text-align:center}
+.logo{width:min(210px,54vw);height:auto;filter:drop-shadow(0 8px 22px rgba(30,18,14,.22))}
+.tag{margin:16px 0 0;font:400 clamp(16px,4.3vw,20px)/1.75 var(--f-display);max-width:30ch;text-wrap:balance;color:#f4dccf}
+.route{display:flex;align-items:center;gap:12px;width:min(380px,100%);margin-top:16px;font:500 13px/1 var(--f-body);color:#e9cbbd}
 .route .ln{position:relative;flex:1;height:22px}
 .route .ln::before{content:"";position:absolute;inset:50% 0 auto;border-top:1px dashed #e4c0b088}
 .plane{position:absolute;top:50%;right:0;width:22px;height:22px;transform:translate(0,-50%);color:var(--blush)}
 .plane svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ctas{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:22px}
+.cta-main,.cta-ghost{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 22px;font-weight:600;text-decoration:none;font-size:15px}
+.cta-main{background:var(--blush);color:#3b2d27;box-shadow:0 8px 24px rgba(30,18,14,.25)}
+.cta-ghost{border:1px solid #e4c0b080;color:#f6e3da;font-weight:500}
+.cta-ghost svg{width:18px;height:18px}
+.fan{position:relative;height:230px;margin-top:6px}
+.fan:empty{display:none}
+.fan button{position:absolute;bottom:6px;left:50%;width:132px;aspect-ratio:4/5;border-radius:18px;overflow:hidden;padding:0;border:4px solid #f6ebe5;background:#f3e6df;cursor:pointer;
+  box-shadow:0 20px 40px rgba(30,18,14,.35);transform-origin:50% 100%}
+.fan button img{width:100%;height:100%;object-fit:cover}
+.fan button .pr{position:absolute;bottom:8px;right:8px;background:rgba(59,45,39,.86);color:#f6e3da;font-size:12px;font-weight:600;border-radius:999px;padding:3px 9px;font-variant-numeric:tabular-nums}
+.fan button:nth-child(1) .pr{right:auto;left:8px}
+.fan button:nth-child(1){transform:translateX(-50%) translateX(-78%) rotate(-9deg) scale(.92);z-index:1}
+.fan button:nth-child(2){transform:translateX(-50%) translateY(-8px);z-index:3}
+.fan button:nth-child(3){transform:translateX(-50%) translateX(78%) rotate(9deg) scale(.92);z-index:2}
+.trust{position:relative;z-index:1;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 24px;padding-block:6px 26px;font-size:13px;color:#efd5c8}
+.trust span{display:inline-flex;align-items:center;gap:7px}
+.trust svg{width:16px;height:16px;opacity:.85}
+.curve{position:relative;z-index:1;display:block;width:100%;height:30px;margin-bottom:-1px}
+.curve path{fill:var(--page)}
+@media (min-width:900px){
+  .hero-in{grid-template-columns:1.05fr 1fr;gap:30px;padding-block:18px 30px}
+  .hero-copy{align-items:flex-start;text-align:start}
+  .logo{width:230px}
+  .tag{max-width:26ch}
+  .ctas{justify-content:flex-start}
+  .fan{height:400px;margin-top:0}
+  .fan button{width:210px;border-radius:24px;border-width:5px}
+  .trust{justify-content:flex-start;padding-inline-start:max(18px,env(safe-area-inset-right))}
+  .curve{height:48px}
+}
 @media (prefers-reduced-motion:no-preference){
   .plane{animation:fly 2.6s cubic-bezier(.45,.05,.3,1) .4s both}
   @keyframes fly{from{right:0;opacity:0}12%{opacity:1}to{right:calc(100% - 22px);opacity:1}}
+  .fan button{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+  .fan button:nth-child(1){animation-delay:.15s}.fan button:nth-child(2){animation-delay:.05s}.fan button:nth-child(3){animation-delay:.25s}
+  @keyframes rise{from{opacity:0;translate:0 40px}to{opacity:1;translate:0 0}}
 }
 @media (prefers-reduced-motion:reduce){ .plane{right:calc(50% - 11px)} }
+/* install help sheet */
+.ios-steps{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:12px;counter-reset:i}
+.ios-steps li{display:flex;gap:12px;align-items:center;counter-increment:i}
+.ios-steps li::before{content:counter(i);width:28px;height:28px;flex:none;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center;font-weight:600}
 
 /* ---------- search + filters ---------- */
 .bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--page) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
 .bar.stuck{border-bottom-color:var(--line)}
 .bar .wrap{padding-block:14px 10px;display:grid;gap:10px}
 .search{display:flex;align-items:center;gap:10px;background:var(--tile);border:1px solid var(--line);border-radius:999px;padding:0 16px;height:46px}
+.srow{display:flex;gap:10px;align-items:center}
+.srow .search{flex:1;min-width:0}
+.inst2{width:46px;height:46px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--tile);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.inst2 svg{width:19px;height:19px}
 .search svg{width:18px;height:18px;color:var(--muted);flex:none}
 .search input{flex:1;min-width:0;border:0;background:none;outline:none;height:100%}
 .search input::placeholder{color:var(--muted)}
@@ -238,18 +297,37 @@ details.acc .c.lat{direction:ltr;text-align:left;font-size:13.5px;line-height:1.
 </style>
 </head>
 <body>
-<header class="hero">
-  <div class="wrap">
-    <img class="logo" src="logo.jpg" alt="LUMIA — Imported Gems" width="300" height="292">
-    <p class="tag" id="tag">منتجات أصلية نستوردها خصيصاً من ألمانيا، وتصل إليك مع المسافرين حتى باب منزلك</p>
-    <div class="route" aria-hidden="true"><span>ألمانيا</span><span class="ln"><span class="plane"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></span></span><span>القاهرة</span></div>
+<header class="hero" id="top">
+  <div class="wrap topline">
+    <button class="install" id="installBtn" type="button" hidden aria-label="تثبيت تطبيق LUMIA على جهازك">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v10"/><path d="M8 10l4 4 4-4"/><rect x="5" y="17" width="14" height="3" rx="1.5"/></svg>
+      <span>تثبيت التطبيق</span></button>
   </div>
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <img class="logo" src="logo-full.png" alt="LUMIA — Imported Gems" width="685" height="760">
+      <p class="tag" id="tag">منتجات أصلية نستوردها خصيصاً من ألمانيا إلى مصر، لتصل إليك حتى باب منزلك</p>
+      <div class="route" aria-hidden="true"><span>ألمانيا</span><span class="ln"><span class="plane"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></span></span><span>مصر</span></div>
+      <div class="ctas">
+        <a class="cta-main" href="#shop" id="goShop">تسوّق المنتجات</a>
+        <a class="cta-ghost" id="waTop" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>تواصل عبر واتساب</a>
+      </div>
+    </div>
+    <div class="fan" id="fan"></div>
+  </div>
+  <div class="wrap trust">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>منتجات أصلية 100%</span>
+    <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>مباشرة من ألمانيا</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>تأكيد الطلب عبر واتساب</span>
+  </div>
+  <svg class="curve" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C320,48 1120,48 1440,0 L1440,48 L0,48 Z"/></svg>
 </header>
 
-<div class="bar" id="bar">
+<div class="bar" id="shop">
   <div class="wrap">
-    <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <div class="srow"><label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
       <input id="q" type="search" placeholder="ابحث عن منتج أو علامة تجارية" autocomplete="off" aria-label="البحث"></label>
+      <button class="inst2" id="installBtn2" type="button" hidden aria-label="تثبيت التطبيق" title="تثبيت التطبيق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v10"/><path d="M8 10l4 4 4-4"/><rect x="5" y="17" width="14" height="3" rx="1.5"/></svg></button></div>
     <div class="filters" id="filters"></div>
   </div>
 </div>
@@ -260,7 +338,7 @@ details.acc .c.lat{direction:ltr;text-align:left;font-size:13.5px;line-height:1.
   <div class="wrap">
     <h2>طريقة الطلب</h2>
     <ol class="steps">
-      <li><b>اختيار المنتجات</b><span>تُسلَّم المنتجات المتوفرة فوراً، أما منتجات الطلب المسبق فتُحضَر مع أول رحلة قادمة.</span></li>
+      <li><b>اختيار المنتجات</b><span>تُسلَّم المنتجات المتوفرة فوراً، أما منتجات الطلب المسبق فتُحضَر مع أول شحنة قادمة.</span></li>
       <li><b>إرسال الطلب عبر واتساب</b><span>تُكتب رسالة الطلب تلقائياً بكامل التفاصيل، ولا يلزم سوى الضغط على «إرسال».</span></li>
       <li><b>التأكيد والتوصيل</b><span>نتواصل معك لتأكيد الإجمالي وموعد التوصيل.</span></li>
     </ol>
@@ -307,6 +385,11 @@ function start(d){
   const num = String(D.whatsapp || '').replace(/\D/g, '');
   $('wa').textContent = num ? '+' + num.replace(/^(\d{2})(\d{2})(\d{4})(\d+)$/, '$1 $2 $3 $4') : '';
   if (D.updated) { try { $('upd').textContent = 'آخر تحديث: ' + new Date(D.updated).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long' }); } catch (e) {} }
+  const waNum = String(D.whatsapp || '').replace(/\D/g, '');
+  $('waTop').href = 'https://wa.me/' + waNum + '?text=' + encodeURIComponent('مرحباً، أود الاستفسار عن منتجات ' + (D.storeName || 'LUMIA'));
+  const picks = D.products.filter(p => p.image).sort((a, b) => (b.stock > 0) - (a.stock > 0)).slice(0, 3);
+  const order = picks.length === 3 ? [picks[1], picks[0], picks[2]] : picks;
+  $('fan').innerHTML = order.map(p => `<button type="button" data-a="view" data-id="${p.id}" aria-label="${esc(p.name)}"><img src="${esc(imgSrc(p.image))}" alt="">${p.price ? `<span class="pr">${money(p.price)} ج.م</span>` : ''}</button>`).join('');
   $('howinfo').innerHTML = [D.deliveryNote ? `<div><b>التوصيل:</b> ${esc(D.deliveryNote)}</div>` : '', D.paymentNote ? `<div><b>الدفع:</b> ${esc(D.paymentNote)}</div>` : ''].join('');
   $('soc').innerHTML = [D.facebook ? `<a href="${esc(D.facebook)}" target="_blank" rel="noopener">فيسبوك</a>` : '', D.instagram ? `<a href="${esc(D.instagram)}" target="_blank" rel="noopener">إنستجرام</a>` : ''].join('');
   Object.keys(cart).forEach(id => { if (!byId(id) || !avail(byId(id)).can) delete cart[id]; });
@@ -420,7 +503,7 @@ function cartHtml(){
       return `<div class="line"><div class="th">${pic(p)}</div><div class="t"><b dir="auto">${esc(p.name)}</b><span>${st}${p.price ? ' · ' + money(p.price * q) + ' ج.م' : ''}</span></div>
         <div class="qty"><button data-a="inc" data-id="${id}" aria-label="زيادة">+</button><b>${q}</b><button data-a="dec" data-id="${id}" aria-label="تقليل">−</button></div></div>`; }).join('')}
     <div class="tot"><span>الإجمالي${t.unpriced ? ' <span class="small">(دون المنتجات التي يُحدَّد سعرها عند الطلب)</span>' : ''}</span><span class="price">${money(t.sum)}<small>ج.م</small></span></div>
-    ${later ? `<div class="note">${esc(D.preorderNote || 'تُحضَر منتجات الطلب المسبق مع أول رحلة قادمة.')}</div>` : ''}
+    ${later ? `<div class="note">${esc(D.preorderNote || 'تُحضَر منتجات الطلب المسبق مع أول شحنة قادمة.')}</div>` : ''}
     ${D.deliveryNote || D.paymentNote ? `<div class="note">${[D.deliveryNote ? '<b>التوصيل:</b> ' + esc(D.deliveryNote) : '', D.paymentNote ? '<b>الدفع:</b> ' + esc(D.paymentNote) : ''].filter(Boolean).join('<br>')}</div>` : ''}
     <label class="fl" for="fn">الاسم</label><input class="f" id="fn" data-f="name" value="${esc(form.name)}" autocomplete="name">
     <label class="fl" for="fp">رقم الهاتف</label><input class="f" id="fp" data-f="phone" inputmode="tel" dir="ltr" style="text-align:right" value="${esc(form.phone)}" placeholder="01xxxxxxxxx" autocomplete="tel">
@@ -466,8 +549,8 @@ function pageHtml(){
   const slides = imgs.length ? imgs.map((u, i) => `<img src="${esc(imgSrc(u))}" alt="${esc(p.name)} ${i + 1}" ${i ? 'loading="lazy"' : ''}>`).join('') : `<div class="noimg">${esc(p.brand || 'LUMIA')}</div>`;
   const up = unitPrice(p), rel = related(p);
   const delivery = a.k === 'in' ? 'متوفر لدينا الآن، ويُجهَّز فور تأكيد الطلب.'
-    : a.k === 'way' ? 'قيد الشحن مع الرحلة القادمة، ويُسلَّم فور وصوله.'
-    : a.k === 'pre' ? (D.preorderNote || 'طلب مسبق: يُحضَر خصيصاً لك مع أول رحلة قادمة.')
+    : a.k === 'way' ? 'قيد الشحن إلى مصر الآن، ويُسلَّم إليك فور وصوله.'
+    : a.k === 'pre' ? (D.preorderNote || 'طلب مسبق: يُحضَر خصيصاً لك مع أول شحنة قادمة.')
     : 'غير متوفر حالياً. يمكنك التواصل معنا عبر واتساب للاستفسار عن موعد توفره.';
   const accs = [
     ['الوصف', p.description, false],
@@ -558,7 +641,7 @@ const A = {
   dec: d => setQty(d.id, (cart[d.id] || 0) - 1),
   view: d => { U.fromGrid = true; location.hash = 'p-' + encodeURIComponent(d.id); },
   back: () => { if (U.fromGrid) { U.fromGrid = false; history.back(); } else { history.replaceState(null, '', location.pathname + location.search); route(); } },
-  brand: d => { history.replaceState(null, '', location.pathname + location.search); U.fromGrid = false; route(); U.q = d.k; $('q').value = d.k; U.cat = ''; U.av = 'all'; renderFilters(); renderGrid(); $('bar').scrollIntoView(); },
+  brand: d => { history.replaceState(null, '', location.pathname + location.search); U.fromGrid = false; route(); U.q = d.k; $('q').value = d.k; U.cat = ''; U.av = 'all'; renderFilters(); renderGrid(); $('shop').scrollIntoView(); },
   slide: d => { const tr = $('track'); tr.scrollTo({ left: tr.clientWidth * +d.i, behavior: 'smooth' }); },
   share: async () => {
     const p = byId(U.page), url = location.href;
@@ -593,7 +676,7 @@ document.addEventListener('keydown', e => {
 document.addEventListener('input', e => { const f = e.target.dataset.f; if (f) form[f] = e.target.value; });
 $('q').addEventListener('input', e => { U.q = e.target.value; renderGrid(); });
 document.addEventListener('change', e => { if (e.target.id === 'sort') { U.sort = e.target.value; renderGrid(); } });
-new IntersectionObserver(([en]) => $('bar').classList.toggle('stuck', !en.isIntersecting), { threshold: 0 }).observe(document.querySelector('.hero'));
+new IntersectionObserver(([en]) => $('shop').classList.toggle('stuck', !en.isIntersecting), { threshold: 0 }).observe(document.querySelector('.hero'));
 
 /* sample data, only used when the page is opened without its data file */
 function demoShop(){
@@ -605,6 +688,32 @@ function demoShop(){
     { id: 'p5', code: 'p5', name: 'Dontodent Toothpaste', brand: 'Dontodent', category: 'Skin', description: '', image: '', price: null, stock: 0, incoming: 0, preorder: false }
   ]};
 }
+/* ---------- installable app (PWA) ---------- */
+let installEvt = null;
+const showInstall = on => { $('installBtn').hidden = !on; $('installBtn2').hidden = !on; };
+const standalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; if (!standalone()) showInstall(true); });
+window.addEventListener('appinstalled', () => { showInstall(false); installEvt = null; toast('تم تثبيت تطبيق LUMIA على جهازك'); });
+if (isIOS && !standalone()) showInstall(true);
+if (!standalone() && !isIOS) setTimeout(() => { if (!installEvt) showInstall(true); }, 2500);
+const doInstall = async () => {
+  if (installEvt) { installEvt.prompt(); const r = await installEvt.userChoice.catch(() => null); if (r && r.outcome === 'accepted') showInstall(false); installEvt = null; return; }
+  const steps = isIOS
+    ? ['اضغط على زر المشاركة <b>⬆︎</b> أسفل الشاشة في Safari.', 'اختر <b>«إضافة إلى الشاشة الرئيسية»</b>.', 'اضغط <b>«إضافة»</b>، وستجد أيقونة LUMIA على شاشتك.']
+    : ['افتح قائمة المتصفح <b>⋮</b> في الأعلى.', 'اختر <b>«تثبيت التطبيق»</b> أو <b>«إضافة إلى الشاشة الرئيسية»</b>.', 'اضغط <b>«تثبيت»</b>، وستجد أيقونة LUMIA على شاشتك.'];
+  $('sheet').innerHTML = `<div class="scrim" data-a="scrim"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>
+    <div class="sh-top"><h2>تثبيت تطبيق LUMIA</h2><button class="x" data-a="close" aria-label="إغلاق">${IC.x}</button></div>
+    <p class="small" style="margin:0 0 6px">أضف المتجر إلى شاشتك الرئيسية لتفتحه بلمسة واحدة مثل أي تطبيق.</p>
+    <ol class="ios-steps">${steps.map(x => `<li><span>${x}</span></li>`).join('')}</ol>
+    <button class="cta" data-a="close">حسناً</button></div></div>`;
+  U.sheet = { type: 'help' }; document.body.style.overflow = 'hidden';
+};
+$('installBtn').addEventListener('click', doInstall);
+$('installBtn2').addEventListener('click', doInstall);
+$('goShop').addEventListener('click', e => { e.preventDefault(); $('shop').scrollIntoView({ behavior: 'smooth' }); });
+
 load();
 </script>
 </body>
