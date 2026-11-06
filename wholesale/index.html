@@ -190,7 +190,7 @@ main.wrap{padding-block:8px 40px}
 .p .meta{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap}
 .price{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
 .price small{font-weight:400;font-size:12px;color:var(--muted);margin-inline-start:3px}
-.av{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);white-space:nowrap}
+.av{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);white-space:normal;line-height:1.4}
 .av i{width:7px;height:7px;border-radius:50%;background:var(--c);flex:none}
 .av.pre i{background:none;border:1.5px solid var(--c)}
 .av.low{color:var(--ok);font-weight:500}
@@ -518,7 +518,12 @@ const pic = (p, cls = '') => p.image
   : `<div class="noimg ${cls}">${esc(p.brand || 'LUMIA')}</div>`;
 
 /* ---------- availability ---------- */
+/* Arabic count of pieces: 1 قطعة، 2 قطعتان، 3–10 قطع، 11+ قطعة */
+const pcs = n => n === 1 ? 'قطعة واحدة' : n === 2 ? 'قطعتان' : n <= 10 ? `${n} قطع` : `${n} قطعة`;
 function avail(p){
+  // the wholesale page always shows exact quantities, also for what is on the way
+  if (WS && p.stock > 0) return { k: 'in', c: 'var(--ok)', can: true, low: false, label: p.incoming > 0 ? `متوفر: ${p.stock} · قيد الشحن: ${p.incoming}` : `متوفر الآن · ${pcs(p.stock)}` };
+  if (WS && p.incoming > 0) return { k: 'way', c: 'var(--way)', can: true, label: `قيد الشحن · ${pcs(p.incoming)}` };
   if (p.stock > 0) {
     const low = p.stock <= 2;
     return { k: 'in', c: 'var(--ok)', can: true, low,
