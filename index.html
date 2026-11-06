@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <title>LUMIA · Imported Gems</title>
 <meta name="description" content="منتجات أصلية مستوردة من ألمانيا: Balea وMivolis وEssence وغيرها. تصفّح المنتجات واطلب عبر واتساب.">
 <meta name="theme-color" content="#695851">
@@ -44,9 +44,11 @@
   }
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--page);color:var(--ink);font:400 15px/1.65 var(--f-body)}
-button,input,textarea{font:inherit;color:inherit}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{margin:0;background:var(--page);color:var(--ink);font:400 15px/1.65 var(--f-body);overflow-x:clip;touch-action:manipulation}
+button,input,textarea,select{font:inherit;color:inherit}
+/* phones zoom into text boxes smaller than 16px — keep them at 16px */
+input,textarea,select{font-size:16px}
 img{max-width:100%;display:block}
 :focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:8px}
 .wrap{max-width:1120px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}
@@ -121,6 +123,7 @@ img{max-width:100%;display:block}
 .bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--page) 92%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
 .bar.stuck{border-bottom-color:var(--line)}
 .bar .wrap{padding-block:14px 10px;display:grid;gap:10px}
+.bar .wrap > *{min-width:0}
 .search{display:flex;align-items:center;gap:10px;background:var(--tile);border:1px solid var(--line);border-radius:999px;padding:0 16px;height:46px}
 .srow{display:flex;gap:10px;align-items:center}
 .srow .search{flex:1;min-width:0}
@@ -137,7 +140,7 @@ img{max-width:100%;display:block}
 .cats{display:flex;gap:16px;flex:none}
 .cats button{border:0;background:none;padding:6px 0;font-size:13.5px;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:1.5px solid transparent}
 .cats button.on{color:var(--ink);border-bottom-color:var(--primary)}
-.sort{flex:none;margin-inline-start:auto;border:1px solid var(--line);background:var(--tile);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--ink)}
+.sort{flex:none;margin-inline-start:auto;border:1px solid var(--line);background:var(--tile);border-radius:999px;padding:6px 12px;font-size:16px;color:var(--ink)}
 .howinfo{margin-top:26px;display:grid;gap:8px;color:var(--muted);font-size:14px;max-width:70ch}
 .howinfo b{color:var(--ink);font-weight:600}
 footer a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#e4c0b066}
