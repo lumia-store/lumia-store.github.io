@@ -278,6 +278,13 @@ footer .num{direction:ltr;unicode-bidi:isolate;user-select:all;font-variant-nume
 .cta:disabled{opacity:.45;cursor:default}
 .cta svg{width:20px;height:20px}
 .ghost{width:100%;border:1px solid var(--line);border-radius:999px;background:none;padding:13px;font-weight:500;cursor:pointer;margin-top:10px}
+.promo{display:flex;gap:8px;align-items:center;margin:12px 0 4px}
+.promo .f{flex:1;min-width:0;margin:0;text-align:left;letter-spacing:.5px;text-transform:uppercase}
+.promo .ghost{width:auto;margin:0;padding:10px 16px;flex:none}
+.promo.on{border:1px dashed var(--primary);border-radius:14px;padding:10px 12px;background:var(--soft)}
+.promo.on .grow{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+.promo.on span{font-size:12.5px;color:var(--muted)}
+.promo.bad{border-color:#d6455a}.promo.bad span{color:#c23b52}
 .qty{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--tile)}
 .qty button{width:44px;height:44px;border:0;border-radius:50%;background:var(--soft);font-size:23px;cursor:pointer;color:var(--ink)}
 .qty b{min-width:20px;text-align:center;font-variant-numeric:tabular-nums}
@@ -499,14 +506,57 @@ const IC = {
 
 let D = null;
 const WS = window.SHOP_MODE === 'wholesale';
-const U = { q: '', cat: '', av: 'all', sort: 'group', sheet: null, sent: false };
+const U = { promo: '', q: '', cat: '', av: 'all', sort: 'group', sheet: null, sent: false };
 const store = {
   get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch (e) { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
 };
 const CART_KEY = WS ? 'lumia_wcart' : 'lumia_cart';
 let cart = store.get(CART_KEY, {});
+U.promo = WS ? '' : store.get('lumia_promo', '');
 const form = Object.assign({ name: '', phone: '', addr: '', notes: '' }, store.get('lumia_me', {}));
+
+/* small SHA-256 (same result on the laptop, the phone and the website) — used to publish promo codes without showing them */
+function sha256hex(str){
+  const K = [], H = [], b = unescape(encodeURIComponent(str)), w = [], r = (x, n) => (x >>> n) | (x << (32 - n));
+  let p = 2; for (let c = 0; c < 64; p++) { let ok = true; for (let d = 2; d * d <= p; d++) if (p % d === 0) { ok = false; break; } if (ok) { if (c < 8) H[c] = (Math.pow(p, 1 / 2) * 4294967296) | 0; K[c++] = (Math.pow(p, 1 / 3) * 4294967296) | 0; } }
+  const l = b.length * 8, m = []; for (let i = 0; i < b.length; i++) m[i >> 2] |= b.charCodeAt(i) << (24 - (i % 4) * 8);
+  m[l >> 5] |= 0x80 << (24 - l % 32); m[((l + 64 >> 9) << 4) + 15] = l;
+  for (let j = 0; j < m.length; j += 16) {
+    const h = H.slice(0, 8);
+    for (let i = 0; i < 64; i++) {
+      if (i < 16) w[i] = m[j + i] | 0;
+      else { const a = w[i - 15], c = w[i - 2]; w[i] = (w[i - 16] + (r(a, 7) ^ r(a, 18) ^ (a >>> 3)) + w[i - 7] + (r(c, 17) ^ r(c, 19) ^ (c >>> 10))) | 0; }
+      const t1 = h[7] + (r(h[4], 6) ^ r(h[4], 11) ^ r(h[4], 25)) + ((h[4] & h[5]) ^ (~h[4] & h[6])) + K[i] + w[i];
+      const t2 = (r(h[0], 2) ^ r(h[0], 13) ^ r(h[0], 22)) + ((h[0] & h[1]) ^ (h[0] & h[2]) ^ (h[1] & h[2]));
+      h.unshift((t1 + t2) | 0); h[4] = (h[4] + t1) | 0; h.pop();
+    }
+    for (let i = 0; i < 8; i++) H[i] = (H[i] + h[i]) | 0;
+  }
+  return H.map(x => ('00000000' + (x >>> 0).toString(16)).slice(-8)).join('');
+}
+
+/* ---------- promo codes: the page only has a fingerprint (hash) of each code, so codes can't be read from it ---------- */
+const normPromo = c => String(c || '').toUpperCase().replace(/\s+/g, '').replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+function promoNow(){
+  const code = U.promo; if (!code) return null;
+  const h = sha256hex('lumia-promo|' + code), c = (D.promos || []).find(x => x.h === h);
+  if (!c) return { code, off: 0, err: 'الكود غير صحيح أو انتهت صلاحيته' };
+  if (c.until && c.until < new Date().toISOString().slice(0, 10)) return { code, off: 0, err: 'انتهت صلاحية هذا الكود' };
+  const sum = totals().sum;
+  if (c.min && sum < c.min) return { code, off: 0, err: `يُطبَّق هذا الكود على الطلبات بقيمة ${money(c.min)} ج.م أو أكثر — أضف منتجات بقيمة ${money(c.min - sum)} ج.م لتحصل على الخصم` };
+  let off = c.t === 'FIXED' ? c.v : sum * c.v / 100; if (c.t !== 'FIXED' && c.max) off = Math.min(off, c.max);
+  off = Math.round(Math.min(off, sum));
+  return { code, off, err: '', label: c.t === 'FIXED' ? `خصم ${money(c.v)} ج.م` : `خصم ${c.v}%${c.max ? ' (بحد أقصى ' + money(c.max) + ' ج.م)' : ''}` };
+}
+function promoHtml(){
+  if (!(D.promos || []).length) return '';
+  const r = promoNow();
+  if (!r) return `<div class="promo"><input class="f" id="promoIn" placeholder="كود الخصم" autocomplete="off" autocapitalize="characters" dir="ltr"><button class="ghost" data-a="promoApply">تطبيق</button></div>`;
+  return `<div class="promo on ${r.err ? 'bad' : ''}"><div class="grow"><b dir="ltr">🎟️ ${esc(r.code)}</b><span>${esc(r.err || r.label)}</span></div><button class="ghost" data-a="promoRemove">إزالة</button></div>
+    ${r.off ? `<div class="tot"><span>الخصم</span><span class="price" style="color:#d6455a">− ${money(r.off)}<small>ج.م</small></span></div>
+    <div class="tot"><span>الإجمالي بعد الخصم</span><span class="price">${money(totals().sum - r.off)}<small>ج.م</small></span></div>` : ''}`;
+}
 
 /* ---------- data ---------- */
 function load(){
@@ -744,6 +794,7 @@ function cartHtml(){
       return `<div class="line"><div class="th">${pic(p)}</div><div class="t"><b dir="auto">${esc(p.name)}</b><span>${st}${p.price ? ' · ' + money(p.price * q) + ' ج.م' : ''}</span></div>
         <div class="qty"><button data-a="inc" data-id="${id}" aria-label="زيادة">+</button><b>${q}</b><button data-a="dec" data-id="${id}" aria-label="تقليل">−</button></div></div>`; }).join('')}
     <div class="tot"><span>الإجمالي${t.unpriced ? ' <span class="small">(دون المنتجات التي يُحدَّد سعرها عند الطلب)</span>' : ''}</span><span class="price">${money(t.sum)}<small>ج.م</small></span></div>
+    ${promoHtml()}
     ${later ? `<div class="note">${esc(D.preorderNote || 'تُحضَر منتجات الطلب المسبق مع أول شحنة قادمة.')}</div>` : ''}
     ${D.deliveryNote || D.paymentNote ? `<div class="note">${[D.deliveryNote ? '<b>التوصيل:</b> ' + esc(D.deliveryNote) : '', D.paymentNote ? '<b>الدفع:</b> ' + esc(D.paymentNote) : ''].filter(Boolean).join('<br>')}</div>` : ''}
     <label class="fl" for="fn">الاسم</label><input class="f" id="fn" data-f="name" value="${esc(form.name)}" autocomplete="name">
@@ -871,7 +922,9 @@ function orderMessage(){
   if (now.length) { L.push('✅ متوفر:'); L.push(...now); }
   if (later.length) { L.push('⏳ طلب مسبق:'); L.push(...later); }
   L.push('━━━━━━━━━━');
+  const pr = promoNow();
   if (t.sum) L.push(`💰 الإجمالي: ${money(t.sum)} ج.م${t.unpriced ? ' + منتجات يُحدَّد سعرها لاحقاً' : ''}`);
+  if (pr && pr.off) { L.push(`🎟️ كود الخصم: ${pr.code} (− ${money(pr.off)} ج.م)`); L.push(`✨ الإجمالي بعد الخصم: ${money(t.sum - pr.off)} ج.م`); }
   if (form.notes.trim()) L.push(`📝 ملاحظات: ${form.notes.trim()}`);
   return L.join('\n');
 }
@@ -893,11 +946,15 @@ const A = {
     try { await navigator.clipboard.writeText(url); toast('تم نسخ رابط المنتج'); } catch (e) { toast(url); }
   },
   cart: () => openSheet({ type: 'cart' }),
+  promoApply: () => { const v = normPromo($('promoIn')?.value); if (!v) { toast('اكتب كود الخصم أولاً'); return; }
+    U.promo = v; const r = promoNow(); if (r.err && !/يُطبَّق/.test(r.err)) { U.promo = ''; toast(r.err); return; }
+    store.set('lumia_promo', U.promo); renderSheet(); toast(r.off ? `تم تطبيق الخصم: ${money(r.off)} ج.م` : 'تم حفظ الكود'); },
+  promoRemove: () => { U.promo = ''; store.set('lumia_promo', ''); renderSheet(); },
   close: () => closeSheet(),
   scrim: (d, el, e) => { if (e.target === el) closeSheet(); },
   av: d => { U.av = d.k; renderFilters(); renderGrid(); },
   cat: d => { U.cat = d.k; renderFilters(); renderGrid(); },
-  clear: () => { cart = {}; store.set(CART_KEY, cart); U.sent = false; closeSheet(); renderGrid(); toast('شكراً لك، سنتواصل معك قريباً'); },
+  clear: () => { U.promo = ''; store.set('lumia_promo', ''); cart = {}; store.set(CART_KEY, cart); U.sent = false; closeSheet(); renderGrid(); toast('شكراً لك، سنتواصل معك قريباً'); },
   send: () => {
     if (!form.name.trim()) { toast('يرجى كتابة الاسم أولاً'); $('fn')?.focus(); return; }
     if (!Object.keys(cart).length) { toast('طلبك فارغ'); return; }
