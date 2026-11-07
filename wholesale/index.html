@@ -772,8 +772,16 @@ function renderCart(){
 }
 
 /* ---------- sheets ---------- */
-function openSheet(s){ U.sheet = s; renderSheet(); renderCart(); document.body.style.overflow = 'hidden'; }
-function closeSheet(){ U.sheet = null; $('sheet').innerHTML = ''; document.body.style.overflow = U.page ? 'hidden' : ''; renderCart(); if (U.page) renderPage(); }
+/* phone back button: the basket and the chat window count as a "page", so Back closes them instead of leaving the site */
+const ovState = () => (history.state && history.state.ov) || '';
+function doCloseSheet(){ U.sheet = null; $('sheet').innerHTML = ''; document.body.style.overflow = U.page ? 'hidden' : ''; renderCart(); if (U.page) renderPage(); }
+function doChatClose(){ $('chat').hidden = true; $('chatFab').hidden = false; document.body.style.overflow = ''; }
+window.addEventListener('popstate', () => {
+  if (U.sheet && ovState() !== 'sheet') doCloseSheet();
+  const c = $('chat'); if (c && !c.hidden && ovState() !== 'chat') doChatClose();
+});
+function openSheet(s){ if (!U.sheet) { try { history.pushState({ ov: 'sheet' }, ''); } catch (e) {} } U.sheet = s; renderSheet(); renderCart(); document.body.style.overflow = 'hidden'; }
+function closeSheet(){ if (U.sheet && ovState() === 'sheet') history.back(); else doCloseSheet(); }
 function renderSheet(){
   const keep = document.querySelector('.sheet')?.scrollTop;
   const fid = document.activeElement?.id;
@@ -903,7 +911,7 @@ function route(){
   const m = /^#p-(.+)$/.exec(location.hash);
   const id = m ? decodeURIComponent(m[1]) : null;
   U.page = id && D && byId(id) ? id : null;
-  if (U.page && U.sheet) closeSheet();
+  if (U.page && U.sheet) { if (ovState() === 'sheet') history.replaceState(null, ''); doCloseSheet(); }
   renderPage(); renderCart();
 }
 window.addEventListener('hashchange', route);
@@ -1032,12 +1040,12 @@ async function sendChat(text){
   chat.busy = false; saveChat(); renderChat();
 }
 Object.assign(A, {
-  chatOpen: () => { $('chat').hidden = false; $('chatFab').hidden = true; document.body.style.overflow = 'hidden'; renderChat(); setTimeout(() => window.matchMedia('(min-width:700px)').matches && $('chatIn').focus(), 50); },
-  chatClose: () => { $('chat').hidden = true; $('chatFab').hidden = false; document.body.style.overflow = ''; },
+  chatOpen: () => { if (ovState() !== 'chat') { try { history.pushState({ ov: 'chat' }, ''); } catch (e) {} } $('chat').hidden = false; $('chatFab').hidden = true; document.body.style.overflow = 'hidden'; renderChat(); setTimeout(() => window.matchMedia('(min-width:700px)').matches && $('chatIn').focus(), 50); },
+  chatClose: () => { if (ovState() === 'chat') history.back(); else doChatClose(); },
   chatAsk: d => sendChat(d.t),
   chatNoImg: () => { chat.img = ''; $('chatPend').hidden = true; },
   chatAdd: d => { setQty(d.id, (cart[d.id] || 0) + 1); toast('أُضيف إلى طلبك'); },
-  chatView: d => { A.chatClose(); A.view(d); }
+  chatView: d => { if (ovState() === 'chat') history.replaceState(null, ''); doChatClose(); A.view(d); }
 });
 document.addEventListener('click', e => {
   const el = e.target.closest('[data-a]'); if (!el) return;
