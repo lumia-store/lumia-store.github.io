@@ -348,6 +348,47 @@ details.acc .c.lat{direction:ltr;text-align:left;font-size:13.5px;line-height:1.
 @media (min-width:860px){ .buybar{display:none} }
 .toast{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:40;background:var(--ink);color:var(--page);padding:10px 18px;border-radius:999px;font-size:14px;max-width:88vw;text-align:center}
 .loading{padding:70px 0;text-align:center;color:var(--muted)}
+/* ---------- chat assistant ---------- */
+.chatfab{position:fixed;z-index:30;left:max(16px,env(safe-area-inset-left));bottom:calc(18px + env(safe-area-inset-bottom));transition:bottom .2s;display:flex;align-items:center;gap:8px;padding:12px 16px 12px 14px;border:0;border-radius:999px;cursor:pointer;
+  font:600 14px/1 var(--f-body);color:#fff;background:linear-gradient(135deg,#e39a8a,#b9786b);box-shadow:0 10px 26px rgba(185,120,107,.4)}
+.chatfab svg{width:20px;height:20px}
+body.hascart .chatfab{bottom:calc(86px + env(safe-area-inset-bottom))}
+body.inpage .chatfab{display:none}
+.chatfab .dot{position:absolute;top:6px;left:8px;width:9px;height:9px;border-radius:50%;background:#5fd38d;box-shadow:0 0 0 2px #fff}
+.chat{position:fixed;z-index:60;inset:0;display:flex;flex-direction:column;background:#fffaf7}
+@media (min-width:700px){.chat{inset:auto auto 24px 24px;width:400px;height:min(640px,calc(100vh - 48px));border-radius:22px;box-shadow:0 24px 60px rgba(90,60,50,.28);overflow:hidden}}
+.chat[hidden]{display:none!important}
+.chat .hd{display:flex;align-items:center;gap:10px;padding:calc(12px + env(safe-area-inset-top)) 14px 12px;background:linear-gradient(135deg,#fff1ec,#fbe7f0 55%,#efe8ff);border-bottom:1px solid var(--line)}
+.chat .hd img{width:38px;height:38px;border-radius:50%}
+.chat .hd b{display:block;font:600 16px var(--f-display);color:var(--ink)}
+.chat .hd small{color:var(--muted);font-size:12px}
+.chat .hd .x{margin-inline-start:auto;border:0;background:rgba(255,255,255,.7);width:36px;height:36px;border-radius:50%;cursor:pointer;color:var(--ink)}
+.chat .msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;-webkit-overflow-scrolling:touch}
+.chat .m{max-width:86%;padding:10px 13px;border-radius:18px;font-size:14.5px;line-height:1.75;white-space:pre-wrap;word-wrap:break-word}
+.chat .m.u{align-self:flex-start;background:linear-gradient(135deg,#e39a8a,#c98678);color:#fff;border-bottom-right-radius:6px}
+.chat .m.a{align-self:flex-end;background:#fff;border:1px solid var(--line);color:var(--ink);border-bottom-left-radius:6px}
+.chat .m img.ph{display:block;max-width:180px;border-radius:12px;margin-bottom:6px}
+.chat .typing{align-self:flex-end;color:var(--muted);font-size:13px;padding:4px 8px}
+.chat .recs{white-space:normal;display:flex;gap:8px;overflow-x:auto;margin:8px -4px 0;padding:0 4px 4px}
+.chat .rec{flex:none;width:132px;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;text-align:right}
+.chat .rec .im{aspect-ratio:1;background:var(--well);display:grid;place-items:center;overflow:hidden}
+.chat .rec .im img{width:100%;height:100%;object-fit:contain}
+.chat .rec .t{padding:6px 8px 0;font-size:12.5px;line-height:1.35;height:34px;overflow:hidden;direction:ltr;text-align:left}
+.chat .rec .pr{padding:2px 8px;font-weight:700;font-size:13px}
+.chat .rec .b{display:flex;gap:4px;padding:6px}
+.chat .rec .b button{flex:1;border:0;border-radius:999px;padding:6px 0;font:600 12px var(--f-body);cursor:pointer;background:var(--well);color:var(--ink)}
+.chat .rec .b button.radd{background:#b9786b;color:#fff}
+.chat .chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 8px}
+.chat .chips button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font:13px var(--f-body);color:var(--ink);cursor:pointer}
+.chat .in{display:flex;align-items:flex-end;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:#fff}
+.chat .in textarea{flex:1;resize:none;max-height:120px;min-height:44px;border:1px solid var(--line);border-radius:22px;padding:11px 14px;font:16px/1.4 var(--f-body);background:#fffaf7;outline:none}
+.chat .in .ic{flex:none;width:44px;height:44px;border-radius:50%;border:0;display:grid;place-items:center;cursor:pointer;background:var(--well);color:var(--ink)}
+.chat .in .ic.send{background:linear-gradient(135deg,#e39a8a,#b9786b);color:#fff}
+.chat .in .ic svg{width:21px;height:21px}
+.chat .pend{display:flex;align-items:center;gap:8px;padding:6px 14px;font-size:12.5px;color:var(--muted)}
+.chat .pend img{width:44px;height:44px;object-fit:cover;border-radius:10px}
+.chat .cnote{padding:0 14px 6px;font-size:11.5px;color:var(--muted);text-align:center}
+
 /* wholesale page */
 .wsbadge{display:inline-block;margin:0 0 10px;padding:5px 14px;border-radius:999px;border:1px solid #e3bcae;color:#b9786b;font-size:13px;font-weight:600;letter-spacing:.3px;background:rgba(255,255,255,.7)}
 .wsinfo{margin-top:6px;font-size:13px;color:var(--muted)}
@@ -532,7 +573,7 @@ const priceHtml = p => `<span class="price${p.was ? ' sale' : ''}">${money(p.pri
 function start(d){
   const todayIso = new Date().toISOString().slice(0, 10);
   for (const p of d.products || []) if (p.was && p.saleUntil && p.saleUntil < todayIso) { p.price = p.was; delete p.was; }
-  D = d; brandStrip();
+  D = d; brandStrip(); setTimeout(initChat, 400);
   if (WS) { document.body.style.overflow = ''; $('tag').insertAdjacentHTML('beforebegin', '<span class="wsbadge">أسعار الجملة</span>'); }
   if (D.intro) $('tag').textContent = D.intro;
   const num = String(D.whatsapp || '').replace(/\D/g, '');
@@ -656,6 +697,7 @@ function totals(){
 }
 function renderCart(){
   const t = totals();
+  document.body.classList.toggle('hascart', !!t.count && !U.sheet && !U.page); document.body.classList.toggle('inpage', !!U.page);
   $('cartbar').innerHTML = t.count && !U.sheet && !U.page ? `<div class="cartbar"><button data-a="cart"><span class="n">${t.count}</span><span>طلبك</span><span class="sum">${t.sum ? money(t.sum) + ' ج.م' + (t.unpriced ? ' +' : '') : 'إتمام الطلب'}</span></button></div>` : '';
 }
 
@@ -845,6 +887,81 @@ const A = {
     U.sent = true; renderSheet();
   }
 };
+
+/* ---------- chat assistant (talks to the LUMIA chat worker; the AI key never reaches the browser) ---------- */
+const CHAT_KEY = 'lumia_chat';
+const chat = { msgs: [], busy: false, img: '' };
+try { chat.msgs = JSON.parse(sessionStorage.getItem(CHAT_KEY) || '[]'); } catch (e) { chat.msgs = []; }
+const saveChat = () => { try { sessionStorage.setItem(CHAT_KEY, JSON.stringify(chat.msgs.map(m => Object.assign({}, m, { image: m.image ? '' : undefined, hadImg: !!m.image || m.hadImg })).slice(-30))); } catch (e) {} };
+function initChat(){
+  if (WS || !D.chatUrl || $('chatFab')) return;
+  document.body.insertAdjacentHTML('beforeend', `<button class="chatfab" id="chatFab" type="button" data-a="chatOpen" aria-label="المساعدة"><span class="dot"></span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>اسألي LUMIA</button>
+  <section class="chat" id="chat" hidden role="dialog" aria-label="مساعدة LUMIA">
+    <div class="hd"><img src="${WS ? '../' : ''}logo-mark.png" alt=""><div><b>مساعدة LUMIA</b><small>مستشارة العناية والجمال · تجيب خلال ثوانٍ</small></div><button class="x" type="button" data-a="chatClose" aria-label="إغلاق">✕</button></div>
+    <div class="msgs" id="chatMsgs"></div>
+    <div class="chips" id="chatChips"></div>
+    <div class="pend" id="chatPend" hidden></div>
+    <div class="cnote">المساعدة تقدّم اقتراحات عامة وليست بديلاً عن استشارة الطبيب.</div>
+    <form class="in" id="chatForm">
+      <label class="ic" title="إرفاق صورة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="12" cy="12" r="3.2"/><path d="M8 5l1.5-2h5L16 5"/></svg><input type="file" accept="image/*" id="chatImg" hidden></label>
+      <textarea id="chatIn" rows="1" placeholder="اكتبي سؤالك…" aria-label="رسالتك"></textarea>
+      <button class="ic send" type="submit" aria-label="إرسال"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></button>
+    </form>
+  </section>`);
+  $('chatForm').addEventListener('submit', e => { e.preventDefault(); sendChat(); });
+  $('chatIn').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey && window.matchMedia('(min-width:700px)').matches) { e.preventDefault(); sendChat(); } });
+  $('chatIn').addEventListener('input', e => { e.target.style.height = 'auto'; e.target.style.height = Math.min(120, e.target.scrollHeight) + 'px'; });
+  $('chatImg').addEventListener('change', async e => {
+    const f = e.target.files && e.target.files[0]; e.target.value = ''; if (!f) return;
+    try { chat.img = await shrinkPhoto(f); $('chatPend').hidden = false; $('chatPend').innerHTML = `<img src="data:image/jpeg;base64,${chat.img}" alt=""> صورة مرفقة — اكتبي سؤالك ثم أرسلي <button type="button" data-a="chatNoImg" style="border:0;background:none;color:#b9786b;cursor:pointer">إزالة</button>`; }
+    catch (x) { toast('تعذّر قراءة الصورة'); }
+  });
+}
+function shrinkPhoto(file){
+  return new Promise((res, rej) => { const fr = new FileReader(); fr.onerror = rej; fr.onload = () => { const im = new Image(); im.onerror = rej; im.onload = () => {
+    const k = Math.min(1, 1024 / Math.max(im.width, im.height)), c = document.createElement('canvas'); c.width = Math.round(im.width * k); c.height = Math.round(im.height * k);
+    const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.drawImage(im, 0, 0, c.width, c.height); res(c.toDataURL('image/jpeg', 0.82).split(',')[1]); }; im.src = fr.result; }; fr.readAsDataURL(file); });
+}
+function recCard(p){
+  return `<div class="rec"><div class="im">${p.image ? `<img src="${esc(imgSrc(p.image))}" alt="" loading="lazy">` : ''}</div><div class="t">${esc(p.name)}</div>
+    <div class="pr">${p.price ? money(p.price) + ' ج.م' : '<span style="font-weight:400;color:var(--muted)">السعر عند الطلب</span>'}</div>
+    <div class="b"><button type="button" data-a="chatView" data-id="${esc(p.id)}">عرض</button>${avail(p).can ? `<button type="button" class="radd" data-a="chatAdd" data-id="${esc(p.id)}">أضف</button>` : ''}</div></div>`;
+}
+function renderChat(){
+  const box = $('chatMsgs'); if (!box) return;
+  const hello = `أهلاً بكِ في ${esc(D.storeName || 'LUMIA')} ✨\nأنا مساعدتكِ للعناية بالبشرة والشعر. أخبريني عن نوع بشرتكِ أو المشكلة التي تودّين علاجها، ويمكنكِ إرفاق صورة لمنتج أو للمنطقة التي تقلقكِ، وسأقترح عليكِ الأنسب من منتجاتنا.`;
+  box.innerHTML = `<div class="m a">${hello}</div>` + chat.msgs.map(m => `<div class="m ${m.role === 'user' ? 'u' : 'a'}">${m.image ? `<img class="ph" src="data:image/jpeg;base64,${m.image}" alt="">` : m.hadImg ? '📷 ' : ''}${esc(m.text || '')}${
+    (m.products || []).map(byId).filter(Boolean).length ? `<div class="recs">${m.products.map(byId).filter(Boolean).map(recCard).join('')}</div>` : ''}</div>`).join('')
+    + (chat.busy ? '<div class="typing">مساعدة LUMIA تكتب…</div>' : '');
+  $('chatChips').innerHTML = chat.msgs.length ? '' : ['بشرتي دهنية وعندي حبوب', 'بشرتي جافة وحساسة', 'شعري متساقط', 'أبحث عن واقي شمس'].map(t => `<button type="button" data-a="chatAsk" data-t="${esc(t)}">${esc(t)}</button>`).join('');
+  box.scrollTop = box.scrollHeight;
+}
+async function sendChat(text){
+  if (chat.busy) return;
+  text = String(text != null ? text : $('chatIn').value).trim();
+  if (!text && !chat.img) return;
+  chat.msgs.push({ role: 'user', text, image: chat.img || '' });
+  chat.img = ''; $('chatPend').hidden = true; $('chatIn').value = ''; $('chatIn').style.height = '';
+  chat.busy = true; renderChat();
+  try {
+    const r = await fetch(D.chatUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: chat.msgs.map(m => ({ role: m.role, text: m.text, image: m.image || '' })) }) });
+    const a = await r.json();
+    chat.msgs.push({ role: 'assistant', text: a.reply || 'عذراً، حدث خطأ. حاولي مرة أخرى.', products: a.products || [] });
+  } catch (e) {
+    chat.msgs.push({ role: 'assistant', text: 'تعذّر الاتصال الآن. تحققي من الإنترنت ثم حاولي مرة أخرى، أو تواصلي معنا عبر واتساب.', products: [] });
+  }
+  chat.busy = false; saveChat(); renderChat();
+}
+Object.assign(A, {
+  chatOpen: () => { $('chat').hidden = false; $('chatFab').hidden = true; document.body.style.overflow = 'hidden'; renderChat(); setTimeout(() => window.matchMedia('(min-width:700px)').matches && $('chatIn').focus(), 50); },
+  chatClose: () => { $('chat').hidden = true; $('chatFab').hidden = false; document.body.style.overflow = ''; },
+  chatAsk: d => sendChat(d.t),
+  chatNoImg: () => { chat.img = ''; $('chatPend').hidden = true; },
+  chatAdd: d => { setQty(d.id, (cart[d.id] || 0) + 1); toast('أُضيف إلى طلبك'); },
+  chatView: d => { A.chatClose(); A.view(d); }
+});
 document.addEventListener('click', e => {
   const el = e.target.closest('[data-a]'); if (!el) return;
   // the +/− controls sit on top of the photo: don't also open the product
