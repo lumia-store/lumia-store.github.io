@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-<title>LUMIA · Imported Gems</title>
+<title>LUMIA Care · Imported Gems</title>
 <meta name="description" content="منتجات أصلية مستوردة من ألمانيا: Balea وMivolis وEssence وغيرها. تصفّح المنتجات واطلب عبر واتساب.">
 <meta name="theme-color" content="#fde9ea">
-<meta property="og:title" content="LUMIA · Imported Gems">
+<meta property="og:title" content="LUMIA Care">
 <meta property="og:description" content="منتجات أصلية مستوردة من ألمانيا. تصفّح المنتجات واطلب عبر واتساب.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://lumia-store.github.io/icon-512.png">
@@ -19,7 +19,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Reem+Kufi:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@300;400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Reem+Kufi:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* Layout: full-bleed taupe brand header (logo + flight line) → sticky search/filter bar → photo-led product grid → how-to-order steps → footer.
    Content is right-aligned (RTL); the header is centered like the logo itself. */
@@ -75,6 +75,19 @@ img{max-width:100%;display:block}
 .hero-in{position:relative;z-index:1;display:grid;gap:8px;align-items:center;padding-block:4px 22px}
 .hero-copy{display:flex;flex-direction:column;align-items:center;text-align:center}
 .logo{width:min(210px,54vw);height:auto;filter:drop-shadow(0 6px 18px rgba(255,255,255,.9))}
+/* "CARE" under the logo: the letters rise in one by one, then a soft light passes over them now and then */
+.brandmk{display:inline-flex;flex-direction:column;align-items:center}
+.brandmk .gems{margin-top:clamp(8px,2.2vw,14px)}
+.care{display:block;margin-top:clamp(6px,1.6vw,10px);padding-inline-start:.62em;font:300 clamp(15px,4.2vw,19px)/1 Montserrat,'IBM Plex Sans Arabic',sans-serif;letter-spacing:.62em;direction:ltr;white-space:nowrap}
+.care i{display:inline-block;font-style:normal;opacity:0;transform:translateY(8px);filter:blur(4px);
+  background:linear-gradient(100deg,#9c6b5c 0%,#9c6b5c 40%,#f3c7b6 50%,#9c6b5c 60%,#9c6b5c 100%);background-size:300% 100%;background-position:100% 0;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:careIn .9s cubic-bezier(.2,.7,.2,1) forwards,careShine 7s ease-in-out 2.2s infinite}
+.care i{animation-delay:calc(.6s + var(--d,0s)),calc(2.2s + var(--d,0s))}
+.care i:nth-child(2){--d:.15s}.care i:nth-child(3){--d:.3s}.care i:nth-child(4){--d:.45s}
+@keyframes careIn{to{opacity:1;transform:none;filter:none}}
+@keyframes careShine{0%,55%{background-position:100% 0}85%,100%{background-position:0 0}}
+@media (prefers-reduced-motion:reduce){.care i{animation:none;opacity:1;transform:none;filter:none}}
 .tag{margin:16px 0 0;font:400 clamp(16px,4.3vw,20px)/1.75 var(--f-display);max-width:30ch;text-wrap:balance;color:#5d4a43}
 .route{display:flex;align-items:center;gap:12px;width:min(380px,100%);margin-top:16px;font:500 13px/1 var(--f-body);color:#7a625a}
 .route>span:not(.ln){display:inline-flex;align-items:center;gap:6px}
@@ -175,6 +188,11 @@ main.wrap{padding-block:8px 40px}
 .p .sz{font-size:12.5px;color:var(--muted);margin-top:-4px}
 @media (min-width:1000px){ .grid{grid-template-columns:repeat(4,minmax(0,1fr))} }
 .p{display:flex;flex-direction:column;gap:8px;min-width:0}
+.disc{position:absolute;top:10px;right:10px;z-index:2;padding:4px 10px;border-radius:999px;font-size:12.5px;font-weight:700;color:#fff;
+  background:linear-gradient(135deg,#ef6b73,#d6455a);box-shadow:0 4px 12px rgba(214,69,90,.35);pointer-events:none}
+.was{margin-inline-start:6px;font-size:.78em;font-weight:500;color:var(--muted);text-decoration:line-through;white-space:nowrap}
+.price.sale{color:#d6455a}
+.saleinfo{display:inline-block;margin-top:4px;padding:3px 10px;border-radius:999px;background:#ffe6e9;color:#c23b52;font-size:12.5px;font-weight:600}
 .p .ph{position:relative;aspect-ratio:4/5;border-radius:var(--r-lg);background:var(--well);overflow:hidden;cursor:pointer;border:0;padding:0;width:100%}
 .p .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
 @media (hover:hover){ .p .ph:hover img{transform:scale(1.035)} }
@@ -198,6 +216,18 @@ main.wrap{padding-block:8px 40px}
 .empty b{display:block;font:500 18px var(--f-display);color:var(--ink);margin-bottom:4px}
 
 /* ---------- how to order ---------- */
+.special{margin:26px 0 8px;padding:22px 20px;border-radius:22px;text-align:center;border:1px solid #f0d6cc;
+  background:linear-gradient(135deg,#fff1ec 0%,#fbe7f0 45%,#efe8ff 100%);box-shadow:0 10px 30px rgba(185,120,107,.10)}
+.special .ic{width:46px;height:46px;margin:0 auto 10px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#c9786a;box-shadow:0 4px 14px rgba(185,120,107,.18)}
+.special .ic svg{width:24px;height:24px}
+.special h3{margin:0 0 6px;font:500 20px/1.4 var(--f-display);color:#4a3a34}
+.special p{margin:0 auto 14px;max-width:520px;font-size:14px;line-height:1.85;color:#6f5a52}
+.special ul{list-style:none;margin:0 auto 16px;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.special li{padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.75);font-size:12.5px;color:#6f5a52}
+.special a{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;font-size:14.5px;color:#fff;text-decoration:none;
+  background:linear-gradient(135deg,#25b866,#128c4b);box-shadow:0 8px 20px rgba(18,140,75,.25)}
+.special a svg{width:18px;height:18px}
+.special .q{display:block;margin-bottom:6px;font-size:13px;color:#b9786b}
 .how{border-top:1px solid var(--line)}
 .how .wrap{padding-block:40px 34px}
 .how h2{margin:0 0 22px;font:500 22px/1.3 var(--f-display)}
@@ -355,7 +385,7 @@ details.acc .c.lat{direction:ltr;text-align:left;font-size:13.5px;line-height:1.
   </div>
   <div class="wrap hero-in">
     <div class="hero-copy">
-      <img class="logo" src="../logo-rose.png" alt="LUMIA — Imported Gems" width="685" height="760">
+      <div class="brandmk"><img class="logo" src="../logo-care.png" alt="LUMIA Care — Imported Gems" width="685" height="526"><span class="care" aria-hidden="true"><i>C</i><i>A</i><i>R</i><i>E</i></span><img class="logo gems" src="../logo-gems.png" alt="" width="685" height="194"></div>
       <p class="tag" id="tag">منتجات أصلية نستوردها خصيصاً من ألمانيا إلى مصر، لتصل إليك حتى باب منزلك</p>
       <div class="route" aria-hidden="true"><span><i class="flag de"></i>ألمانيا</span><span class="ln"><span class="plane"><svg viewBox="0 0 64 48"><path d="M26 19 23.5 30M38 19 40.5 30" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".75"/><rect x="18" y="29.5" width="28" height="17" rx="3" fill="#f6cfa6" stroke="#b9786b" stroke-width="1.5"/><path d="M32 29.5v17M18 36h28" stroke="#b9786b" stroke-width="1.4"/><path d="M29 29.5c-2-3-6-3-6-.5M35 29.5c2-3 6-3 6-.5" fill="none" stroke="#b9786b" stroke-width="1.3"/><path fill="currentColor" d="M4 14c0-3.5 4-5 8-5h32l8-7h5l-3 9c4 1 6 2 6 3.5 0 2.5-5 4.5-11 4.5H12c-4 0-8-1.5-8-5z"/><path fill="#a95f52" d="M23 15h13l-8 10h-6z"/><path fill="#fff" d="M7 12.5c1-1.6 3-2.3 5-2.3v3.3H7z" opacity=".9"/><g fill="#fff" opacity=".9"><circle cx="17" cy="12" r="1.1"/><circle cx="21.5" cy="12" r="1.1"/><circle cx="26" cy="12" r="1.1"/><circle cx="30.5" cy="12" r="1.1"/><circle cx="35" cy="12" r="1.1"/></g></svg></span></span><span><i class="flag eg"></i>مصر</span></div>
       <div class="ctas">
@@ -369,6 +399,7 @@ details.acc .c.lat{direction:ltr;text-align:left;font-size:13.5px;line-height:1.
     <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>منتجات أصلية 100%</span>
     <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9M7.5 5.2l9 4.5"/></svg>شحن مباشر من ألمانيا</span>
     <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>تأكيد الطلب عبر واتساب</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg><button type="button" data-a="special" style="all:unset;cursor:pointer;text-decoration:underline;text-underline-offset:3px">نوفّر أي منتج بطلب خاص</button></span>
   </div>
   <svg class="curve" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C320,48 1120,48 1440,0 L1440,48 L0,48 Z"/></svg>
 </header>
@@ -397,6 +428,7 @@ details.acc .c.lat{direction:ltr;text-align:left;font-size:13.5px;line-height:1.
       <li><b>إرسال الطلب عبر واتساب</b><span>تُكتب رسالة الطلب تلقائياً بكامل التفاصيل، ولا يلزم سوى الضغط على «إرسال».</span></li>
       <li><b>التأكيد والتوصيل</b><span>نتواصل معك لتأكيد الإجمالي وموعد التوصيل.</span></li>
     </ol>
+    <p class="howinfo" style="margin-top:14px">لم تجد المنتج الذي تبحث عنه؟ يمكننا توفير أي منتج من dm وRossmann وغيرها من المتاجر الألمانية بطلب خاص؛ أرسل لنا اسمه أو رابطه أو صورته عبر واتساب.</p>
     <div class="howinfo" id="howinfo"></div>
   </div>
 </section>
@@ -474,7 +506,7 @@ function gate(err){
   let g = $('gate');
   if (!g) {
     g = document.createElement('div'); g.id = 'gate'; g.className = 'gate';
-    g.innerHTML = `<form class="box" id="gateForm" autocomplete="off"><img src="../logo-rose.png" alt="LUMIA">
+    g.innerHTML = `<form class="box" id="gateForm" autocomplete="off"><img src="../logo-care.png" alt="LUMIA Care" style="width:130px"><div class="care" style="margin:6px 0 4px"><i style="animation:none;opacity:1;transform:none;filter:none">C</i><i style="animation:none;opacity:1;transform:none;filter:none">A</i><i style="animation:none;opacity:1;transform:none;filter:none">R</i><i style="animation:none;opacity:1;transform:none;filter:none">E</i></div>
       <h1>أسعار الجملة</h1><p>هذه الصفحة مخصّصة لعملاء الجملة. يُرجى إدخال كود الدخول الذي حصلت عليه منّا.</p>
       <input id="gateIn" placeholder="كود الدخول" autocapitalize="off" spellcheck="false" aria-label="كود الدخول">
       <button type="submit" id="gateBtn">دخول</button><div class="err" id="gateErr"></div>
@@ -493,7 +525,13 @@ function brandStrip(){
   const row = list.map(b => `<span dir="ltr">${esc(b)}</span>`).join('');
   $('marq').innerHTML = row + row;
 }
+/* discounts: the old price is shown crossed out; a discount whose end date has passed is ignored */
+const pct = p => p.was && p.price ? Math.round((1 - p.price / p.was) * 100) : 0;
+const discTag = p => pct(p) >= 1 ? `<span class="disc">خصم ${pct(p)}%</span>` : '';
+const priceHtml = p => `<span class="price${p.was ? ' sale' : ''}">${money(p.price)}<small>ج.م</small></span>${p.was ? `<span class="was">${money(p.was)} ج.م</span>` : ''}`;
 function start(d){
+  const todayIso = new Date().toISOString().slice(0, 10);
+  for (const p of d.products || []) if (p.was && p.saleUntil && p.saleUntil < todayIso) { p.price = p.was; delete p.was; }
   D = d; brandStrip();
   if (WS) { document.body.style.overflow = ''; $('tag').insertAdjacentHTML('beforebegin', '<span class="wsbadge">أسعار الجملة</span>'); }
   if (D.intro) $('tag').textContent = D.intro;
@@ -550,7 +588,7 @@ function setQty(id, q){
 /* ---------- filters + grid ---------- */
 function renderFilters(){
   const cats = [...new Set(D.products.map(p => p.category).filter(Boolean))];
-  $('filters').innerHTML = `<div class="seg" role="tablist">${[['all','الكل'],['now','متوفر الآن'],['pre','طلب مسبق']]
+  $('filters').innerHTML = `<div class="seg" role="tablist">${[['all','الكل'],['now','متوفر الآن'],['pre','طلب مسبق'], ...(D.products.some(p => p.was) ? [['sale','العروض']] : [])]
       .map(([k, l]) => `<button data-a="av" data-k="${k}" class="${U.av === k ? 'on' : ''}" role="tab" aria-selected="${U.av === k}">${l}</button>`).join('')}</div>
     ${cats.length > 1 ? `<div class="cats">${['', ...cats].map(c => `<button data-a="cat" data-k="${esc(c)}" class="${U.cat === c ? 'on' : ''}">${c ? esc(c) : 'جميع الأقسام'}</button>`).join('')}</div>` : ''}
     <select class="sort" id="sort" aria-label="ترتيب المنتجات">${[['avail', 'المتوفر أولاً'], ['low', 'السعر: من الأقل'], ['high', 'السعر: من الأعلى'], ['brand', 'العلامة التجارية']].map(([k, l]) => `<option value="${k}" ${U.sort === k ? 'selected' : ''}>${l}</option>`).join('')}</select>`;
@@ -560,6 +598,7 @@ function visible(){
   let list = D.products.filter(p => (!U.cat || p.category === U.cat) && (!q || [p.name, p.brand, p.category, p.description].join(' ').toLowerCase().includes(q)));
   if (U.av === 'now') list = list.filter(p => p.stock > 0);
   if (U.av === 'pre') list = list.filter(p => p.stock <= 0 && (p.preorder || p.incoming > 0));
+  if (U.av === 'sale') list = list.filter(p => p.was);
   const rank = p => p.stock > 0 ? 0 : p.incoming > 0 ? 1 : p.preorder ? 2 : 3;
   const price = p => p.price || (U.sort === 'low' ? Infinity : -1);
   if (U.sort === 'low') return list.sort((a, b) => price(a) - price(b) || rank(a) - rank(b));
@@ -575,18 +614,38 @@ function control(p){
 function card(p){
   const a = avail(p);
   return `<article class="p ${a.can ? '' : 'sold'}">
-      <div class="ph" data-a="view" data-id="${p.id}" role="button" tabindex="0" aria-label="${esc(p.name)}">${pic(p)}${control(p)}</div>
+      <div class="ph" data-a="view" data-id="${p.id}" role="button" tabindex="0" aria-label="${esc(p.name)}">${discTag(p)}${pic(p)}${control(p)}</div>
       ${p.brand ? `<div class="brand">${esc(p.brand)}</div>` : ''}
       <h3 class="nm" dir="auto" data-a="view" data-id="${p.id}">${esc(p.name)}</h3>
       ${p.size ? `<div class="sz" dir="auto">${esc(p.size)}</div>` : ''}
-      <div class="meta">${p.price ? `<span class="price">${money(p.price)}<small>ج.م</small></span>` : '<span class="small">السعر عند الطلب</span>'}${avHtml(a)}</div>
+      <div class="meta">${p.price ? `<span>${priceHtml(p)}</span>` : '<span class="small">السعر عند الطلب</span>'}${avHtml(a)}</div>
     </article>`;
+}
+/* "Any product on request": products not on the site can be ordered specially; the WhatsApp message is pre-written. */
+function specialMsg(term){
+  return [WS ? `مرحباً ${D.storeName || 'LUMIA'} 👋 (عميل جملة)` : `مرحباً ${D.storeName || 'LUMIA'} 👋`,
+    'أرغب في طلب منتج غير موجود على الموقع:',
+    `• اسم المنتج أو رابطه: ${term || ''}`,
+    `• الكمية: ${WS ? '' : '1'}`,
+    'يُرجى إرسال السعر وتفاصيل الشحن وموعد الوصول. شكراً لكم.'].join('\n');
+}
+function specialHtml(term){
+  const num = String(D.whatsapp || '').replace(/\D/g, '');
+  const href = 'https://wa.me/' + num + '?text=' + encodeURIComponent(specialMsg(term));
+  return `<section class="special" id="special">
+    <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></div>
+    ${term ? `<span class="q">لم نجد «${esc(term)}» ضمن منتجاتنا الحالية</span>` : ''}
+    <h3>${term ? 'يمكننا توفيره لك بطلب خاص' : 'لم تجد المنتج الذي تبحث عنه؟'}</h3>
+    <p>نوفّر لك أي منتج من dm وRossmann وغيرها من المتاجر الألمانية بطلب خاص${WS ? ' وبالكميات التي تحتاجها' : ''}. أرسل لنا اسم المنتج أو رابطه أو صورته، وسنرسل لك السعر وتفاصيل الشحن وموعد الوصول.</p>
+    <ul><li>اسم المنتج أو رابطه</li><li>صورة المنتج</li><li>الكمية المطلوبة</li></ul>
+    <a href="${href}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>اطلب منتجاً خاصاً عبر واتساب</a>
+  </section>`;
 }
 function renderGrid(){
   const list = visible();
-  if (!D.products.length) { $('grid').innerHTML = '<div class="empty"><b>تُضاف المنتجات قريباً</b>يسعدنا تواصلك معنا عبر واتساب حتى ذلك الحين.</div>'; return; }
-  if (!list.length) { $('grid').innerHTML = '<div class="empty"><b>لا توجد نتائج</b>جرّب كلمة بحث أخرى أو أزل عامل التصفية.</div>'; return; }
-  $('grid').innerHTML = `<div class="count">${list.length} منتج</div><div class="grid">${list.map(card).join('')}</div>`;
+  if (!D.products.length) { $('grid').innerHTML = specialHtml(''); return; }
+  if (!list.length) { $('grid').innerHTML = specialHtml(U.q.trim()); return; }
+  $('grid').innerHTML = `<div class="count">${list.length} منتج</div><div class="grid">${list.map(card).join('')}</div>` + specialHtml('');
 }
 
 /* ---------- cart ---------- */
@@ -696,7 +755,8 @@ function pageHtml(){
         ${p.brand ? `<button class="brandlink" data-a="brand" data-k="${esc(p.brand)}">${esc(p.brand)}</button>` : ''}
         <h1 dir="auto">${esc(p.name)}</h1>
         ${p.size ? `<div class="size" dir="auto">${esc(p.size)}</div>` : ''}
-        <div class="pricebox">${p.price ? `<span class="price">${money(p.price)}<small>ج.م</small></span>${up ? `<span class="unit">(${up})</span>` : ''}` : '<span class="small">يُحدَّد السعر عند تأكيد الطلب</span>'}</div>
+        <div class="pricebox">${p.price ? `${priceHtml(p)}${up ? `<span class="unit">(${up})</span>` : ''}` : '<span class="small">يُحدَّد السعر عند تأكيد الطلب</span>'}</div>
+        ${p.was ? `<span class="saleinfo">خصم ${pct(p)}%${p.saleUntil ? ` · العرض ساري حتى ${p.saleUntil.split('-').reverse().join('/')}` : ''}</span>` : ''}
         ${WS && (p.storeEUR || p.weightG) ? `<div class="wsinfo">${p.storeEUR ? `سعر المتجر في ألمانيا: <b class="num">€${String(p.storeEUR).replace('.', ',')}</b>` : ''}${p.storeEUR && p.weightG ? ' · ' : ''}${p.weightG ? `الوزن التقريبي: <b class="num">${money(p.weightG)} جم</b>` : ''}</div>` : ''}
         ${avHtml(a)}
         <div class="badges"><span class="badge">🇩🇪 أصلي من ألمانيا</span>${(p.tags || []).filter(k => TAG_AR[k]).map(k => `<span class="badge">${TAG_AR[k]}</span>`).join('')}</div>
@@ -712,7 +772,7 @@ function pageHtml(){
 }
 let lastPage = null;
 function renderPage(){
-  if (!U.page) { $('page').innerHTML = ''; lastPage = null; document.title = WS ? 'LUMIA · أسعار الجملة' : 'LUMIA · Imported Gems'; if (!U.sheet) document.body.style.overflow = ''; return; }
+  if (!U.page) { $('page').innerHTML = ''; lastPage = null; document.title = WS ? 'LUMIA · أسعار الجملة' : 'LUMIA Care · Imported Gems'; if (!U.sheet) document.body.style.overflow = ''; return; }
   const keep = U.page === lastPage ? $('pdp')?.scrollTop : 0;
   const slide = U.page === lastPage ? U.slide || 0 : 0;
   $('page').innerHTML = pageHtml(); lastPage = U.page; U.slide = slide;
@@ -762,6 +822,7 @@ const A = {
   dec: d => setQty(d.id, (cart[d.id] || 0) - 1),
   view: d => { U.fromGrid = true; location.hash = 'p-' + encodeURIComponent(d.id); },
   back: () => { if (U.fromGrid) { U.fromGrid = false; history.back(); } else { history.replaceState(null, '', location.pathname + location.search); route(); } },
+  special: () => { const el = $('special'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); },
   brand: d => { history.replaceState(null, '', location.pathname + location.search); U.fromGrid = false; route(); U.q = d.k; $('q').value = d.k; U.cat = ''; U.av = 'all'; renderFilters(); renderGrid(); $('shop').scrollIntoView(); },
   slide: d => { const tr = $('track'); tr.scrollTo({ left: tr.clientWidth * +d.i, behavior: 'smooth' }); },
   share: async () => {
