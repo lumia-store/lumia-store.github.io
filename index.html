@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <title>LUMIA Care · Imported Gems</title>
 <meta name="description" content="منتجات أصلية مستوردة من ألمانيا: Balea وMivolis وEssence وغيرها. تصفّح المنتجات واطلب عبر واتساب.">
-<meta name="theme-color" content="#fde9ea">
+<meta name="theme-color" content="#f3ebde">
 <meta property="og:title" content="LUMIA Care">
 <meta property="og:description" content="منتجات أصلية مستوردة من ألمانيا. تصفّح المنتجات واطلب عبر واتساب.">
 <meta property="og:type" content="website">
@@ -20,7 +20,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@300;400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Reem+Kufi:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Reem+Kufi:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* Layout: full-bleed taupe brand header (logo + flight line) → sticky search/filter bar → photo-led product grid → how-to-order steps → footer.
    Content is right-aligned (RTL); the header is centered like the logo itself. */
@@ -125,6 +125,27 @@ img{max-width:100%;display:block}
 .marq span{flex:none;padding:8px 18px;border-radius:999px;font:600 italic 19px/1.1 var(--f-latin);letter-spacing:.3px;white-space:nowrap;border:1px solid rgba(0,0,0,.04)}
 .marq span:nth-child(5n+1){background:#ffe3e8;color:#b5526a}.marq span:nth-child(5n+2){background:#ece4ff;color:#6c56b8}
 .marq span:nth-child(5n+3){background:#dff4ec;color:#2f8a6d}.marq span:nth-child(5n+4){background:#fff0d6;color:#b57425}.marq span:nth-child(5n){background:#ffe7dc;color:#b5604a}
+.show{background:var(--page);padding:6px 0 22px}
+.show h2{margin:0 0 12px;font:600 21px/1.3 var(--f-display);color:var(--ink);text-align:center}
+.showwrap{position:relative}
+.strack{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px 8px;-webkit-overflow-scrolling:touch}
+.strack::-webkit-scrollbar{display:none}
+.sl{flex:0 0 min(62%,240px);scroll-snap-align:start;background:var(--tile);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;cursor:pointer;position:relative;text-align:start;direction:rtl}
+@media (min-width:700px){.sl{flex-basis:calc((100% - 14px*3)/4)}}
+.sl .ph2{aspect-ratio:1;background:var(--well);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.sl .ph2 img{width:100%;height:100%;object-fit:contain;transition:transform .5s}
+.sl:hover .ph2 img{transform:scale(1.05)}
+.sl .noimg{font:600 italic 18px var(--f-latin);color:var(--muted)}
+.sl .tx{padding:10px 12px 12px}
+.sl .b{font:600 11.5px var(--f-latin);letter-spacing:.8px;color:var(--muted);text-transform:uppercase;direction:ltr;text-align:right}
+.sl .n{font-size:13.5px;line-height:1.45;margin:2px 0 6px;height:39px;overflow:hidden;color:var(--ink)}
+.sl .disc{position:absolute;top:8px;inset-inline-start:8px;background:#d6455a;color:#fff;border-radius:999px;padding:3px 9px;font-size:12px;font-weight:600}
+.snav{position:absolute;top:38%;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--tile);box-shadow:0 2px 10px #3b302b26;font-size:26px;line-height:1;color:var(--ink);cursor:pointer;display:none}
+.snav.prev{left:-6px}.snav.next{right:-6px}
+@media (hover:hover) and (min-width:700px){.snav{display:block}}
+.sdots{display:flex;justify-content:center;gap:6px;margin-top:6px}
+.sdots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:all .3s}
+.sdots i.on{width:20px;border-radius:999px;background:var(--primary)}
 .brands .fade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,var(--page),transparent 8%,transparent 92%,var(--page))}
 @keyframes marq{to{transform:translateX(50%)}}
 @media (prefers-reduced-motion:reduce){.marq{animation:none;flex-wrap:wrap;width:auto;justify-content:center;padding:0 16px}}
@@ -312,7 +333,7 @@ label.fl{display:block;font-size:13px;color:var(--muted);margin:14px 0 6px}
 .ib svg{width:18px;height:18px}
 .ib .n{position:absolute;top:-5px;left:-5px;min-width:20px;height:20px;border-radius:999px;background:var(--primary);color:var(--on-primary);font-size:11.5px;font-weight:600;display:flex;align-items:center;justify-content:center;padding:0 5px}
 .pdp-body{max-width:1120px;margin:0 auto;padding:6px max(16px,env(safe-area-inset-right)) calc(110px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));display:grid;gap:22px}
-@media (min-width:860px){ .pdp-body{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:start;padding-bottom:60px} .gal{position:sticky;top:76px} }
+@media (min-width:860px){ .pdp-body{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:start;padding-bottom:60px} }
 .track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:var(--r-lg);background:var(--well);scrollbar-width:none;direction:ltr}
 .track::-webkit-scrollbar{display:none}
 .track > *{flex:0 0 100%;scroll-snap-align:center;aspect-ratio:1}
@@ -418,6 +439,124 @@ body.inpage .chatfab{display:none}
 .gate button{margin-top:12px;width:100%;font:inherit;font-size:15px;font-weight:600;padding:13px;border-radius:14px;border:0;background:linear-gradient(135deg,#e39a8a,#b9786b);color:#fff;cursor:pointer}
 .gate .err{min-height:22px;margin-top:10px;font-size:13px;color:#c0392b}
 .gate a{color:#b9786b}
+
+/* =====================================================================
+   PREMIUM THEME — quiet luxury: ivory & sand ground, one champagne-gold accent, espresso ink, refined serif
+   headings, hairlines instead of shadows, small radii, generous space. (Overrides the rules above.)
+   ===================================================================== */
+:root{
+  --page:#faf6ef; --tile:#fffdf9; --well:#f0e8dc; --soft:#f2eadd; --ink:#2a211d; --muted:#7d6f66; --line:#e4d9c8;
+  --primary:#2a211d; --on-primary:#f6efe3; --taupe:#2a211d; --blush:#d9c3a1;
+  --gold:#a98355; --gold-2:#cfae77; --wine:#8c2f3f;
+  --f-display:"Amiri","Cormorant Garamond","IBM Plex Sans Arabic",serif;
+  --r-lg:3px; --r-md:3px;
+}
+body{background:var(--page);font-weight:400;letter-spacing:.005em}
+::selection{background:#e9d8b9;color:var(--ink)}
+:focus-visible{outline-color:var(--gold)}
+/* header: calm ivory → champagne, one gold ink for all line art */
+.hero{color:var(--ink);background:linear-gradient(180deg,#f7efe3 0%,#f1e6d4 100%)}
+.hero::before{filter:none;background:radial-gradient(40% 50% at 82% 20%,#fff6e4cc,transparent 70%),radial-gradient(35% 45% at 12% 70%,#ead9bd88,transparent 70%)}
+.deco svg{opacity:.2!important;stroke:var(--gold)!important;stroke-width:1.1}
+.logo{filter:none}
+.care i{background-image:linear-gradient(100deg,#8a6a3f 0%,#8a6a3f 40%,#ecd3a0 50%,#8a6a3f 60%,#8a6a3f 100%)}
+.tag{font:400 clamp(19px,5vw,24px)/1.8 var(--f-display);color:#4a3b33;letter-spacing:0}
+.route{color:#7a6a5c}
+.route .ln::before{border-top:1px solid var(--gold-2);opacity:.8}
+.plane{color:var(--gold);filter:none}
+.flag{border-radius:1px;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+.ctas{gap:12px}
+.cta-main,.cta-ghost{border-radius:2px;padding:14px 28px;font-weight:500;font-size:14.5px;letter-spacing:.02em;transition:background .25s,color .25s,border-color .25s}
+.cta-main{background:var(--ink);color:#f6efe3;box-shadow:none}
+.cta-main:hover{background:#42342d}
+.cta-ghost{border:1px solid var(--gold);background:transparent;color:var(--ink)}
+.cta-ghost:hover{background:var(--gold);color:#fff}
+.install{border-radius:2px;border-color:var(--line);background:rgba(255,253,249,.7);color:var(--ink)}
+.fan button{border:6px solid #fffdf9;border-radius:2px;box-shadow:0 24px 50px -20px rgba(60,40,20,.35)}
+.fan button .pr{background:rgba(42,33,29,.9);color:#f6efe3;border-radius:2px;font-weight:500}
+@media (min-width:900px){.fan button{border-radius:2px;border-width:8px}}
+.trust{color:#6d5f55;gap:10px 30px;font-size:12.5px;letter-spacing:.02em}
+.trust svg{color:var(--gold);stroke-width:1.4}
+.curve path{fill:var(--page)}
+/* brands: plain serif names between gold diamonds — no coloured pills */
+.brands{padding:10px 0 26px}
+.brands h2{font:400 15px/1.6 var(--f-display);color:var(--muted);letter-spacing:.02em}
+.brands .marq{gap:0}
+.brands .marq span,.brands .marq span:nth-child(n){background:none;border:0;border-radius:0;color:#6d5f55;padding:4px 20px;font:italic 500 21px/1.2 var(--f-latin);letter-spacing:.04em;position:relative}
+.brands .marq span::after{content:"◆";position:absolute;inset-inline-end:-4px;top:50%;transform:translateY(-52%);font:9px/1 sans-serif;color:var(--gold-2)}
+/* slideshow */
+.show{padding:18px 0 34px;background:var(--page)}
+.show h2{font:400 30px/1.3 var(--f-display);letter-spacing:0;margin-bottom:4px}
+.show h2::after{content:"";display:block;width:44px;height:1px;background:var(--gold);margin:10px auto 18px}
+.sl{border:0;background:transparent;border-radius:0}
+.sl .ph2{background:var(--well);border-radius:2px}
+.sl .tx{padding:12px 2px 4px}
+.sl .b{color:var(--gold);font:500 11px var(--f-latin);letter-spacing:.16em}
+.sl .n{font:500 16px/1.4 var(--f-latin);height:44px}
+.sl .disc,.disc{background:var(--wine);box-shadow:none;border-radius:2px;font-weight:500;font-size:11.5px;letter-spacing:.04em;padding:4px 10px;top:10px;right:10px}
+.sl .disc{inset-inline-start:10px;right:auto}
+.snav{border-radius:50%;background:rgba(255,253,249,.92);box-shadow:none;border-color:var(--line)}
+.sdots i{background:#e0d3bd}.sdots i.on{background:var(--gold);width:22px;border-radius:2px}
+/* search + filters */
+.bar{background:color-mix(in srgb,var(--page) 94%,transparent);border-bottom:1px solid var(--line)}
+.search{border-radius:2px;background:var(--tile);border-color:var(--line);height:48px;transition:border-color .2s}
+.search:focus-within{border-color:var(--gold)}
+.inst2{border-radius:2px}
+.seg{background:none;padding:0;gap:4px;border-radius:0}
+.seg button{border-radius:2px;border:1px solid transparent;padding:9px 14px;color:var(--muted);letter-spacing:.01em}
+.seg button.on{background:var(--ink);color:#f6efe3;box-shadow:none;font-weight:500}
+.seg button.sale{color:var(--wine)}.seg button.sale.on{color:#fff;background:var(--wine)}
+.cats button{border-radius:2px;background:transparent;border-color:var(--line);padding:8px 16px;color:#5b4d44}
+.cats button.on{background:transparent;color:var(--ink);border-color:var(--ink);font-weight:500}
+.sort{border-radius:2px;background:var(--tile)}
+.grp{font:400 26px/1.2 var(--f-display);margin:26px 0 -4px;color:var(--ink)}
+.grp::after{background:linear-gradient(90deg,var(--gold-2),transparent)}
+.grp small{color:var(--gold);font-size:13px}
+.count{font-size:12.5px;letter-spacing:.04em;color:var(--muted)}
+/* product cards */
+.grid{gap:34px 18px}
+@media (min-width:700px){.grid{gap:46px 26px}}
+.p{gap:6px}
+.p .ph{border-radius:2px;background:var(--well);aspect-ratio:4/5}
+.p .ph img{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover){.p .ph:hover img{transform:scale(1.045)}}
+.p .brand{font:500 11px/1.2 var(--f-latin);letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:6px}
+.p .nm{font:500 18px/1.3 var(--f-latin);letter-spacing:0;color:var(--ink)}
+.p .sz{font-size:12.5px;color:var(--muted)}
+.price{font:500 17px var(--f-latin);letter-spacing:.02em}
+.price small{font:400 11.5px var(--f-body);color:var(--muted)}
+.price.sale{color:var(--wine)}
+.was{font-weight:400}
+.saleinfo{border-radius:2px;background:#f4e4e0;color:var(--wine)}
+.av{font-size:12px;letter-spacing:.01em}
+.add{border-radius:50%;background:rgba(255,253,249,.94);border:1px solid var(--line);box-shadow:none;color:var(--ink);transition:background .2s,color .2s}
+.add:hover{background:var(--ink);color:#fff}
+.step{background:var(--ink);box-shadow:none;border-radius:999px}
+.noimg{font:italic 400 clamp(20px,5vw,28px)/1.1 var(--f-latin);color:var(--gold)}
+.p.sold .ph{opacity:.5}
+/* order sections */
+.special{border-radius:2px;border:1px solid var(--gold-2);background:#fbf5ea;box-shadow:none;padding:30px 22px}
+.special .ic{background:none;border:1px solid var(--gold-2);color:var(--gold);box-shadow:none}
+.special h3{font:400 26px/1.4 var(--f-display);color:var(--ink)}
+.special p{color:#5f5148}
+.special li{border-radius:2px;background:transparent;border:1px solid var(--line);color:#5f5148}
+.special a{border-radius:2px;background:#1f6b45;box-shadow:none;font-weight:500;padding:14px 28px}
+.how{border-top:1px solid var(--line);background:#f6efe3}
+.how h2{font:400 30px/1.3 var(--f-display)}
+.steps li::before{border-color:var(--gold);color:var(--gold);font-family:var(--f-latin);font-size:18px}
+footer{background:#241c18;color:#d8c9b3}
+footer a{text-decoration-color:#a9835566}
+.cartbar button{border-radius:2px;background:var(--ink);color:#f6efe3;box-shadow:0 14px 34px -14px rgba(30,20,10,.6)}
+.cartbar .n{border-radius:2px;background:var(--gold-2);color:var(--ink)}
+.chatfab{border-radius:2px;background:var(--ink);color:#f6efe3;box-shadow:0 14px 34px -14px rgba(30,20,10,.6)}
+.chatfab .dot{background:var(--gold-2);box-shadow:0 0 0 2px var(--ink)}
+.sheet{border-radius:8px 8px 0 0}
+.toast{border-radius:2px;background:var(--ink)}
+.wsbadge{border-radius:2px;border-color:var(--gold-2);color:var(--gold)}
+.cta{border-radius:2px;font-weight:500;letter-spacing:.03em;padding:16px;transition:background .25s}
+.cta:hover{background:#42342d}
+.buybar{border-top:1px solid var(--line);box-shadow:none}
+.pdp-top .mk{color:var(--gold);font-weight:500}
 </style>
 </head>
 <body>
@@ -462,6 +601,13 @@ body.inpage .chatfab{display:none}
 <section class="brands" aria-label="العلامات التجارية">
   <h2>منتجات من dm وRossmann وأشهر العلامات الألمانية والأوروبية</h2>
   <div class="marq" id="marq"></div><div class="fade"></div>
+</section>
+
+<section class="show" id="show" aria-label="منتجات مختارة" hidden>
+  <div class="wrap"><h2 id="showTitle">اكتشفي منتجاتنا</h2>
+    <div class="showwrap"><div class="strack" id="strack" dir="ltr"></div>
+      <button class="snav prev" type="button" data-a="slide" data-d="-1" aria-label="السابق">‹</button><button class="snav next" type="button" data-a="slide" data-d="1" aria-label="التالي">›</button></div>
+    <div class="sdots" id="sdots"></div></div>
 </section>
 
 <div class="bar" id="shop">
@@ -616,6 +762,31 @@ function gate(err){
   setTimeout(() => $('gateIn')?.focus(), 50);
 }
 const BRANDS = ['dm', 'Rossmann', 'Balea', 'ISANA', 'essence', 'Catrice', 'alverde', 'Mivolis', 'Sebamed', 'NIVEA', 'Garnier', "L'Oréal", 'Eucerin', 'Rival de Loop', 'Alterra', 'Ebelin', 'Sundance', 'Neutrogena'];
+/* auto-playing slideshow of catalogue photos: in-stock and discounted items first; pauses while touched/hovered, stops for people who prefer less motion */
+let showTimer = null;
+function showStrip(){
+  const el = $('show'); if (!el || !D) return;
+  const list = (D.products || []).filter(p => p.image).map(p => ({ p, w: (p.was ? 3 : 0) + (avail(p).can ? 2 : 0) + Math.random() })).sort((a, b) => b.w - a.w).slice(0, 14).map(x => x.p);
+  if (list.length < 4) { el.hidden = true; return; }
+  el.hidden = false;
+  $('showTitle').textContent = D.products.some(p => p.was) ? 'منتجات مختارة وعروض' : 'اكتشفي منتجاتنا';
+  $('strack').innerHTML = list.map(p => `<article class="sl" data-a="view" data-id="${p.id}" role="button" tabindex="0" aria-label="${esc(p.name)}"><div class="ph2">${discTag(p)}${pic(p)}</div>
+    <div class="tx">${p.brand ? `<div class="b">${esc(p.brand)}</div>` : ''}<div class="n" dir="auto">${esc(p.name)}</div>${p.price ? `<div>${priceHtml(p)}</div>` : '<div class="small">السعر عند الطلب</div>'}</div></article>`).join('');
+  $('sdots').innerHTML = list.map((_, i) => `<i class="${i ? '' : 'on'}"></i>`).join('');
+  const tr = $('strack'); let paused = false;
+  const step = () => { const c = tr.firstElementChild; return c ? c.getBoundingClientRect().width + 14 : 0; };
+  const idx = () => Math.round(tr.scrollLeft / (step() || 1));
+  tr.onscroll = () => { const i = idx(); document.querySelectorAll('#sdots i').forEach((d, k) => d.classList.toggle('on', k === i)); };
+  A.slide = d => { const max = tr.scrollWidth - tr.clientWidth, n = +d.d || 1; tr.scrollTo({ left: n > 0 && tr.scrollLeft >= max - 4 ? 0 : tr.scrollLeft + n * step(), behavior: 'smooth' }); };
+  ['pointerenter', 'pointerdown', 'focusin'].forEach(ev => tr.addEventListener(ev, () => { paused = true; }));
+  ['pointerleave', 'focusout'].forEach(ev => tr.addEventListener(ev, () => { paused = false; }));
+  tr.addEventListener('pointerup', () => setTimeout(() => { paused = false; }, 4000));
+  clearInterval(showTimer);
+  if (!window.matchMedia('(prefers-reduced-motion:reduce)').matches) showTimer = setInterval(() => {
+    if (paused || document.hidden || U.page || U.sheet || el.getBoundingClientRect().bottom < 0 || el.getBoundingClientRect().top > innerHeight) return;
+    A.slide({ d: 1 });
+  }, 3200);
+}
 function brandStrip(){
   const own = [...new Set(((D && D.products) || []).map(p => String(p.brand || '').trim()).filter(Boolean))];
   const seen = new Set(), list = [];
@@ -630,7 +801,7 @@ const priceHtml = p => `<span class="price${p.was ? ' sale' : ''}">${money(p.pri
 function start(d){
   const todayIso = new Date().toISOString().slice(0, 10);
   for (const p of d.products || []) if (p.was && p.saleUntil && p.saleUntil < todayIso) { p.price = p.was; delete p.was; }
-  D = d; brandStrip(); setTimeout(initChat, 400);
+  D = d; brandStrip(); showStrip(); setTimeout(initChat, 400);
   if (WS) { document.body.style.overflow = ''; $('tag').insertAdjacentHTML('beforebegin', '<span class="wsbadge">أسعار الجملة</span>'); }
   if (D.intro) $('tag').textContent = D.intro;
   const num = String(D.whatsapp || '').replace(/\D/g, '');
