@@ -557,6 +557,18 @@ footer a{text-decoration-color:#a9835566}
 .cta:hover{background:#42342d}
 .buybar{border-top:1px solid var(--line);box-shadow:none}
 .pdp-top .mk{color:var(--gold);font-weight:500}
+/* 3D viewer (real product photos) */
+.gal{position:relative}
+.v3btn{position:absolute;top:12px;inset-inline-start:12px;z-index:3;display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid var(--gold,#a98355);background:rgba(255,253,249,.92);color:var(--ink,#2a211d);font:500 13px var(--f-body,inherit);border-radius:2px;cursor:pointer}
+.v3d{position:absolute;inset:0 0 auto 0;aspect-ratio:1;z-index:2;border-radius:var(--r-lg);background:radial-gradient(closest-side,#f6ead3,var(--well,#f0e8dc));overflow:hidden;perspective:1100px;touch-action:pan-y;cursor:grab;user-select:none;direction:ltr}
+.v3d .floor{position:absolute;left:50%;bottom:3%;width:70%;height:6%;transform:translateX(-50%);background:radial-gradient(closest-side,#2a211d33,transparent);filter:blur(3px)}
+.v3d .rig{position:absolute;left:50%;top:47%;width:0;height:0;transform-style:preserve-3d}
+.v3d .pan,.v3d .edge{position:absolute;width:var(--w);height:var(--h);margin:calc(var(--h)/-2) 0 0 calc(var(--w)/-2);border-radius:6px}
+.v3d .pan{backface-visibility:hidden;overflow:hidden;background:#fffdf9;box-shadow:0 0 0 1px #e4d9c8}
+.v3d .pan img{width:100%;height:100%;object-fit:contain;display:block;pointer-events:none}
+.v3d .pan::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent calc(var(--sx,50%) - 22%),#ffffffaa var(--sx,50%),transparent calc(var(--sx,50%) + 22%));mix-blend-mode:soft-light;pointer-events:none}
+.v3d .edge{background:#d9c7a8}
+.v3d .h{position:absolute;bottom:8px;inset-inline:0;text-align:center;font-size:12px;color:var(--muted,#7d6f66);pointer-events:none}
 </style>
 </head>
 <body>
@@ -1038,6 +1050,8 @@ function pageHtml(){
       <button class="ib" data-a="cart" aria-label="طلبك">${PI.bag}${t.count ? `<span class="n">${t.count}</span>` : ''}</button></div>
     <div class="pdp-body">
       <div class="gal">
+        ${WS || !imgs.length ? '' : `<button class="v3btn" data-a="v3d" id="v3btn" aria-pressed="${U.v3 === p.id}">${U.v3 === p.id ? 'الصور' : 'عرض 3D ↻'}</button>`}
+        ${!WS && imgs.length && U.v3 === p.id ? '<div class="v3d" id="v3d"><div class="h">اسحبي لتدوير المنتج</div></div>' : ''}
         <div class="track" id="track">${slides}</div>
         ${imgs.length > 1 ? `<div class="dots" id="dots">${imgs.map((_, i) => `<i class="${i ? '' : 'on'}"></i>`).join('')}</div>
         <div class="thumbs" id="thumbs">${imgs.map((u, i) => `<button class="${i ? '' : 'on'}" data-a="slide" data-i="${i}" aria-label="صورة ${i + 1}"><img src="${esc(imgSrc(u))}" alt=""></button>`).join('')}</div>` : ''}
@@ -1061,6 +1075,35 @@ function pageHtml(){
     <div class="buybar">${p.price ? `<span class="price">${money(p.price)}<small>ج.م</small></span>` : ''}${a.can ? (q ? `<button class="cta" data-a="cart">إتمام الطلب (${t.count})</button>` : `<button class="cta" data-a="inc" data-id="${p.id}">إضافة إلى الطلب</button>`) : '<button class="cta" disabled>غير متوفر حالياً</button>'}</div>
   </div>`;
 }
+let v3inst = null;
+function photo3d(host, imgs){
+  const rig = document.createElement('div'), fl = document.createElement('div'); rig.className = 'rig'; fl.className = 'floor'; host.prepend(rig); host.prepend(fl);
+  let rad = 0, ry = -20, rx = -6, vy = .3, drag = false, lx = 0, ly = 0, W = 0, raf = 0, alive = true; const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches, ring = imgs.length > 1;
+  const pan = (u, css, flip) => { const d = document.createElement('div'); d.className = 'pan'; d.style.cssText = css; d.innerHTML = `<img src="${esc(u)}" alt="" ${flip ? 'style="transform:scaleX(-1)"' : ''}>`; return d; };
+  function build(){
+    rig.innerHTML = ''; W = host.getBoundingClientRect().width || 300;
+    if (ring) { const n = imgs.length, pw = W * .72, ph = W * .8; rad = n === 2 ? 1 : pw * (n === 3 ? .6 : .85);
+      imgs.forEach((u, i) => rig.appendChild(pan(u, `--w:${pw}px;--h:${ph}px;transform:rotateY(${i * 360 / n}deg) translateZ(${rad}px)`))); }
+    else { const cw = W * .74, ch = W * .82, d = 16; rad = 0;
+      for (let i = -d / 2 + 1; i < d / 2; i += 2) { const e = document.createElement('div'); e.className = 'edge'; e.style.cssText = `--w:${cw}px;--h:${ch}px;transform:translateZ(${i}px)`; rig.appendChild(e); }
+      rig.appendChild(pan(imgs[0], `--w:${cw}px;--h:${ch}px;transform:translateZ(${d / 2}px)`));
+      rig.appendChild(pan(imgs[0], `--w:${cw}px;--h:${ch}px;transform:rotateY(180deg) translateZ(${d / 2}px)`, true)); }
+  }
+  function tick(){ if (!alive) return; if (!drag) { vy += ((reduce ? 0 : ring ? .3 : .45) - vy) * .04; ry += vy; }
+    rig.style.transform = `translateZ(${-rad}px) rotateX(${rx}deg) rotateY(${ry}deg)`; const sx = 50 + Math.sin(ry * Math.PI / 180) * 60; for (const c of rig.children) c.style.setProperty('--sx', sx + '%'); raf = requestAnimationFrame(tick); }
+  const dn = e => { drag = true; lx = e.clientX; ly = e.clientY; host.setPointerCapture && host.setPointerCapture(e.pointerId); },
+    mv = e => { if (!drag) return; const dx = e.clientX - lx, dy = e.clientY - ly; lx = e.clientX; ly = e.clientY; vy = dx * .35; ry += dx * .35; rx = Math.max(-25, Math.min(25, rx - dy * .15)); },
+    up = () => { drag = false; };
+  host.addEventListener('pointerdown', dn); host.addEventListener('pointermove', mv); host.addEventListener('pointerup', up); host.addEventListener('pointercancel', up);
+  const ro = new ResizeObserver(build); ro.observe(host); build(); tick();
+  return { destroy(){ alive = false; cancelAnimationFrame(raf); ro.disconnect(); } };
+}
+function initV3(){
+  if (v3inst) { v3inst.destroy(); v3inst = null; }
+  const host = $('v3d'); if (!host || U.v3 !== U.page) return; const p = byId(U.page);
+  const imgs = (p.images && p.images.length ? p.images : (p.image ? [p.image] : [])).map(imgSrc).slice(0, 6);
+  if (imgs.length) v3inst = photo3d(host, imgs);
+}
 let lastPage = null;
 function renderPage(){
   if (!U.page) { $('page').innerHTML = ''; lastPage = null; document.title = WS ? 'LUMIA · أسعار الجملة' : 'LUMIA Care · Imported Gems'; if (!U.sheet) document.body.style.overflow = ''; return; }
@@ -1070,6 +1113,7 @@ function renderPage(){
   document.title = byId(U.page).name + ' · LUMIA';
   document.body.style.overflow = 'hidden';
   $('pdp').scrollTop = keep || 0;
+  initV3();
   const tr = $('track');
   if (tr && slide) tr.scrollLeft = tr.clientWidth * slide;
   tr && tr.addEventListener('scroll', () => {
@@ -1117,6 +1161,7 @@ const A = {
   back: () => { if (U.fromGrid) { U.fromGrid = false; history.back(); } else { history.replaceState(null, '', location.pathname + location.search); route(); } },
   special: () => { const el = $('special'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); },
   brand: d => { history.replaceState(null, '', location.pathname + location.search); U.fromGrid = false; route(); U.q = d.k; $('q').value = d.k; U.cat = ''; U.av = 'all'; renderFilters(); renderGrid(); $('shop').scrollIntoView(); },
+  v3d: () => { U.v3 = U.v3 === U.page ? null : U.page; renderPage(); },
   slide: d => { const tr = $('track'); tr.scrollTo({ left: tr.clientWidth * +d.i, behavior: 'smooth' }); },
   share: async () => {
     const p = byId(U.page), url = location.href;
