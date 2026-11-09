@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>LUMIA Care · Imported Gems</title>
 <meta name="description" content="منتجات أصلية مستوردة من ألمانيا: Balea وMivolis وEssence وغيرها. تصفّح المنتجات واطلب عبر واتساب.">
 <meta name="theme-color" content="#f3ebde">
@@ -11,6 +11,16 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://lumia-store.github.io/icon-512.png">
 <meta property="og:url" content="https://lumia-store.github.io/">
+<meta property="og:locale" content="ar_EG">
+<meta property="og:locale:alternate" content="en_US">
+<link rel="canonical" href="https://lumia-store.github.io/" data-base="https://lumia-store.github.io/">
+<link rel="alternate" hreflang="ar" href="https://lumia-store.github.io/">
+<link rel="alternate" hreflang="en" href="https://lumia-store.github.io/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://lumia-store.github.io/">
+<meta name="robots" content="index">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"OnlineStore","name":"LUMIA Care","alternateName":"LUMIA – Imported Gems","url":"https://lumia-store.github.io/","logo":"https://lumia-store.github.io/icon-512.png","description":"Original German and European beauty, care and wellness products imported to Egypt. Orders on WhatsApp.","areaServed":{"@type":"Country","name":"Egypt"},"currenciesAccepted":"EGP","paymentAccepted":"Cash on delivery, InstaPay, e-wallets"}</script>
+<script>/* language before the page draws, so Arabic/English and right/left are right from the start */
+(function(){var l='ar';try{var q=new URLSearchParams(location.search).get('lang');var s=JSON.parse(localStorage.getItem('lumia_lang'));l=q==='en'||q==='ar'?q:(s==='en'?'en':'ar');}catch(e){}if(l==='en'){document.documentElement.lang='en';document.documentElement.dir='ltr';}})();</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -20,7 +30,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Reem+Kufi:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* Layout: full-bleed taupe brand header (logo + flight line) → sticky search/filter bar → photo-led product grid → how-to-order steps → footer.
    Content is right-aligned (RTL); the header is centered like the logo itself. */
@@ -32,6 +42,7 @@
   --f-display:"Reem Kufi", "IBM Plex Sans Arabic", system-ui, sans-serif;
   --f-body:"IBM Plex Sans Arabic", system-ui, "Segoe UI", Tahoma, sans-serif;
   --f-latin:"Cormorant Garamond", "IBM Plex Sans Arabic", Georgia, serif;
+  --f-num:"Montserrat", system-ui, "Segoe UI", Roboto, Arial, sans-serif;   /* prices: clear, upright figures */
   --r-lg:22px; --r-md:14px;
   color-scheme:light;
 }
@@ -105,7 +116,7 @@ img{max-width:100%;display:block}
 .cta-ghost{border:1px solid #e3bcae;background:rgba(255,255,255,.6);color:#6f5a52;font-weight:500}
 .cta-ghost svg{width:18px;height:18px}
 .fan{position:relative;height:230px;margin-top:6px}
-.fan:empty{display:none}
+.fan:empty{visibility:hidden}   /* keeps its space while the photos load, so the page doesn't jump */
 .fan button{position:absolute;bottom:6px;left:50%;width:132px;aspect-ratio:4/5;border-radius:18px;overflow:hidden;padding:0;border:4px solid #fff;background:#fbf1ec;cursor:pointer;
   box-shadow:0 20px 40px rgba(150,95,80,.22);transform-origin:50% 100%}
 .fan button img{width:100%;height:100%;object-fit:cover}
@@ -432,7 +443,7 @@ body.inpage .chatfab{display:none}
 .gate{position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;padding:24px 16px;background:linear-gradient(160deg,#fff4ee 0%,#fde6ea 40%,#f1e8ff 75%,#e6f5ef 100%)}
 .gate .box{width:100%;max-width:380px;text-align:center;color:#5d4a43}
 .gate img{width:150px;height:auto;margin:0 auto 6px;display:block}
-.gate h1{font-family:'Reem Kufi',sans-serif;font-weight:500;font-size:22px;margin:4px 0 6px}
+.gate h1{font-family:var(--f-display);font-weight:500;font-size:22px;margin:4px 0 6px}
 .gate p{margin:0 0 18px;font-size:14px;opacity:.85;line-height:1.8}
 .gate input{width:100%;box-sizing:border-box;font:inherit;font-size:16px;text-align:center;letter-spacing:1px;padding:13px 14px;border-radius:14px;border:1px solid #e3bcae;background:#fff;color:#3b302b;outline:none}
 .gate input::placeholder{color:#b49c93}
@@ -448,6 +459,7 @@ body.inpage .chatfab{display:none}
   --page:#faf6ef; --tile:#fffdf9; --well:#f0e8dc; --soft:#f2eadd; --ink:#2a211d; --muted:#7d6f66; --line:#e4d9c8;
   --primary:#2a211d; --on-primary:#f6efe3; --taupe:#2a211d; --blush:#d9c3a1;
   --gold:#a98355; --gold-2:#cfae77; --wine:#8c2f3f;
+  --muted:#6f6158; --gold-text:#87653b;   /* text colours with enough contrast on ivory (lines and icons keep the lighter gold) */
   --f-display:"Amiri","Cormorant Garamond","IBM Plex Sans Arabic",serif;
   --r-lg:3px; --r-md:3px;
 }
@@ -520,13 +532,15 @@ body{background:var(--page);font-weight:400;letter-spacing:.005em}
 .p .ph{border-radius:2px;background:var(--well);aspect-ratio:4/5}
 .p .ph img{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
 @media (hover:hover){.p .ph:hover img{transform:scale(1.045)}}
+.fan button .pr,.chat .rec .pr,.cartbar .sum,.line .t span,.tot .price{font-family:var(--f-num);font-variant-numeric:lining-nums tabular-nums}
 .p .brand{font:500 11px/1.2 var(--f-latin);letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:6px}
 .p .nm{font:500 18px/1.3 var(--f-latin);letter-spacing:0;color:var(--ink)}
+.p .nm a{color:inherit;text-decoration:none}.p .nm a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .p .sz{font-size:12.5px;color:var(--muted)}
-.price{font:500 17px var(--f-latin);letter-spacing:.02em}
-.price small{font:400 11.5px var(--f-body);color:var(--muted)}
+.price{font:600 16px var(--f-num);letter-spacing:0;font-variant-numeric:lining-nums tabular-nums}
+.price small{font:500 11.5px var(--f-body);color:var(--muted)}
 .price.sale{color:var(--wine)}
-.was{font-weight:400}
+.was{font:400 .78em var(--f-num);font-variant-numeric:lining-nums tabular-nums}
 .saleinfo{border-radius:2px;background:#f4e4e0;color:var(--wine)}
 .av{font-size:12px;letter-spacing:.01em}
 .add{border-radius:50%;background:rgba(255,253,249,.94);border:1px solid var(--line);box-shadow:none;color:var(--ink);transition:background .2s,color .2s}
@@ -569,6 +583,123 @@ footer a{text-decoration-color:#a9835566}
 .v3d .pan::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent calc(var(--sx,50%) - 22%),#ffffffaa var(--sx,50%),transparent calc(var(--sx,50%) + 22%));mix-blend-mode:soft-light;pointer-events:none}
 .v3d .edge{background:#d9c7a8}
 .v3d .h{position:absolute;bottom:8px;inset-inline:0;text-align:center;font-size:12px;color:var(--muted,#7d6f66);pointer-events:none}
+/* small gold text uses the darker gold so it is easy to read */
+.p .brand,.sl .b,.grp small,.okick,.brands .marq span::after{color:var(--gold-text)}
+.seg button{color:#5f5249}
+/* =====================================================================
+   BILINGUAL + HOMEPAGE SECTIONS (Arabic right-to-left, English left-to-right)
+   ===================================================================== */
+/* English: Latin serif for headings, same calm body text */
+html[lang=en]{--f-display:"Cormorant Garamond",Georgia,"Times New Roman",serif}
+html[lang=en] .tag{font:400 clamp(21px,5.4vw,27px)/1.45 var(--f-display);letter-spacing:.005em}
+html[lang=en] .show h2,html[lang=en] .how h2,html[lang=en] .sec-h,html[lang=en] .grp{letter-spacing:.01em}
+/* things placed by side: use start/end so they mirror correctly in both languages */
+.add,.step{left:auto;inset-inline-end:10px}
+.disc,.sl .disc{right:auto;left:auto;inset-inline-start:10px}
+.fan button .pr{right:auto;inset-inline-start:8px}
+.fan button:nth-child(1) .pr{left:auto;inset-inline-start:auto;inset-inline-end:8px}
+.ib .n{left:auto;inset-inline-end:-5px}
+.chatfab{left:auto;inset-inline-end:max(16px,env(safe-area-inset-left))}
+.chatfab .dot{left:auto;inset-inline-end:8px}
+.chat .m.u{border-bottom-right-radius:18px;border-end-start-radius:6px}
+.chat .m.a{border-bottom-left-radius:18px;border-end-end-radius:6px}
+.chat .rec{text-align:start}
+[dir=ltr] .sl{direction:ltr} [dir=ltr] .sl .b{text-align:left}
+[dir=ltr] .pdp-top [data-a=back] svg{transform:scaleX(-1)}
+@media (min-width:700px){[dir=ltr] .chat{inset:auto 24px 24px auto}}
+/* brands ticker and the plane fly the other way in English */
+[dir=ltr] .marq{animation-name:marqL}
+@keyframes marqL{to{transform:translateX(-50%)}}
+[dir=ltr] .plane{right:auto;left:0}
+[dir=ltr] .plane svg{transform:scaleX(-1)}
+@media (prefers-reduced-motion:no-preference){
+  [dir=ltr] .plane{animation-name:flyL}
+  @keyframes flyL{from{left:0;opacity:0}12%{opacity:1}to{left:calc(100% - 56px);opacity:1}}
+}
+@media (prefers-reduced-motion:reduce){[dir=ltr] .plane{left:calc(50% - 28px)}}
+/* language switch */
+.topline{justify-content:flex-start}
+.langbtn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:rgba(255,253,249,.7);color:var(--ink);border-radius:2px;padding:7px 13px;font:500 13px/1 var(--f-body);cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+html[lang=ar] .langbtn span{font-family:Montserrat,var(--f-body);letter-spacing:.04em}
+.langbtn svg{width:16px;height:16px;color:var(--gold)}
+.langbtn:hover{border-color:var(--gold)}
+.linkish{all:unset;cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--gold-2)}
+.trust{gap:10px 26px}
+/* section headings */
+.sec-h{margin:0 0 4px;text-align:center;font:400 30px/1.3 var(--f-display);color:var(--ink)}
+.sec-h::after{content:"";display:block;width:44px;height:1px;background:var(--gold);margin:10px auto 22px}
+/* shop by category: real product photos on a soft ground */
+.cats-sec{padding:20px 0 30px}
+.ctiles{display:grid;grid-auto-flow:column;grid-auto-columns:138px;gap:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;scroll-snap-type:x proximity}
+.ctiles::-webkit-scrollbar{display:none}
+.ctiles .ctile{scroll-snap-align:start}
+@media (min-width:700px){.ctiles{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;overflow:visible}}
+@media (min-width:1000px){.ctiles{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}}
+@media (max-width:699px){.ctile b{font-size:15px}.ctile .cim img{padding:10%}}
+.brands h2{padding:0 22px}
+.brands .marq span.lg{display:inline-flex;align-items:center;padding-inline:24px}.brands .marq span.lg img{height:30px;width:auto;max-width:130px;object-fit:contain;flex:0 0 auto}
+/* reduced motion: the ticker stands still, so show each brand once */
+@media (prefers-reduced-motion:reduce){.marq .dup{display:none}}
+.ctile{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;padding:0 0 12px;border:1px solid var(--line);background:var(--tile);border-radius:2px;transition:border-color .25s,transform .25s}
+.ctile .cim{display:block;width:100%;aspect-ratio:1;background:radial-gradient(70% 60% at 50% 45%,#fffaf1,var(--well));overflow:hidden;margin-bottom:8px}
+.ctile .cim img{width:100%;height:100%;object-fit:contain;padding:12%;mix-blend-mode:multiply;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.ctile b{font:500 17px/1.3 var(--f-display);color:var(--ink);padding:0 8px}
+.ctile small{font-size:12px;color:var(--muted)}
+.ctile:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media (hover:hover){.ctile:hover{border-color:var(--gold-2)}.ctile:hover .cim img{transform:scale(1.06)}}
+/* offers banner (only shown when there are real discounts) */
+.offers{padding:6px 0 30px}
+.obox{display:grid;gap:18px;align-items:center;border:1px solid var(--gold-2);background:linear-gradient(120deg,#fbf5ea,#f6ecdc);padding:24px 22px;border-radius:2px}
+@media (min-width:760px){.obox{grid-template-columns:1fr 1.1fr;padding:30px 36px}}
+.okick{display:inline-block;font:500 12px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--wine);margin-bottom:8px}
+.obox h2{margin:0 0 16px;font:400 26px/1.35 var(--f-display);color:var(--ink)}
+.obox .cta-main{border:0;cursor:pointer;font-family:var(--f-body)}
+.oimgs{display:flex;gap:10px;justify-content:center}
+.oimgs span{position:relative;flex:1;max-width:150px;aspect-ratio:4/5;background:#fffdf9;border:5px solid #fffdf9;box-shadow:0 18px 36px -20px rgba(60,40,20,.4)}
+.oimgs img{width:100%;height:100%;object-fit:cover}
+.oimgs i{position:absolute;top:6px;inset-inline-start:6px;background:var(--wine);color:#fff;font:500 11px/1 var(--f-body);font-style:normal;padding:4px 8px;border-radius:2px}
+/* new arrivals strip */
+.newsec{padding-top:0}
+.nstrack .sl{flex-basis:min(46%,200px)}
+@media (min-width:700px){.nstrack .sl{flex-basis:calc((100% - 14px*4)/5)}}
+/* brand video (only when a video link is set) */
+.vid{padding:0 0 30px}
+.vid video{width:100%;max-height:70vh;background:#1d1714;border-radius:2px;display:block}
+/* delivery & payment */
+.dp-h{margin-top:40px!important}
+.dp{display:grid;gap:14px}
+@media (min-width:700px){.dp{grid-template-columns:repeat(3,1fr);gap:20px}}
+.dp>div{display:grid;grid-template-columns:auto 1fr;gap:2px 14px;padding:16px 18px;background:var(--tile);border:1px solid var(--line);border-radius:2px}
+.dp svg{grid-row:span 2;width:28px;height:28px;color:var(--gold);margin-top:2px}
+.dp b{font-weight:600}
+.dp span{color:var(--muted);font-size:14px}
+/* WhatsApp band */
+.waband{background:#efe3cf}
+.waband .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px;padding-block:30px}
+.waband h2{margin:0 0 4px;font:400 26px/1.3 var(--f-display)}
+.waband p{margin:0;color:#5f5148}
+.wabtn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:#1f6b45;color:#fff;text-decoration:none;font-weight:500;border-radius:2px;transition:background .25s}
+.wabtn:hover{background:#185a39}
+.wabtn svg{width:20px;height:20px}
+/* footer */
+footer .wrap{align-items:flex-start;gap:18px 30px}
+footer .fbrand{display:flex;align-items:center;gap:12px}
+footer .fbrand img{width:40px;height:40px;border-radius:50%;opacity:.9}
+footer .fbrand small{display:block;font-size:12.5px;color:#b9a68c;margin-top:6px}
+footer .fcol{display:flex;flex-direction:column;gap:8px}
+.flang{all:unset;cursor:pointer;color:#e7d6bc;text-decoration:underline;text-underline-offset:3px;text-decoration-color:#a9835566}
+/* soft entrance of sections while scrolling (only when motion is welcome) */
+html.rv .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+html.rv .reveal.in{opacity:1;transform:none}
+/* basket "pop" when something is added */
+@keyframes bump{0%{transform:scale(1)}35%{transform:scale(1.035)}100%{transform:scale(1)}}
+.cartbar button.bump{animation:bump .38s ease}
+/* hero copy fades in once */
+@media (prefers-reduced-motion:no-preference){
+  .hero-copy .tag,.hero-copy .route,.hero-copy .ctas{animation:heroIn .9s cubic-bezier(.2,.7,.2,1) both}
+  .hero-copy .route{animation-delay:.12s}.hero-copy .ctas{animation-delay:.22s}
+  @keyframes heroIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+}
 </style>
 </head>
 <body>
@@ -585,67 +716,95 @@ footer a{text-decoration-color:#a9835566}
     <svg class="d9" viewBox="0 0 30 40"><path d="M15 4C9 14 5 20 5 26a10 10 0 0 0 20 0c0-6-4-12-10-22z"/></svg>
   </div>
   <div class="wrap topline">
-    <button class="install" id="installBtn" type="button" hidden aria-label="تثبيت تطبيق LUMIA على جهازك">
+    <button class="langbtn" type="button" data-a="lang" data-ta="langAria" aria-label="Switch to English"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span data-t="langBtn">English</span></button>
+    <button class="install" id="installBtn" type="button" hidden data-ta="installAria" aria-label="تثبيت تطبيق LUMIA على جهازك">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v10"/><path d="M8 10l4 4 4-4"/><rect x="5" y="17" width="14" height="3" rx="1.5"/></svg>
-      <span>تثبيت التطبيق</span></button>
+      <span data-t="install">تثبيت التطبيق</span></button>
   </div>
   <div class="wrap hero-in">
     <div class="hero-copy">
-      <div class="brandmk"><img class="logo" src="logo-care.png" alt="LUMIA Care — Imported Gems" width="685" height="526"><span class="care" aria-hidden="true"><i>C</i><i>A</i><i>R</i><i>E</i></span><img class="logo gems" src="logo-gems.png" alt="" width="685" height="194"></div>
+      <div class="brandmk"><img class="logo" src="logo-care.png" alt="LUMIA Care — Imported Gems" width="685" height="526" fetchpriority="high"><span class="care" aria-hidden="true"><i>C</i><i>A</i><i>R</i><i>E</i></span><img class="logo gems" src="logo-gems.png" alt="" width="685" height="194"></div>
       <p class="tag" id="tag">منتجات أصلية نستوردها خصيصاً من ألمانيا إلى مصر، لتصل إليك حتى باب منزلك</p>
-      <div class="route" aria-hidden="true"><span><i class="flag de"></i>ألمانيا</span><span class="ln"><span class="plane"><svg viewBox="0 0 64 48"><path d="M26 19 23.5 30M38 19 40.5 30" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".75"/><rect x="18" y="29.5" width="28" height="17" rx="3" fill="#f6cfa6" stroke="#b9786b" stroke-width="1.5"/><path d="M32 29.5v17M18 36h28" stroke="#b9786b" stroke-width="1.4"/><path d="M29 29.5c-2-3-6-3-6-.5M35 29.5c2-3 6-3 6-.5" fill="none" stroke="#b9786b" stroke-width="1.3"/><path fill="currentColor" d="M4 14c0-3.5 4-5 8-5h32l8-7h5l-3 9c4 1 6 2 6 3.5 0 2.5-5 4.5-11 4.5H12c-4 0-8-1.5-8-5z"/><path fill="#a95f52" d="M23 15h13l-8 10h-6z"/><path fill="#fff" d="M7 12.5c1-1.6 3-2.3 5-2.3v3.3H7z" opacity=".9"/><g fill="#fff" opacity=".9"><circle cx="17" cy="12" r="1.1"/><circle cx="21.5" cy="12" r="1.1"/><circle cx="26" cy="12" r="1.1"/><circle cx="30.5" cy="12" r="1.1"/><circle cx="35" cy="12" r="1.1"/></g></svg></span></span><span><i class="flag eg"></i>مصر</span></div>
+      <div class="route" aria-hidden="true"><span><i class="flag de"></i><span data-t="de">ألمانيا</span></span><span class="ln"><span class="plane"><svg viewBox="0 0 64 48"><path d="M26 19 23.5 30M38 19 40.5 30" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".75"/><rect x="18" y="29.5" width="28" height="17" rx="3" fill="#f6cfa6" stroke="#b9786b" stroke-width="1.5"/><path d="M32 29.5v17M18 36h28" stroke="#b9786b" stroke-width="1.4"/><path d="M29 29.5c-2-3-6-3-6-.5M35 29.5c2-3 6-3 6-.5" fill="none" stroke="#b9786b" stroke-width="1.3"/><path fill="currentColor" d="M4 14c0-3.5 4-5 8-5h32l8-7h5l-3 9c4 1 6 2 6 3.5 0 2.5-5 4.5-11 4.5H12c-4 0-8-1.5-8-5z"/><path fill="#a95f52" d="M23 15h13l-8 10h-6z"/><path fill="#fff" d="M7 12.5c1-1.6 3-2.3 5-2.3v3.3H7z" opacity=".9"/><g fill="#fff" opacity=".9"><circle cx="17" cy="12" r="1.1"/><circle cx="21.5" cy="12" r="1.1"/><circle cx="26" cy="12" r="1.1"/><circle cx="30.5" cy="12" r="1.1"/><circle cx="35" cy="12" r="1.1"/></g></svg></span></span><span><i class="flag eg"></i><span data-t="eg">مصر</span></span></div>
       <div class="ctas">
-        <a class="cta-main" href="#shop" id="goShop">تسوّق المنتجات</a>
-        <a class="cta-ghost" id="waTop" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>تواصل عبر واتساب</a>
+        <a class="cta-main" href="#shop" id="goShop" data-t="shopNow">تسوّق المنتجات</a>
+        <a class="cta-ghost" id="waTop" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg><span data-t="waContact">تواصل عبر واتساب</span></a>
       </div>
     </div>
     <div class="fan" id="fan"></div>
   </div>
   <div class="wrap trust">
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>منتجات أصلية 100%</span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9M7.5 5.2l9 4.5"/></svg>شحن مباشر من ألمانيا</span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>تأكيد الطلب عبر واتساب</span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg><button type="button" data-a="special" style="all:unset;cursor:pointer;text-decoration:underline;text-underline-offset:3px">نوفّر أي منتج بطلب خاص</button></span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-t="trust1">منتجات أصلية 100%</span></span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9M7.5 5.2l9 4.5"/></svg><span data-t="trust2">شحن مباشر من ألمانيا</span></span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><span data-t="trust3">التوصيل إلى جميع محافظات مصر</span></span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h4"/></svg><span data-t="trust4">الدفع عند الاستلام أو InstaPay</span></span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg><button type="button" class="linkish" data-a="special" data-t="trust5">نوفّر أي منتج بطلب خاص</button></span>
   </div>
   <svg class="curve" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C320,48 1120,48 1440,0 L1440,48 L0,48 Z"/></svg>
 </header>
 
-<section class="brands" aria-label="العلامات التجارية">
-  <h2>منتجات من dm وRossmann وأشهر العلامات الألمانية والأوروبية</h2>
+<section class="brands" data-ta="brandsAria" aria-label="العلامات التجارية">
+  <h2 data-t="brandsH">منتجات من dm وRossmann وأشهر العلامات الألمانية والأوروبية</h2>
   <div class="marq" id="marq"></div><div class="fade"></div>
 </section>
 
-<section class="show" id="show" aria-label="منتجات مختارة" hidden>
+<section class="cats-sec reveal" id="catsSec" data-ta="catsAria" aria-label="الأقسام" hidden>
+  <div class="wrap"><h2 class="sec-h" data-t="catsH">تسوّق حسب القسم</h2><div class="ctiles" id="ctiles"></div></div>
+</section>
+
+<section class="show reveal" id="show" data-ta="showAria" aria-label="منتجات مختارة" hidden>
   <div class="wrap"><h2 id="showTitle">اكتشفي منتجاتنا</h2>
     <div class="showwrap"><div class="strack" id="strack" dir="ltr"></div>
-      <button class="snav prev" type="button" data-a="slide" data-d="-1" aria-label="السابق">‹</button><button class="snav next" type="button" data-a="slide" data-d="1" aria-label="التالي">›</button></div>
+      <button class="snav prev" type="button" data-a="slide" data-d="-1" data-ta="prev" aria-label="السابق">‹</button><button class="snav next" type="button" data-a="slide" data-d="1" data-ta="next" aria-label="التالي">›</button></div>
     <div class="sdots" id="sdots"></div></div>
 </section>
+
+<section class="offers reveal" id="offers" hidden></section>
+
+<section class="show newsec reveal" id="newSec" hidden>
+  <div class="wrap"><h2 data-t="newH">وصل حديثاً</h2><div class="strack nstrack" id="ntrack" dir="ltr"></div></div>
+</section>
+
+<section class="vid reveal" id="vidSec" hidden></section>
 
 <div class="bar" id="shop">
   <div class="wrap">
     <div class="srow"><label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-      <input id="q" type="search" placeholder="ابحث عن منتج أو علامة تجارية" autocomplete="off" aria-label="البحث"></label>
-      <button class="inst2" id="installBtn2" type="button" hidden aria-label="تثبيت التطبيق" title="تثبيت التطبيق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v10"/><path d="M8 10l4 4 4-4"/><rect x="5" y="17" width="14" height="3" rx="1.5"/></svg></button></div>
+      <input id="q" type="search" data-tp="searchPh" data-ta="searchAria" placeholder="ابحث عن منتج أو علامة تجارية" autocomplete="off" aria-label="البحث"></label>
+      <button class="inst2" id="installBtn2" type="button" hidden data-ta="install" aria-label="تثبيت التطبيق"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v10"/><path d="M8 10l4 4 4-4"/><rect x="5" y="17" width="14" height="3" rx="1.5"/></svg></button></div>
     <div class="filters" id="filters"></div>
   </div>
 </div>
 
-<main class="wrap"><div id="grid"><div class="loading">جارٍ التحميل…</div></div></main>
+<main class="wrap"><div id="grid"><div class="loading" data-t="loading">جارٍ التحميل…</div></div></main>
 
-<section class="how">
+<section class="how reveal">
   <div class="wrap">
-    <h2>طريقة الطلب</h2>
+    <h2 data-t="howH">طريقة الطلب</h2>
     <ol class="steps">
-      <li><b>اختيار المنتجات</b><span>تُسلَّم المنتجات المتوفرة فوراً، أما منتجات الطلب المسبق فتُحضَر مع أول شحنة قادمة.</span></li>
-      <li><b>إرسال الطلب عبر واتساب</b><span>تُكتب رسالة الطلب تلقائياً بكامل التفاصيل، ولا يلزم سوى الضغط على «إرسال».</span></li>
-      <li><b>التأكيد والتوصيل</b><span>نتواصل معك لتأكيد الإجمالي وموعد التوصيل.</span></li>
+      <li><b data-t="how1b">اختيار المنتجات</b><span data-t="how1s">تُسلَّم المنتجات المتوفرة فوراً، أما منتجات الطلب المسبق فتُحضَر مع أول شحنة قادمة.</span></li>
+      <li><b data-t="how2b">إرسال الطلب عبر واتساب</b><span data-t="how2s">تُكتب رسالة الطلب تلقائياً بكامل التفاصيل، ولا يلزم سوى الضغط على «إرسال».</span></li>
+      <li><b data-t="how3b">التأكيد والتوصيل</b><span data-t="how3s">نتواصل معك لتأكيد الإجمالي وموعد التوصيل.</span></li>
     </ol>
-    <p class="howinfo" style="margin-top:14px">لم تجد المنتج الذي تبحث عنه؟ يمكننا توفير أي منتج من dm وRossmann وغيرها من المتاجر الألمانية بطلب خاص؛ أرسل لنا اسمه أو رابطه أو صورته عبر واتساب.</p>
-    <div class="howinfo" id="howinfo"></div>
+    <h2 class="dp-h" data-t="dpH">التوصيل والدفع</h2>
+    <div class="dp">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><b data-t="dpDelivB">التوصيل إلى جميع محافظات مصر</b><span id="dpDeliv" data-t="dpDelivS">تُحدَّد رسوم التوصيل بحسب منطقتك، ونؤكدها معك قبل الشحن.</span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h4"/></svg><b data-t="dpPayB">طرق الدفع</b><span id="dpPay" data-t="dpPayS">الدفع عند الاستلام، أو InstaPay، أو المحافظ الإلكترونية.</span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><b data-t="dpOrigB">منتجات أصلية من ألمانيا</b><span data-t="dpOrigS">نشتري المنتجات من dm وRossmann وغيرها من المتاجر الألمانية، ونوفّر أي منتج آخر بطلب خاص.</span></div>
+    </div>
   </div>
 </section>
-<footer><div class="wrap"><span class="mk">LUMIA</span><span>واتساب: <span class="num" id="wa"></span></span><span class="soc" id="soc"></span><span id="upd"></span></div></footer>
+
+<section class="waband reveal" id="waBand">
+  <div class="wrap"><div><h2 data-t="waBandH">لديك سؤال أو طلب خاص؟</h2><p data-t="waBandP">راسلنا عبر واتساب، ويسعدنا مساعدتك في اختيار المنتج المناسب.</p></div>
+    <a class="wabtn" id="waBandBtn" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg><span data-t="waBandBtn">راسلنا عبر واتساب</span></a></div>
+</section>
+
+<footer><div class="wrap">
+  <div class="fbrand"><img src="logo-mark.png" alt="" width="40" height="40" loading="lazy"><div><span class="mk">LUMIA</span><small data-t="footNote">منتجات أصلية من ألمانيا إلى مصر</small></div></div>
+  <div class="fcol"><span><span data-t="waLabel">واتساب:</span> <span class="num" id="wa"></span></span><span class="soc" id="soc"></span></div>
+  <div class="fcol"><button type="button" class="flang" data-a="lang"><span data-t="langBtn">English</span></button><span id="upd"></span></div>
+</div></footer>
 
 <div id="page"></div>
 <div id="cartbar"></div>
@@ -668,6 +827,202 @@ const store = {
   get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch (e) { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
 };
+/* ---------- languages: Arabic (right-to-left) and English (left-to-right) ----------
+   Every word on the page comes from this dictionary. The choice is kept on the device and in the link (?lang=en). */
+const CAT_EN = { 'العناية بالبشرة': 'Skincare', 'العناية بالشعر': 'Hair care', 'المكياج': 'Makeup', 'الفيتامينات والمكملات': 'Vitamins & supplements',
+  'العناية بالفم والأسنان': 'Oral care', 'العناية بالجسم': 'Body care', 'الأطفال': 'Kids', 'منتجات تخسيس': 'Weight management', 'العناية الشخصية': 'Personal care', 'العطور': 'Fragrance', 'أخرى': 'Other' };
+const I18N = {
+  ar: {
+    title: 'LUMIA Care · Imported Gems', wsTitle: 'LUMIA · أسعار الجملة',
+    metaDesc: 'منتجات أصلية مستوردة من ألمانيا: Balea وMivolis وEssence وغيرها. تصفّح المنتجات واطلب عبر واتساب.',
+    langBtn: 'English', langAria: 'Switch to English',
+    install: 'تثبيت التطبيق', installAria: 'تثبيت تطبيق LUMIA على جهازك',
+    tag: 'منتجات أصلية نستوردها خصيصاً من ألمانيا إلى مصر، لتصل إليك حتى باب منزلك',
+    de: 'ألمانيا', eg: 'مصر', shopNow: 'تسوّق المنتجات', waContact: 'تواصل عبر واتساب',
+    trust1: 'منتجات أصلية 100%', trust2: 'شحن مباشر من ألمانيا', trust3: 'التوصيل إلى جميع محافظات مصر', trust4: 'الدفع عند الاستلام أو InstaPay', trust5: 'نوفّر أي منتج بطلب خاص',
+    brandsH: 'منتجات من dm وRossmann وأشهر العلامات الألمانية والأوروبية', brandsAria: 'العلامات التجارية',
+    catsH: 'تسوّق حسب القسم', catsAria: 'الأقسام', catCount: n => `${n} منتج`,
+    showAria: 'منتجات مختارة', showTitle: 'اكتشفي منتجاتنا', showTitleSale: 'منتجات مختارة وعروض', newH: 'وصل حديثاً',
+    prev: 'السابق', next: 'التالي',
+    offersH: 'عروض حالية', offersP: (n, m) => `${n === 1 ? 'منتج واحد' : n === 2 ? 'منتجان' : n + ' منتجات'} بخصم يصل إلى ${m}%`, offersBtn: 'تسوّق العروض',
+    searchPh: 'ابحث عن منتج أو علامة تجارية', searchAria: 'البحث', loading: 'جارٍ التحميل…',
+    howH: 'طريقة الطلب',
+    how1b: 'اختيار المنتجات', how1s: 'تُسلَّم المنتجات المتوفرة فوراً، أما منتجات الطلب المسبق فتُحضَر مع أول شحنة قادمة.',
+    how2b: 'إرسال الطلب عبر واتساب', how2s: 'تُكتب رسالة الطلب تلقائياً بكامل التفاصيل، ولا يلزم سوى الضغط على «إرسال».',
+    how3b: 'التأكيد والتوصيل', how3s: 'نتواصل معك لتأكيد الإجمالي وموعد التوصيل.',
+    dpH: 'التوصيل والدفع',
+    dpDelivB: 'التوصيل إلى جميع محافظات مصر', dpDelivS: 'تُحدَّد رسوم التوصيل بحسب منطقتك، ونؤكدها معك قبل الشحن.',
+    dpPayB: 'طرق الدفع', dpPayS: 'الدفع عند الاستلام، أو InstaPay، أو المحافظ الإلكترونية.',
+    dpOrigB: 'منتجات أصلية من ألمانيا', dpOrigS: 'نشتري المنتجات من dm وRossmann وغيرها من المتاجر الألمانية، ونوفّر أي منتج آخر بطلب خاص.',
+    howSpecial: 'لم تجد المنتج الذي تبحث عنه؟ يمكننا توفير أي منتج من dm وRossmann وغيرها من المتاجر الألمانية بطلب خاص؛ أرسل لنا اسمه أو رابطه أو صورته عبر واتساب.',
+    waBandH: 'لديك سؤال أو طلب خاص؟', waBandP: 'راسلنا عبر واتساب، ويسعدنا مساعدتك في اختيار المنتج المناسب.', waBandBtn: 'راسلنا عبر واتساب',
+    waLabel: 'واتساب:', updated: d => 'آخر تحديث: ' + d, fb: 'فيسبوك', ig: 'إنستجرام', footNote: 'منتجات أصلية من ألمانيا إلى مصر',
+    deliveryLbl: 'التوصيل:', paymentLbl: 'الدفع:',
+    waHello: n => 'مرحباً، أود الاستفسار عن منتجات ' + n,
+    cur: 'ج.م', off: p => `خصم ${p}%`, onRequest: 'السعر عند الطلب',
+    pcs: n => n === 1 ? 'قطعة واحدة' : n === 2 ? 'قطعتان' : n <= 10 ? `${n} قطع` : `${n} قطعة`,
+    wsBoth: (s, i) => `متوفر: ${s} · قيد الشحن: ${i}`, wsIn: p => `متوفر الآن · ${p}`, wsWay: p => `قيد الشحن · ${p}`,
+    last1: 'القطعة الأخيرة', last2: 'آخر قطعتين', inN: n => `متوفر · ${n} قطع`, way: 'قيد الشحن', pre: 'طلب مسبق', offStock: 'غير متوفر حالياً',
+    onlyN: n => `الكمية المتاحة ${n} فقط`, unavailable: 'هذا المنتج غير متوفر حالياً',
+    fAll: 'الكل', fNow: 'متوفر الآن', fPre: 'طلب مسبق', fSale: 'العروض', allCats: 'جميع الأقسام', sortAria: 'ترتيب المنتجات',
+    sGroup: 'حسب القسم والعلامة', sAvail: 'المتوفر أولاً', sLow: 'السعر: من الأقل', sHigh: 'السعر: من الأعلى', sBrand: 'العلامة التجارية',
+    incA: 'زيادة', decA: 'تقليل', addA: n => `إضافة ${n} إلى الطلب`,
+    spHello: (n, ws) => ws ? `مرحباً ${n} 👋 (عميل جملة)` : `مرحباً ${n} 👋`, spWant: 'أرغب في طلب منتج غير موجود على الموقع:',
+    spName: '• اسم المنتج أو رابطه: ', spQty: '• الكمية: ', spAsk: 'يُرجى إرسال السعر وتفاصيل الشحن وموعد الوصول. شكراً لكم.',
+    spNotFound: q => `لم نجد «${q}» ضمن منتجاتنا الحالية`, spCan: 'يمكننا توفيره لك بطلب خاص', spQ: 'لم تجد المنتج الذي تبحث عنه؟',
+    spP: ws => `نوفّر لك أي منتج من dm وRossmann وغيرها من المتاجر الألمانية بطلب خاص${ws ? ' وبالكميات التي تحتاجها' : ''}. أرسل لنا اسم المنتج أو رابطه أو صورته، وسنرسل لك السعر وتفاصيل الشحن وموعد الوصول.`,
+    spLi: ['اسم المنتج أو رابطه', 'صورة المنتج', 'الكمية المطلوبة'], spBtn: 'اطلب منتجاً خاصاً عبر واتساب',
+    other: 'أخرى', count: n => `${n} منتج`,
+    order: 'طلبك', closeA: 'إغلاق', emptyB: 'طلبك فارغ', emptyS: 'اضغط على علامة + بجوار أي منتج لإضافته.',
+    sentB: 'تم فتح واتساب برسالة طلبك', sentS: 'إذا لم تُرسَل الرسالة، يمكنك فتح واتساب مرة أخرى.', reopen: 'فتح واتساب مرة أخرى', newOrder: 'تم الإرسال، بدء طلب جديد',
+    lnIn: 'متوفر', lnMix: (a, b) => `${a} متوفر + ${b} طلب مسبق`,
+    total: 'الإجمالي', totalNote: '(دون المنتجات التي يُحدَّد سعرها عند الطلب)', preNote: 'تُحضَر منتجات الطلب المسبق مع أول شحنة قادمة.',
+    fName: 'الاسم', fPhone: 'رقم الهاتف', fAddr: 'العنوان', fAddrPh: 'المحافظة، المنطقة، الشارع', fNotes: 'ملاحظات', optional: '(اختيارية)',
+    send: 'إرسال الطلب عبر واتساب', sendNote: 'سيُفتح واتساب برسالة جاهزة تتضمن جميع التفاصيل.', checkout: 'إتمام الطلب',
+    delivFee: 'تُضاف رسوم التوصيل بحسب منطقتك، ونؤكدها معك عبر واتساب.',
+    promoPh: 'كود الخصم', apply: 'تطبيق', remove: 'إزالة', promoBad: 'الكود غير صحيح أو انتهت صلاحيته', promoExp: 'انتهت صلاحية هذا الكود',
+    promoMin: (m, more) => `يُطبَّق هذا الكود على الطلبات بقيمة ${m} ج.م أو أكثر — أضف منتجات بقيمة ${more} ج.م لتحصل على الخصم`,
+    promoFixed: v => `خصم ${v} ج.م`, promoPct: (v, max) => `خصم ${v}%${max ? ' (بحد أقصى ' + max + ' ج.م)' : ''}`,
+    discount: 'الخصم', afterDisc: 'الإجمالي بعد الخصم', promoEnter: 'اكتب كود الخصم أولاً', promoDone: v => `تم تطبيق الخصم: ${v} ج.م`, promoSaved: 'تم حفظ الكود',
+    added: 'أُضيف المنتج إلى طلبك', added2: 'أُضيف إلى طلبك', copied: 'تم نسخ رابط المنتج', thanks: 'شكراً لك، سنتواصل معك قريباً',
+    needName: 'يرجى كتابة الاسم أولاً', needPhone: 'يرجى كتابة رقم الهاتف', emptyOrder: 'طلبك فارغ',
+    back: 'رجوع', share: 'مشاركة المنتج',
+    dIn: 'متوفر لدينا الآن، ويُجهَّز فور تأكيد الطلب.', dWay: 'قيد الشحن إلى مصر الآن، ويُسلَّم إليك فور وصوله.',
+    dPre: 'طلب مسبق: يُحضَر خصيصاً لك مع أول شحنة قادمة.', dOff: 'غير متوفر حالياً. يمكنك التواصل معنا عبر واتساب للاستفسار عن موعد توفره.',
+    accDesc: 'الوصف', accUse: 'طريقة الاستخدام', accIng: 'المكونات', accWarn: 'تحذيرات',
+    addToOrder: 'إضافة إلى الطلب', v3: 'عرض 3D ↻', photos: 'الصور', drag: 'اسحبي لتدوير المنتج', photoN: i => `صورة ${i}`,
+    priceLater: 'يُحدَّد السعر عند تأكيد الطلب', saleUntil: (p, d) => `خصم ${p}%${d ? ` · العرض ساري حتى ${d}` : ''}`,
+    storeEUR: 'سعر المتجر في ألمانيا:', weight: 'الوزن التقريبي:', g: 'جم', origin: '🇩🇪 أصلي من ألمانيا',
+    viaWa: 'يُرسَل الطلب عبر واتساب، ونؤكد معك الإجمالي وموعد التوصيل.', moreFrom: b => `المزيد من ${b}`, mayLike: 'قد يعجبك أيضاً',
+    perL: 'لتر', perKg: 'كجم', ml: 'مل', gr: 'جم',
+    tags: { vegan: 'نباتي بالكامل', natural: 'مكونات طبيعية', sensitive: 'للبشرة الحساسة', nofragrance: 'خالٍ من العطور', noparaben: 'خالٍ من البارابين', nosilicone: 'خالٍ من السيليكون', kids: 'مناسب للأطفال' },
+    msgNew: s => `🛍️ طلب جديد — ${s}`, msgWs: s => `🛍️ طلب جملة — ${s}`, msgName: '👤 الاسم: ', msgPhone: '📱 رقم الهاتف: ', msgAddr: '📍 العنوان: ',
+    msgNow: '✅ متوفر:', msgLater: '⏳ طلب مسبق:', msgTotal: (v, u) => `💰 الإجمالي: ${v} ج.م${u ? ' + منتجات يُحدَّد سعرها لاحقاً' : ''}`,
+    msgPromo: (c, v) => `🎟️ كود الخصم: ${c} (− ${v} ج.م)`, msgAfter: v => `✨ الإجمالي بعد الخصم: ${v} ج.م`, msgNotes: '📝 ملاحظات: ', msgDeliv: '🚚 رسوم التوصيل: تُحدَّد بحسب المنطقة',
+    chatFab: 'اسألي LUMIA', chatAria: 'المساعدة', chatTitle: 'مساعدة LUMIA', chatSub: 'مستشارة العناية والجمال · تجيب خلال ثوانٍ',
+    chatNote: 'المساعدة تقدّم اقتراحات عامة وليست بديلاً عن استشارة الطبيب.', chatAttach: 'إرفاق صورة', chatPh: 'اكتبي سؤالك…', chatMsg: 'رسالتك', chatSend: 'إرسال',
+    chatImgOk: 'صورة مرفقة — اكتبي سؤالك ثم أرسلي', chatImgErr: 'تعذّر قراءة الصورة',
+    chatHello: s => `أهلاً بكِ في ${s} ✨\nأنا مساعدتكِ للعناية بالبشرة والشعر. أخبريني عن نوع بشرتكِ أو المشكلة التي تودّين علاجها، ويمكنكِ إرفاق صورة لمنتج أو للمنطقة التي تقلقكِ، وسأقترح عليكِ الأنسب من منتجاتنا.`,
+    chatTyping: 'مساعدة LUMIA تكتب…', chatChips: ['بشرتي دهنية وعندي حبوب', 'بشرتي جافة وحساسة', 'شعري متساقط', 'أبحث عن واقي شمس'],
+    chatErr: 'عذراً، حدث خطأ. حاولي مرة أخرى.', chatOff: 'تعذّر الاتصال الآن. تحققي من الإنترنت ثم حاولي مرة أخرى، أو تواصلي معنا عبر واتساب.', chatView: 'عرض', chatAdd: 'أضف',
+    wsBadge: 'أسعار الجملة', gateP: 'هذه الصفحة مخصّصة لعملاء الجملة. يُرجى إدخال كود الدخول الذي حصلت عليه منّا.', gateCode: 'كود الدخول', gateGo: 'دخول', gateOpening: 'جارٍ الفتح…', gateShop: 'الانتقال إلى المتجر',
+    gateLoad: 'تعذّر تحميل قائمة الأسعار. يُرجى التحقق من الاتصال بالإنترنت ثم إعادة المحاولة.', gateOffline: 'صفحة الجملة غير مفعّلة حالياً.',
+    gateChanged: 'تم تغيير كود الدخول. يُرجى إدخال الكود الجديد.', gateWrong: 'الكود غير صحيح. يُرجى التأكد منه والمحاولة مرة أخرى.',
+    instH: 'تثبيت تطبيق LUMIA', instP: 'أضف المتجر إلى شاشتك الرئيسية لتفتحه بلمسة واحدة مثل أي تطبيق.',
+    instSteps: ['اضغط على زر المشاركة <b>⬆︎</b> أسفل الشاشة في Safari.', 'اختر <b>«إضافة إلى الشاشة الرئيسية»</b>.', 'اضغط <b>«إضافة»</b>، وستجد أيقونة LUMIA على شاشتك.'],
+    instDone: 'تم التثبيت', later: 'لاحقاً', installed: 'تم تثبيت تطبيق LUMIA على جهازك',
+    video: 'فيديو LUMIA', play: 'تشغيل الفيديو'
+  },
+  en: {
+    title: 'LUMIA Care · Imported Gems', wsTitle: 'LUMIA · Wholesale prices',
+    metaDesc: 'Original products imported from Germany: Balea, Mivolis, essence and more. Browse and order on WhatsApp.',
+    langBtn: 'العربية', langAria: 'التحويل إلى العربية',
+    install: 'Install app', installAria: 'Install the LUMIA app on your device',
+    tag: 'Original products we import from Germany to Egypt, delivered to your door',
+    de: 'Germany', eg: 'Egypt', shopNow: 'Shop products', waContact: 'Chat on WhatsApp',
+    trust1: '100% original products', trust2: 'Shipped directly from Germany', trust3: 'Delivery all over Egypt', trust4: 'Cash on delivery or InstaPay', trust5: 'Any product on special request',
+    brandsH: 'Products from dm, Rossmann and well-known German and European brands', brandsAria: 'Brands',
+    catsH: 'Shop by category', catsAria: 'Categories', catCount: n => `${n} product${n === 1 ? '' : 's'}`,
+    showAria: 'Featured products', showTitle: 'Discover our products', showTitleSale: 'Featured products & offers', newH: 'New arrivals',
+    prev: 'Previous', next: 'Next',
+    offersH: 'Current offers', offersP: (n, m) => `${n} product${n === 1 ? '' : 's'} up to ${m}% off`, offersBtn: 'Shop offers',
+    searchPh: 'Search for a product or brand', searchAria: 'Search', loading: 'Loading…',
+    howH: 'How to order',
+    how1b: 'Choose your products', how1s: 'Products in stock are delivered right away; pre-order products come with the next shipment.',
+    how2b: 'Send your order on WhatsApp', how2s: 'The order message is written for you with all the details — just press “Send”.',
+    how3b: 'Confirmation & delivery', how3s: 'We contact you to confirm the total and the delivery time.',
+    dpH: 'Delivery & payment',
+    dpDelivB: 'Delivery all over Egypt', dpDelivS: 'The delivery fee depends on your area; we confirm it with you before shipping.',
+    dpPayB: 'Payment methods', dpPayS: 'Cash on delivery, InstaPay or e-wallets.',
+    dpOrigB: 'Original products from Germany', dpOrigS: 'We buy from dm, Rossmann and other German stores, and can get any other product on special request.',
+    howSpecial: 'Can’t find the product you’re looking for? We can get any product from dm, Rossmann and other German stores on special request — send us its name, link or photo on WhatsApp.',
+    waBandH: 'A question or a special request?', waBandP: 'Message us on WhatsApp — we’re happy to help you choose the right product.', waBandBtn: 'Message us on WhatsApp',
+    waLabel: 'WhatsApp:', updated: d => 'Last updated: ' + d, fb: 'Facebook', ig: 'Instagram', footNote: 'Original products from Germany to Egypt',
+    deliveryLbl: 'Delivery:', paymentLbl: 'Payment:',
+    waHello: n => `Hello, I'd like to ask about ${n} products`,
+    cur: 'EGP', off: p => `${p}% off`, onRequest: 'Price on request',
+    pcs: n => n === 1 ? '1 piece' : `${n} pieces`,
+    wsBoth: (s, i) => `In stock: ${s} · On the way: ${i}`, wsIn: p => `In stock now · ${p}`, wsWay: p => `On the way · ${p}`,
+    last1: 'Last piece', last2: 'Last 2 pieces', inN: n => `In stock · ${n} pcs`, way: 'On the way', pre: 'Pre-order', offStock: 'Currently unavailable',
+    onlyN: n => `Only ${n} available`, unavailable: 'This product is currently unavailable',
+    fAll: 'All', fNow: 'In stock', fPre: 'Pre-order', fSale: 'Offers', allCats: 'All categories', sortAria: 'Sort products',
+    sGroup: 'By category & brand', sAvail: 'In stock first', sLow: 'Price: low to high', sHigh: 'Price: high to low', sBrand: 'Brand',
+    incA: 'Increase', decA: 'Decrease', addA: n => `Add ${n} to your order`,
+    spHello: (n, ws) => ws ? `Hello ${n} 👋 (wholesale customer)` : `Hello ${n} 👋`, spWant: 'I would like to order a product that is not on the website:',
+    spName: '• Product name or link: ', spQty: '• Quantity: ', spAsk: 'Please send me the price, shipping details and arrival date. Thank you.',
+    spNotFound: q => `We couldn’t find “${q}” in our current products`, spCan: 'We can get it for you on special request', spQ: 'Can’t find the product you’re looking for?',
+    spP: ws => `We can get any product from dm, Rossmann and other German stores on special request${ws ? ', in the quantities you need' : ''}. Send us the product name, link or photo and we’ll send you the price, shipping details and arrival date.`,
+    spLi: ['Product name or link', 'A photo of the product', 'Quantity'], spBtn: 'Request a product on WhatsApp',
+    other: 'Other', count: n => `${n} product${n === 1 ? '' : 's'}`,
+    order: 'Your order', closeA: 'Close', emptyB: 'Your order is empty', emptyS: 'Tap + next to any product to add it.',
+    sentB: 'WhatsApp opened with your order', sentS: 'If the message wasn’t sent, you can open WhatsApp again.', reopen: 'Open WhatsApp again', newOrder: 'Sent — start a new order',
+    lnIn: 'In stock', lnMix: (a, b) => `${a} in stock + ${b} pre-order`,
+    total: 'Total', totalNote: '(excluding products priced on request)', preNote: 'Pre-order products come with the next shipment.',
+    fName: 'Name', fPhone: 'Phone number', fAddr: 'Address', fAddrPh: 'Governorate, area, street', fNotes: 'Notes', optional: '(optional)',
+    send: 'Send order on WhatsApp', sendNote: 'WhatsApp opens with a ready message that includes all the details.', checkout: 'Checkout',
+    delivFee: 'The delivery fee depends on your area; we confirm it with you on WhatsApp.',
+    promoPh: 'Discount code', apply: 'Apply', remove: 'Remove', promoBad: 'This code is not valid or has expired', promoExp: 'This code has expired',
+    promoMin: (m, more) => `This code applies to orders of ${m} EGP or more — add ${more} EGP more to get the discount`,
+    promoFixed: v => `${v} EGP off`, promoPct: (v, max) => `${v}% off${max ? ' (up to ' + max + ' EGP)' : ''}`,
+    discount: 'Discount', afterDisc: 'Total after discount', promoEnter: 'Type the discount code first', promoDone: v => `Discount applied: ${v} EGP`, promoSaved: 'Code saved',
+    added: 'Added to your order', added2: 'Added to your order', copied: 'Product link copied', thanks: 'Thank you — we’ll contact you soon',
+    needName: 'Please write your name first', needPhone: 'Please write your phone number', emptyOrder: 'Your order is empty',
+    back: 'Back', share: 'Share product',
+    dIn: 'In stock with us now — prepared as soon as your order is confirmed.', dWay: 'On its way to Egypt now — delivered to you as soon as it arrives.',
+    dPre: 'Pre-order: brought for you with the next shipment.', dOff: 'Currently unavailable. Message us on WhatsApp to ask when it will be back.',
+    accDesc: 'Description', accUse: 'How to use', accIng: 'Ingredients', accWarn: 'Warnings',
+    addToOrder: 'Add to order', v3: '3D view ↻', photos: 'Photos', drag: 'Drag to rotate', photoN: i => `Photo ${i}`,
+    priceLater: 'Price confirmed with your order', saleUntil: (p, d) => `${p}% off${d ? ` · offer valid until ${d}` : ''}`,
+    storeEUR: 'Store price in Germany:', weight: 'Approx. weight:', g: 'g', origin: '🇩🇪 Original from Germany',
+    viaWa: 'Your order is sent on WhatsApp and we confirm the total and delivery time with you.', moreFrom: b => `More from ${b}`, mayLike: 'You may also like',
+    perL: 'L', perKg: 'kg', ml: 'ml', gr: 'g',
+    tags: { vegan: 'Vegan', natural: 'Natural ingredients', sensitive: 'For sensitive skin', nofragrance: 'Fragrance-free', noparaben: 'Paraben-free', nosilicone: 'Silicone-free', kids: 'Suitable for kids' },
+    msgNew: s => `🛍️ New order — ${s}`, msgWs: s => `🛍️ Wholesale order — ${s}`, msgName: '👤 Name: ', msgPhone: '📱 Phone: ', msgAddr: '📍 Address: ',
+    msgNow: '✅ In stock:', msgLater: '⏳ Pre-order:', msgTotal: (v, u) => `💰 Total: ${v} EGP${u ? ' + products priced later' : ''}`,
+    msgPromo: (c, v) => `🎟️ Discount code: ${c} (− ${v} EGP)`, msgAfter: v => `✨ Total after discount: ${v} EGP`, msgNotes: '📝 Notes: ', msgDeliv: '🚚 Delivery fee: depends on the area',
+    chatFab: 'Ask LUMIA', chatAria: 'Help', chatTitle: 'LUMIA assistant', chatSub: 'Beauty & care advisor · answers in seconds',
+    chatNote: 'The assistant gives general suggestions and is not a substitute for a doctor’s advice.', chatAttach: 'Attach a photo', chatPh: 'Type your question…', chatMsg: 'Your message', chatSend: 'Send',
+    chatImgOk: 'Photo attached — type your question, then send', chatImgErr: 'Could not read the photo',
+    chatHello: s => `Welcome to ${s} ✨\nI’m your skin and hair care assistant. Tell me about your skin type or what you’d like to treat — you can also attach a photo of a product or of the area that worries you — and I’ll suggest the best match from our products.`,
+    chatTyping: 'LUMIA assistant is typing…', chatChips: ['Oily skin with breakouts', 'Dry, sensitive skin', 'Hair loss', 'Looking for sunscreen'],
+    chatErr: 'Sorry, something went wrong. Please try again.', chatOff: 'Can’t connect right now. Check your internet and try again, or message us on WhatsApp.', chatView: 'View', chatAdd: 'Add',
+    wsBadge: 'Wholesale prices', gateP: 'This page is for wholesale customers. Please enter the access code you received from us.', gateCode: 'Access code', gateGo: 'Enter', gateOpening: 'Opening…', gateShop: 'Go to the shop',
+    gateLoad: 'Could not load the price list. Please check your internet connection and try again.', gateOffline: 'The wholesale page is not active right now.',
+    gateChanged: 'The access code has changed. Please enter the new code.', gateWrong: 'The code is not correct. Please check it and try again.',
+    instH: 'Install the LUMIA app', instP: 'Add the shop to your home screen to open it with one tap, like any app.',
+    instSteps: ['Tap the Share button <b>⬆︎</b> at the bottom of Safari.', 'Choose <b>“Add to Home Screen”</b>.', 'Tap <b>“Add”</b> — the LUMIA icon appears on your screen.'],
+    instDone: 'Done', later: 'Later', installed: 'The LUMIA app is installed on your device',
+    video: 'LUMIA video', play: 'Play the video'
+  }
+};
+let LANG = (() => { let q = ''; try { q = new URLSearchParams(location.search).get('lang') || ''; } catch (e) {} if (q === 'en' || q === 'ar') return q; try { const s = JSON.parse(localStorage.getItem('lumia_lang')); if (s === 'en' || s === 'ar') return s; } catch (e) {} return 'ar'; })();
+const EN = () => LANG === 'en';
+const T = (k, ...a) => { const v = k in I18N[LANG] ? I18N[LANG][k] : I18N.ar[k]; return typeof v === 'function' ? v(...a) : v; };
+const catName = c => EN() ? (CAT_EN[String(c || '').trim()] || c) : c;
+/* product text in the chosen language (English is filled in the app; Arabic shows when there is no English yet) */
+const ptx = (p, k) => (EN() && p.en && p.en[k] && (Array.isArray(p.en[k]) ? p.en[k].length : String(p.en[k]).trim())) ? p.en[k] : p[k];
+const cur = () => T('cur');
+/* static text in the page: data-t (text), data-tp (placeholder), data-ta (aria-label) */
+function applyLang(){
+  const h = document.documentElement;
+  h.lang = LANG; h.dir = EN() ? 'ltr' : 'rtl';
+  document.querySelectorAll('[data-t]').forEach(el => { el.textContent = T(el.dataset.t); });
+  document.querySelectorAll('[data-tp]').forEach(el => { el.placeholder = T(el.dataset.tp); });
+  document.querySelectorAll('[data-ta]').forEach(el => { el.setAttribute('aria-label', T(el.dataset.ta)); });
+  const md = document.querySelector('meta[name=description]'); if (md) md.content = T('metaDesc');
+  const og = document.querySelector('meta[property="og:locale"]'); if (og) og.content = EN() ? 'en_US' : 'ar_EG';
+  const can = document.querySelector('link[rel=canonical]'); if (can && can.dataset.base) can.href = can.dataset.base + (EN() ? '?lang=en' : '');
+}
+function setLang(l){
+  if (l === LANG) return;
+  LANG = l; try { localStorage.setItem('lumia_lang', JSON.stringify(l)); } catch (e) {}
+  // keep the language in the link, so a shared link opens in the same language
+  try { const u = new URL(location.href); if (EN()) u.searchParams.set('lang', 'en'); else u.searchParams.delete('lang'); history.replaceState(history.state, '', u.pathname + u.search + u.hash); } catch (e) {}
+  applyLang();
+  if (D) { if (!WS && !D.intro && !D.introEn) $('tag').textContent = T('tag'); fillStatic(); brandStrip(); showStrip(); renderSections(); renderFilters(); renderGrid(); renderCart(); renderPage(); if (U.sheet) renderSheet(); relangChat(); }
+  else if (WS && $('gate')) { $('gate').remove(); gate(''); }
+}
+
 const CART_KEY = WS ? 'lumia_wcart' : 'lumia_cart';
 let cart = store.get(CART_KEY, {});
 U.promo = WS ? '' : store.get('lumia_promo', '');
@@ -698,21 +1053,21 @@ const normPromo = c => String(c || '').toUpperCase().replace(/\s+/g, '').replace
 function promoNow(){
   const code = U.promo; if (!code) return null;
   const h = sha256hex('lumia-promo|' + code), c = (D.promos || []).find(x => x.h === h);
-  if (!c) return { code, off: 0, err: 'الكود غير صحيح أو انتهت صلاحيته' };
-  if (c.until && c.until < new Date().toISOString().slice(0, 10)) return { code, off: 0, err: 'انتهت صلاحية هذا الكود' };
+  if (!c) return { code, off: 0, err: T('promoBad') };
+  if (c.until && c.until < new Date().toISOString().slice(0, 10)) return { code, off: 0, err: T('promoExp') };
   const sum = totals().sum;
-  if (c.min && sum < c.min) return { code, off: 0, err: `يُطبَّق هذا الكود على الطلبات بقيمة ${money(c.min)} ج.م أو أكثر — أضف منتجات بقيمة ${money(c.min - sum)} ج.م لتحصل على الخصم` };
+  if (c.min && sum < c.min) return { code, off: 0, min: true, err: T('promoMin', money(c.min), money(c.min - sum)) };
   let off = c.t === 'FIXED' ? c.v : sum * c.v / 100; if (c.t !== 'FIXED' && c.max) off = Math.min(off, c.max);
   off = Math.round(Math.min(off, sum));
-  return { code, off, err: '', label: c.t === 'FIXED' ? `خصم ${money(c.v)} ج.م` : `خصم ${c.v}%${c.max ? ' (بحد أقصى ' + money(c.max) + ' ج.م)' : ''}` };
+  return { code, off, err: '', label: c.t === 'FIXED' ? T('promoFixed', money(c.v)) : T('promoPct', c.v, c.max ? money(c.max) : '') };
 }
 function promoHtml(){
   if (!(D.promos || []).length) return '';
   const r = promoNow();
-  if (!r) return `<div class="promo"><input class="f" id="promoIn" placeholder="كود الخصم" autocomplete="off" autocapitalize="characters" dir="ltr"><button class="ghost" data-a="promoApply">تطبيق</button></div>`;
-  return `<div class="promo on ${r.err ? 'bad' : ''}"><div class="grow"><b dir="ltr">🎟️ ${esc(r.code)}</b><span>${esc(r.err || r.label)}</span></div><button class="ghost" data-a="promoRemove">إزالة</button></div>
-    ${r.off ? `<div class="tot"><span>الخصم</span><span class="price" style="color:#d6455a">− ${money(r.off)}<small>ج.م</small></span></div>
-    <div class="tot"><span>الإجمالي بعد الخصم</span><span class="price">${money(totals().sum - r.off)}<small>ج.م</small></span></div>` : ''}`;
+  if (!r) return `<div class="promo"><input class="f" id="promoIn" placeholder="${esc(T('promoPh'))}" autocomplete="off" autocapitalize="characters" dir="ltr"><button class="ghost" data-a="promoApply">${T('apply')}</button></div>`;
+  return `<div class="promo on ${r.err ? 'bad' : ''}"><div class="grow"><b dir="ltr">🎟️ ${esc(r.code)}</b><span>${esc(r.err || r.label)}</span></div><button class="ghost" data-a="promoRemove">${T('remove')}</button></div>
+    ${r.off ? `<div class="tot"><span>${T('discount')}</span><span class="price" style="color:#d6455a">− ${money(r.off)}<small>${cur()}</small></span></div>
+    <div class="tot"><span>${T('afterDisc')}</span><span class="price">${money(totals().sum - r.off)}<small>${cur()}</small></span></div>` : ''}`;
 }
 
 /* ---------- data ---------- */
@@ -737,16 +1092,16 @@ async function decryptW(w, code){
   return JSON.parse(new TextDecoder().decode(pt));
 }
 function loadWholesale(){
-  document.title = 'LUMIA · أسعار الجملة';
+  document.title = T('wsTitle');
   const s = document.createElement('script');
   s.src = 'wdata.js?v=' + Date.now();
   s.onload = () => tryCode(store.get(WCODE_KEY, ''), true);
-  s.onerror = () => gate('تعذّر تحميل قائمة الأسعار. يُرجى التحقق من الاتصال بالإنترنت ثم إعادة المحاولة.');
+  s.onerror = () => gate(T('gateLoad'));
   document.head.appendChild(s);
 }
 async function tryCode(raw, silent){
   const code = normCode(raw);
-  if (!window.WDATA) return gate('صفحة الجملة غير مفعّلة حالياً.');
+  if (!window.WDATA) return gate(T('gateOffline'));
   if (!code) return gate('');
   try {
     const d = await decryptW(window.WDATA, code);
@@ -755,7 +1110,7 @@ async function tryCode(raw, silent){
     start(d);
   } catch (e) {
     try { localStorage.removeItem(WCODE_KEY); } catch (x) {}
-    gate(silent ? 'تم تغيير كود الدخول. يُرجى إدخال الكود الجديد.' : 'الكود غير صحيح. يُرجى التأكد منه والمحاولة مرة أخرى.');
+    gate(silent ? T('gateChanged') : T('gateWrong'));
   }
 }
 function gate(err){
@@ -763,12 +1118,12 @@ function gate(err){
   if (!g) {
     g = document.createElement('div'); g.id = 'gate'; g.className = 'gate';
     g.innerHTML = `<form class="box" id="gateForm" autocomplete="off"><img src="../logo-care.png" alt="LUMIA Care" style="width:130px"><div class="care" style="margin:6px 0 4px"><i style="animation:none;opacity:1;transform:none;filter:none">C</i><i style="animation:none;opacity:1;transform:none;filter:none">A</i><i style="animation:none;opacity:1;transform:none;filter:none">R</i><i style="animation:none;opacity:1;transform:none;filter:none">E</i></div>
-      <h1>أسعار الجملة</h1><p>هذه الصفحة مخصّصة لعملاء الجملة. يُرجى إدخال كود الدخول الذي حصلت عليه منّا.</p>
-      <input id="gateIn" placeholder="كود الدخول" autocapitalize="off" spellcheck="false" aria-label="كود الدخول">
-      <button type="submit" id="gateBtn">دخول</button><div class="err" id="gateErr"></div>
-      <p style="margin-top:14px;font-size:13px"><a href="../">الانتقال إلى المتجر</a></p></form>`;
+      <h1>${T('wsBadge')}</h1><p>${T('gateP')}</p>
+      <input id="gateIn" placeholder="${esc(T('gateCode'))}" autocapitalize="off" spellcheck="false" aria-label="${esc(T('gateCode'))}">
+      <button type="submit" id="gateBtn">${T('gateGo')}</button><div class="err" id="gateErr"></div>
+      <p style="margin-top:14px;font-size:13px"><a href="../">${T('gateShop')}</a> · <a href="#" data-a="lang">${T('langBtn')}</a></p></form>`;
     document.body.appendChild(g); document.body.style.overflow = 'hidden';
-    $('gateForm').addEventListener('submit', async e => { e.preventDefault(); $('gateBtn').disabled = true; $('gateBtn').textContent = 'جارٍ الفتح…'; await tryCode($('gateIn').value, false); if ($('gateBtn')) { $('gateBtn').disabled = false; $('gateBtn').textContent = 'دخول'; } });
+    $('gateForm').addEventListener('submit', async e => { e.preventDefault(); $('gateBtn').disabled = true; $('gateBtn').textContent = T('gateOpening'); await tryCode($('gateIn').value, false); if ($('gateBtn')) { $('gateBtn').disabled = false; $('gateBtn').textContent = T('gateGo'); } });
   }
   $('gateErr').textContent = err || '';
   setTimeout(() => $('gateIn')?.focus(), 50);
@@ -781,9 +1136,8 @@ function showStrip(){
   const list = (D.products || []).filter(p => p.image).map(p => ({ p, w: (p.was ? 3 : 0) + (avail(p).can ? 2 : 0) + Math.random() })).sort((a, b) => b.w - a.w).slice(0, 14).map(x => x.p);
   if (list.length < 4) { el.hidden = true; return; }
   el.hidden = false;
-  $('showTitle').textContent = D.products.some(p => p.was) ? 'منتجات مختارة وعروض' : 'اكتشفي منتجاتنا';
-  $('strack').innerHTML = list.map(p => `<article class="sl" data-a="view" data-id="${p.id}" role="button" tabindex="0" aria-label="${esc(p.name)}"><div class="ph2">${discTag(p)}${pic(p)}</div>
-    <div class="tx">${p.brand ? `<div class="b">${esc(p.brand)}</div>` : ''}<div class="n" dir="auto">${esc(p.name)}</div>${p.price ? `<div>${priceHtml(p)}</div>` : '<div class="small">السعر عند الطلب</div>'}</div></article>`).join('');
+  $('showTitle').textContent = D.products.some(p => p.was) ? T('showTitleSale') : T('showTitle');
+  $('strack').innerHTML = list.map(slide).join('');
   $('sdots').innerHTML = list.map((_, i) => `<i class="${i ? '' : 'on'}"></i>`).join('');
   const tr = $('strack'); let paused = false;
   const step = () => { const c = tr.firstElementChild; return c ? c.getBoundingClientRect().width + 14 : 0; };
@@ -799,58 +1153,96 @@ function showStrip(){
     A.slide({ d: 1 });
   }, 3200);
 }
+const slide = p => `<article class="sl" data-a="view" data-id="${p.id}" role="button" tabindex="0" aria-label="${esc(p.name)}"><div class="ph2">${discTag(p)}${pic(p)}</div>
+    <div class="tx">${p.brand ? `<div class="b">${esc(p.brand)}</div>` : ''}<div class="n" dir="auto">${esc(p.name)}</div>${p.price ? `<div>${priceHtml(p)}</div>` : `<div class="small">${T('onRequest')}</div>`}</div></article>`;
+/* homepage sections built from the real catalogue: categories (with a real product photo each), offers, new arrivals, video */
+function renderSections(){
+  if (!D || !D.products) return;
+  const ps = D.products;
+  // categories: one tile per category, photo = a product from it that has a photo (in-stock first)
+  const cats = {}; ps.forEach(p => { const c = String(p.category || '').trim(); if (!c) return; (cats[c] = cats[c] || []).push(p); });
+  const tiles = Object.entries(cats).sort((a, b) => b[1].length - a[1].length).map(([c, list]) => {
+    const withImg = list.filter(p => p.image).sort((a, b) => (b.stock > 0) - (a.stock > 0));
+    return `<button type="button" class="ctile" data-a="cat" data-k="${esc(c)}" data-go="1"><span class="cim">${withImg[0] ? `<img src="${esc(imgSrc(withImg[0].image))}" alt="" loading="lazy">` : ''}</span><b dir="auto">${esc(catName(c))}</b><small>${T('catCount', list.length)}</small></button>`; });
+  $('catsSec').hidden = tiles.length < 2; $('ctiles').innerHTML = tiles.join('');
+  // offers banner: only when real discounts exist
+  const sale = ps.filter(p => p.was && p.price), maxPct = Math.max(0, ...sale.map(pct));
+  $('offers').hidden = !sale.length;
+  $('offers').innerHTML = sale.length ? `<div class="wrap"><div class="obox"><div class="otx"><span class="okick">${T('offersH')}</span><h2>${T('offersP', sale.length, maxPct)}</h2><button type="button" class="cta-main" data-a="av" data-k="sale" data-go="1">${T('offersBtn')}</button></div>
+    <div class="oimgs">${sale.filter(p => p.image).slice(0, 3).map(p => `<span><img src="${esc(imgSrc(p.image))}" alt="" loading="lazy"><i>${T('off', pct(p))}</i></span>`).join('')}</div></div></div>` : '';
+  // new arrivals: the last products added in the app
+  const fresh = ps.filter(p => p.image && avail(p).can).slice(-10).reverse();
+  $('newSec').hidden = fresh.length < 4; $('ntrack').innerHTML = fresh.map(slide).join('');
+  // brand video (only when a video link is set in the app; the poster shows until it is played)
+  const v = D.videoUrl;
+  $('vidSec').hidden = !v;
+  $('vidSec').innerHTML = v ? `<div class="wrap"><video controls preload="none" playsinline ${D.videoPoster ? `poster="${esc(D.videoPoster)}"` : ''} aria-label="${esc(T('video'))}"><source src="${esc(v)}" type="video/mp4"></video></div>` : '';
+}
 function brandStrip(){
   const own = [...new Set(((D && D.products) || []).map(p => String(p.brand || '').trim()).filter(Boolean))];
   const seen = new Set(), list = [];
   for (const b of [...BRANDS, ...own]) { const k = b.toLowerCase(); if (!seen.has(k)) { seen.add(k); list.push(b); } }
-  const row = list.map(b => `<span dir="ltr">${esc(b)}</span>`).join('');
-  $('marq').innerHTML = row + row;
+  // a brand with a logo file shows its logo, the others their name
+  const L = (D && D.brandLogos) || {}, logo = b => L[String(b).toLowerCase()];
+  const row = dup => list.map(b => `<span dir="ltr" class="${logo(b) ? 'lg' : ''}${dup ? ' dup' : ''}"${dup ? ' aria-hidden="true"' : ''}>${logo(b) ? `<img src="${WS ? '../' : ''}${esc(logo(b))}" alt="${esc(b)}" height="34" loading="lazy">` : esc(b)}</span>`).join('');
+  $('marq').innerHTML = row(false) + row(true);
 }
 /* discounts: the old price is shown crossed out; a discount whose end date has passed is ignored */
 const pct = p => p.was && p.price ? Math.round((1 - p.price / p.was) * 100) : 0;
-const discTag = p => pct(p) >= 1 ? `<span class="disc">خصم ${pct(p)}%</span>` : '';
-const priceHtml = p => `<span class="price${p.was ? ' sale' : ''}">${money(p.price)}<small>ج.م</small></span>${p.was ? `<span class="was">${money(p.was)} ج.م</span>` : ''}`;
+const discTag = p => pct(p) >= 1 ? `<span class="disc">${T('off', pct(p))}</span>` : '';
+const priceHtml = p => `<span class="price${p.was ? ' sale' : ''}">${money(p.price)}<small>${cur()}</small></span>${p.was ? `<span class="was">${money(p.was)} ${cur()}</span>` : ''}`;
 function start(d){
   const todayIso = new Date().toISOString().slice(0, 10);
   for (const p of d.products || []) if (p.was && p.saleUntil && p.saleUntil < todayIso) { p.price = p.was; delete p.was; }
-  D = d; brandStrip(); showStrip(); setTimeout(initChat, 400);
-  if (WS) { document.body.style.overflow = ''; $('tag').insertAdjacentHTML('beforebegin', '<span class="wsbadge">أسعار الجملة</span>'); }
-  if (D.intro) $('tag').textContent = D.intro;
+  D = d; applyLang(); brandStrip(); showStrip(); renderSections(); setTimeout(initChat, 400);
+  if (WS) { document.body.style.overflow = ''; $('tag').insertAdjacentHTML('beforebegin', `<span class="wsbadge" data-t="wsBadge">${T('wsBadge')}</span>`); }
+  fillStatic();
   const num = String(D.whatsapp || '').replace(/\D/g, '');
   $('wa').textContent = num ? '+' + num.replace(/^(\d{2})(\d{2})(\d{4})(\d+)$/, '$1 $2 $3 $4') : '';
-  if (D.updated) { try { $('upd').textContent = 'آخر تحديث: ' + new Date(D.updated).toLocaleDateString('ar-EG', { day: 'numeric', month: 'long' }); } catch (e) {} }
-  const waNum = String(D.whatsapp || '').replace(/\D/g, '');
-  $('waTop').href = 'https://wa.me/' + waNum + '?text=' + encodeURIComponent('مرحباً، أود الاستفسار عن منتجات ' + (D.storeName || 'LUMIA'));
   const picks = D.products.filter(p => p.image).sort((a, b) => (b.stock > 0) - (a.stock > 0)).slice(0, 3);
   const order = picks.length === 3 ? [picks[1], picks[0], picks[2]] : picks;
-  $('fan').innerHTML = order.map(p => `<button type="button" data-a="view" data-id="${p.id}" aria-label="${esc(p.name)}"><img src="${esc(imgSrc(p.image))}" alt="">${p.price ? `<span class="pr">${money(p.price)} ج.م</span>` : ''}</button>`).join('');
-  $('howinfo').innerHTML = [D.deliveryNote ? `<div><b>التوصيل:</b> ${esc(D.deliveryNote)}</div>` : '', D.paymentNote ? `<div><b>الدفع:</b> ${esc(D.paymentNote)}</div>` : ''].join('');
-  $('soc').innerHTML = [D.facebook ? `<a href="${esc(D.facebook)}" target="_blank" rel="noopener">فيسبوك</a>` : '', D.instagram ? `<a href="${esc(D.instagram)}" target="_blank" rel="noopener">إنستجرام</a>` : ''].join('');
+  $('fan').innerHTML = order.map(p => `<button type="button" data-a="view" data-id="${p.id}" aria-label="${esc(p.name)}"><img src="${esc(imgSrc(p.image))}" alt="${esc(p.name)}">${p.price ? `<span class="pr">${money(p.price)} <small>${cur()}</small></span>` : ''}</button>`).join('');
   Object.keys(cart).forEach(id => { if (!byId(id) || !avail(byId(id)).can) delete cart[id]; });
   store.set(CART_KEY, cart);
   renderFilters(); renderGrid(); renderCart(); route();
 }
+/* text that depends on the language and on the shop settings (WhatsApp links, notes, footer) */
+const hasAr = t => /[\u0600-\u06FF]/.test(String(t || ''));
+/* the owner's own delivery / payment notes, in the language of the page (otherwise the standard text) */
+const noteFor = (ar, en) => EN() ? (D[en] || '') : (hasAr(D[ar]) ? D[ar] : '');
+function fillStatic(){
+  if (!D) return;
+  const intro = EN() ? D.introEn : D.intro;
+  $('tag').textContent = intro || T('tag');
+  if (D.updated) { try { $('upd').textContent = T('updated', new Date(D.updated).toLocaleDateString(EN() ? 'en-GB' : 'ar-EG', { day: 'numeric', month: 'long' })); } catch (e) {} }
+  const waNum = String(D.whatsapp || '').replace(/\D/g, '');
+  $('waTop').href = $('waBandBtn').href = 'https://wa.me/' + waNum + '?text=' + encodeURIComponent(T('waHello', D.storeName || 'LUMIA'));
+  const dn = noteFor('deliveryNote', 'deliveryNoteEn'), pn = noteFor('paymentNote', 'paymentNoteEn');
+  $('dpDeliv').textContent = dn || T('dpDelivS'); $('dpPay').textContent = pn || T('dpPayS');
+  $('soc').innerHTML = [D.facebook ? `<a href="${esc(D.facebook)}" target="_blank" rel="noopener">${T('fb')}</a>` : '', D.instagram ? `<a href="${esc(D.instagram)}" target="_blank" rel="noopener">${T('ig')}</a>` : ''].join('');
+  document.title = WS ? T('wsTitle') : T('title');
+}
 const byId = id => D.products.find(p => p.id === id);
 function imgSrc(u){ u = String(u || ''); if (u.startsWith('drive:')) return 'https://lh3.googleusercontent.com/d/' + u.slice(6) + '=w800'; return u; }
 const pic = (p, cls = '') => p.image
-  ? `<img src="${esc(imgSrc(p.image))}" alt="${esc(p.name)}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'noimg',textContent:${esc(JSON.stringify(p.brand || 'LUMIA'))}}))">`
+  ? `<img src="${esc(imgSrc(p.image))}" alt="${esc(p.name)}${p.brand && !String(p.name).includes(p.brand) ? ' – ' + esc(p.brand) : ''}" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'noimg',textContent:${esc(JSON.stringify(p.brand || 'LUMIA'))}}))">`
   : `<div class="noimg ${cls}">${esc(p.brand || 'LUMIA')}</div>`;
 
 /* ---------- availability ---------- */
-/* Arabic count of pieces: 1 قطعة، 2 قطعتان، 3–10 قطع، 11+ قطعة */
-const pcs = n => n === 1 ? 'قطعة واحدة' : n === 2 ? 'قطعتان' : n <= 10 ? `${n} قطع` : `${n} قطعة`;
+/* count of pieces (Arabic: 1 قطعة، 2 قطعتان، 3–10 قطع، 11+ قطعة) */
+const pcs = n => T('pcs', n);
 function avail(p){
   // the wholesale page always shows exact quantities, also for what is on the way
-  if (WS && p.stock > 0) return { k: 'in', c: 'var(--ok)', can: true, low: false, label: p.incoming > 0 ? `متوفر: ${p.stock} · قيد الشحن: ${p.incoming}` : `متوفر الآن · ${pcs(p.stock)}` };
-  if (WS && p.incoming > 0) return { k: 'way', c: 'var(--way)', can: true, label: `قيد الشحن · ${pcs(p.incoming)}` };
+  if (WS && p.stock > 0) return { k: 'in', c: 'var(--ok)', can: true, low: false, label: p.incoming > 0 ? T('wsBoth', p.stock, p.incoming) : T('wsIn', pcs(p.stock)) };
+  if (WS && p.incoming > 0) return { k: 'way', c: 'var(--way)', can: true, label: T('wsWay', pcs(p.incoming)) };
   if (p.stock > 0) {
     const low = p.stock <= 2;
     return { k: 'in', c: 'var(--ok)', can: true, low,
-      label: p.stock === 1 ? 'القطعة الأخيرة' : p.stock === 2 ? 'آخر قطعتين' : `متوفر · ${p.stock} قطع` };
+      label: p.stock === 1 ? T('last1') : p.stock === 2 ? T('last2') : T('inN', p.stock) };
   }
-  if (p.incoming > 0) return { k: 'way', c: 'var(--way)', can: true, label: 'قيد الشحن' };
-  if (p.preorder) return { k: 'pre', c: 'var(--pre)', can: true, label: 'طلب مسبق' };
-  return { k: 'off', c: 'var(--off)', can: false, label: 'غير متوفر حالياً' };
+  if (p.incoming > 0) return { k: 'way', c: 'var(--way)', can: true, label: T('way') };
+  if (p.preorder) return { k: 'pre', c: 'var(--pre)', can: true, label: T('pre') };
+  return { k: 'off', c: 'var(--off)', can: false, label: T('offStock') };
 }
 const avHtml = a => `<span class="av ${a.k === 'pre' ? 'pre' : ''} ${a.low ? 'low' : ''}" style="--c:${a.c}"><i></i>${a.label}</span>`;
 const maxQty = p => (p.preorder || p.incoming > 0) ? 50 : p.stock;
@@ -859,12 +1251,15 @@ const split = (p, q) => { const now = Math.min(q, Math.max(0, p.stock)); return 
 function setQty(id, q){
   const p = byId(id); if (!p) return;
   const max = maxQty(p);
-  if (q > max) { toast(max ? `الكمية المتاحة ${max} فقط` : 'هذا المنتج غير متوفر حالياً'); q = max; }
+  if (q > max) { toast(max ? T('onlyN', max) : T('unavailable')); q = max; }
   q = Math.max(0, q);
   if (q) cart[id] = q; else delete cart[id];
   U.sent = false; store.set(CART_KEY, cart);
   renderGrid(); renderCart(); if (U.page) renderPage(); if (U.sheet) renderSheet();
+  bump();
 }
+/* a small "pop" on the basket so adding something is clearly seen */
+function bump(){ const b = document.querySelector('.cartbar button'); if (!b || matchMedia('(prefers-reduced-motion:reduce)').matches) return; b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); }
 
 /* ---------- filters + grid ---------- */
 function renderFilters(){
@@ -873,14 +1268,14 @@ function renderFilters(){
   const FI = { all: fi('<rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/>'),
     now: fi('<circle cx="12" cy="12" r="8.5"/><path d="m8.5 12.2 2.4 2.4 4.6-4.9"/>'), pre: fi('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
     sale: fi('<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="8" cy="8" r="1.4"/>') };
-  $('filters').innerHTML = `<div class="seg" role="tablist">${[['all','الكل'],['now','متوفر الآن'],['pre','طلب مسبق'], ...(D.products.some(p => p.was) ? [['sale','العروض']] : [])]
+  $('filters').innerHTML = `<div class="seg" role="tablist">${[['all', T('fAll')], ['now', T('fNow')], ['pre', T('fPre')], ...(D.products.some(p => p.was) ? [['sale', T('fSale')]] : [])]
       .map(([k, l]) => `<button data-a="av" data-k="${k}" class="${U.av === k ? 'on' : ''} ${k === 'sale' ? 'sale' : ''}" role="tab" aria-selected="${U.av === k}">${FI[k]}${l}</button>`).join('')}</div>
-    ${cats.length > 1 ? `<div class="cats">${['', ...cats].map(c => `<button data-a="cat" data-k="${esc(c)}" class="${U.cat === c ? 'on' : ''}">${c ? esc(c) : 'جميع الأقسام'}</button>`).join('')}</div>` : ''}
-    <label class="sortw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16M3.5 16.5 7 20l3.5-3.5M17 20V4M13.5 7.5 17 4l3.5 3.5"/></svg><select class="sort" id="sort" aria-label="ترتيب المنتجات">${[['group', 'حسب القسم والعلامة'], ['avail', 'المتوفر أولاً'], ['low', 'السعر: من الأقل'], ['high', 'السعر: من الأعلى'], ['brand', 'العلامة التجارية']].map(([k, l]) => `<option value="${k}" ${U.sort === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>`;
+    ${cats.length > 1 ? `<div class="cats">${['', ...cats].map(c => `<button data-a="cat" data-k="${esc(c)}" class="${U.cat === c ? 'on' : ''}">${c ? esc(catName(c)) : T('allCats')}</button>`).join('')}</div>` : ''}
+    <label class="sortw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16M3.5 16.5 7 20l3.5-3.5M17 20V4M13.5 7.5 17 4l3.5 3.5"/></svg><select class="sort" id="sort" aria-label="${esc(T('sortAria'))}">${[['group', T('sGroup')], ['avail', T('sAvail')], ['low', T('sLow')], ['high', T('sHigh')], ['brand', T('sBrand')]].map(([k, l]) => `<option value="${k}" ${U.sort === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>`;
 }
 function visible(){
   const q = U.q.trim().toLowerCase();
-  let list = D.products.filter(p => (!U.cat || p.category === U.cat) && (!q || [p.name, p.brand, p.category, p.description].join(' ').toLowerCase().includes(q)));
+  let list = D.products.filter(p => (!U.cat || p.category === U.cat) && (!q || [p.name, p.brand, p.category, CAT_EN[p.category] || '', p.description, p.en && p.en.description].join(' ').toLowerCase().includes(q)));
   if (U.av === 'now') list = list.filter(p => p.stock > 0);
   if (U.av === 'pre') list = list.filter(p => p.stock <= 0 && (p.preorder || p.incoming > 0));
   if (U.av === 'sale') list = list.filter(p => p.was);
@@ -895,37 +1290,33 @@ function visible(){
 }
 function control(p){
   const q = cart[p.id] || 0, a = avail(p);
-  if (q) return `<div class="step"><button data-a="inc" data-id="${p.id}" aria-label="زيادة">+</button><b>${q}</b><button data-a="dec" data-id="${p.id}" aria-label="تقليل">−</button></div>`;
-  return a.can ? `<button class="add" data-a="inc" data-id="${p.id}" aria-label="إضافة ${esc(p.name)} إلى الطلب">${IC.plus}</button>` : '';
+  if (q) return `<div class="step"><button data-a="inc" data-id="${p.id}" aria-label="${T('incA')}">+</button><b>${q}</b><button data-a="dec" data-id="${p.id}" aria-label="${T('decA')}">−</button></div>`;
+  return a.can ? `<button class="add" data-a="inc" data-id="${p.id}" aria-label="${esc(T('addA', p.name))}">${IC.plus}</button>` : '';
 }
 function card(p){
   const a = avail(p);
   return `<article class="p ${a.can ? '' : 'sold'}">
-      <div class="ph" data-a="view" data-id="${p.id}" role="button" tabindex="0" aria-label="${esc(p.name)}">${discTag(p)}${pic(p)}${control(p)}</div>
+      <div class="ph" data-a="view" data-id="${p.id}">${discTag(p)}${pic(p)}${control(p)}</div>
       ${p.brand ? `<div class="brand">${esc(p.brand)}</div>` : ''}
-      <h3 class="nm" dir="auto" data-a="view" data-id="${p.id}">${esc(p.name)}</h3>
+      <h3 class="nm" dir="auto"><a href="#p-${encodeURIComponent(p.id)}" data-a="view" data-id="${p.id}">${esc(p.name)}</a></h3>
       ${p.size ? `<div class="sz" dir="auto">${esc(p.size)}</div>` : ''}
-      <div class="meta">${p.price ? `<span>${priceHtml(p)}</span>` : '<span class="small">السعر عند الطلب</span>'}${avHtml(a)}</div>
+      <div class="meta">${p.price ? `<span>${priceHtml(p)}</span>` : `<span class="small">${T('onRequest')}</span>`}${avHtml(a)}</div>
     </article>`;
 }
 /* "Any product on request": products not on the site can be ordered specially; the WhatsApp message is pre-written. */
 function specialMsg(term){
-  return [WS ? `مرحباً ${D.storeName || 'LUMIA'} 👋 (عميل جملة)` : `مرحباً ${D.storeName || 'LUMIA'} 👋`,
-    'أرغب في طلب منتج غير موجود على الموقع:',
-    `• اسم المنتج أو رابطه: ${term || ''}`,
-    `• الكمية: ${WS ? '' : '1'}`,
-    'يُرجى إرسال السعر وتفاصيل الشحن وموعد الوصول. شكراً لكم.'].join('\n');
+  return [T('spHello', D.storeName || 'LUMIA', WS), T('spWant'), T('spName') + (term || ''), T('spQty') + (WS ? '' : '1'), T('spAsk')].join('\n');
 }
 function specialHtml(term){
   const num = String(D.whatsapp || '').replace(/\D/g, '');
   const href = 'https://wa.me/' + num + '?text=' + encodeURIComponent(specialMsg(term));
   return `<section class="special" id="special">
     <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></div>
-    ${term ? `<span class="q">لم نجد «${esc(term)}» ضمن منتجاتنا الحالية</span>` : ''}
-    <h3>${term ? 'يمكننا توفيره لك بطلب خاص' : 'لم تجد المنتج الذي تبحث عنه؟'}</h3>
-    <p>نوفّر لك أي منتج من dm وRossmann وغيرها من المتاجر الألمانية بطلب خاص${WS ? ' وبالكميات التي تحتاجها' : ''}. أرسل لنا اسم المنتج أو رابطه أو صورته، وسنرسل لك السعر وتفاصيل الشحن وموعد الوصول.</p>
-    <ul><li>اسم المنتج أو رابطه</li><li>صورة المنتج</li><li>الكمية المطلوبة</li></ul>
-    <a href="${href}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>اطلب منتجاً خاصاً عبر واتساب</a>
+    ${term ? `<span class="q">${esc(T('spNotFound', term))}</span>` : ''}
+    <h3>${term ? T('spCan') : T('spQ')}</h3>
+    <p>${T('spP', WS)}</p>
+    <ul>${T('spLi').map(x => `<li>${x}</li>`).join('')}</ul>
+    <a href="${href}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>${T("spBtn")}</a>
   </section>`;
 }
 function renderGrid(){
@@ -936,9 +1327,9 @@ function renderGrid(){
   const key = U.sort === 'group' && !U.cat ? 'category' : U.sort === 'brand' || U.sort === 'group' ? 'brand' : '';
   const counts = {}; if (key) list.forEach(p => { const k = p[key] || ''; counts[k] = (counts[k] || 0) + 1; });
   let last = null; const cells = list.map(p => { const k = key ? (p[key] || '') : null; let h = '';
-    if (key && k !== last && Object.keys(counts).length > 1) h = `<div class="grp" dir="auto">${esc(k || 'أخرى')} <small>${counts[k]}</small></div>`;
+    if (key && k !== last && Object.keys(counts).length > 1) h = `<div class="grp" dir="auto">${esc(key === 'category' ? catName(k) || T('other') : k || T('other'))} <small>${counts[k]}</small></div>`;
     last = k; return h + card(p); });
-  $('grid').innerHTML = `<div class="count">${list.length} منتج</div><div class="grid">${cells.join('')}</div>` + specialHtml('');
+  $('grid').innerHTML = `<div class="count">${T('count', list.length)}</div><div class="grid">${cells.join('')}</div>` + specialHtml('');
 }
 
 /* ---------- cart ---------- */
@@ -950,7 +1341,7 @@ function totals(){
 function renderCart(){
   const t = totals();
   document.body.classList.toggle('hascart', !!t.count && !U.sheet && !U.page); document.body.classList.toggle('inpage', !!U.page);
-  $('cartbar').innerHTML = t.count && !U.sheet && !U.page ? `<div class="cartbar"><button data-a="cart"><span class="n">${t.count}</span><span>طلبك</span><span class="sum">${t.sum ? money(t.sum) + ' ج.م' + (t.unpriced ? ' +' : '') : 'إتمام الطلب'}</span></button></div>` : '';
+  $('cartbar').innerHTML = t.count && !U.sheet && !U.page ? `<div class="cartbar"><button data-a="cart"><span class="n">${t.count}</span><span>${T('order')}</span><span class="sum">${t.sum ? money(t.sum) + ' ' + cur() + (t.unpriced ? ' +' : '') : T('checkout')}</span></button></div>` : '';
 }
 
 /* ---------- sheets ---------- */
@@ -973,30 +1364,31 @@ function renderSheet(){
 }
 function cartHtml(){
   const ids = Object.keys(cart), t = totals();
-  if (!ids.length && !U.sent) return `<div class="grab"></div><div class="sh-top"><h2>طلبك</h2><button class="x" data-a="close" aria-label="إغلاق">${IC.x}</button></div><div class="empty"><b>طلبك فارغ</b>اضغط على علامة + بجوار أي منتج لإضافته.</div>`;
-  if (U.sent) return `<div class="grab"></div><div class="sh-top"><span></span><button class="x" data-a="close" aria-label="إغلاق">${IC.x}</button></div>
-    <div class="done"><b>تم فتح واتساب برسالة طلبك</b><div class="small">إذا لم تُرسَل الرسالة، يمكنك فتح واتساب مرة أخرى.</div></div>
-    <button class="cta" data-a="send">${IC.wa} فتح واتساب مرة أخرى</button><button class="ghost" data-a="clear">تم الإرسال، بدء طلب جديد</button>`;
+  const X = `<button class="x" data-a="close" aria-label="${T('closeA')}">${IC.x}</button>`;
+  if (!ids.length && !U.sent) return `<div class="grab"></div><div class="sh-top"><h2>${T('order')}</h2>${X}</div><div class="empty"><b>${T('emptyB')}</b>${T('emptyS')}</div>`;
+  if (U.sent) return `<div class="grab"></div><div class="sh-top"><span></span>${X}</div>
+    <div class="done"><b>${T('sentB')}</b><div class="small">${T('sentS')}</div></div>
+    <button class="cta" data-a="send">${IC.wa} ${T('reopen')}</button><button class="ghost" data-a="clear">${T('newOrder')}</button>`;
   const later = ids.some(id => split(byId(id), cart[id]).later > 0);
-  return `<div class="grab"></div><div class="sh-top"><h2>طلبك</h2><button class="x" data-a="close" aria-label="إغلاق">${IC.x}</button></div>
+  return `<div class="grab"></div><div class="sh-top"><h2>${T('order')}</h2>${X}</div>
     ${ids.map(id => { const p = byId(id), q = cart[id], s = split(p, q);
-      const st = s.later === 0 ? 'متوفر' : s.now === 0 ? (p.incoming > 0 ? 'قيد الشحن' : 'طلب مسبق') : `${s.now} متوفر + ${s.later} طلب مسبق`;
-      return `<div class="line"><div class="th">${pic(p)}</div><div class="t"><b dir="auto">${esc(p.name)}</b><span>${st}${p.price ? ' · ' + money(p.price * q) + ' ج.م' : ''}</span></div>
-        <div class="qty"><button data-a="inc" data-id="${id}" aria-label="زيادة">+</button><b>${q}</b><button data-a="dec" data-id="${id}" aria-label="تقليل">−</button></div></div>`; }).join('')}
-    <div class="tot"><span>الإجمالي${t.unpriced ? ' <span class="small">(دون المنتجات التي يُحدَّد سعرها عند الطلب)</span>' : ''}</span><span class="price">${money(t.sum)}<small>ج.م</small></span></div>
+      const st = s.later === 0 ? T('lnIn') : s.now === 0 ? (p.incoming > 0 ? T('way') : T('pre')) : T('lnMix', s.now, s.later);
+      return `<div class="line"><div class="th">${pic(p)}</div><div class="t"><b dir="auto">${esc(p.name)}</b><span>${st}${p.price ? ' · ' + money(p.price * q) + ' ' + cur() : ''}</span></div>
+        <div class="qty"><button data-a="inc" data-id="${id}" aria-label="${T('incA')}">+</button><b>${q}</b><button data-a="dec" data-id="${id}" aria-label="${T('decA')}">−</button></div></div>`; }).join('')}
+    <div class="tot"><span>${T('total')}${t.unpriced ? ` <span class="small">${T('totalNote')}</span>` : ''}</span><span class="price">${money(t.sum)}<small>${cur()}</small></span></div>
     ${promoHtml()}
-    ${later ? `<div class="note">${esc(D.preorderNote || 'تُحضَر منتجات الطلب المسبق مع أول شحنة قادمة.')}</div>` : ''}
-    ${D.deliveryNote || D.paymentNote ? `<div class="note">${[D.deliveryNote ? '<b>التوصيل:</b> ' + esc(D.deliveryNote) : '', D.paymentNote ? '<b>الدفع:</b> ' + esc(D.paymentNote) : ''].filter(Boolean).join('<br>')}</div>` : ''}
-    <label class="fl" for="fn">الاسم</label><input class="f" id="fn" data-f="name" value="${esc(form.name)}" autocomplete="name">
-    <label class="fl" for="fp">رقم الهاتف</label><input class="f" id="fp" data-f="phone" inputmode="tel" dir="ltr" style="text-align:right" value="${esc(form.phone)}" placeholder="01xxxxxxxxx" autocomplete="tel">
-    <label class="fl" for="fa">العنوان</label><input class="f" id="fa" data-f="addr" value="${esc(form.addr)}" autocomplete="street-address">
-    <label class="fl" for="fo">ملاحظات <span class="small">(اختيارية)</span></label><textarea class="f" id="fo" data-f="notes" rows="2">${esc(form.notes)}</textarea>
-    <button class="cta" data-a="send">${IC.wa} إرسال الطلب عبر واتساب</button>
-    <div class="small" style="text-align:center;margin-top:10px">سيُفتح واتساب برسالة جاهزة تتضمن جميع التفاصيل.</div>`;
+    ${later ? `<div class="note">${esc((EN() ? D.preorderNoteEn : D.preorderNote) || T('preNote'))}</div>` : ''}
+    <div class="note">${[`<b>${T('deliveryLbl')}</b> ` + esc(noteFor('deliveryNote', 'deliveryNoteEn') || T('delivFee')), `<b>${T('paymentLbl')}</b> ` + esc(noteFor('paymentNote', 'paymentNoteEn') || T('dpPayS'))].join('<br>')}</div>
+    <label class="fl" for="fn">${T('fName')}</label><input class="f" id="fn" data-f="name" value="${esc(form.name)}" autocomplete="name">
+    <label class="fl" for="fp">${T('fPhone')}</label><input class="f" id="fp" data-f="phone" inputmode="tel" dir="ltr" style="text-align:${EN() ? 'left' : 'right'}" value="${esc(form.phone)}" placeholder="01xxxxxxxxx" autocomplete="tel">
+    <label class="fl" for="fa">${T('fAddr')}</label><input class="f" id="fa" data-f="addr" value="${esc(form.addr)}" placeholder="${esc(T('fAddrPh'))}" autocomplete="street-address">
+    <label class="fl" for="fo">${T('fNotes')} <span class="small">${T('optional')}</span></label><textarea class="f" id="fo" data-f="notes" rows="2">${esc(form.notes)}</textarea>
+    <button class="cta" data-a="send">${IC.wa} ${T('send')}</button>
+    <div class="small" style="text-align:center;margin-top:10px">${T('sendNote')}</div>`;
 }
 
 /* ---------- product page ---------- */
-const TAG_AR = { vegan: 'نباتي بالكامل', natural: 'مكونات طبيعية', sensitive: 'للبشرة الحساسة', nofragrance: 'خالٍ من العطور', noparaben: 'خالٍ من البارابين', nosilicone: 'خالٍ من السيليكون', kids: 'مناسب للأطفال' };
+
 const PI = {
   back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>',
   bag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>',
@@ -1016,63 +1408,64 @@ function unitPrice(p){
   if (u === 'l' || u === 'لتر') { v *= 1000; u = 'ml'; }
   if (u === 'kg' || u === 'كجم') { v *= 1000; u = 'g'; }
   const isMl = u === 'ml' || u === 'مل';
-  if (v >= 1000) return `${money(p.price / v * 1000)} ج.م / ${isMl ? 'لتر' : 'كجم'}`;
-  return `${money(p.price / v * 100)} ج.م / 100 ${isMl ? 'مل' : 'جم'}`;
+  if (v >= 1000) return `${money(p.price / v * 1000)} ${cur()} / ${isMl ? T('perL') : T('perKg')}`;
+  return `${money(p.price / v * 100)} ${cur()} / 100 ${isMl ? T('ml') : T('gr')}`;
 }
 function related(p){
   const others = D.products.filter(x => x.id !== p.id && avail(x).can);
   const same = others.filter(x => x.brand && x.brand === p.brand);
   const cat = others.filter(x => !same.includes(x) && x.category && x.category === p.category);
-  return { list: [...same, ...cat].slice(0, 8), title: same.length ? `المزيد من ${p.brand}` : 'قد يعجبك أيضاً' };
+  return { list: [...same, ...cat].slice(0, 8), title: same.length ? T('moreFrom', p.brand) : T('mayLike') };
 }
 function pageHtml(){
   const p = byId(U.page), a = avail(p), q = cart[p.id] || 0, t = totals();
   const imgs = (p.images && p.images.length ? p.images : (p.image ? [p.image] : []));
-  const slides = imgs.length ? imgs.map((u, i) => `<img src="${esc(imgSrc(u))}" alt="${esc(p.name)} ${i + 1}" ${i ? 'loading="lazy"' : ''}>`).join('') : `<div class="noimg">${esc(p.brand || 'LUMIA')}</div>`;
+  const slides = imgs.length ? imgs.map((u, i) => `<img src="${esc(imgSrc(u))}" alt="${esc(p.name)} – ${T('photoN', i + 1)}" ${i ? 'loading="lazy"' : ''}>`).join('') : `<div class="noimg">${esc(p.brand || 'LUMIA')}</div>`;
   const up = unitPrice(p), rel = related(p);
-  const delivery = a.k === 'in' ? 'متوفر لدينا الآن، ويُجهَّز فور تأكيد الطلب.'
-    : a.k === 'way' ? 'قيد الشحن إلى مصر الآن، ويُسلَّم إليك فور وصوله.'
-    : a.k === 'pre' ? (D.preorderNote || 'طلب مسبق: يُحضَر خصيصاً لك مع أول شحنة قادمة.')
-    : 'غير متوفر حالياً. يمكنك التواصل معنا عبر واتساب للاستفسار عن موعد توفره.';
+  const delivery = a.k === 'in' ? T('dIn')
+    : a.k === 'way' ? T('dWay')
+    : a.k === 'pre' ? ((EN() ? D.preorderNoteEn : D.preorderNote) || T('dPre'))
+    : T('dOff');
   const accs = [
-    ['الوصف', p.description, false],
-    ['طريقة الاستخدام', p.usage, false],
-    ['المكونات', p.ingredients, true],
-    ['تحذيرات', p.warnings, false]
+    [T('accDesc'), ptx(p, 'description'), false],
+    [T('accUse'), ptx(p, 'usage'), false],
+    [T('accIng'), p.ingredients, true],
+    [T('accWarn'), ptx(p, 'warnings'), false]
   ].filter(x => String(x[1] || '').trim());
+  const feats = ptx(p, 'features') || [];
   const buyCtl = a.can
-    ? (q ? `<div class="qty"><button data-a="inc" data-id="${p.id}" aria-label="زيادة">+</button><b>${q}</b><button data-a="dec" data-id="${p.id}" aria-label="تقليل">−</button></div><button class="cta" data-a="cart">إتمام الطلب</button>`
-         : `<button class="cta" data-a="inc" data-id="${p.id}">إضافة إلى الطلب</button>`)
-    : `<button class="cta" disabled>غير متوفر حالياً</button>`;
+    ? (q ? `<div class="qty"><button data-a="inc" data-id="${p.id}" aria-label="${T('incA')}">+</button><b>${q}</b><button data-a="dec" data-id="${p.id}" aria-label="${T('decA')}">−</button></div><button class="cta" data-a="cart">${T('checkout')}</button>`
+         : `<button class="cta" data-a="inc" data-id="${p.id}">${T('addToOrder')}</button>`)
+    : `<button class="cta" disabled>${T('offStock')}</button>`;
   return `<div class="pdp" id="pdp" role="dialog" aria-label="${esc(p.name)}">
-    <div class="pdp-top"><button class="ib" data-a="back" aria-label="رجوع">${PI.back}</button><span class="mk">LUMIA</span>
-      <button class="ib" data-a="share" aria-label="مشاركة المنتج">${PI.share}</button>
-      <button class="ib" data-a="cart" aria-label="طلبك">${PI.bag}${t.count ? `<span class="n">${t.count}</span>` : ''}</button></div>
+    <div class="pdp-top"><button class="ib" data-a="back" aria-label="${T('back')}">${PI.back}</button><span class="mk">LUMIA</span>
+      <button class="ib" data-a="share" aria-label="${T('share')}">${PI.share}</button>
+      <button class="ib" data-a="cart" aria-label="${T('order')}">${PI.bag}${t.count ? `<span class="n">${t.count}</span>` : ''}</button></div>
     <div class="pdp-body">
       <div class="gal">
-        ${WS || !imgs.length ? '' : `<button class="v3btn" data-a="v3d" id="v3btn" aria-pressed="${U.v3 === p.id}">${U.v3 === p.id ? 'الصور' : 'عرض 3D ↻'}</button>`}
-        ${!WS && imgs.length && U.v3 === p.id ? '<div class="v3d" id="v3d"><div class="h">اسحبي لتدوير المنتج</div></div>' : ''}
+        ${WS || !imgs.length ? '' : `<button class="v3btn" data-a="v3d" id="v3btn" aria-pressed="${U.v3 === p.id}">${U.v3 === p.id ? T('photos') : T('v3')}</button>`}
+        ${!WS && imgs.length && U.v3 === p.id ? `<div class="v3d" id="v3d"><div class="h">${T('drag')}</div></div>` : ''}
         <div class="track" id="track">${slides}</div>
         ${imgs.length > 1 ? `<div class="dots" id="dots">${imgs.map((_, i) => `<i class="${i ? '' : 'on'}"></i>`).join('')}</div>
-        <div class="thumbs" id="thumbs">${imgs.map((u, i) => `<button class="${i ? '' : 'on'}" data-a="slide" data-i="${i}" aria-label="صورة ${i + 1}"><img src="${esc(imgSrc(u))}" alt=""></button>`).join('')}</div>` : ''}
+        <div class="thumbs" id="thumbs">${imgs.map((u, i) => `<button class="${i ? '' : 'on'}" data-a="slide" data-i="${i}" aria-label="${T('photoN', i + 1)}"><img src="${esc(imgSrc(u))}" alt=""></button>`).join('')}</div>` : ''}
       </div>
       <div class="info">
         ${p.brand ? `<button class="brandlink" data-a="brand" data-k="${esc(p.brand)}">${esc(p.brand)}</button>` : ''}
         <h1 dir="auto">${esc(p.name)}</h1>
         ${p.size ? `<div class="size" dir="auto">${esc(p.size)}</div>` : ''}
-        <div class="pricebox">${p.price ? `${priceHtml(p)}${up ? `<span class="unit">(${up})</span>` : ''}` : '<span class="small">يُحدَّد السعر عند تأكيد الطلب</span>'}</div>
-        ${p.was ? `<span class="saleinfo">خصم ${pct(p)}%${p.saleUntil ? ` · العرض ساري حتى ${p.saleUntil.split('-').reverse().join('/')}` : ''}</span>` : ''}
-        ${WS && (p.storeEUR || p.weightG) ? `<div class="wsinfo">${p.storeEUR ? `سعر المتجر في ألمانيا: <b class="num">€${String(p.storeEUR).replace('.', ',')}</b>` : ''}${p.storeEUR && p.weightG ? ' · ' : ''}${p.weightG ? `الوزن التقريبي: <b class="num">${money(p.weightG)} جم</b>` : ''}</div>` : ''}
+        <div class="pricebox">${p.price ? `${priceHtml(p)}${up ? `<span class="unit">(${up})</span>` : ''}` : `<span class="small">${T('priceLater')}</span>`}</div>
+        ${p.was ? `<span class="saleinfo">${T('saleUntil', pct(p), p.saleUntil ? p.saleUntil.split('-').reverse().join('/') : '')}</span>` : ''}
+        ${WS && (p.storeEUR || p.weightG) ? `<div class="wsinfo">${p.storeEUR ? `${T('storeEUR')} <b class="num">€${String(p.storeEUR).replace('.', ',')}</b>` : ''}${p.storeEUR && p.weightG ? ' · ' : ''}${p.weightG ? `${T('weight')} <b class="num">${money(p.weightG)} ${T('g')}</b>` : ''}</div>` : ''}
         ${avHtml(a)}
-        <div class="badges"><span class="badge">🇩🇪 أصلي من ألمانيا</span>${(p.tags || []).filter(k => TAG_AR[k]).map(k => `<span class="badge">${TAG_AR[k]}</span>`).join('')}</div>
+        <div class="badges"><span class="badge">${T('origin')}</span>${(p.tags || []).filter(k => T('tags')[k]).map(k => `<span class="badge">${T('tags')[k]}</span>`).join('')}</div>
         <div class="buy">${buyCtl}</div>
-        <div class="deliv"><div>${PI.box}<span>${esc(delivery)}</span></div>${D.deliveryNote ? `<div>${PI.truck}<span>${esc(D.deliveryNote)}</span></div>` : ''}${D.paymentNote ? `<div>${PI.card}<span>${esc(D.paymentNote)}</span></div>` : ''}<div>${PI.chat}<span>يُرسَل الطلب عبر واتساب، ونؤكد معك الإجمالي وموعد التوصيل.</span></div></div>
-        ${p.features && p.features.length ? `<ul class="feat">${p.features.map(f => `<li dir="auto">${esc(f)}</li>`).join('')}</ul>` : ''}
+        <div class="deliv"><div>${PI.box}<span>${esc(delivery)}</span></div><div>${PI.truck}<span>${esc(noteFor('deliveryNote', 'deliveryNoteEn') || T('delivFee'))}</span></div><div>${PI.card}<span>${esc(noteFor('paymentNote', 'paymentNoteEn') || T('dpPayS'))}</span></div><div>${PI.chat}<span>${T('viaWa')}</span></div></div>
+        ${feats.length ? `<ul class="feat">${feats.map(f => `<li dir="auto">${esc(f)}</li>`).join('')}</ul>` : ''}
         ${accs.length ? `<div class="accs">${accs.map(([h, c, lat], i) => `<details class="acc" ${i === 0 ? 'open' : ''}><summary>${h}</summary><div class="c ${lat ? 'lat' : ''}" dir="${lat ? 'ltr' : 'auto'}">${esc(c)}</div></details>`).join('')}</div>` : ''}
       </div>
       ${rel.list.length ? `<section class="related"><h2>${esc(rel.title)}</h2><div class="rel">${rel.list.map(card).join('')}</div></section>` : ''}
     </div>
-    <div class="buybar">${p.price ? `<span class="price">${money(p.price)}<small>ج.م</small></span>` : ''}${a.can ? (q ? `<button class="cta" data-a="cart">إتمام الطلب (${t.count})</button>` : `<button class="cta" data-a="inc" data-id="${p.id}">إضافة إلى الطلب</button>`) : '<button class="cta" disabled>غير متوفر حالياً</button>'}</div>
+    <div class="buybar">${p.price ? `<span class="price">${money(p.price)}<small>${cur()}</small></span>` : ''}${a.can ? (q ? `<button class="cta" data-a="cart">${T('checkout')} (${t.count})</button>` : `<button class="cta" data-a="inc" data-id="${p.id}">${T('addToOrder')}</button>`) : `<button class="cta" disabled>${T('offStock')}</button>`}</div>
   </div>`;
 }
 let v3inst = null;
@@ -1106,11 +1499,11 @@ function initV3(){
 }
 let lastPage = null;
 function renderPage(){
-  if (!U.page) { $('page').innerHTML = ''; lastPage = null; document.title = WS ? 'LUMIA · أسعار الجملة' : 'LUMIA Care · Imported Gems'; if (!U.sheet) document.body.style.overflow = ''; return; }
+  if (!U.page) { $('page').innerHTML = ''; lastPage = null; document.title = WS ? T('wsTitle') : T('title'); setProductLd(null); if (!U.sheet) document.body.style.overflow = ''; return; }
   const keep = U.page === lastPage ? $('pdp')?.scrollTop : 0;
   const slide = U.page === lastPage ? U.slide || 0 : 0;
   $('page').innerHTML = pageHtml(); lastPage = U.page; U.slide = slide;
-  document.title = byId(U.page).name + ' · LUMIA';
+  document.title = byId(U.page).name + ' · LUMIA'; setProductLd(byId(U.page));
   document.body.style.overflow = 'hidden';
   $('pdp').scrollTop = keep || 0;
   initV3();
@@ -1120,6 +1513,15 @@ function renderPage(){
     const i = Math.round(tr.scrollLeft / tr.clientWidth); if (i === U.slide) return; U.slide = i;
     document.querySelectorAll('#dots i, #thumbs button').forEach(el => el.classList.toggle('on', +(el.dataset.i ?? [...el.parentNode.children].indexOf(el)) === i));
   }, { passive: true });
+}
+/* product details for search engines (price in EGP, availability), only for the product being viewed */
+function setProductLd(p){
+  document.getElementById('pld')?.remove();
+  if (!p || WS) return;
+  const d = { '@context': 'https://schema.org', '@type': 'Product', name: p.name, brand: p.brand ? { '@type': 'Brand', name: p.brand } : undefined,
+    image: (p.images || [p.image]).filter(Boolean).map(u => new URL(imgSrc(u), location.href).href), description: String(ptx(p, 'description') || '').slice(0, 500) || undefined, sku: p.code,
+    offers: p.price ? { '@type': 'Offer', priceCurrency: 'EGP', price: p.price, url: location.href, availability: 'https://schema.org/' + (p.stock > 0 ? 'InStock' : p.incoming > 0 || p.preorder ? 'PreOrder' : 'OutOfStock') } : undefined };
+  const s = document.createElement('script'); s.type = 'application/ld+json'; s.id = 'pld'; s.textContent = JSON.stringify(d); document.head.appendChild(s);
 }
 function route(){
   const m = /^#p-(.+)$/.exec(location.hash);
@@ -1136,18 +1538,20 @@ function orderMessage(){
     if (s.now) now.push(`▫️ ${s.now} × ${p.name} [${p.code}]`);
     if (s.later) later.push(`▫️ ${s.later} × ${p.name} [${p.code}]`); }
   const t = totals(), L = [];
-  L.push(WS ? `🛍️ طلب جملة — ${D.storeName}` : `🛍️ طلب جديد — ${D.storeName}`);
-  L.push(`👤 الاسم: ${form.name.trim()}`);
-  if (form.phone.trim()) L.push(`📱 رقم الهاتف: ${form.phone.trim()}`);
-  if (form.addr.trim()) L.push(`📍 العنوان: ${form.addr.trim()}`);
+  // the app reads this message back ("Paste an order"), in Arabic and in English
+  L.push(WS ? T('msgWs', D.storeName) : T('msgNew', D.storeName));
+  L.push(T('msgName') + form.name.trim());
+  if (form.phone.trim()) L.push(T('msgPhone') + form.phone.trim());
+  if (form.addr.trim()) L.push(T('msgAddr') + form.addr.trim());
   L.push('━━━━━━━━━━');
-  if (now.length) { L.push('✅ متوفر:'); L.push(...now); }
-  if (later.length) { L.push('⏳ طلب مسبق:'); L.push(...later); }
+  if (now.length) { L.push(T('msgNow')); L.push(...now); }
+  if (later.length) { L.push(T('msgLater')); L.push(...later); }
   L.push('━━━━━━━━━━');
   const pr = promoNow();
-  if (t.sum) L.push(`💰 الإجمالي: ${money(t.sum)} ج.م${t.unpriced ? ' + منتجات يُحدَّد سعرها لاحقاً' : ''}`);
-  if (pr && pr.off) { L.push(`🎟️ كود الخصم: ${pr.code} (− ${money(pr.off)} ج.م)`); L.push(`✨ الإجمالي بعد الخصم: ${money(t.sum - pr.off)} ج.م`); }
-  if (form.notes.trim()) L.push(`📝 ملاحظات: ${form.notes.trim()}`);
+  if (t.sum) L.push(T('msgTotal', money(t.sum), t.unpriced));
+  if (pr && pr.off) { L.push(T('msgPromo', pr.code, money(pr.off))); L.push(T('msgAfter', money(t.sum - pr.off))); }
+  if (!WS) L.push(T('msgDeliv'));
+  if (form.notes.trim()) L.push(T('msgNotes') + form.notes.trim());
   return L.join('\n');
 }
 
@@ -1155,9 +1559,10 @@ let tt;
 function toast(m){ document.querySelector('.toast')?.remove(); clearTimeout(tt); const t = document.createElement('div'); t.className = 'toast'; t.textContent = m; document.body.appendChild(t); tt = setTimeout(() => t.remove(), 2300); }
 
 const A = {
-  inc: d => { const first = !cart[d.id]; setQty(d.id, (cart[d.id] || 0) + 1); if (first && cart[d.id] && !U.sheet) toast('أُضيف المنتج إلى طلبك'); },
+  inc: d => { const first = !cart[d.id]; setQty(d.id, (cart[d.id] || 0) + 1); if (first && cart[d.id] && !U.sheet) toast(T('added')); },
+  lang: (d, el, e) => { if (e) e.preventDefault(); setLang(EN() ? 'ar' : 'en'); },
   dec: d => setQty(d.id, (cart[d.id] || 0) - 1),
-  view: d => { U.fromGrid = true; location.hash = 'p-' + encodeURIComponent(d.id); },
+  view: (d, el, e) => { if (e && el && el.tagName === 'A') e.preventDefault(); U.fromGrid = true; location.hash = 'p-' + encodeURIComponent(d.id); },
   back: () => { if (U.fromGrid) { U.fromGrid = false; history.back(); } else { history.replaceState(null, '', location.pathname + location.search); route(); } },
   special: () => { const el = $('special'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); },
   brand: d => { history.replaceState(null, '', location.pathname + location.search); U.fromGrid = false; route(); U.q = d.k; $('q').value = d.k; U.cat = ''; U.av = 'all'; renderFilters(); renderGrid(); $('shop').scrollIntoView(); },
@@ -1166,21 +1571,22 @@ const A = {
   share: async () => {
     const p = byId(U.page), url = location.href;
     try { if (navigator.share) { await navigator.share({ title: p.name + ' · LUMIA', url }); return; } } catch (e) { return; }
-    try { await navigator.clipboard.writeText(url); toast('تم نسخ رابط المنتج'); } catch (e) { toast(url); }
+    try { await navigator.clipboard.writeText(url); toast(T('copied')); } catch (e) { toast(url); }
   },
   cart: () => openSheet({ type: 'cart' }),
-  promoApply: () => { const v = normPromo($('promoIn')?.value); if (!v) { toast('اكتب كود الخصم أولاً'); return; }
-    U.promo = v; const r = promoNow(); if (r.err && !/يُطبَّق/.test(r.err)) { U.promo = ''; toast(r.err); return; }
-    store.set('lumia_promo', U.promo); renderSheet(); toast(r.off ? `تم تطبيق الخصم: ${money(r.off)} ج.م` : 'تم حفظ الكود'); },
+  promoApply: () => { const v = normPromo($('promoIn')?.value); if (!v) { toast(T('promoEnter')); return; }
+    U.promo = v; const r = promoNow(); if (r.err && !r.min) { U.promo = ''; toast(r.err); return; }
+    store.set('lumia_promo', U.promo); renderSheet(); toast(r.off ? T('promoDone', money(r.off)) : T('promoSaved')); },
   promoRemove: () => { U.promo = ''; store.set('lumia_promo', ''); renderSheet(); },
   close: () => closeSheet(),
   scrim: (d, el, e) => { if (e.target === el) closeSheet(); },
-  av: d => { U.av = d.k; renderFilters(); renderGrid(); },
-  cat: d => { U.cat = d.k; renderFilters(); renderGrid(); },
-  clear: () => { U.promo = ''; store.set('lumia_promo', ''); cart = {}; store.set(CART_KEY, cart); U.sent = false; closeSheet(); renderGrid(); toast('شكراً لك، سنتواصل معك قريباً'); },
+  // (from the homepage tiles/banner: also jump down to the products)
+  av: d => { U.av = d.k; renderFilters(); renderGrid(); if (d.go) $('shop').scrollIntoView({ behavior: 'smooth' }); },
+  cat: d => { U.cat = d.k; renderFilters(); renderGrid(); if (d.go) $('shop').scrollIntoView({ behavior: 'smooth' }); },
+  clear: () => { U.promo = ''; store.set('lumia_promo', ''); cart = {}; store.set(CART_KEY, cart); U.sent = false; closeSheet(); renderGrid(); toast(T('thanks')); },
   send: () => {
-    if (!form.name.trim()) { toast('يرجى كتابة الاسم أولاً'); $('fn')?.focus(); return; }
-    if (!Object.keys(cart).length) { toast('طلبك فارغ'); return; }
+    if (!form.name.trim()) { toast(T('needName')); $('fn')?.focus(); return; }
+    if (!Object.keys(cart).length) { toast(T('emptyOrder')); return; }
     store.set('lumia_me', form);
     const num = String(D.whatsapp || '').replace(/\D/g, '');
     window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(orderMessage()), '_blank');
@@ -1195,18 +1601,18 @@ try { chat.msgs = JSON.parse(sessionStorage.getItem(CHAT_KEY) || '[]'); } catch 
 const saveChat = () => { try { sessionStorage.setItem(CHAT_KEY, JSON.stringify(chat.msgs.map(m => Object.assign({}, m, { image: m.image ? '' : undefined, hadImg: !!m.image || m.hadImg })).slice(-30))); } catch (e) {} };
 function initChat(){
   if (WS || !D.chatUrl || $('chatFab')) return;
-  document.body.insertAdjacentHTML('beforeend', `<button class="chatfab" id="chatFab" type="button" data-a="chatOpen" aria-label="المساعدة"><span class="dot"></span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>اسألي LUMIA</button>
-  <section class="chat" id="chat" hidden role="dialog" aria-label="مساعدة LUMIA">
-    <div class="hd"><img src="${WS ? '../' : ''}logo-mark.png" alt=""><div><b>مساعدة LUMIA</b><small>مستشارة العناية والجمال · تجيب خلال ثوانٍ</small></div><button class="x" type="button" data-a="chatClose" aria-label="إغلاق">✕</button></div>
+  document.body.insertAdjacentHTML('beforeend', `<button class="chatfab" id="chatFab" type="button" data-a="chatOpen" data-ta="chatAria" aria-label="${T('chatAria')}"><span class="dot"></span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg><span data-t="chatFab">${T('chatFab')}</span></button>
+  <section class="chat" id="chat" hidden role="dialog" data-ta="chatTitle" aria-label="${T('chatTitle')}">
+    <div class="hd"><img src="${WS ? '../' : ''}logo-mark.png" alt=""><div><b data-t="chatTitle">${T('chatTitle')}</b><small data-t="chatSub">${T('chatSub')}</small></div><button class="x" type="button" data-a="chatClose" data-ta="closeA" aria-label="${T('closeA')}">✕</button></div>
     <div class="msgs" id="chatMsgs"></div>
     <div class="chips" id="chatChips"></div>
     <div class="pend" id="chatPend" hidden></div>
-    <div class="cnote">المساعدة تقدّم اقتراحات عامة وليست بديلاً عن استشارة الطبيب.</div>
+    <div class="cnote" data-t="chatNote">${T('chatNote')}</div>
     <form class="in" id="chatForm">
-      <label class="ic" title="إرفاق صورة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="12" cy="12" r="3.2"/><path d="M8 5l1.5-2h5L16 5"/></svg><input type="file" accept="image/*" id="chatImg" hidden></label>
-      <textarea id="chatIn" rows="1" placeholder="اكتبي سؤالك…" aria-label="رسالتك"></textarea>
-      <button class="ic send" type="submit" aria-label="إرسال"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></button>
+      <label class="ic" data-ta="chatAttach" title="${T('chatAttach')}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="12" cy="12" r="3.2"/><path d="M8 5l1.5-2h5L16 5"/></svg><input type="file" accept="image/*" id="chatImg" hidden></label>
+      <textarea id="chatIn" rows="1" data-tp="chatPh" data-ta="chatMsg" placeholder="${T('chatPh')}" aria-label="${T('chatMsg')}"></textarea>
+      <button class="ic send" type="submit" data-ta="chatSend" aria-label="${T('chatSend')}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></button>
     </form>
   </section>`);
   $('chatForm').addEventListener('submit', e => { e.preventDefault(); sendChat(); });
@@ -1214,8 +1620,8 @@ function initChat(){
   $('chatIn').addEventListener('input', e => { e.target.style.height = 'auto'; e.target.style.height = Math.min(120, e.target.scrollHeight) + 'px'; });
   $('chatImg').addEventListener('change', async e => {
     const f = e.target.files && e.target.files[0]; e.target.value = ''; if (!f) return;
-    try { chat.img = await shrinkPhoto(f); $('chatPend').hidden = false; $('chatPend').innerHTML = `<img src="data:image/jpeg;base64,${chat.img}" alt=""> صورة مرفقة — اكتبي سؤالك ثم أرسلي <button type="button" data-a="chatNoImg" style="border:0;background:none;color:#b9786b;cursor:pointer">إزالة</button>`; }
-    catch (x) { toast('تعذّر قراءة الصورة'); }
+    try { chat.img = await shrinkPhoto(f); $('chatPend').hidden = false; $('chatPend').innerHTML = `<img src="data:image/jpeg;base64,${chat.img}" alt=""> ${T('chatImgOk')} <button type="button" data-a="chatNoImg" style="border:0;background:none;color:#b9786b;cursor:pointer">${T('remove')}</button>`; }
+    catch (x) { toast(T('chatImgErr')); }
   });
 }
 function shrinkPhoto(file){
@@ -1223,18 +1629,19 @@ function shrinkPhoto(file){
     const k = Math.min(1, 1024 / Math.max(im.width, im.height)), c = document.createElement('canvas'); c.width = Math.round(im.width * k); c.height = Math.round(im.height * k);
     const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.drawImage(im, 0, 0, c.width, c.height); res(c.toDataURL('image/jpeg', 0.82).split(',')[1]); }; im.src = fr.result; }; fr.readAsDataURL(file); });
 }
+function relangChat(){ if ($('chat')) { applyLang(); if (!$('chat').hidden) renderChat(); } }
 function recCard(p){
   return `<div class="rec"><div class="im">${p.image ? `<img src="${esc(imgSrc(p.image))}" alt="" loading="lazy">` : ''}</div><div class="t">${esc(p.name)}</div>
-    <div class="pr">${p.price ? money(p.price) + ' ج.م' : '<span style="font-weight:400;color:var(--muted)">السعر عند الطلب</span>'}</div>
-    <div class="b"><button type="button" data-a="chatView" data-id="${esc(p.id)}">عرض</button>${avail(p).can ? `<button type="button" class="radd" data-a="chatAdd" data-id="${esc(p.id)}">أضف</button>` : ''}</div></div>`;
+    <div class="pr">${p.price ? money(p.price) + ' ' + cur() : `<span style="font-weight:400;color:var(--muted)">${T('onRequest')}</span>`}</div>
+    <div class="b"><button type="button" data-a="chatView" data-id="${esc(p.id)}">${T('chatView')}</button>${avail(p).can ? `<button type="button" class="radd" data-a="chatAdd" data-id="${esc(p.id)}">${T('chatAdd')}</button>` : ''}</div></div>`;
 }
 function renderChat(){
   const box = $('chatMsgs'); if (!box) return;
-  const hello = `أهلاً بكِ في ${esc(D.storeName || 'LUMIA')} ✨\nأنا مساعدتكِ للعناية بالبشرة والشعر. أخبريني عن نوع بشرتكِ أو المشكلة التي تودّين علاجها، ويمكنكِ إرفاق صورة لمنتج أو للمنطقة التي تقلقكِ، وسأقترح عليكِ الأنسب من منتجاتنا.`;
+  const hello = T('chatHello', esc(D.storeName || 'LUMIA'));
   box.innerHTML = `<div class="m a">${hello}</div>` + chat.msgs.map(m => `<div class="m ${m.role === 'user' ? 'u' : 'a'}">${m.image ? `<img class="ph" src="data:image/jpeg;base64,${m.image}" alt="">` : m.hadImg ? '📷 ' : ''}${esc(m.text || '')}${
     (m.products || []).map(byId).filter(Boolean).length ? `<div class="recs">${m.products.map(byId).filter(Boolean).map(recCard).join('')}</div>` : ''}</div>`).join('')
-    + (chat.busy ? '<div class="typing">مساعدة LUMIA تكتب…</div>' : '');
-  $('chatChips').innerHTML = chat.msgs.length ? '' : ['بشرتي دهنية وعندي حبوب', 'بشرتي جافة وحساسة', 'شعري متساقط', 'أبحث عن واقي شمس'].map(t => `<button type="button" data-a="chatAsk" data-t="${esc(t)}">${esc(t)}</button>`).join('');
+    + (chat.busy ? `<div class="typing">${T('chatTyping')}</div>` : '');
+  $('chatChips').innerHTML = chat.msgs.length ? '' : T('chatChips').map(t => `<button type="button" data-a="chatAsk" data-t="${esc(t)}">${esc(t)}</button>`).join('');
   box.scrollTop = box.scrollHeight;
 }
 async function sendChat(text){
@@ -1246,11 +1653,11 @@ async function sendChat(text){
   chat.busy = true; renderChat();
   try {
     const r = await fetch(D.chatUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: chat.msgs.map(m => ({ role: m.role, text: m.text, image: m.image || '' })) }) });
+      body: JSON.stringify({ lang: LANG, messages: chat.msgs.map(m => ({ role: m.role, text: m.text, image: m.image || '' })) }) });
     const a = await r.json();
-    chat.msgs.push({ role: 'assistant', text: a.reply || 'عذراً، حدث خطأ. حاولي مرة أخرى.', products: a.products || [] });
+    chat.msgs.push({ role: 'assistant', text: a.reply || T('chatErr'), products: a.products || [] });
   } catch (e) {
-    chat.msgs.push({ role: 'assistant', text: 'تعذّر الاتصال الآن. تحققي من الإنترنت ثم حاولي مرة أخرى، أو تواصلي معنا عبر واتساب.', products: [] });
+    chat.msgs.push({ role: 'assistant', text: T('chatOff'), products: [] });
   }
   chat.busy = false; saveChat(); renderChat();
 }
@@ -1259,7 +1666,7 @@ Object.assign(A, {
   chatClose: () => { if (ovState() === 'chat') history.back(); else doChatClose(); },
   chatAsk: d => sendChat(d.t),
   chatNoImg: () => { chat.img = ''; $('chatPend').hidden = true; },
-  chatAdd: d => { setQty(d.id, (cart[d.id] || 0) + 1); toast('أُضيف إلى طلبك'); },
+  chatAdd: d => { setQty(d.id, (cart[d.id] || 0) + 1); toast(T('added2')); },
   chatView: d => { if (ovState() === 'chat') history.replaceState(null, ''); doChatClose(); A.view(d); }
 });
 document.addEventListener('click', e => {
@@ -1270,7 +1677,7 @@ document.addEventListener('click', e => {
 });
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { if (U.sheet) closeSheet(); else if (U.page) A.back(); }
-  if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.ph[data-a=view]')) { e.preventDefault(); A.view(e.target.dataset); }
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.sl[data-a=view]')) { e.preventDefault(); A.view(e.target.dataset); }
 });
 document.addEventListener('input', e => { const f = e.target.dataset.f; if (f) form[f] = e.target.value; });
 $('q').addEventListener('input', e => { U.q = e.target.value; renderGrid(); });
@@ -1308,7 +1715,7 @@ window.addEventListener('beforeinstallprompt', e => {
   try { localStorage.removeItem(INSTALLED_KEY); } catch (x) {}
   if (!standalone() && !WS) showInstall(true);
 });
-window.addEventListener('appinstalled', () => { installEvt = null; markInstalled(); toast('تم تثبيت تطبيق LUMIA على جهازك'); });
+window.addEventListener('appinstalled', () => { installEvt = null; markInstalled(); toast(T('installed')); });
 if (!WS && isIOS && !standalone() && !inAppBrowser && !store.get(INSTALLED_KEY, 0)) showInstall(true);
 if (!WS && navigator.getInstalledRelatedApps) navigator.getInstalledRelatedApps().then(apps => { if (apps && apps.length) markInstalled(); }).catch(() => {});
 const doInstall = async () => {
@@ -1319,12 +1726,12 @@ const doInstall = async () => {
     if (r && r.outcome === 'accepted') markInstalled(); else showInstall(false);
     return;
   }
-  const steps = ['اضغط على زر المشاركة <b>⬆︎</b> أسفل الشاشة في Safari.', 'اختر <b>«إضافة إلى الشاشة الرئيسية»</b>.', 'اضغط <b>«إضافة»</b>، وستجد أيقونة LUMIA على شاشتك.'];
+  const steps = T('instSteps');
   $('sheet').innerHTML = `<div class="scrim" data-a="scrim"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>
-    <div class="sh-top"><h2>تثبيت تطبيق LUMIA</h2><button class="x" data-a="close" aria-label="إغلاق">${IC.x}</button></div>
-    <p class="small" style="margin:0 0 6px">أضف المتجر إلى شاشتك الرئيسية لتفتحه بلمسة واحدة مثل أي تطبيق.</p>
+    <div class="sh-top"><h2>${T('instH')}</h2><button class="x" data-a="close" aria-label="${T('closeA')}">${IC.x}</button></div>
+    <p class="small" style="margin:0 0 6px">${T('instP')}</p>
     <ol class="ios-steps">${steps.map(x => `<li><span>${x}</span></li>`).join('')}</ol>
-    <button class="cta" id="iosDone">تم التثبيت</button><button class="ghost" data-a="close">لاحقاً</button></div></div>`;
+    <button class="cta" id="iosDone">${T('instDone')}</button><button class="ghost" data-a="close">${T('later')}</button></div></div>`;
   U.sheet = { type: 'help' }; document.body.style.overflow = 'hidden';
   $('iosDone').addEventListener('click', () => { markInstalled(); closeSheet(); });
 };
@@ -1332,6 +1739,14 @@ $('installBtn').addEventListener('click', doInstall);
 $('installBtn2').addEventListener('click', doInstall);
 $('goShop').addEventListener('click', e => { e.preventDefault(); $('shop').scrollIntoView({ behavior: 'smooth' }); });
 
+/* sections fade in softly as they scroll into view (never hides content when motion is reduced or the browser is old) */
+(function(){
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  document.documentElement.classList.add('rv');
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+applyLang();
 load();
 </script>
 </body>

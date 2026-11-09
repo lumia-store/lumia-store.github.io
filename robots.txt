@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /wholesale/
+Sitemap: https://lumia-store.github.io/sitemap.xml

@@ -1,5 +1,5 @@
 /* LUMIA shop — works offline with the last products seen, always fetches fresh data when online. */
-const CACHE = 'lumia-v4';
+const CACHE = 'lumia-v5';   // v5: English/Arabic website
 const CORE = ['./', 'index.html', 'logo-full.png', 'logo-mark.png', 'icon-192.png', 'icon-512.png', 'manifest.webmanifest'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
