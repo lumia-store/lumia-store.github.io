@@ -698,7 +698,7 @@ html[lang=ar] .langbtn span{font-family:Montserrat,var(--f-body);letter-spacing:
 .toast.wact{display:flex;align-items:center;gap:10px;padding-block:6px;padding-inline:18px 6px}
 .tact{border:0;background:none;color:var(--gold-2);font:600 14px var(--f-body);padding:8px 12px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;border-radius:2px;flex:none}
 .tact:focus-visible{outline:2px solid var(--gold-2);outline-offset:1px}
-html.ld .brands,html.ld #shop{visibility:hidden}
+html.ld .brands,html.ld #shop,html.ld .promise{visibility:hidden}
 /* poster banners (made by the owner in the app → Website banners). The design is never cropped: it is shown whole
    (contain) in a box whose shape comes from the published picture size, so the page does not jump when it loads. */
 .bnr{padding:18px 0 10px;background:var(--page)}
@@ -785,6 +785,264 @@ html.rv .reveal.in{opacity:1;transform:none}
   .hero-copy .route{animation-delay:.12s}.hero-copy .ctas{animation-delay:.22s}
   @keyframes heroIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 }
+/* =====================================================================
+   BOUTIQUE REDESIGN — calm editorial layout: thin announcement bar, sticky header (links · wordmark · icons),
+   centred logo + one line + two buttons, full-width banners, quiet brands strip, big tiles, plain product cards.
+   Bone ground, deep espresso ink, one gold for hairlines and small capitals, burgundy only for offers.
+   ===================================================================== */
+:root{
+  --page:#f8f4ee; --tile:#fffdfa; --well:#f2ece3; --soft:#f1e9de; --ink:#2b2018; --muted:#6e6157; --line:#e6dccf;
+  --primary:#2b2018; --on-primary:#f7f0e5; --wine:#7d2a36; --gold:#a98355; --gold-2:#ccb084; --gold-text:#85643c;
+  --hh:118px;
+}
+html{scroll-padding-top:calc(var(--hh) + 10px)}
+/* announcement bar */
+.ann{background:var(--ink);color:#eadfcd;font:400 12px/1.4 var(--f-body);letter-spacing:.04em}
+html[lang=en] .ann{letter-spacing:.08em;text-transform:uppercase;font-size:11px}
+.ann .wrap{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 14px;min-height:34px;padding-block:7px;text-align:center}
+.ann i{width:4px;height:4px;border-radius:50%;background:var(--gold-2);flex:none}
+@media (max-width:520px){.ann i,.ann span+i+span{display:none}}
+/* header */
+.site{position:sticky;top:0;z-index:8;background:color-mix(in srgb,var(--page) 94%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+.site.up{box-shadow:0 10px 30px -24px rgba(43,32,24,.5)}
+.shd{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;min-height:64px}
+.hnav{display:flex;gap:26px;align-items:center}
+.hnav a,.mnav a{color:var(--ink);text-decoration:none;font:500 13.5px/1 var(--f-body);letter-spacing:.02em;padding:6px 0;border-bottom:1px solid transparent;white-space:nowrap;transition:border-color .25s,color .25s}
+html[lang=en] .hnav a,html[lang=en] .mnav a{text-transform:uppercase;font-size:12px;letter-spacing:.12em}
+.hnav a:hover,.mnav a:hover{border-bottom-color:var(--gold)}
+.hnav a.navSale,.mnav a.navSale{color:var(--wine)}
+.wm{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;justify-self:center}
+.wm img{width:34px;height:34px}
+.wm span{display:flex;flex-direction:column;align-items:center;line-height:1;direction:ltr}
+.wm b{font:500 23px/1 var(--f-latin);letter-spacing:.34em;padding-inline-start:.34em}
+.wm small{font:400 8.5px/1 Montserrat,sans-serif;letter-spacing:.62em;padding-inline-start:.62em;color:var(--gold-text);margin-top:5px}
+.hic{display:flex;align-items:center;justify-content:flex-end;gap:2px}
+.hib{position:relative;width:40px;height:40px;border:0;background:none;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;border-radius:50%;transition:background .2s;text-decoration:none;padding:0;margin:0;box-shadow:none}
+.hib:hover{background:var(--soft)}
+.hib svg{width:21px;height:21px}
+.hib.wa svg{width:19px;height:19px}
+.hib .n{position:absolute;top:3px;inset-inline-end:1px;min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:var(--ink);color:var(--on-primary);font:600 10.5px/17px var(--f-num);text-align:center}
+.site .install{border:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.site .langbtn{border:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:8px 10px;font-size:12.5px;color:var(--muted)}
+.site .langbtn:hover{color:var(--ink)}
+.mnav{display:none;border-top:1px solid var(--line)}
+.mnav .wrap{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none;justify-content:center;min-height:40px;align-items:center}
+.mnav .wrap::-webkit-scrollbar{display:none}
+@media (max-width:899px){
+  .hnav{display:none}
+  .mnav{display:block}
+  .shd{grid-template-columns:auto 1fr;min-height:58px}
+  .wm{justify-self:start}
+  .wm img{width:30px;height:30px}.wm b{font-size:20px}
+}
+@media (max-width:420px){.mnav .wrap{justify-content:flex-start;gap:20px}.site .langbtn{padding:8px 6px}.hib{width:38px}}
+/* hero: the logo, one line, two buttons — nothing else */
+.hero{background:radial-gradient(60% 90% at 50% 0%,#fffaf2 0%,transparent 70%),var(--page);color:var(--ink)}
+.hero::before{content:none}
+.hero-in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0;padding-block:clamp(30px,6vw,64px) clamp(26px,5vw,52px)!important;grid-template-columns:none!important}
+.hero .logo{width:min(168px,44vw)}
+@media (min-width:900px){.hero .logo{width:190px}}
+.hero .tag{margin:20px auto 0;max-width:30ch;font:400 clamp(20px,4.6vw,30px)/1.6 var(--f-display);color:var(--ink);text-wrap:balance}
+html[lang=en] .hero .tag{font:400 clamp(24px,5vw,36px)/1.3 var(--f-display);max-width:24ch}
+.hero .ctas{justify-content:center!important;margin-top:26px;gap:12px}
+.cta-main,.cta-ghost{padding:14px 30px;font-size:13.5px;letter-spacing:.06em}
+html[lang=en] .cta-main,html[lang=en] .cta-ghost{text-transform:uppercase;font-size:12px;letter-spacing:.14em}
+.cta-ghost{border-color:var(--ink)}
+.cta-ghost:hover{background:var(--ink);color:var(--on-primary)}
+/* banners: full width, no frame */
+.bnr{padding:0 0 6px}
+.bnr .wrap{max-width:1440px;padding-inline:0}
+.bvp{border:0;border-radius:0;background:var(--well);max-height:none;margin-inline:auto;
+  max-width:calc((100vh - var(--hh) - 60px) * var(--bw,16) / var(--bh,9));max-width:calc((100svh - var(--hh) - 60px) * var(--bw,16) / var(--bh,9))}
+@media (min-width:1441px){.bvp{border-radius:2px}}
+.bnav{background:rgba(255,253,250,.86);border:0;width:46px;height:46px;margin-top:-23px}
+.bnav.prev{inset-inline-start:20px}.bnav.next{inset-inline-end:20px}
+.bctl{margin-top:12px}
+/* promise row */
+.promise{padding:clamp(26px,4vw,40px) 0;border-bottom:1px solid var(--line)}
+.promise .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 16px}
+@media (min-width:900px){.promise .wrap{grid-template-columns:repeat(4,minmax(0,1fr));gap:0}.promise .wrap>div+div{border-inline-start:1px solid var(--line)}}
+.promise .wrap>div{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding-inline:14px}
+.promise svg{width:28px;height:28px;color:var(--gold);margin-bottom:8px}
+.promise b{font:500 14px/1.4 var(--f-body);color:var(--ink)}
+.promise span,.promise .linkish{font-size:12.5px;color:var(--muted);line-height:1.5}
+/* brands strip: same-colour logos drifting slowly, fading at both edges */
+.brands{padding:clamp(34px,5vw,56px) 0 clamp(30px,4vw,48px);background:var(--page);border-bottom:1px solid var(--line)}
+.brands .bh{margin:0 0 22px;padding:0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.brands .bh span{font:500 11px/1 var(--f-body);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-text)}
+html[lang=ar] .brands .bh span{font-size:13px;letter-spacing:.04em}
+.brands .bh small{font:400 clamp(17px,3.6vw,22px)/1.45 var(--f-display);color:var(--ink);max-width:36ch}
+.mqv{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.brands .marq{gap:0;animation-duration:70s}
+.mqv:hover .marq,.mqv:active .marq,.mqv:focus-within .marq{animation-play-state:paused}
+.brands .marq>*,.brands .marq>:nth-child(n){padding:6px clamp(22px,4vw,40px);font:italic 500 22px/1.2 var(--f-latin);color:var(--muted)}
+.brands .marq>*::after{content:none}
+.brands .marq>.lg{padding-inline:clamp(22px,4vw,40px)}
+.brands .marq .bmk.mq{height:34px;width:120px;filter:grayscale(1) contrast(1.05);opacity:.5;transition:filter .4s,opacity .4s}
+.brands .marq a:hover .bmk,.brands .marq a:focus-visible .bmk{filter:none;opacity:1}
+.brands .fade{display:none}
+@media (prefers-reduced-motion:reduce){.mqv{-webkit-mask-image:none;mask-image:none}.brands .marq{row-gap:18px}.brands .marq>.dup{display:none}}
+/* section heads: small capital kicker + serif title, "View all" at the end */
+.shead{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px}
+.kick{display:block;margin-bottom:8px;font:500 11px/1 var(--f-body);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-text)}
+html[lang=ar] .kick{font-size:13px;letter-spacing:.04em}
+.sec-h,.show .shead h2{margin:0;text-align:start;font:400 clamp(27px,5vw,38px)/1.2 var(--f-display);color:var(--ink)}
+.sec-h::after,.show h2::after{content:none!important}
+.vall{flex:none;color:var(--ink);font:500 13px/1 var(--f-body);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:4px;white-space:nowrap}
+html[lang=en] .vall{text-transform:uppercase;font-size:11.5px;letter-spacing:.14em}
+.vall:hover{color:var(--gold-text);border-color:var(--gold)}
+.cats-sec,.btiles-sec,.show,.newsec,.offers{padding:clamp(40px,6vw,72px) 0 0}
+.show{padding-bottom:0}
+/* category tiles: big, photo-led */
+.ctiles{grid-auto-columns:min(64%,230px);gap:14px}
+@media (min-width:700px){.ctiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}}
+@media (min-width:1000px){.ctiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.ctile{border:0;background:none;align-items:flex-start;text-align:start;padding:0;gap:2px}
+.ctile .cim{aspect-ratio:4/5;margin-bottom:12px;background:radial-gradient(70% 55% at 50% 45%,#fffaf2,var(--well));border-radius:2px}
+.ctile b{font:400 21px/1.25 var(--f-display);padding:0;display:flex;align-items:center;gap:8px}
+.ctile b::after{content:"";width:16px;height:1px;background:var(--gold);transition:width .3s}
+.ctile small{font-size:12px;letter-spacing:.02em}
+@media (hover:hover){.ctile:hover{border-color:transparent}.ctile:hover b::after{width:30px}}
+@media (max-width:699px){.ctile b{font-size:19px}}
+/* brand tiles */
+.btiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (min-width:800px){.btiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}}
+.btile{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);background:var(--tile);border:1px solid var(--line);border-radius:2px;overflow:hidden;transition:border-color .3s}
+.btile .bim{display:grid;aspect-ratio:1;background:radial-gradient(70% 55% at 50% 45%,#fffaf2,var(--well))}
+.btile .bim img{display:block;width:100%;height:100%;min-width:0;min-height:0;object-fit:contain;mix-blend-mode:multiply;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.btile .blg{display:flex;align-items:center;justify-content:center;min-height:64px;padding:12px 10px 2px;font:italic 500 clamp(16px,4.4vw,22px)/1.15 var(--f-latin);text-align:center;overflow-wrap:anywhere;min-width:0}
+.btile .blg .bmk.lg{height:36px;max-width:150px}
+.btile small{text-align:center;padding:0 0 14px;color:var(--muted);font-size:12px}
+.btile:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media (hover:hover){.btile:hover{border-color:var(--gold-2)}.btile:hover .bim img{transform:scale(1.05)}}
+/* sliders */
+.sl .ph2{background:radial-gradient(70% 55% at 50% 45%,#fffaf2,var(--well))}
+.sl .ph2 img{mix-blend-mode:multiply;padding:8%}
+.sl .n{font-size:16px}
+.sdots{margin-top:14px}
+/* product cards: photo on a warm ground, small brand line, name, price — the + appears on hover */
+.p .ph{background:radial-gradient(70% 55% at 50% 45%,#fffaf2,var(--well))}
+.p .ph img{object-fit:contain;padding:7%;mix-blend-mode:multiply}
+.p .brand{margin-top:8px}
+.p .brand .bmk{height:20px;max-width:70px}
+.p .nm{font-size:17px;line-height:1.3}
+.p .meta{margin-top:2px}
+.av{font-size:11.5px}
+.add{width:40px;height:40px;border:0;background:rgba(255,253,250,.95);box-shadow:0 6px 16px -8px rgba(43,32,24,.45)}
+.add svg{width:18px;height:18px}
+@media (hover:hover) and (pointer:fine){
+  .p .add{opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s,background .2s,color .2s}
+  .p:hover .add,.p:focus-within .add{opacity:1;transform:none}
+}
+.disc{border-radius:0!important;font-size:11px!important;letter-spacing:.06em!important}
+/* the shop list: a heading, then the sticky search bar under the header */
+.allh{padding-top:clamp(46px,6vw,80px)}
+.allh .shead{margin-bottom:8px}
+.bar{top:var(--hh);border-bottom:1px solid transparent}
+.bar.stuck{border-bottom-color:var(--line)}
+.bar .wrap{padding-block:10px}
+.grp{font-size:24px}
+/* offers box: quieter */
+.obox{background:var(--tile);border-color:var(--line)}
+/* footer: four columns */
+footer{background:var(--ink);color:#d9ccb8}
+footer .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:30px 24px;padding-block:44px 24px;align-items:start;font-size:13.5px}
+footer .fbrand{grid-column:1/-1}
+@media (min-width:800px){footer .fgrid{grid-template-columns:1.4fr 1fr 1fr 1fr}footer .fbrand{grid-column:auto}}
+footer .fcol{gap:10px}
+footer .fcol b{font:500 11px/1 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-2);margin-bottom:4px}
+html[lang=ar] footer .fcol b{font-size:13px;letter-spacing:.03em}
+footer .fcol a,.flink{all:unset;cursor:pointer;color:#e9dfcf;text-decoration:none}
+footer .fcol a:hover,.flink:hover{color:#fff;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--gold)}
+footer .fcol a:focus-visible,.flink:focus-visible{outline:2px solid var(--gold-2);outline-offset:3px}
+footer .fbot{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;border-top:1px solid #4a3c31;padding-top:18px;font-size:12px;color:#a8977f}
+footer .fbrand small{max-width:26ch}
+/* ---------- second pass (taste & UX review) ----------
+   Palette taken from the logo itself: plaster-rose ground, the logo's rose-brown for the buttons, a deep cocoa band
+   at the top and bottom. Product photos sit straight on the page (no boxes), like a shelf. No caps labels, no scroll fades. */
+:root{
+  --page:#f3e9e4; --tile:#f8f1ed; --well:#e9dcd5; --soft:#ece0da; --ink:#2c2325; --muted:#6a5d5e; --line:#e0d0c8;
+  --primary:#6e4438; --on-primary:#fbf3ee; --band:#4a2c28; --wine:#8a3445; --gold:#a5806f; --gold-2:#cfb2a6; --gold-text:#7a5446;
+}
+.ann{background:var(--band);color:#f1e2da}
+html[lang=en] .ann{text-transform:none;letter-spacing:.02em;font-size:12.5px}
+html[lang=en] .hnav a,html[lang=en] .mnav a{text-transform:none;font-size:13.5px;letter-spacing:.01em}
+html[lang=en] .cta-main,html[lang=en] .cta-ghost,html[lang=en] .vall{text-transform:none;letter-spacing:.02em;font-size:14px}
+.cta-main{background:var(--primary);color:var(--on-primary);transition:background .2s,transform .15s}
+.cta-main:hover{background:#5a372d}
+.cta-main:active,.cta-ghost:active{transform:translateY(1px)}
+.cta-ghost{border-color:var(--primary);color:var(--primary)}
+.cta-ghost:hover{background:var(--primary);color:var(--on-primary)}
+.hnav a:hover,.mnav a:hover{border-bottom-color:var(--primary)}
+.hero{background:var(--page)}
+.wm small{color:var(--gold-text)}
+.promise svg{color:var(--primary)}
+.brands .bh small{font-size:clamp(20px,4vw,26px)}
+.sec-h,.show .shead h2{color:var(--ink)}
+.vall{color:var(--primary);border-color:var(--primary)}
+.ctile b::after{background:var(--primary)}
+/* tiles: one soft panel step, no borders, no white plates */
+.ctile .cim,.btile .bim{background:var(--well)}
+.btile{background:none;border:0}
+.btile .bim{border-radius:2px}
+.btile .blg{min-height:58px;padding:14px 6px 0}
+.btile small{padding-bottom:0}
+@media (hover:hover){.btile:hover{border-color:transparent}}
+/* product photos straight on the page, like a shelf */
+.p .ph,.sl .ph2{background:transparent}
+.p .ph img,.sl .ph2 img{padding:4%}
+@media (hover:hover){.p .ph:hover img,.sl:hover .ph2 img{transform:scale(1.03)}}
+.p .brand,.sl .b{color:var(--muted)}
+.add{background:var(--tile)}
+.add:hover{background:var(--primary);color:var(--on-primary)}
+.step{background:var(--primary)}
+.disc,.sl .disc{background:var(--wine)!important}
+.obox{background:var(--tile);border:0}
+.seg button.on{background:var(--primary)}
+.cats button.on{border-color:var(--primary);color:var(--primary)}
+.cartbar button,.chatfab{background:var(--band)}
+.how{background:var(--well)}
+.waband{background:var(--well)}
+footer{background:var(--band);color:#e5d3ca}
+footer .fcol b{color:#d9bdb1}
+footer .fbot{border-top-color:#64413b;color:#c4a99e}
+.bdot i{background:var(--primary)}.bdot span{background:#d6c2b9}
+:focus-visible{outline-color:var(--primary)}
+.okick{text-transform:none;letter-spacing:.01em;font-size:14px;color:var(--wine)}
+.oimgs span{background:transparent;border:0;box-shadow:none}
+.oimgs img{object-fit:contain;mix-blend-mode:multiply}
+.brands .bh span{display:none}
+/* ---------- tiles (chosen: brands A, categories 3) ----------
+   Brands: the logo alone on a soft square plate, the count under it. Categories: wide tiles, the owner's photo on the
+   start side and the name on the other (no photo yet: the name on a soft colour, so nothing looks empty). */
+.btile{gap:8px}
+.btile .blg{aspect-ratio:1;background:var(--well);border-radius:2px;padding:16%;min-height:0;font-size:clamp(19px,3.8vw,27px);transition:background .3s}
+.btile .blg .bmk.lg{height:auto;max-height:72px;width:auto;max-width:100%}
+.btile small{text-align:center}
+@media (hover:hover){.btile:hover .blg{background:var(--soft)}}
+.ctiles{display:grid;grid-template-columns:1fr;grid-auto-flow:row;grid-auto-columns:auto;gap:14px;overflow:visible}
+@media (min-width:640px){.ctiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1000px){.ctiles{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
+.ctile{display:grid!important;grid-template-columns:1fr 1fr;align-items:center;aspect-ratio:2/1;padding:0;gap:0;background:var(--well);border-radius:2px;overflow:hidden;text-align:start}
+.ctile.np{grid-template-columns:1fr;background:var(--c,var(--well))}
+.ctile .cim{display:block;width:100%;height:100%;aspect-ratio:auto;margin:0;background:none;border-radius:0;overflow:hidden}
+.ctile .cim img{width:100%;height:100%;object-fit:cover;padding:0;mix-blend-mode:normal;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.ctile .ctx{display:flex;flex-direction:column;gap:2px;padding:0 clamp(16px,3vw,24px)}
+.ctile b{font:500 clamp(20px,2.4vw,26px)/1.15 var(--f-display);color:var(--primary);padding:0}
+.ctile b::after{content:none}
+.ctile small{color:var(--muted);font-size:12.5px}
+@media (hover:hover){.ctile:hover .cim img{transform:scale(1.03)}}
+@media (max-width:699px){.ctile b{font-size:22px}}
+.btile .blg{overflow-wrap:normal;word-break:normal;hyphens:manual}
+.btile .blg.long{font-size:clamp(14px,2.6vw,21px);padding-inline:8%}
+@media (max-width:699px){.ctile{aspect-ratio:12/5}}
+/* brands strip: the logos in their own colours (the owner prefers them colourful) */
+.brands .marq .bmk.mq{filter:none;opacity:1}
+html:not(.lng) .hero .tag,html:not(.lng) .hero .ctas,html:not(.lng) .hic,html:not(.lng) .hnav,html:not(.lng) .mnav,html:not(.lng) .ann{visibility:hidden}
+.ann .wrap{height:34px;min-height:0;padding-block:0;white-space:nowrap;overflow:hidden}
+.ann span{overflow:hidden;text-overflow:ellipsis}
+@media (max-width:560px){.hero .ctas{flex-direction:column;align-items:stretch;width:min(320px,100%)}.hero .ctas a{justify-content:center}}
+html.ld .hnav,html.ld .mnav{visibility:hidden}
 </style>
 </head>
 <body>
@@ -794,59 +1052,56 @@ html.rv .reveal.in{opacity:1;transform:none}
 document.documentElement.classList.add('ld'); setTimeout(function(){ document.documentElement.classList.remove('ld'); }, 4000);
 if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s = document.createElement('script'); s.src = 'data.js?v=' + Date.now(); s.async = true; s.id = 'dataJs';
   s.onload = function(){ s.dataset.st = 'ok'; }; s.onerror = function(){ s.dataset.st = 'err'; }; document.head.appendChild(s); })(); }</script>
-<header class="hero" id="top">
-  <div class="deco" aria-hidden="true">
-    <svg class="d1" viewBox="0 0 40 80"><rect x="11" y="40" width="18" height="34" rx="3"/><rect x="13" y="28" width="14" height="12" rx="1.5"/><path d="M14 28V14l12-8v22"/></svg>
-    <svg class="d2" viewBox="0 0 60 80"><rect x="8" y="26" width="44" height="48" rx="12"/><rect x="22" y="12" width="16" height="14" rx="2"/><path d="M26 12V6h8v6M18 44c4-4 8 4 12 0s8 4 12 0"/></svg>
-    <svg class="d3" viewBox="0 0 70 60"><rect x="6" y="24" width="58" height="30" rx="8"/><path d="M4 24h62v-6a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4z"/><path d="M18 38h34"/></svg>
-    <svg class="d4" viewBox="0 0 34 80"><path d="M7 20h20l-3 54H10z"/><rect x="9" y="8" width="16" height="12" rx="2"/><path d="M12 40h10"/></svg>
-    <svg class="d5" viewBox="0 0 20 80"><rect x="5" y="34" width="10" height="42" rx="3"/><path d="M10 34V8"/><path d="M6 10h8M5 15h10M6 20h8M5 25h10"/></svg>
-    <svg class="d6" viewBox="0 0 40 40"><path d="M20 2v36M2 20h36M8 8l24 24M32 8 8 32"/></svg>
-    <svg class="d7" viewBox="0 0 40 60"><rect x="8" y="24" width="24" height="32" rx="6"/><rect x="14" y="6" width="12" height="18" rx="2"/></svg>
-    <svg class="d8" viewBox="0 0 40 40"><path d="M20 4c10 10 10 22 0 32C10 26 10 14 20 4zM20 12v20"/></svg>
-    <svg class="d9" viewBox="0 0 30 40"><path d="M15 4C9 14 5 20 5 26a10 10 0 0 0 20 0c0-6-4-12-10-22z"/></svg>
-  </div>
-  <div class="wrap topline">
-    <button class="langbtn" type="button" data-a="lang" data-ta="langAria" aria-label="Switch to English"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span data-t="langBtn">English</span></button>
-    <button class="install" id="installBtn" type="button" hidden data-ta="installAria" aria-label="تثبيت تطبيق LUMIA على جهازك">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v10"/><path d="M8 10l4 4 4-4"/><rect x="5" y="17" width="14" height="3" rx="1.5"/></svg>
-      <span data-t="install">تثبيت التطبيق</span></button>
-  </div>
-  <div class="wrap hero-in">
-    <div class="hero-copy">
-      <div class="brandmk"><img class="logo" src="logo-care.webp" alt="LUMIA Care — Imported Gems" width="685" height="526" fetchpriority="high"><span class="care" aria-hidden="true"><i>C</i><i>A</i><i>R</i><i>E</i></span><img class="logo gems" src="logo-gems.webp" alt="" width="685" height="194"></div>
-      <p class="tag" id="tag">منتجات أصلية نستوردها خصيصاً من ألمانيا إلى مصر، لتصل إليك حتى باب منزلك</p>
-      <div class="route" aria-hidden="true"><span><i class="flag de"></i><span data-t="de">ألمانيا</span></span><span class="ln"><span class="plane"><svg viewBox="0 0 64 48"><path d="M26 19 23.5 30M38 19 40.5 30" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".75"/><rect x="18" y="29.5" width="28" height="17" rx="3" fill="#f6cfa6" stroke="#b9786b" stroke-width="1.5"/><path d="M32 29.5v17M18 36h28" stroke="#b9786b" stroke-width="1.4"/><path d="M29 29.5c-2-3-6-3-6-.5M35 29.5c2-3 6-3 6-.5" fill="none" stroke="#b9786b" stroke-width="1.3"/><path fill="currentColor" d="M4 14c0-3.5 4-5 8-5h32l8-7h5l-3 9c4 1 6 2 6 3.5 0 2.5-5 4.5-11 4.5H12c-4 0-8-1.5-8-5z"/><path fill="#a95f52" d="M23 15h13l-8 10h-6z"/><path fill="#fff" d="M7 12.5c1-1.6 3-2.3 5-2.3v3.3H7z" opacity=".9"/><g fill="#fff" opacity=".9"><circle cx="17" cy="12" r="1.1"/><circle cx="21.5" cy="12" r="1.1"/><circle cx="26" cy="12" r="1.1"/><circle cx="30.5" cy="12" r="1.1"/><circle cx="35" cy="12" r="1.1"/></g></svg></span></span><span><i class="flag eg"></i><span data-t="eg">مصر</span></span></div>
-      <div class="ctas">
-        <a class="cta-main" href="#shop" id="goShop" data-t="shopNow">تسوّق المنتجات</a>
-        <a class="cta-ghost" id="waTop" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg><span data-t="waContact">تواصل عبر واتساب</span></a>
-      </div>
+<div class="ann" id="ann"><div class="wrap"><span data-t="ann1">التوصيل إلى جميع محافظات مصر، والدفع عند الاستلام</span></div></div>
+<header class="site" id="siteHd">
+  <div class="wrap shd">
+    <nav class="hnav" data-ta="navAria" aria-label="أقسام الموقع"><a href="#catsSec" data-a="goSec" data-k="catsSec" data-t="navCats">الأقسام</a><a href="#brandTiles" data-a="goSec" data-k="brandTiles" data-t="navBrands">العلامات التجارية</a><a href="#shop" data-a="av" data-k="sale" data-go="1" class="navSale" hidden data-t="navSale">العروض</a><a href="#shop" data-a="goSec" data-k="allH" data-t="navAll">جميع المنتجات</a></nav>
+    <a class="wm" href="#top" data-a="goTop" aria-label="LUMIA Care"><img src="logo-mark.webp" alt="" width="40" height="40"><span><b>LUMIA</b><small>CARE</small></span></a>
+    <div class="hic">
+      <button class="langbtn" type="button" data-a="lang" data-ta="langAria" aria-label="Switch to English"><span data-t="langBtn">English</span></button>
+      <button class="install hib" id="installBtn" type="button" hidden data-ta="installAria" aria-label="تثبيت تطبيق LUMIA على جهازك"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v10"/><path d="M8 10l4 4 4-4"/><rect x="5" y="17" width="14" height="3" rx="1.5"/></svg></button>
+      <button class="hib" type="button" data-a="goSearch" data-ta="searchAria" aria-label="البحث"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/></svg></button>
+      <a class="hib wa" id="waTop" href="#" target="_blank" rel="noopener" data-ta="waContact" aria-label="تواصل عبر واتساب"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg></a>
+      <button class="hib bag" type="button" data-a="cart" id="hdBag" data-ta="order" aria-label="طلبي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="n" id="hdN" hidden></span></button>
     </div>
-    <div class="fan" id="fan"></div>
   </div>
-  <div class="wrap trust">
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span data-t="trust1">منتجات أصلية 100%</span></span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9M7.5 5.2l9 4.5"/></svg><span data-t="trust2">شحن مباشر من ألمانيا</span></span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><span data-t="trust3">التوصيل إلى جميع محافظات مصر</span></span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h4"/></svg><span data-t="trust4">الدفع عند الاستلام أو InstaPay</span></span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg><button type="button" class="linkish" data-a="special" data-t="trust5">نوفّر أي منتج بطلب خاص</button></span>
-  </div>
-  <svg class="curve" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C320,48 1120,48 1440,0 L1440,48 L0,48 Z"/></svg>
+  <nav class="mnav" data-ta="navAria" aria-label="أقسام الموقع"><div class="wrap"><a href="#catsSec" data-a="goSec" data-k="catsSec" data-t="navCats">الأقسام</a><a href="#brandTiles" data-a="goSec" data-k="brandTiles" data-t="navBrands">العلامات التجارية</a><a href="#shop" data-a="av" data-k="sale" data-go="1" class="navSale" hidden data-t="navSale">العروض</a><a href="#shop" data-a="goSec" data-k="allH" data-t="navAll">جميع المنتجات</a></div></nav>
 </header>
+<section class="hero" id="top">
+  <div class="wrap hero-in">
+    <div class="brandmk"><img class="logo" src="logo-care.webp" alt="LUMIA Care — Imported Gems" width="685" height="526" fetchpriority="high"><span class="care" aria-hidden="true"><i>C</i><i>A</i><i>R</i><i>E</i></span><img class="logo gems" src="logo-gems.webp" alt="" width="685" height="194"></div>
+    <p class="tag" id="tag">منتجات أصلية نستوردها خصيصاً من ألمانيا إلى مصر، لتصل إليك حتى باب منزلك</p>
+    <div class="ctas">
+      <a class="cta-main" href="#shop" id="goShop" data-t="shopAll">تسوّق جميع المنتجات</a>
+      <a class="cta-ghost" href="#brandTiles" data-a="goSec" data-k="brandTiles" data-t="shopByBrand">تسوّق حسب العلامة</a>
+    </div>
+  </div>
+</section>
 
 <section class="bnr" id="bnr" hidden></section>
 
+<section class="promise" data-ta="promiseAria" aria-label="لماذا LUMIA"><div class="wrap">
+  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><b data-t="trust1">منتجات أصلية 100%</b><span data-t="pr1">نشتريها بأنفسنا من المتاجر الألمانية</span></div>
+  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><b data-t="trust3">التوصيل إلى جميع محافظات مصر</b><span data-t="pr3">تُحدَّد الرسوم بحسب منطقتك</span></div>
+  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h4"/></svg><b data-t="pr4b">الدفع عند الاستلام</b><span data-t="pr4">أو InstaPay أو المحافظ الإلكترونية</span></div>
+  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5M11 8v6M8 11h6"/></svg><b data-t="trust5">نوفّر أي منتج بطلب خاص</b><button type="button" class="linkish" data-a="special" data-t="pr5">اطلب منتجاً غير موجود</button></div>
+</div></section>
+
 <section class="brands" id="brandsSec" data-ta="brandsAria" aria-label="العلامات التجارية">
-  <h2 data-t="brandsH">منتجات من dm وRossmann وأشهر العلامات الألمانية والأوروبية</h2>
-  <div class="marq" id="marq"></div><div class="fade"></div>
+  <div class="wrap"><h2 class="bh"><span data-t="brandsK">علاماتنا</span><small data-t="brandsH">من dm وRossmann وأشهر العلامات الألمانية والأوروبية</small></h2></div>
+  <div class="mqv"><div class="marq" id="marq"></div></div>
 </section>
 
 <section class="cats-sec reveal" id="catsSec" data-ta="catsAria" aria-label="الأقسام" hidden>
-  <div class="wrap"><h2 class="sec-h" data-t="catsH">تسوّق حسب القسم</h2><div class="ctiles" id="ctiles"></div></div>
+  <div class="wrap"><div class="shead"><div><h2 class="sec-h" data-t="catsH">تسوّق حسب القسم</h2></div></div><div class="ctiles" id="ctiles"></div></div>
+</section>
+
+<section class="btiles-sec reveal" id="brandTiles" data-ta="brandsAria" aria-label="العلامات التجارية" hidden>
+  <div class="wrap"><div class="shead"><div><h2 class="sec-h" data-t="btH">تسوّق حسب العلامة</h2></div></div><div class="btiles" id="btiles"></div></div>
 </section>
 
 <section class="show reveal" id="show" data-ta="showAria" aria-label="منتجات مختارة" hidden>
-  <div class="wrap"><h2 id="showTitle">اكتشفي منتجاتنا</h2>
+  <div class="wrap"><div class="shead"><div><h2 id="showTitle" class="sec-h">اكتشفي منتجاتنا</h2></div><a class="vall" href="#shop" data-a="goSec" data-k="allH" data-t="viewAll">عرض الكل</a></div>
     <div class="showwrap"><div class="strack" id="strack" dir="ltr"></div>
       <button class="snav prev" type="button" data-a="slide" data-d="-1" data-ta="prev" aria-label="السابق">‹</button><button class="snav next" type="button" data-a="slide" data-d="1" data-ta="next" aria-label="التالي">›</button></div>
     <div class="sdots" id="sdots"></div></div>
@@ -855,11 +1110,12 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
 <section class="offers reveal" id="offers" hidden></section>
 
 <section class="show newsec reveal" id="newSec" hidden>
-  <div class="wrap"><h2 data-t="newH">وصل حديثاً</h2><div class="strack nstrack" id="ntrack" dir="ltr"></div></div>
+  <div class="wrap"><div class="shead"><div><h2 class="sec-h" data-t="newH">وصل حديثاً</h2></div><a class="vall" href="#shop" data-a="goSec" data-k="allH" data-t="viewAll">عرض الكل</a></div><div class="strack nstrack" id="ntrack" dir="ltr"></div></div>
 </section>
 
 <section class="vid reveal" id="vidSec" hidden></section>
 
+<div class="wrap allh" id="allH"><div class="shead"><div><h2 class="sec-h" data-t="navAll">جميع المنتجات</h2></div></div></div>
 <div class="bar" id="shop">
   <div class="wrap">
     <div class="srow"><label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
@@ -871,7 +1127,7 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
 
 <main class="wrap"><div id="grid"><div class="loading" data-t="loading">جارٍ التحميل…</div></div></main>
 
-<section class="how reveal">
+<section class="how reveal" id="howSec">
   <div class="wrap">
     <h2 data-t="howH">طريقة الطلب</h2>
     <ol class="steps">
@@ -879,7 +1135,7 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
       <li><b data-t="how2b">إرسال الطلب عبر واتساب</b><span data-t="how2s">تُكتب رسالة الطلب تلقائياً بكامل التفاصيل، ولا يلزم سوى الضغط على «إرسال».</span></li>
       <li><b data-t="how3b">التأكيد والتوصيل</b><span data-t="how3s">نتواصل معك لتأكيد الإجمالي وموعد التوصيل.</span></li>
     </ol>
-    <h2 class="dp-h" data-t="dpH">التوصيل والدفع</h2>
+    <h2 class="dp-h" id="dpH" data-t="dpH">التوصيل والدفع</h2>
     <div class="dp">
       <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><b data-t="dpDelivB">التوصيل إلى جميع محافظات مصر</b><span id="dpDeliv" data-t="dpDelivS">تُحدَّد رسوم التوصيل بحسب منطقتك، ونؤكدها معك قبل الشحن.</span></div>
       <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h4"/></svg><b data-t="dpPayB">طرق الدفع</b><span id="dpPay" data-t="dpPayS">الدفع عند الاستلام، أو InstaPay، أو المحافظ الإلكترونية.</span></div>
@@ -893,10 +1149,12 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
     <a class="wabtn" id="waBandBtn" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg><span data-t="waBandBtn">راسلنا عبر واتساب</span></a></div>
 </section>
 
-<footer><div class="wrap">
+<footer><div class="wrap fgrid">
   <div class="fbrand"><img src="logo-mark.webp" alt="" width="40" height="40" loading="lazy"><div><span class="mk">LUMIA</span><small data-t="footNote">منتجات أصلية من ألمانيا إلى مصر</small></div></div>
-  <div class="fcol"><span><span data-t="waLabel">واتساب:</span> <span class="num" id="wa"></span></span><span class="soc" id="soc"></span></div>
-  <div class="fcol"><button type="button" class="flang" data-a="lang"><span data-t="langBtn">English</span></button><span id="upd"></span></div>
+  <div class="fcol"><b data-t="fShop">تسوّق</b><a href="#catsSec" data-a="goSec" data-k="catsSec" data-t="navCats">الأقسام</a><a href="#brandTiles" data-a="goSec" data-k="brandTiles" data-t="navBrands">العلامات التجارية</a><a href="#shop" data-a="av" data-k="sale" data-go="1" class="navSale" hidden data-t="navSale">العروض</a><a href="#allH" data-a="goSec" data-k="allH" data-t="navAll">جميع المنتجات</a></div>
+  <div class="fcol"><b data-t="fHelp">المساعدة</b><a href="#howSec" data-a="goSec" data-k="howSec" data-t="fHow">طريقة الطلب</a><a href="#dpH" data-a="goSec" data-k="dpH" data-t="fDeliv">التوصيل والدفع</a><button type="button" class="flink" data-a="special" data-t="fSpecial">طلب منتج خاص</button></div>
+  <div class="fcol"><b data-t="fContact">تواصل معنا</b><span><span data-t="waLabel">واتساب:</span> <span class="num" id="wa"></span></span><span class="soc" id="soc"></span><button type="button" class="flang" data-a="lang"><span data-t="langBtn">English</span></button></div>
+  <div class="fbot"><span>© <span id="yr"></span> LUMIA Care</span><span id="upd"></span></div>
 </div></footer>
 
 <div id="list"></div>
@@ -1014,7 +1272,14 @@ const I18N = {
     emptyCart: 'إفراغ السلة', emptied: 'تم إفراغ السلة', undo: 'تراجع', restored: 'تمت استعادة السلة',
     // poster banners
     bnrAria: 'العروض والمستجدات', bnrRole: 'عرض متتابع', bnrSlideRole: 'إعلان', bnrOf: (i, n) => `${i} من ${n}`,
-    bnrDot: (i, n) => `عرض الإعلان ${i} من ${n}`, bnrPrev: 'الإعلان السابق', bnrNext: 'الإعلان التالي', bnrAlt: 'عرض خاص'
+    bnrDot: (i, n) => `عرض الإعلان ${i} من ${n}`, bnrPrev: 'الإعلان السابق', bnrNext: 'الإعلان التالي', bnrAlt: 'عرض خاص',
+    // header, hero and section titles
+    ann1: 'التوصيل إلى جميع محافظات مصر، والدفع عند الاستلام',
+    navAria: 'أقسام الموقع', navCats: 'الأقسام', navBrands: 'العلامات التجارية', navSale: 'العروض', navAll: 'جميع المنتجات',
+    shopAll: 'تسوّق جميع المنتجات', shopByBrand: 'تسوّق حسب العلامة', promiseAria: 'لماذا LUMIA',
+    pr1: 'نشتريها بأنفسنا من المتاجر الألمانية', pr3: 'تُحدَّد الرسوم بحسب منطقتك', pr4b: 'الدفع عند الاستلام', pr4: 'أو InstaPay أو المحافظ الإلكترونية', pr5: 'اطلب منتجاً غير موجود',
+    brandsK: 'علاماتنا', catsK: 'الأقسام', btK: 'العلامات التجارية', btH: 'تسوّق حسب العلامة', showK: 'مختارات LUMIA', newK: 'جديد', allK: 'المتجر', viewAll: 'عرض الكل',
+    fShop: 'تسوّق', fHelp: 'المساعدة', fContact: 'تواصل معنا', fHow: 'طريقة الطلب', fDeliv: 'التوصيل والدفع', fSpecial: 'طلب منتج خاص'
   },
   en: {
     title: 'LUMIA Care · Imported Gems', wsTitle: 'LUMIA · Wholesale prices',
@@ -1102,7 +1367,13 @@ const I18N = {
     lSearch: n => `Search in ${n}`, lEmptyB: 'No matching products', lEmptyS: 'Try changing or clearing the filters.', crumbA: 'Category and brand',
     emptyCart: 'Empty basket', emptied: 'Basket emptied', undo: 'Undo', restored: 'Basket restored',
     bnrAria: 'Offers and news', bnrRole: 'carousel', bnrSlideRole: 'banner', bnrOf: (i, n) => `${i} of ${n}`,
-    bnrDot: (i, n) => `Show banner ${i} of ${n}`, bnrPrev: 'Previous banner', bnrNext: 'Next banner', bnrAlt: 'Special offer'
+    bnrDot: (i, n) => `Show banner ${i} of ${n}`, bnrPrev: 'Previous banner', bnrNext: 'Next banner', bnrAlt: 'Special offer',
+    ann1: 'Delivery all over Egypt, cash on delivery',
+    navAria: 'Site sections', navCats: 'Categories', navBrands: 'Brands', navSale: 'Offers', navAll: 'All products',
+    shopAll: 'Shop all products', shopByBrand: 'Shop by brand', promiseAria: 'Why LUMIA',
+    pr1: 'Bought by us in German stores', pr3: 'The fee depends on your area', pr4b: 'Cash on delivery', pr4: 'Or InstaPay or e-wallets', pr5: 'Ask for a product we don’t list',
+    brandsK: 'Our brands', catsK: 'Categories', btK: 'Brands', btH: 'Shop by brand', showK: 'LUMIA picks', newK: 'New', allK: 'The shop', viewAll: 'View all',
+    fShop: 'Shop', fHelp: 'Help', fContact: 'Contact', fHow: 'How to order', fDeliv: 'Delivery & payment', fSpecial: 'Special order'
   }
 };
 let LANG = (() => { let q = ''; try { q = new URLSearchParams(location.search).get('lang') || ''; } catch (e) {} if (q === 'en' || q === 'ar') return q; try { const s = JSON.parse(localStorage.getItem('lumia_lang')); if (s === 'en' || s === 'ar') return s; } catch (e) {} return 'ar'; })();
@@ -1115,6 +1386,7 @@ const cur = () => T('cur');
 /* static text in the page: data-t (text), data-tp (placeholder), data-ta (aria-label) */
 function applyLang(){
   const h = document.documentElement;
+  h.classList.add('lng');   // (the words above the fold stay invisible until they are in the right language: no jump)
   h.lang = LANG; h.dir = EN() ? 'ltr' : 'rtl';
   document.querySelectorAll('[data-t]').forEach(el => { el.textContent = T(el.dataset.t); });
   document.querySelectorAll('[data-tp]').forEach(el => { el.placeholder = T(el.dataset.tp); });
@@ -1259,7 +1531,7 @@ function showStrip(){
   ['pointerleave', 'focusout'].forEach(ev => tr.addEventListener(ev, () => { paused = false; }));
   tr.addEventListener('pointerup', () => setTimeout(() => { paused = false; }, 4000));
   clearInterval(showTimer);
-  if (!window.matchMedia('(prefers-reduced-motion:reduce)').matches) showTimer = setInterval(() => {
+  if (false) showTimer = setInterval(() => {
     if (paused || document.hidden || U.page || U.sheet || el.getBoundingClientRect().bottom < 0 || el.getBoundingClientRect().top > innerHeight) return;
     A.slide({ d: 1 });
   }, 3200);
@@ -1274,10 +1546,12 @@ function picks(list, n = 4){
   return out;
 }
 /* collage of up to 4 product photos on the ivory ground (layout set by how many there are; none → monogram) */
-function collage(list, cls, name, eager){
-  const ps = picks(list);
+function collage(list, cls, name, eager, n = 4){
+  const ps = picks(list, n);
   return `<span class="${cls} col n${ps.length}" aria-hidden="true">${ps.length ? ps.map(p => `<img src="${esc(imgSrc(p.image))}" alt=""${eager ? '' : ' loading="lazy"'} decoding="async">`).join('') : `<span class="mono">${esc(String(name || '').trim().charAt(0))}</span>`}</span>`;
 }
+/* category photo uploaded in the app (Settings → catImg = {"العناية بالبشرة": "images/cat-….webp"}), or '' */
+const catPhoto = c => { const m = (D && D.catImg) || {}; return String(m[String(c || '').trim()] || ''); };
 /* homepage sections built from the real catalogue: categories (with a real product photo each), offers, new arrivals, video */
 function renderSections(){
   if (!D || !D.products) return;
@@ -1285,8 +1559,17 @@ function renderSections(){
   // categories: one tile per category, photo = a product from it that has a photo (in-stock first)
   const cats = {}; ps.forEach(p => { const c = String(p.category || '').trim(); if (!c) return; (cats[c] = cats[c] || []).push(p); });
   const tiles = Object.entries(cats).sort((a, b) => b[1].length - a[1].length).map(([c, list]) => {
-    return `<a class="ctile" href="#c-${encodeURIComponent(c)}" data-a="catPage" data-k="${esc(c)}">${collage(list, 'cim', catName(c))}<b dir="auto">${esc(catName(c))}</b><small>${T('catCount', list.length)}</small></a>`; });
+    const ph = catPhoto(c), tints = ['#ecdcd8', '#e6ddce', '#dee2dd', '#e8dcd2', '#e3dbe0'];
+    return `<a class="ctile${ph ? '' : ' np'}" href="#c-${encodeURIComponent(c)}" data-a="catPage" data-k="${esc(c)}"${ph ? '' : ` style="--c:${tints[c.length % tints.length]}"`}>${ph ? `<span class="cim"><img src="${esc(asset(ph))}" alt="" loading="lazy" decoding="async"></span>` : ''}<span class="ctx"><b dir="auto">${esc(catName(c))}</b><small>${T('catCount', list.length)}</small></span></a>`; });
   $('catsSec').hidden = tiles.length < 2; $('ctiles').innerHTML = tiles.join('');
+  // brands: one tile per brand that has products (most products first), a few of its own photos + its logo
+  const brs = new Map(); ps.forEach(p => { const k = bk(p.brand); if (!k) return; const g = brs.get(k) || { list: [], names: {} }; g.list.push(p); const nm = String(p.brand).trim(); g.names[nm] = (g.names[nm] || 0) + 1; brs.set(k, g); });
+  const bt = [...brs.values()].sort((a, b) => b.list.length - a.list.length).slice(0, 8).map(g => {
+    const name = Object.entries(g.names).sort((a, b) => b[1] - a[1])[0][0];
+    return `<a class="btile" href="#b-${encodeURIComponent(name)}" data-a="brandPage" data-k="${esc(name)}"><span class="blg${!brandLogo(name) && name.split(/\s+/).some(w => w.length > 9) ? ' long' : ''}" dir="ltr">${brandMark(name, 'lg')}</span><small>${T('catCount', g.list.length)}</small></a>`; });
+  if ($('brandTiles')) { $('brandTiles').hidden = WS || bt.length < 2; $('btiles').innerHTML = bt.join(''); }
+  document.querySelectorAll('.navSale').forEach(a => { a.hidden = !ps.some(p => p.was && p.price); });
+  document.querySelectorAll('.hnav a[data-k=brandTiles],.mnav a[data-k=brandTiles]').forEach(a => { a.hidden = WS || bt.length < 2; });
   // offers banner: only when real discounts exist
   const sale = ps.filter(p => p.was && p.price), maxPct = Math.max(0, ...sale.map(pct));
   $('offers').hidden = !sale.length;
@@ -1381,7 +1664,7 @@ function renderBanners(){
   if (many) sec.setAttribute('aria-roledescription', T('bnrRole')); else sec.removeAttribute('aria-roledescription');
   sec.style.setProperty('--bms', (window.LUMIA_BANNER_MS || 5500) + 'ms');   // (a test can make the turns faster)
   sec.innerHTML = `<div class="wrap"><div class="bstage" id="bstage">
-      <div class="bvp" id="bvp" style="aspect-ratio:${tall.w} / ${tall.h}">${slides}</div>
+      <div class="bvp" id="bvp" style="aspect-ratio:${tall.w} / ${tall.h};--bw:${tall.w};--bh:${tall.h}">${slides}</div>
       ${many ? `<button type="button" class="bnav prev" data-a="bnrStep" data-d="-1" aria-label="${esc(T('bnrPrev'))}">${chev}</button><button type="button" class="bnav next" data-a="bnrStep" data-d="1" aria-label="${esc(T('bnrNext'))}">${chev}</button>` : ''}</div>
     ${many ? `<div class="bctl"><div class="bdots">${list.map((_, k) => `<button type="button" class="bdot${k === BN.i ? ' on' : ''}" data-a="bnrTo" data-i="${k}" aria-label="${esc(T('bnrDot', k + 1, n))}"${k === BN.i ? ' aria-current="true"' : ''}><span><i></i></span></button>`).join('')}</div></div>` : ''}</div>`;
   sec.hidden = false;
@@ -1440,10 +1723,8 @@ function start(d){
   if (WS) { document.body.style.overflow = ''; $('tag').insertAdjacentHTML('beforebegin', `<span class="wsbadge" data-t="wsBadge">${T('wsBadge')}</span>`); }
   fillStatic();
   const num = String(D.whatsapp || '').replace(/\D/g, '');
+  if ($('yr')) $('yr').textContent = new Date().getFullYear();
   $('wa').textContent = num ? '+' + num.replace(/^(\d{2})(\d{2})(\d{4})(\d+)$/, '$1 $2 $3 $4') : '';
-  const picks = D.products.filter(p => p.image).sort((a, b) => (b.stock > 0) - (a.stock > 0)).slice(0, 3);
-  const order = picks.length === 3 ? [picks[1], picks[0], picks[2]] : picks;
-  $('fan').innerHTML = order.map(p => `<button type="button" data-a="view" data-id="${p.id}" aria-label="${esc(p.name)}"><img src="${esc(imgSrc(p.image))}" alt="${esc(p.name)}">${p.price ? `<span class="pr">${money(p.price)} <small>${cur()}</small></span>` : ''}</button>`).join('');
   Object.keys(cart).forEach(id => { if (!byId(id) || !avail(byId(id)).can) delete cart[id]; });
   store.set(CART_KEY, cart);
   renderFilters(); renderGrid(); renderCart(); route();
@@ -1616,6 +1897,7 @@ function totals(){
 function renderCart(){
   const t = totals();
   document.body.classList.toggle('hascart', !!t.count && !U.sheet && !U.page); document.body.classList.toggle('inpage', !!U.page);
+  const hn = $('hdN'); if (hn) { hn.hidden = !t.count; hn.textContent = t.count || ''; }
   $('cartbar').innerHTML = t.count && !U.sheet && !U.page ? `<div class="cartbar"><button data-a="cart"><span class="n">${t.count}</span><span>${T('order')}</span><span class="sum">${t.sum ? money(t.sum) + ' ' + cur() + (t.unpriced ? ' +' : '') : T('checkout')}</span></button></div>` : '';
 }
 
@@ -1933,6 +2215,10 @@ const A = {
   dec: d => setQty(d.id, (cart[d.id] || 0) - 1),
   view: (d, el, e) => { if (e && el && el.tagName === 'A') e.preventDefault(); saveList(); U.fromGrid = true; location.hash = 'p-' + encodeURIComponent(d.id); },
   back: () => { if (U.fromGrid) { U.fromGrid = false; history.back(); } else { history.replaceState(null, '', location.pathname + location.search); route(); } },
+  // header: jump to a homepage section (below the sticky header), the search box, the top
+  goSec: (d, el, e) => { if (e) e.preventDefault(); const t = $(d.k); if (t && !t.hidden) t.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }); },
+  goSearch: () => { const q = $('q'); $('allH').scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }); setTimeout(() => q && q.focus({ preventScroll: true }), reduceMotion() ? 0 : 450); },
+  goTop: (d, el, e) => { if (e) e.preventDefault(); scrollTo({ top: 0, behavior: reduceMotion() ? 'auto' : 'smooth' }); },
   special: () => { const el = $('special'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); },
   // poster banners
   bnrStep: d => bnrGo(BN.i + (+d.d || 1), +d.d || 1),
@@ -2129,12 +2415,15 @@ const doInstall = async () => {
 };
 $('installBtn').addEventListener('click', doInstall);
 $('installBtn2').addEventListener('click', doInstall);
-$('goShop').addEventListener('click', e => { e.preventDefault(); $('shop').scrollIntoView({ behavior: 'smooth' }); });
+$('goShop').addEventListener('click', e => { e.preventDefault(); $('allH').scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth' }); });
+/* the header stays on top while scrolling; the search bar sticks just under it */
+(function(){ const h = $('siteHd'); if (!h) return; const set = () => document.documentElement.style.setProperty('--hh', h.offsetHeight + 'px'); set();
+  if ('ResizeObserver' in window) new ResizeObserver(set).observe(h); else addEventListener('resize', set);
+  new IntersectionObserver(([en]) => h.classList.toggle('up', !en.isIntersecting), { threshold: 0 }).observe($('ann')); })();
 
 /* sections fade in softly as they scroll into view (never hides content when motion is reduced or the browser is old) */
 (function(){
   if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  document.documentElement.classList.add('rv');
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 })();
