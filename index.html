@@ -1108,7 +1108,7 @@ const I18N = {
 let LANG = (() => { let q = ''; try { q = new URLSearchParams(location.search).get('lang') || ''; } catch (e) {} if (q === 'en' || q === 'ar') return q; try { const s = JSON.parse(localStorage.getItem('lumia_lang')); if (s === 'en' || s === 'ar') return s; } catch (e) {} return 'ar'; })();
 const EN = () => LANG === 'en';
 const T = (k, ...a) => { const v = k in I18N[LANG] ? I18N[LANG][k] : I18N.ar[k]; return typeof v === 'function' ? v(...a) : v; };
-const catName = c => EN() ? (CAT_EN[String(c || '').trim()] || c) : c;
+const catName = c => { c = String(c || '').trim(); return EN() ? ((D && D.catEn && D.catEn[c]) || CAT_EN[c] || c) : c; };
 /* product text in the chosen language (English is filled in the app; Arabic shows when there is no English yet) */
 const ptx = (p, k) => (EN() && p.en && p.en[k] && (Array.isArray(p.en[k]) ? p.en[k].length : String(p.en[k]).trim())) ? p.en[k] : p[k];
 const cur = () => T('cur');
@@ -1535,7 +1535,7 @@ function renderFilters(){
 /* one filter + sort for every product list. f = { q, cat, brand, av, sort } (empty = no limit) */
 function filterList(src, f){
   const q = String(f.q || '').trim().toLowerCase();
-  let list = src.filter(p => (!f.cat || p.category === f.cat) && (!f.brand || bk(p.brand) === bk(f.brand)) && (!q || [p.name, p.brand, p.category, CAT_EN[p.category] || '', p.description, p.en && p.en.description].join(' ').toLowerCase().includes(q)));
+  let list = src.filter(p => (!f.cat || p.category === f.cat) && (!f.brand || bk(p.brand) === bk(f.brand)) && (!q || [p.name, p.brand, p.category, catName(p.category), (D.catEn || {})[p.category] || '', CAT_EN[p.category] || '', p.description, p.en && p.en.description].join(' ').toLowerCase().includes(q)));
   if (f.av === 'now') list = list.filter(p => p.stock > 0);
   if (f.av === 'pre') list = list.filter(p => p.stock <= 0 && (p.preorder || p.incoming > 0));
   if (f.av === 'sale') list = list.filter(p => p.was);
