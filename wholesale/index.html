@@ -61,7 +61,7 @@ img{max-width:100%;display:block}
    photos. A soft curve hands over to the catalog so the header reads as part of the page, not a box on top. */
 .hero{position:relative;overflow:hidden;color:#5d4a43;padding-top:env(safe-area-inset-top);isolation:isolate;
   background:linear-gradient(160deg,#fff4ee 0%,#fde6ea 34%,#f1e8ff 68%,#e6f5ef 100%)}
-.hero::before{content:"";position:absolute;inset:-10%;pointer-events:none;z-index:-1;filter:blur(6px);
+.hero::before{content:"";position:absolute;inset:0 -10% -20%;pointer-events:none;z-index:-1;filter:blur(6px);
   background:radial-gradient(30% 26% at 84% 16%,#ffd2c0cc,transparent 70%),radial-gradient(28% 24% at 10% 30%,#ffc6d8b0,transparent 70%),
     radial-gradient(30% 26% at 22% 86%,#dccdffb0,transparent 70%),radial-gradient(26% 24% at 88% 82%,#c6ecdcb8,transparent 70%),radial-gradient(22% 18% at 52% 52%,#fff1c9a0,transparent 70%)}
 /* watermark illustrations: original line drawings of cosmetics, scattered softly behind the header */
@@ -131,10 +131,10 @@ img{max-width:100%;display:block}
 .brands{position:relative;background:var(--page);padding:4px 0 18px;overflow:hidden}
 .brands h2{margin:0 0 10px;text-align:center;font:500 14px/1.5 var(--f-display);color:#8a7a72}
 .marq{display:flex;width:max-content;gap:10px;animation:marq 38s linear infinite}
-.brands:hover .marq{animation-play-state:paused}
-.marq span{flex:none;padding:8px 18px;border-radius:999px;font:600 italic 19px/1.1 var(--f-latin);letter-spacing:.3px;white-space:nowrap;border:1px solid rgba(0,0,0,.04)}
-.marq span:nth-child(5n+1){background:#ffe3e8;color:#b5526a}.marq span:nth-child(5n+2){background:#ece4ff;color:#6c56b8}
-.marq span:nth-child(5n+3){background:#dff4ec;color:#2f8a6d}.marq span:nth-child(5n+4){background:#fff0d6;color:#b57425}.marq span:nth-child(5n){background:#ffe7dc;color:#b5604a}
+.brands:hover .marq,.brands:focus-within .marq{animation-play-state:paused}
+.marq>*{flex:none;padding:8px 18px;border-radius:999px;font:600 italic 19px/1.1 var(--f-latin);letter-spacing:.3px;white-space:nowrap;border:1px solid rgba(0,0,0,.04)}
+.marq>:nth-child(5n+1){background:#ffe3e8;color:#b5526a}.marq>:nth-child(5n+2){background:#ece4ff;color:#6c56b8}
+.marq>:nth-child(5n+3){background:#dff4ec;color:#2f8a6d}.marq>:nth-child(5n+4){background:#fff0d6;color:#b57425}.marq>:nth-child(5n){background:#ffe7dc;color:#b5604a}
 .show{background:var(--page);padding:6px 0 22px}
 .show h2{margin:0 0 12px;font:600 21px/1.3 var(--f-display);color:var(--ink);text-align:center}
 .showwrap{position:relative}
@@ -467,7 +467,7 @@ body{background:var(--page);font-weight:400;letter-spacing:.005em}
 :focus-visible{outline-color:var(--gold)}
 /* header: calm ivory → champagne, one gold ink for all line art */
 .hero{color:var(--ink);background:linear-gradient(180deg,#f7efe3 0%,#f1e6d4 100%)}
-.hero::before{filter:none;background:radial-gradient(40% 50% at 82% 20%,#fff6e4cc,transparent 70%),radial-gradient(35% 45% at 12% 70%,#ead9bd88,transparent 70%)}
+.hero::before{filter:none;background:radial-gradient(40% 50% at 82% 12%,#fff6e4cc,transparent 70%),radial-gradient(35% 45% at 12% 70%,#ead9bd88,transparent 70%)}
 .deco svg{opacity:.2!important;stroke:var(--gold)!important;stroke-width:1.1}
 .logo{filter:none}
 .care i{background-image:linear-gradient(100deg,#8a6a3f 0%,#8a6a3f 40%,#ecd3a0 50%,#8a6a3f 60%,#8a6a3f 100%)}
@@ -493,8 +493,8 @@ body{background:var(--page);font-weight:400;letter-spacing:.005em}
 .brands{padding:10px 0 26px}
 .brands h2{font:400 15px/1.6 var(--f-display);color:var(--muted);letter-spacing:.02em}
 .brands .marq{gap:0}
-.brands .marq span,.brands .marq span:nth-child(n){background:none;border:0;border-radius:0;color:#6d5f55;padding:4px 20px;font:italic 500 21px/1.2 var(--f-latin);letter-spacing:.04em;position:relative}
-.brands .marq span::after{content:"◆";position:absolute;inset-inline-end:-4px;top:50%;transform:translateY(-52%);font:9px/1 sans-serif;color:var(--gold-2)}
+.brands .marq>*,.brands .marq>:nth-child(n){background:none;text-decoration:none;border:0;border-radius:0;color:#6d5f55;padding:4px 20px;font:italic 500 21px/1.2 var(--f-latin);letter-spacing:.04em;position:relative}
+.brands .marq>*::after{content:"◆";position:absolute;inset-inline-end:-4px;top:50%;transform:translateY(-52%);font:9px/1 sans-serif;color:var(--gold-2)}
 /* slideshow */
 .show{padding:18px 0 34px;background:var(--page)}
 .show h2{font:400 30px/1.3 var(--f-display);letter-spacing:0;margin-bottom:4px}
@@ -569,7 +569,7 @@ footer a{text-decoration-color:#a9835566}
 .cta{border-radius:2px;font-weight:500;letter-spacing:.03em;padding:16px;transition:background .25s}
 .cta:hover{background:#42342d}
 .buybar{border-top:1px solid var(--line);box-shadow:none}
-.pdp-top .mk{color:var(--gold);font-weight:500}
+.pdp-top .mk{color:var(--gold-text);font-weight:500}
 /* 3D viewer (real product photos) */
 .gal{position:relative}
 .v3btn{position:absolute;top:12px;inset-inline-start:12px;z-index:3;display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border:1px solid var(--gold,#a98355);background:rgba(255,253,249,.92);color:var(--ink,#2a211d);font:500 13px var(--f-body,inherit);border-radius:2px;cursor:pointer}
@@ -583,7 +583,7 @@ footer a{text-decoration-color:#a9835566}
 .v3d .edge{background:#d9c7a8}
 .v3d .h{position:absolute;bottom:8px;inset-inline:0;text-align:center;font-size:12px;color:var(--muted,#7d6f66);pointer-events:none}
 /* small gold text uses the darker gold so it is easy to read */
-.p .brand,.sl .b,.grp small,.okick,.brands .marq span::after{color:var(--gold-text)}
+.p .brand,.sl .b,.grp small,.okick,.brands .marq>*::after{color:var(--gold-text)}
 .seg button{color:#5f5249}
 /* =====================================================================
    BILINGUAL + HOMEPAGE SECTIONS (Arabic right-to-left, English left-to-right)
@@ -634,9 +634,10 @@ html[lang=ar] .langbtn span{font-family:Montserrat,var(--f-body);letter-spacing:
 .ctiles .ctile{scroll-snap-align:start}
 @media (min-width:700px){.ctiles{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;overflow:visible}}
 @media (min-width:1000px){.ctiles{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}}
-@media (max-width:699px){.ctile b{font-size:15px}.ctile .cim img{padding:10%}}
+@media (max-width:699px){.ctile b{font-size:15px}}
 .brands h2{padding:0 22px}
-.brands .marq span.lg{display:inline-flex;align-items:center;padding-inline:24px}.brands .marq span.lg img{height:30px;width:auto;max-width:130px;object-fit:contain;flex:0 0 auto}
+.brands .marq>.lg{display:inline-flex;align-items:center;padding-inline:14px}
+.brands .marq a{cursor:pointer}.brands .marq a:hover{color:var(--ink)}.brands .marq a:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
 /* reduced motion: the ticker stands still, so show each brand once */
 @media (prefers-reduced-motion:reduce){.marq .dup{display:none}}
 .ctile{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;padding:0 0 12px;border:1px solid var(--line);background:var(--tile);border-radius:2px;transition:border-color .25s,transform .25s}
@@ -646,6 +647,90 @@ html[lang=ar] .langbtn span{font-family:Montserrat,var(--f-body);letter-spacing:
 .ctile small{font-size:12px;color:var(--muted)}
 .ctile:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 @media (hover:hover){.ctile:hover{border-color:var(--gold-2)}.ctile:hover .cim img{transform:scale(1.06)}}
+/* category collage: up to 4 real product photos per tile, on the ivory ground (fixed square, so nothing moves)
+   1 → one centred · 2 → side by side · 3 → one large + two small · 4 → 2×2 · none → a quiet monogram */
+.col{box-sizing:border-box;grid-template:minmax(0,1fr)/minmax(0,1fr);gap:5%;padding:10%;place-items:center}
+.ctile .cim.col,.lp-col{display:grid}
+.ctile .col img,.lp-col img{display:block;width:100%;height:100%;min-width:0;min-height:0;padding:0;object-fit:contain;mix-blend-mode:multiply}
+.col.n1{padding:14%}
+.col.n2{grid-template:minmax(0,1fr)/repeat(2,minmax(0,1fr));padding:20% 9%}
+.col.n3{grid-template:repeat(2,minmax(0,1fr))/minmax(0,1.35fr) minmax(0,1fr);padding:10% 8%}.col.n3 img:first-child{grid-row:1/span 2}
+.col.n4{grid-template:repeat(2,minmax(0,1fr))/repeat(2,minmax(0,1fr));padding:8%;gap:4%}
+.col .mono{width:46%;aspect-ratio:1;border:1px solid var(--gold-2);border-radius:50%;display:flex;align-items:center;justify-content:center;font:400 clamp(24px,7vw,38px)/1 var(--f-display);color:var(--gold-text)}
+.lp-col .mono{font-size:26px}
+/* brand logos: one helper (brandMark) draws a logo where a file exists, otherwise the name as text.
+   Each logo sits in a fixed-height box with a maximum width, never stretched: a wide wordmark (essence, 5.5:1) is
+   limited by the width and comes out lower, round marks (alverde, Mivolis ~1.4:1) use the full height. */
+.bmk{display:inline-block;vertical-align:middle;width:auto;height:26px;max-width:84px;object-fit:contain}
+.bmk.lg{height:56px;max-width:220px}
+.bmk.mq{height:36px;width:124px;max-width:none;object-position:center}   /* ticker: fixed box, so the moving row never shifts */
+.p .brand{align-self:flex-start;min-height:26px;display:flex;align-items:center;text-decoration:none}
+.p a.brand:hover{text-decoration:underline;text-underline-offset:3px}
+.p a.brand:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+/* product page: category · brand line */
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:14px;color:var(--muted)}
+.crumbs a{color:var(--muted);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px;display:inline-flex;align-items:center;min-height:24px}
+.crumbs a:hover{color:var(--ink)}
+/* removable filter chips above a product list */
+.fchips{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:6px 0 2px}
+.fchip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--gold-2);background:var(--soft);color:var(--ink);border-radius:2px;padding-block:6px;padding-inline:12px 9px;font-size:13px;line-height:1.3;cursor:pointer}
+.fchip svg{width:12px;height:12px;flex:none;color:var(--muted)}
+.fchip:hover{border-color:var(--ink)}
+.fall,.tbtn{all:unset;box-sizing:border-box;cursor:pointer;font-size:13px;color:var(--gold-text);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--gold-2);padding:6px 4px}
+.fall:focus-visible,.tbtn:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:2px}
+.tbtn{margin-inline-start:auto;color:var(--muted);text-decoration-color:var(--line)}
+/* category / brand page: a full-screen list over the homepage (the homepage stays in place underneath) */
+.lp{position:fixed;inset:0;z-index:9;background:var(--page);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.lp-body{padding-block:2px calc(130px + env(safe-area-inset-bottom));display:grid;gap:12px}
+.lp-body>*{min-width:0}
+.lp-head{display:flex;align-items:center;gap:14px;padding-block:10px 14px;border-bottom:1px solid var(--line)}
+.lp-head h1{margin:0;font:400 clamp(28px,7vw,40px)/1.15 var(--f-display);color:var(--ink);display:flex;align-items:center;gap:12px;flex-wrap:wrap;outline:none}
+.lp-head .count{margin:4px 0 0}
+.lp-col{flex:none;width:76px;aspect-ratio:1;display:grid;background:radial-gradient(70% 60% at 50% 45%,#fffaf1,var(--well));border:1px solid var(--line);border-radius:2px;overflow:hidden}
+@media (min-width:700px){.lp-col{width:96px}}
+.lp-head .lp-col.col{padding:8px;gap:4px}   /* (fixed spacing: percentages would follow the page width here) */
+.lp .cats button{display:inline-flex;align-items:center;min-height:36px}
+.lp .grid{margin-top:8px}
+.lp .empty button{margin-top:8px}
+[dir=ltr] .pdp-top [data-a=lback] svg{transform:scaleX(-1)}
+/* toast with an action (e.g. "Undo") */
+.toast.wact{display:flex;align-items:center;gap:10px;padding-block:6px;padding-inline:18px 6px}
+.tact{border:0;background:none;color:var(--gold-2);font:600 14px var(--f-body);padding:8px 12px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;border-radius:2px;flex:none}
+.tact:focus-visible{outline:2px solid var(--gold-2);outline-offset:1px}
+html.ld .brands,html.ld #shop{visibility:hidden}
+/* poster banners (made by the owner in the app → Website banners). The design is never cropped: it is shown whole
+   (contain) in a box whose shape comes from the published picture size, so the page does not jump when it loads. */
+.bnr{padding:18px 0 10px;background:var(--page)}
+.bstage{position:relative;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.bvp{position:relative;width:100%;max-height:70vh;max-height:70svh;overflow:hidden;background:var(--tile);border:1px solid var(--line);border-radius:2px}
+.bs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateX(calc(var(--d,1) * 3.5%));
+  transition:opacity .34s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.22,.61,.36,1),visibility 0s linear .6s}   /* the leaving picture fades quickly… */
+.bs.on{opacity:1;visibility:visible;transform:none;transition:opacity .56s cubic-bezier(.4,0,.2,1) .1s,transform .64s cubic-bezier(.22,.61,.36,1),visibility 0s}   /* …the next one glides in just after */
+.bs.out{transform:translateX(calc(var(--d,1) * -3.5%))}
+.bs>a,.bs>span{display:block;width:100%;height:100%}
+.bs img{width:100%;height:100%;object-fit:contain;object-position:center;-webkit-user-drag:none}
+.bs>a:focus-visible{outline:2px solid var(--gold);outline-offset:-4px}
+.bctl{display:flex;justify-content:center;margin-top:8px}
+.bdots{display:flex;gap:4px}
+.bdot{border:0;background:none;padding:0;width:30px;height:28px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.bdot span{position:relative;display:block;width:18px;height:2px;background:#c8b28c;border-radius:1px;overflow:hidden;transition:width .4s cubic-bezier(.22,.61,.36,1)}
+.bdot.on span{width:30px;background:#e2d4bc}
+.bdot i{position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:var(--o,left)}
+[dir=rtl] .bdot i{--o:right}
+.bdot.on i{transform:scaleX(1)}
+.bnr.auto .bdot.on i{animation:bprog var(--bms,5500ms) linear forwards}
+.bnr.auto.paused .bdot.on i{animation-play-state:paused}
+@keyframes bprog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.bdot:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;border-radius:2px}
+.bnav{position:absolute;top:50%;z-index:2;width:42px;height:42px;margin-top:-21px;border:1px solid var(--line);border-radius:50%;background:rgba(255,253,249,.92);color:var(--ink);display:none;align-items:center;justify-content:center;cursor:pointer;opacity:.86;transition:opacity .25s,border-color .25s}
+.bnav svg{width:18px;height:18px}
+.bnav.prev{inset-inline-start:12px}.bnav.next{inset-inline-end:12px}
+.bnav.prev svg{transform:none}.bnav.next svg{transform:scaleX(-1)}
+[dir=ltr] .bnav.prev svg{transform:scaleX(-1)}[dir=ltr] .bnav.next svg{transform:none}
+.bnav:hover,.bnav:focus-visible{opacity:1;border-color:var(--gold)}
+.bnav:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media (hover:hover) and (min-width:700px){.bnav{display:flex}}
+@media (prefers-reduced-motion:reduce){.bs,.bdot span{transition:none!important;transform:none!important}}
 /* offers banner (only shown when there are real discounts) */
 .offers{padding:6px 0 30px}
 .obox{display:grid;gap:18px;align-items:center;border:1px solid var(--gold-2);background:linear-gradient(120deg,#fbf5ea,#f6ecdc);padding:24px 22px;border-radius:2px}
@@ -704,6 +789,12 @@ html.rv .reveal.in{opacity:1;transform:none}
 <script>window.SHOP_MODE = "wholesale";</script>
 </head>
 <body>
+<script>/* start downloading the shop data straight away (it is used as soon as the page script runs).
+   Until it is there, the parts under the header stay invisible (they keep their place), so nothing the visitor
+   already sees jumps when the banners, brands and categories arrive. Never longer than 4 seconds. */
+document.documentElement.classList.add('ld'); setTimeout(function(){ document.documentElement.classList.remove('ld'); }, 4000);
+if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s = document.createElement('script'); s.src = 'data.js?v=' + Date.now(); s.async = true; s.id = 'dataJs';
+  s.onload = function(){ s.dataset.st = 'ok'; }; s.onerror = function(){ s.dataset.st = 'err'; }; document.head.appendChild(s); })(); }</script>
 <header class="hero" id="top">
   <div class="deco" aria-hidden="true">
     <svg class="d1" viewBox="0 0 40 80"><rect x="11" y="40" width="18" height="34" rx="3"/><rect x="13" y="28" width="14" height="12" rx="1.5"/><path d="M14 28V14l12-8v22"/></svg>
@@ -743,6 +834,8 @@ html.rv .reveal.in{opacity:1;transform:none}
   </div>
   <svg class="curve" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 C320,48 1120,48 1440,0 L1440,48 L0,48 Z"/></svg>
 </header>
+
+<section class="bnr" id="bnr" hidden></section>
 
 <section class="brands" data-ta="brandsAria" aria-label="العلامات التجارية">
   <h2 data-t="brandsH">منتجات من dm وRossmann وأشهر العلامات الألمانية والأوروبية</h2>
@@ -807,6 +900,7 @@ html.rv .reveal.in{opacity:1;transform:none}
   <div class="fcol"><button type="button" class="flang" data-a="lang"><span data-t="langBtn">English</span></button><span id="upd"></span></div>
 </div></footer>
 
+<div id="list"></div>
 <div id="page"></div>
 <div id="cartbar"></div>
 <div id="sheet"></div>
@@ -912,7 +1006,16 @@ const I18N = {
     instH: 'تثبيت تطبيق LUMIA', instP: 'أضف المتجر إلى شاشتك الرئيسية لتفتحه بلمسة واحدة مثل أي تطبيق.',
     instSteps: ['اضغط على زر المشاركة <b>⬆︎</b> أسفل الشاشة في Safari.', 'اختر <b>«إضافة إلى الشاشة الرئيسية»</b>.', 'اضغط <b>«إضافة»</b>، وستجد أيقونة LUMIA على شاشتك.'],
     instDone: 'تم التثبيت', later: 'لاحقاً', installed: 'تم تثبيت تطبيق LUMIA على جهازك',
-    video: 'فيديو LUMIA', play: 'تشغيل الفيديو'
+    video: 'فيديو LUMIA', play: 'تشغيل الفيديو',
+    // category / brand pages, filter chips, empty basket
+    countOf: (n, m) => `${n} من أصل ${m} منتج`, showAll: 'عرض جميع المنتجات', clearF: 'مسح عوامل التصفية',
+    rmF: x => `إزالة عامل التصفية: ${x}`, fActive: 'عوامل التصفية المطبّقة', qChip: q => `«${q}»`,
+    allBrands: 'جميع العلامات', byBrand: 'التصفية حسب العلامة التجارية', byCat: 'التصفية حسب القسم', avAria: 'التوفر',
+    lSearch: n => `ابحث في ${n}`, lEmptyB: 'لا توجد منتجات مطابقة', lEmptyS: 'جرّب تغيير عوامل التصفية أو مسحها.', crumbA: 'القسم والعلامة التجارية',
+    emptyCart: 'إفراغ السلة', emptied: 'تم إفراغ السلة', undo: 'تراجع', restored: 'تمت استعادة السلة',
+    // poster banners
+    bnrAria: 'العروض والمستجدات', bnrRole: 'عرض متتابع', bnrSlideRole: 'إعلان', bnrOf: (i, n) => `${i} من ${n}`,
+    bnrDot: (i, n) => `عرض الإعلان ${i} من ${n}`, bnrPrev: 'الإعلان السابق', bnrNext: 'الإعلان التالي', bnrAlt: 'عرض خاص'
   },
   en: {
     title: 'LUMIA Care · Imported Gems', wsTitle: 'LUMIA · Wholesale prices',
@@ -993,7 +1096,14 @@ const I18N = {
     instH: 'Install the LUMIA app', instP: 'Add the shop to your home screen to open it with one tap, like any app.',
     instSteps: ['Tap the Share button <b>⬆︎</b> at the bottom of Safari.', 'Choose <b>“Add to Home Screen”</b>.', 'Tap <b>“Add”</b> — the LUMIA icon appears on your screen.'],
     instDone: 'Done', later: 'Later', installed: 'The LUMIA app is installed on your device',
-    video: 'LUMIA video', play: 'Play the video'
+    video: 'LUMIA video', play: 'Play the video',
+    countOf: (n, m) => `${n} of ${m} product${m === 1 ? '' : 's'}`, showAll: 'Show all products', clearF: 'Clear filters',
+    rmF: x => `Remove filter: ${x}`, fActive: 'Active filters', qChip: q => `“${q}”`,
+    allBrands: 'All brands', byBrand: 'Filter by brand', byCat: 'Filter by category', avAria: 'Availability',
+    lSearch: n => `Search in ${n}`, lEmptyB: 'No matching products', lEmptyS: 'Try changing or clearing the filters.', crumbA: 'Category and brand',
+    emptyCart: 'Empty basket', emptied: 'Basket emptied', undo: 'Undo', restored: 'Basket restored',
+    bnrAria: 'Offers and news', bnrRole: 'carousel', bnrSlideRole: 'banner', bnrOf: (i, n) => `${i} of ${n}`,
+    bnrDot: (i, n) => `Show banner ${i} of ${n}`, bnrPrev: 'Previous banner', bnrNext: 'Next banner', bnrAlt: 'Special offer'
   }
 };
 let LANG = (() => { let q = ''; try { q = new URLSearchParams(location.search).get('lang') || ''; } catch (e) {} if (q === 'en' || q === 'ar') return q; try { const s = JSON.parse(localStorage.getItem('lumia_lang')); if (s === 'en' || s === 'ar') return s; } catch (e) {} return 'ar'; })();
@@ -1020,7 +1130,7 @@ function setLang(l){
   // keep the language in the link, so a shared link opens in the same language
   try { const u = new URL(location.href); if (EN()) u.searchParams.set('lang', 'en'); else u.searchParams.delete('lang'); history.replaceState(history.state, '', u.pathname + u.search + u.hash); } catch (e) {}
   applyLang();
-  if (D) { if (!WS && !D.intro && !D.introEn) $('tag').textContent = T('tag'); fillStatic(); brandStrip(); showStrip(); renderSections(); renderFilters(); renderGrid(); renderCart(); renderPage(); if (U.sheet) renderSheet(); relangChat(); }
+  if (D) { if (!WS && !D.intro && !D.introEn) $('tag').textContent = T('tag'); fillStatic(); renderBanners(); brandStrip(); showStrip(); renderSections(); renderFilters(); renderGrid(); renderCart(); if (U.list) renderList(true); renderPage(); if (U.sheet) renderSheet(); relangChat(); }
   else if (WS && $('gate')) { $('gate').remove(); gate(''); }
 }
 
@@ -1075,11 +1185,12 @@ function promoHtml(){
 function load(){
   if (WS) return loadWholesale();
   if (window.SHOP_DATA) return start(window.SHOP_DATA);
-  const s = document.createElement('script');
-  s.src = 'data.js?v=' + Date.now();
-  s.onload = () => window.SHOP_DATA ? start(window.SHOP_DATA) : start(demoShop());
-  s.onerror = () => start(demoShop());
-  document.head.appendChild(s);
+  // the data file was requested at the top of the page; wait for it (or ask for it now)
+  let s = $('dataJs');
+  if (s && s.dataset.st) { start(window.SHOP_DATA || demoShop()); return; }
+  if (!s) { s = document.createElement('script'); s.src = 'data.js?v=' + Date.now(); document.head.appendChild(s); }
+  s.addEventListener('load', () => start(window.SHOP_DATA || demoShop()));
+  s.addEventListener('error', () => start(demoShop()));
 }
 /* ---------- wholesale page: the price list is encrypted; it opens only with the code ---------- */
 const WCODE_KEY = 'lumia_wcode';
@@ -1155,7 +1266,19 @@ function showStrip(){
   }, 3200);
 }
 const slide = p => `<article class="sl" data-a="view" data-id="${p.id}" role="button" tabindex="0" aria-label="${esc(p.name)}"><div class="ph2">${discTag(p)}${pic(p)}</div>
-    <div class="tx">${p.brand ? `<div class="b">${esc(p.brand)}</div>` : ''}<div class="n" dir="auto">${esc(p.name)}</div>${p.price ? `<div>${priceHtml(p)}</div>` : `<div class="small">${T('onRequest')}</div>`}</div></article>`;
+    <div class="tx">${bk(p.brand) ? `<div class="b">${brandMark(p.brand)}</div>` : ''}<div class="n" dir="auto">${esc(p.name)}</div>${p.price ? `<div>${priceHtml(p)}</div>` : `<div class="small">${T('onRequest')}</div>`}</div></article>`;
+/* a few real products that stand for a category: photos only, in-stock first, a different brand each where possible */
+function picks(list, n = 4){
+  const ok = list.filter(p => p.image).sort((a, b) => (b.stock > 0) - (a.stock > 0) || (b.incoming > 0) - (a.incoming > 0)), out = [], br = new Set(), im = new Set();
+  for (const p of ok) if (out.length < n && !br.has(bk(p.brand)) && !im.has(p.image)) { out.push(p); br.add(bk(p.brand)); im.add(p.image); }
+  for (const p of ok) if (out.length < n && !out.includes(p) && !im.has(p.image)) { out.push(p); im.add(p.image); }
+  return out;
+}
+/* collage of up to 4 product photos on the ivory ground (layout set by how many there are; none → monogram) */
+function collage(list, cls, name, eager){
+  const ps = picks(list);
+  return `<span class="${cls} col n${ps.length}" aria-hidden="true">${ps.length ? ps.map(p => `<img src="${esc(imgSrc(p.image))}" alt=""${eager ? '' : ' loading="lazy"'} decoding="async">`).join('') : `<span class="mono">${esc(String(name || '').trim().charAt(0))}</span>`}</span>`;
+}
 /* homepage sections built from the real catalogue: categories (with a real product photo each), offers, new arrivals, video */
 function renderSections(){
   if (!D || !D.products) return;
@@ -1163,8 +1286,7 @@ function renderSections(){
   // categories: one tile per category, photo = a product from it that has a photo (in-stock first)
   const cats = {}; ps.forEach(p => { const c = String(p.category || '').trim(); if (!c) return; (cats[c] = cats[c] || []).push(p); });
   const tiles = Object.entries(cats).sort((a, b) => b[1].length - a[1].length).map(([c, list]) => {
-    const withImg = list.filter(p => p.image).sort((a, b) => (b.stock > 0) - (a.stock > 0));
-    return `<button type="button" class="ctile" data-a="cat" data-k="${esc(c)}" data-go="1"><span class="cim">${withImg[0] ? `<img src="${esc(imgSrc(withImg[0].image))}" alt="" loading="lazy">` : ''}</span><b dir="auto">${esc(catName(c))}</b><small>${T('catCount', list.length)}</small></button>`; });
+    return `<a class="ctile" href="#c-${encodeURIComponent(c)}" data-a="catPage" data-k="${esc(c)}">${collage(list, 'cim', catName(c))}<b dir="auto">${esc(catName(c))}</b><small>${T('catCount', list.length)}</small></a>`; });
   $('catsSec').hidden = tiles.length < 2; $('ctiles').innerHTML = tiles.join('');
   // offers banner: only when real discounts exist
   const sale = ps.filter(p => p.was && p.price), maxPct = Math.max(0, ...sale.map(pct));
@@ -1179,14 +1301,129 @@ function renderSections(){
   $('vidSec').hidden = !v;
   $('vidSec').innerHTML = v ? `<div class="wrap"><video controls preload="none" playsinline ${D.videoPoster ? `poster="${esc(D.videoPoster)}"` : ''} aria-label="${esc(T('video'))}"><source src="${esc(v)}" type="video/mp4"></video></div>` : '';
 }
+/* brand names are matched loosely: lowercase, no accents, letters/digits only ("L'Oréal" = "loreal", "essence" = "Essence") */
+const bk = s => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/!/g, 'i').replace(/[^a-z0-9\u0600-\u06ff]/g, '');   // "!" reads as "i": "trend !t up" = "trend it up"
+/* logo file for a brand (D.brandLogos: built-in files from desktop/backend.js + the owner's uploads), or '' */
+let logoMap = null, logoSrc = null;
+const brandLogo = b => {
+  const L = (D && D.brandLogos) || {};
+  if (logoSrc !== L) { logoSrc = L; logoMap = new Map(Object.entries(L).map(([n, f]) => [bk(n), String(f || '')]).filter(x => x[0] && x[1])); }
+  return logoMap.get(bk(b)) || '';
+};
+/* files of the shop are one folder up on the wholesale page */
+const asset = u => (WS && !/^(https?:|data:|\/)/.test(u) ? '../' : '') + u;
+/* ONE helper for every brand label (cards, product page, brand page title, brand chips, ticker):
+   the logo when there is one (alt = the brand name; if the file fails to load it turns back into the name), else the name.
+   sz: 'sm' (cards, chips, product page) · 'lg' (brand page title) · 'mq' (brands ticker). An empty brand draws nothing. */
+const brandMark = (b, sz = 'sm', lazy = true) => {
+  b = String(b || '').trim(); if (!bk(b)) return '';
+  const f = brandLogo(b);
+  return f ? `<img class="bmk ${sz}" src="${esc(asset(f))}" alt="${esc(b)}" height="${{ sm: 26, lg: 56, mq: 36 }[sz] || 26}"${sz === 'mq' ? ' width="124"' : ''}${lazy ? ' loading="lazy"' : ''} decoding="async" onerror="this.replaceWith(this.alt)">` : esc(b);
+};
 function brandStrip(){
-  const own = [...new Set(((D && D.products) || []).map(p => String(p.brand || '').trim()).filter(Boolean))];
+  const ps = (D && D.products) || [], own = [...new Set(ps.map(p => String(p.brand || '').trim()).filter(Boolean))];
   const seen = new Set(), list = [];
-  for (const b of [...BRANDS, ...own]) { const k = b.toLowerCase(); if (!seen.has(k)) { seen.add(k); list.push(b); } }
-  // a brand with a logo file shows its logo, the others their name
-  const L = (D && D.brandLogos) || {}, logo = b => L[String(b).toLowerCase()];
-  const row = dup => list.map(b => `<span dir="ltr" class="${logo(b) ? 'lg' : ''}${dup ? ' dup' : ''}"${dup ? ' aria-hidden="true"' : ''}>${logo(b) ? `<img src="${WS ? '../' : ''}${esc(logo(b))}" alt="${esc(b)}" height="34" loading="lazy">` : esc(b)}</span>`).join('');
+  for (const b of [...BRANDS, ...own]) { const k = bk(b); if (k && !seen.has(k)) { seen.add(k); list.push(b); } }
+  // brands that have products are links to their brand page; the copy that makes the loop seamless is hidden from screen readers and the keyboard
+  const has = new Map(ps.filter(p => bk(p.brand)).map(p => [bk(p.brand), String(p.brand).trim()]));
+  const row = dup => list.map(b => { const real = has.get(bk(b)), cls = `${brandLogo(b) ? 'lg' : ''}${dup ? ' dup' : ''}`.trim(), hid = dup ? ' aria-hidden="true"' : '';
+    const inner = brandMark(b, 'mq');
+    return real ? `<a dir="ltr" class="${cls}" href="#b-${encodeURIComponent(real)}" data-a="brandPage" data-k="${esc(real)}"${hid}${dup ? ' tabindex="-1"' : ''}>${inner}</a>` : `<span dir="ltr" class="${cls}"${hid}>${inner}</span>`; }).join('');
   $('marq').innerHTML = row(false) + row(true);
+}
+/* ---------- poster banners (D.banners, made in the app → Website banners) ----------
+   Shown under the header while today (the visitor's own date) is between "from" and "until". One picture stands still;
+   several turn by themselves every few seconds with a soft slide + fade. They wait while the pointer is on them, while
+   something inside has the keyboard focus, while a finger holds them, while the tab is hidden or they are off screen,
+   and while a full-screen layer (product page, list, basket, chat) is open. People who prefer less motion get no
+   automatic turning and no animation: only the dots and arrows. The progress line on the active dot IS the timer. */
+const localDay = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+const BN = { i: 0, n: 0, why: new Set(), io: null, x0: null, swiped: false };
+const reduceMotion = () => matchMedia('(prefers-reduced-motion:reduce)').matches;
+function activeBanners(){
+  if (WS || !D || !Array.isArray(D.banners)) return [];
+  const t = localDay();
+  return D.banners.filter(b => b && b.img && +b.w > 0 && +b.h > 0 && (!b.from || String(b.from).slice(0, 10) <= t) && (!b.until || String(b.until).slice(0, 10) >= t)).slice(0, 5);
+}
+/* where a banner goes when tapped; a target that no longer exists (sold-out brand, deleted product) → not a link */
+function bnrHref(b){
+  const l = b.link || {}, v = String(l.value || '').trim(), ps = D.products || [];
+  if (l.type === 'offers' && ps.some(p => p.was)) return `href="#shop" data-a="bnrOffers"`;
+  if (l.type === 'category' && ps.some(p => p.category === v)) return `href="#c-${encodeURIComponent(v)}" data-a="catPage" data-k="${esc(v)}"`;
+  if (l.type === 'brand') { const p = ps.find(x => bk(x.brand) && bk(x.brand) === bk(v)); if (p) { const r = String(p.brand).trim(); return `href="#b-${encodeURIComponent(r)}" data-a="brandPage" data-k="${esc(r)}"`; } }
+  if (l.type === 'product' && v && byId(v)) return `href="#p-${encodeURIComponent(v)}" data-a="view" data-id="${esc(v)}"`;
+  if (l.type === 'whatsapp') return `href="https://wa.me/${String(D.whatsapp || '').replace(/\D/g, '')}?text=${encodeURIComponent(T('waHello', D.storeName || 'LUMIA'))}" target="_blank" rel="noopener"`;
+  return '';
+}
+function renderBanners(){
+  const sec = $('bnr'); if (!sec) return;
+  const list = D ? activeBanners() : [];
+  if (BN.io) { BN.io.disconnect(); BN.io = null; }
+  BN.n = list.length;
+  if (!list.length) { sec.hidden = true; sec.innerHTML = ''; return; }
+  if (BN.i >= list.length) BN.i = 0;
+  // the English website shows the English picture when there is one
+  const pic = b => EN() && b.imgEn ? { src: b.imgEn, w: +b.wEn || +b.w, h: +b.hEn || +b.h } : { src: b.img, w: +b.w, h: +b.h };
+  // the box takes the shape most of the pictures have (the first one's on a tie); a picture of another shape sits whole and centred in it
+  const pics = list.map(pic), shape = p => (p.w / p.h).toFixed(2), votes = {};
+  pics.forEach(p => { votes[shape(p)] = (votes[shape(p)] || 0) + 1; });
+  const tall = pics.reduce((m, p) => votes[shape(p)] > votes[shape(m)] ? p : m, pics[0]);
+  const many = list.length > 1, n = list.length;
+  const slides = list.map((b, k) => { const p = pics[k], alt = (EN() ? b.altEn : b.alt) || T('bnrAlt'), href = bnrHref(b);
+    const img = `<img src="${esc(asset(p.src))}" alt="${esc(alt)}" width="${p.w}" height="${p.h}" draggable="false" decoding="async"${k === BN.i ? ' fetchpriority="high"' : ' loading="lazy"'}>`;
+    return `<div class="bs${k === BN.i ? ' on' : ''}"${many ? ` role="group" aria-roledescription="${esc(T('bnrSlideRole'))}" aria-label="${esc(T('bnrOf', k + 1, n))}"${k === BN.i ? '' : ' aria-hidden="true" inert'}` : ''}>${href ? `<a ${href}>${img}</a>` : `<span>${img}</span>`}</div>`; }).join('');
+  const chev = PI.back;
+  sec.className = 'bnr' + (many && !reduceMotion() ? ' auto' : '');
+  sec.setAttribute('aria-label', T('bnrAria'));
+  if (many) sec.setAttribute('aria-roledescription', T('bnrRole')); else sec.removeAttribute('aria-roledescription');
+  sec.style.setProperty('--bms', (window.LUMIA_BANNER_MS || 5500) + 'ms');   // (a test can make the turns faster)
+  sec.innerHTML = `<div class="wrap"><div class="bstage" id="bstage">
+      <div class="bvp" id="bvp" style="aspect-ratio:${tall.w} / ${tall.h}">${slides}</div>
+      ${many ? `<button type="button" class="bnav prev" data-a="bnrStep" data-d="-1" aria-label="${esc(T('bnrPrev'))}">${chev}</button><button type="button" class="bnav next" data-a="bnrStep" data-d="1" aria-label="${esc(T('bnrNext'))}">${chev}</button>` : ''}</div>
+    ${many ? `<div class="bctl"><div class="bdots">${list.map((_, k) => `<button type="button" class="bdot${k === BN.i ? ' on' : ''}" data-a="bnrTo" data-i="${k}" aria-label="${esc(T('bnrDot', k + 1, n))}"${k === BN.i ? ' aria-current="true"' : ''}><span><i></i></span></button>`).join('')}</div></div>` : ''}</div>`;
+  sec.hidden = false;
+  if (!many) return;
+  const st = $('bstage');
+  if (!sec.dataset.wired) {   // (the section stays; only its inside is redrawn, e.g. on a language switch)
+    sec.dataset.wired = '1';
+    // the timer: when the progress line of the active dot is full, the next banner comes
+    sec.addEventListener('animationend', e => { if (e.animationName === 'bprog') bnrGo(BN.i + 1, 1); });
+    // keyboard focus inside waits (a tap or click on a dot does not stop the turning)
+    sec.addEventListener('focusin', e => bnrWhy('focus', e.target.matches(':focus-visible')));
+    sec.addEventListener('focusout', e => { if (!sec.contains(e.relatedTarget)) bnrWhy('focus', false); });
+  }
+  bnrWhy('hover', false); bnrWhy('focus', false); bnrWhy('touch', false);
+  st.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') bnrWhy('hover', true); });
+  st.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') bnrWhy('hover', false); });
+  // phones: swipe to change; holding a finger on the banner waits
+  st.addEventListener('pointerdown', e => { if (e.pointerType === 'mouse' && e.button) return; BN.x0 = e.clientX; BN.y0 = e.clientY; BN.swiped = false; if (e.pointerType !== 'mouse') bnrWhy('touch', true); });
+  const up = e => { bnrWhy('touch', false); if (BN.x0 == null) return; const dx = e.clientX - BN.x0, dy = e.clientY - BN.y0; BN.x0 = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.3) { BN.swiped = true; const fwd = (dx < 0) !== !EN(); bnrGo(BN.i + (fwd ? 1 : -1), fwd ? 1 : -1); } };
+  st.addEventListener('pointerup', up); st.addEventListener('pointercancel', () => { BN.x0 = null; bnrWhy('touch', false); });
+  st.addEventListener('click', e => { if (BN.swiped) { e.preventDefault(); e.stopPropagation(); BN.swiped = false; } }, true);   // a swipe is not a tap on the link
+  if ('IntersectionObserver' in window) { BN.io = new IntersectionObserver(([en]) => bnrWhy('off', !en.isIntersecting), { threshold: .3 }); BN.io.observe(sec); }
+  bnrWhy('hidden', document.hidden); bnrPreload();
+}
+/* why the banners are waiting (any reason pauses them) */
+function bnrWhy(k, on){ if (on) BN.why.add(k); else BN.why.delete(k); const s = $('bnr'); if (s) s.classList.toggle('paused', BN.why.size > 0); }
+document.addEventListener('visibilitychange', () => bnrWhy('hidden', document.hidden));
+/* the next picture is fetched while the current one shows, so it is ready when it slides in */
+function bnrPreload(){ const im = document.querySelectorAll('#bvp .bs img')[(BN.i + 1) % (BN.n || 1)]; if (im && im.loading === 'lazy') im.loading = 'eager'; }
+/* show banner i (dir 1 = forward, −1 = back); any change also restarts the timer */
+function bnrGo(i, dir){
+  const vp = $('bvp'); if (!vp || BN.n < 2) return;
+  i = (i % BN.n + BN.n) % BN.n;
+  const sl = [...vp.children], prev = BN.i;
+  if (i !== prev) {
+    vp.style.setProperty('--d', String((dir || (i > prev ? 1 : -1)) * (EN() ? 1 : -1)));   // right-to-left in Arabic
+    const nx = sl[i]; nx.classList.remove('out'); nx.style.transition = 'none'; void nx.offsetWidth; nx.style.transition = '';
+    sl.forEach((el, k) => { el.classList.toggle('on', k === i); el.classList.toggle('out', k === prev);
+      if (k === i) { el.removeAttribute('aria-hidden'); el.removeAttribute('inert'); } else { el.setAttribute('aria-hidden', 'true'); el.setAttribute('inert', ''); } });
+    BN.i = i;
+  }
+  document.querySelectorAll('#bnr .bdot').forEach((d, k) => { d.classList.toggle('on', k === i); if (k === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
+    const bar = d.querySelector('i'); if (bar) { const c = bar.cloneNode(); bar.replaceWith(c); } });   // a fresh progress line = the timer starts again
+  bnrPreload();
 }
 /* discounts: the old price is shown crossed out; a discount whose end date has passed is ignored */
 const pct = p => p.was && p.price ? Math.round((1 - p.price / p.was) * 100) : 0;
@@ -1195,7 +1432,8 @@ const priceHtml = p => `<span class="price${p.was ? ' sale' : ''}">${money(p.pri
 function start(d){
   const todayIso = new Date().toISOString().slice(0, 10);
   for (const p of d.products || []) if (p.was && p.saleUntil && p.saleUntil < todayIso) { p.price = p.was; delete p.was; }
-  D = d; applyLang(); brandStrip(); showStrip(); renderSections(); setTimeout(initChat, 400);
+  D = d; applyLang(); renderBanners(); brandStrip(); showStrip(); renderSections(); setTimeout(initChat, 400);
+  document.documentElement.classList.remove('ld');
   if (WS) { document.body.style.overflow = ''; $('tag').insertAdjacentHTML('beforebegin', `<span class="wsbadge" data-t="wsBadge">${T('wsBadge')}</span>`); }
   fillStatic();
   const num = String(D.whatsapp || '').replace(/\D/g, '');
@@ -1221,7 +1459,7 @@ function fillStatic(){
   const dn = noteFor('deliveryNote', 'deliveryNoteEn'), pn = noteFor('paymentNote', 'paymentNoteEn');
   $('dpDeliv').textContent = dn || T('dpDelivS'); $('dpPay').textContent = pn || T('dpPayS');
   $('soc').innerHTML = [D.facebook ? `<a href="${esc(D.facebook)}" target="_blank" rel="noopener">${T('fb')}</a>` : '', D.instagram ? `<a href="${esc(D.instagram)}" target="_blank" rel="noopener">${T('ig')}</a>` : ''].join('');
-  document.title = WS ? T('wsTitle') : T('title');
+  setTitle();
 }
 const byId = id => D.products.find(p => p.id === id);
 function imgSrc(u){ u = String(u || ''); if (u.startsWith('drive:')) return 'https://lh3.googleusercontent.com/d/' + u.slice(6) + '=w800'; return u; }
@@ -1256,49 +1494,85 @@ function setQty(id, q){
   q = Math.max(0, q);
   if (q) cart[id] = q; else delete cart[id];
   U.sent = false; store.set(CART_KEY, cart);
-  renderGrid(); renderCart(); if (U.page) renderPage(); if (U.sheet) renderSheet();
+  refreshCart();
   bump();
 }
+/* redraw everything that shows the basket (lists, basket bar, product page, open basket sheet) */
+function refreshCart(){
+  // a +/− button that had the keyboard focus is drawn again: give the focus to its new copy
+  const a = document.activeElement, ds = (a && a.dataset) || {}, box = a && a.closest ? a.closest('#lpg,#grid,#page,#sheet') : null;
+  renderGrid(); renderCart(); if (U.list) { listGrid(); listBag(); } if (U.page) renderPage(); if (U.sheet) renderSheet();
+  if (box && !a.isConnected && ds.id && (ds.a === 'inc' || ds.a === 'dec')) {
+    const r = $(box.id), id = CSS.escape(ds.id), b = r && (r.querySelector(`[data-a="${ds.a}"][data-id="${id}"]`) || r.querySelector(`[data-a="inc"][data-id="${id}"]`));
+    if (b) b.focus({ preventScroll: true });
+  }
+}
+/* page scrolling is locked while any full-screen layer is open, and only then */
+function syncLock(){ const c = $('chat'), on = !!(U.page || U.list || U.sheet || (c && !c.hidden) || $('gate')); document.body.style.overflow = on ? 'hidden' : ''; bnrWhy('ovl', on); }
+function setTitle(){ document.title = U.page && byId(U.page) ? byId(U.page).name + ' · LUMIA' : U.list ? lName(U.list) + ' · LUMIA' : WS ? T('wsTitle') : T('title'); }
 /* a small "pop" on the basket so adding something is clearly seen */
 function bump(){ const b = document.querySelector('.cartbar button'); if (!b || matchMedia('(prefers-reduced-motion:reduce)').matches) return; b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); }
 
 /* ---------- filters + grid ---------- */
+const fi = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const FI = { all: fi('<rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/>'),
+  now: fi('<circle cx="12" cy="12" r="8.5"/><path d="m8.5 12.2 2.4 2.4 4.6-4.9"/>'), pre: fi('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
+  sale: fi('<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="8" cy="8" r="1.4"/>') };
+const avName = k => ({ now: T('fNow'), pre: T('fPre'), sale: T('fSale') })[k] || '';
+/* shared pieces of a filter bar: availability segment and sort menu (main list and category/brand pages) */
+const segHtml = (av, sale, act) => `<div class="seg" role="group" aria-label="${esc(T('avAria'))}">${[['all', T('fAll')], ['now', T('fNow')], ['pre', T('fPre')], ...(sale ? [['sale', T('fSale')]] : [])]
+  .map(([k, l]) => `<button type="button" data-a="${act}" data-k="${k}" class="${av === k ? 'on' : ''} ${k === 'sale' ? 'sale' : ''}" aria-pressed="${av === k}">${FI[k]}${l}</button>`).join('')}</div>`;
+const sortHtml = (sort, id) => `<label class="sortw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16M3.5 16.5 7 20l3.5-3.5M17 20V4M13.5 7.5 17 4l3.5 3.5"/></svg><select class="sort" id="${id}" aria-label="${esc(T('sortAria'))}">${[['group', T('sGroup')], ['avail', T('sAvail')], ['low', T('sLow')], ['high', T('sHigh')], ['brand', T('sBrand')]].map(([k, l]) => `<option value="${k}" ${sort === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>`;
 function renderFilters(){
   const cats = [...new Set(D.products.map(p => p.category).filter(Boolean))];
-  const fi = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
-  const FI = { all: fi('<rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/>'),
-    now: fi('<circle cx="12" cy="12" r="8.5"/><path d="m8.5 12.2 2.4 2.4 4.6-4.9"/>'), pre: fi('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
-    sale: fi('<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="8" cy="8" r="1.4"/>') };
-  $('filters').innerHTML = `<div class="seg" role="tablist">${[['all', T('fAll')], ['now', T('fNow')], ['pre', T('fPre')], ...(D.products.some(p => p.was) ? [['sale', T('fSale')]] : [])]
-      .map(([k, l]) => `<button data-a="av" data-k="${k}" class="${U.av === k ? 'on' : ''} ${k === 'sale' ? 'sale' : ''}" role="tab" aria-selected="${U.av === k}">${FI[k]}${l}</button>`).join('')}</div>
-    ${cats.length > 1 ? `<div class="cats">${['', ...cats].map(c => `<button data-a="cat" data-k="${esc(c)}" class="${U.cat === c ? 'on' : ''}">${c ? esc(catName(c)) : T('allCats')}</button>`).join('')}</div>` : ''}
-    <label class="sortw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16M3.5 16.5 7 20l3.5-3.5M17 20V4M13.5 7.5 17 4l3.5 3.5"/></svg><select class="sort" id="sort" aria-label="${esc(T('sortAria'))}">${[['group', T('sGroup')], ['avail', T('sAvail')], ['low', T('sLow')], ['high', T('sHigh')], ['brand', T('sBrand')]].map(([k, l]) => `<option value="${k}" ${U.sort === k ? 'selected' : ''}>${l}</option>`).join('')}</select></label>`;
+  $('filters').innerHTML = segHtml(U.av, D.products.some(p => p.was), 'av')
+    + (cats.length > 1 ? `<div class="cats">${['', ...cats].map(c => `<button type="button" data-a="cat" data-k="${esc(c)}" class="${U.cat === c ? 'on' : ''}" aria-pressed="${U.cat === c}">${c ? esc(catName(c)) : T('allCats')}</button>`).join('')}</div>` : '')
+    + sortHtml(U.sort, 'sort');
 }
-function visible(){
-  const q = U.q.trim().toLowerCase();
-  let list = D.products.filter(p => (!U.cat || p.category === U.cat) && (!q || [p.name, p.brand, p.category, CAT_EN[p.category] || '', p.description, p.en && p.en.description].join(' ').toLowerCase().includes(q)));
-  if (U.av === 'now') list = list.filter(p => p.stock > 0);
-  if (U.av === 'pre') list = list.filter(p => p.stock <= 0 && (p.preorder || p.incoming > 0));
-  if (U.av === 'sale') list = list.filter(p => p.was);
+/* one filter + sort for every product list. f = { q, cat, brand, av, sort } (empty = no limit) */
+function filterList(src, f){
+  const q = String(f.q || '').trim().toLowerCase();
+  let list = src.filter(p => (!f.cat || p.category === f.cat) && (!f.brand || bk(p.brand) === bk(f.brand)) && (!q || [p.name, p.brand, p.category, CAT_EN[p.category] || '', p.description, p.en && p.en.description].join(' ').toLowerCase().includes(q)));
+  if (f.av === 'now') list = list.filter(p => p.stock > 0);
+  if (f.av === 'pre') list = list.filter(p => p.stock <= 0 && (p.preorder || p.incoming > 0));
+  if (f.av === 'sale') list = list.filter(p => p.was);
   const rank = p => p.stock > 0 ? 0 : p.incoming > 0 ? 1 : p.preorder ? 2 : 3;
-  const price = p => p.price || (U.sort === 'low' ? Infinity : -1);
-  if (U.sort === 'low') return list.sort((a, b) => price(a) - price(b) || rank(a) - rank(b));
-  if (U.sort === 'high') return list.sort((a, b) => price(b) - price(a) || rank(a) - rank(b));
-  const cmp = (x, y) => String(x || '\uffff').localeCompare(String(y || '\uffff'));
-  if (U.sort === 'group') return list.sort((a, b) => cmp(a.category, b.category) || cmp(a.brand, b.brand) || rank(a) - rank(b) || a.name.localeCompare(b.name));
-  if (U.sort === 'brand') return list.sort((a, b) => String(a.brand).localeCompare(String(b.brand)) || a.name.localeCompare(b.name));
+  const price = p => p.price || (f.sort === 'low' ? Infinity : -1);
+  if (f.sort === 'low') return list.sort((a, b) => price(a) - price(b) || rank(a) - rank(b));
+  if (f.sort === 'high') return list.sort((a, b) => price(b) - price(a) || rank(a) - rank(b));
+  const cmp = (x, y) => String(x || '￿').localeCompare(String(y || '￿'));
+  if (f.sort === 'group') return list.sort((a, b) => cmp(a.category, b.category) || cmp(a.brand, b.brand) || rank(a) - rank(b) || a.name.localeCompare(b.name));
+  if (f.sort === 'brand') return list.sort((a, b) => String(a.brand).localeCompare(String(b.brand)) || a.name.localeCompare(b.name));
   return list.sort((a, b) => rank(a) - rank(b) || String(a.brand).localeCompare(String(b.brand)) || a.name.localeCompare(b.name));
 }
+const visible = () => filterList(D.products, U);
+/* product cards with group headings (by category, or by brand inside one category) — used by every list */
+function gridHtml(list, f){
+  const key = f.sort === 'group' ? (!f.cat ? 'category' : !f.brand ? 'brand' : '') : f.sort === 'brand' && !f.brand ? 'brand' : '';
+  const counts = {}; if (key) list.forEach(p => { const k = p[key] || ''; counts[k] = (counts[k] || 0) + 1; });
+  let last = null;
+  return list.map(p => { const k = key ? (p[key] || '') : null; let h = '';
+    if (key && k !== last && Object.keys(counts).length > 1) h = `<div class="grp" dir="auto">${esc(key === 'category' ? catName(k) || T('other') : k || T('other'))} <small>${counts[k]}</small></div>`;
+    last = k; return h + card(p); }).join('');
+}
+/* row of removable chips, one per active filter, plus a "clear everything" button */
+const chipRow = (items, act, allAct, allLabel) => items.length ? `<div class="fchips" role="group" aria-label="${esc(T('fActive'))}">${items.map(c => `<button type="button" class="fchip" data-a="${act}" data-k="${c.k}" aria-label="${esc(T('rmF', c.l))}"><span dir="auto">${esc(c.l)}</span>${IC.x}</button>`).join('')}<button type="button" class="fall" data-a="${allAct}">${allLabel}</button></div>` : '';
+/* after a chip is removed its button is gone: move focus to the next chip, else to the count line */
+const chipFocus = (box, cnt) => { const b = document.querySelector(box + ' .fchip') || $(cnt); b && b.focus({ preventScroll: true }); };
+/* a filter button is redrawn when tapped: keep the keyboard focus on its new copy */
+const keepFocus = (box, d) => { const b = document.querySelector(`${box} [data-a="${d.a}"][data-k="${CSS.escape(d.k)}"]`); b && b.focus({ preventScroll: true }); };
 function control(p){
   const q = cart[p.id] || 0, a = avail(p);
   if (q) return `<div class="step"><button data-a="inc" data-id="${p.id}" aria-label="${T('incA')}">+</button><b>${q}</b><button data-a="dec" data-id="${p.id}" aria-label="${T('decA')}">−</button></div>`;
   return a.can ? `<button class="add" data-a="inc" data-id="${p.id}" aria-label="${esc(T('addA', p.name))}">${IC.plus}</button>` : '';
 }
+/* the brand line is a link to the brand's page */
+const brandLink = p => bk(p.brand) ? `<a class="brand" dir="ltr" href="#b-${encodeURIComponent(String(p.brand).trim())}" data-a="brandPage" data-k="${esc(String(p.brand).trim())}">${brandMark(String(p.brand).trim())}</a>` : '';
 function card(p){
   const a = avail(p);
   return `<article class="p ${a.can ? '' : 'sold'}">
       <div class="ph" data-a="view" data-id="${p.id}">${discTag(p)}${pic(p)}${control(p)}</div>
-      ${p.brand ? `<div class="brand">${esc(p.brand)}</div>` : ''}
+      ${brandLink(p)}
       <h3 class="nm" dir="auto"><a href="#p-${encodeURIComponent(p.id)}" data-a="view" data-id="${p.id}">${esc(p.name)}</a></h3>
       ${p.size ? `<div class="sz" dir="auto">${esc(p.size)}</div>` : ''}
       <div class="meta">${p.price ? `<span>${priceHtml(p)}</span>` : `<span class="small">${T('onRequest')}</span>`}${avHtml(a)}</div>
@@ -1320,17 +1594,14 @@ function specialHtml(term){
     <a href="${href}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>${T("spBtn")}</a>
   </section>`;
 }
+/* active filters of the main list, as removable chips */
+const mainChips = () => [U.cat && { k: 'cat', l: catName(U.cat) }, U.av !== 'all' && { k: 'av', l: avName(U.av) }, U.q.trim() && { k: 'q', l: T('qChip', U.q.trim()) }].filter(Boolean);
 function renderGrid(){
-  const list = visible();
   if (!D.products.length) { $('grid').innerHTML = specialHtml(''); return; }
-  if (!list.length) { $('grid').innerHTML = specialHtml(U.q.trim()); return; }
-  // headings when the list is grouped: by category (all sections shown) or by brand
-  const key = U.sort === 'group' && !U.cat ? 'category' : U.sort === 'brand' || U.sort === 'group' ? 'brand' : '';
-  const counts = {}; if (key) list.forEach(p => { const k = p[key] || ''; counts[k] = (counts[k] || 0) + 1; });
-  let last = null; const cells = list.map(p => { const k = key ? (p[key] || '') : null; let h = '';
-    if (key && k !== last && Object.keys(counts).length > 1) h = `<div class="grp" dir="auto">${esc(key === 'category' ? catName(k) || T('other') : k || T('other'))} <small>${counts[k]}</small></div>`;
-    last = k; return h + card(p); });
-  $('grid').innerHTML = `<div class="count">${T('count', list.length)}</div><div class="grid">${cells.join('')}</div>` + specialHtml('');
+  const list = visible(), ch = mainChips();
+  const head = chipRow(ch, 'unf', 'unfAll', T('showAll')) + `<div class="count" id="cnt" tabindex="-1">${ch.length ? T('countOf', list.length, D.products.length) : T('count', list.length)}</div>`;
+  if (!list.length) { $('grid').innerHTML = head + specialHtml(U.q.trim()); return; }
+  $('grid').innerHTML = head + `<div class="grid">${gridHtml(list, U)}</div>` + specialHtml('');
 }
 
 /* ---------- cart ---------- */
@@ -1348,13 +1619,13 @@ function renderCart(){
 /* ---------- sheets ---------- */
 /* phone back button: the basket and the chat window count as a "page", so Back closes them instead of leaving the site */
 const ovState = () => (history.state && history.state.ov) || '';
-function doCloseSheet(){ U.sheet = null; $('sheet').innerHTML = ''; document.body.style.overflow = U.page ? 'hidden' : ''; renderCart(); if (U.page) renderPage(); }
-function doChatClose(){ $('chat').hidden = true; $('chatFab').hidden = false; document.body.style.overflow = ''; }
+function doCloseSheet(){ U.sheet = null; $('sheet').innerHTML = ''; syncLock(); renderCart(); if (U.page) renderPage(); }
+function doChatClose(){ $('chat').hidden = true; $('chatFab').hidden = false; syncLock(); }
 window.addEventListener('popstate', () => {
   if (U.sheet && ovState() !== 'sheet') doCloseSheet();
   const c = $('chat'); if (c && !c.hidden && ovState() !== 'chat') doChatClose();
 });
-function openSheet(s){ if (!U.sheet) { try { history.pushState({ ov: 'sheet' }, ''); } catch (e) {} } U.sheet = s; renderSheet(); renderCart(); document.body.style.overflow = 'hidden'; }
+function openSheet(s){ if (!U.sheet) { try { history.pushState({ ov: 'sheet' }, ''); } catch (e) {} } U.sheet = s; renderSheet(); renderCart(); syncLock(); }
 function closeSheet(){ if (U.sheet && ovState() === 'sheet') history.back(); else doCloseSheet(); }
 function renderSheet(){
   const keep = document.querySelector('.sheet')?.scrollTop;
@@ -1371,7 +1642,8 @@ function cartHtml(){
     <div class="done"><b>${T('sentB')}</b><div class="small">${T('sentS')}</div></div>
     <button class="cta" data-a="send">${IC.wa} ${T('reopen')}</button><button class="ghost" data-a="clear">${T('newOrder')}</button>`;
   const later = ids.some(id => split(byId(id), cart[id]).later > 0);
-  return `<div class="grab"></div><div class="sh-top"><h2>${T('order')}</h2>${X}</div>
+  // "Empty basket": quiet text button next to the title (can be undone from the toast)
+  return `<div class="grab"></div><div class="sh-top"><h2>${T('order')}</h2><button type="button" class="tbtn" data-a="emptyCart">${T('emptyCart')}</button>${X}</div>
     ${ids.map(id => { const p = byId(id), q = cart[id], s = split(p, q);
       const st = s.later === 0 ? T('lnIn') : s.now === 0 ? (p.incoming > 0 ? T('way') : T('pre')) : T('lnMix', s.now, s.later);
       return `<div class="line"><div class="th">${pic(p)}</div><div class="t"><b dir="auto">${esc(p.name)}</b><span>${st}${p.price ? ' · ' + money(p.price * q) + ' ' + cur() : ''}</span></div>
@@ -1451,7 +1723,7 @@ function pageHtml(){
         <div class="thumbs" id="thumbs">${imgs.map((u, i) => `<button class="${i ? '' : 'on'}" data-a="slide" data-i="${i}" aria-label="${T('photoN', i + 1)}"><img src="${esc(imgSrc(u))}" alt=""></button>`).join('')}</div>` : ''}
       </div>
       <div class="info">
-        ${p.brand ? `<button class="brandlink" data-a="brand" data-k="${esc(p.brand)}">${esc(p.brand)}</button>` : ''}
+        ${p.category || bk(p.brand) ? `<nav class="crumbs" aria-label="${esc(T('crumbA'))}">${p.category ? `<a href="#c-${encodeURIComponent(p.category)}" data-a="catPage" data-k="${esc(p.category)}" dir="auto">${esc(catName(p.category))}</a>` : ''}${p.category && bk(p.brand) ? '<span aria-hidden="true">·</span>' : ''}${bk(p.brand) ? `<a href="#b-${encodeURIComponent(String(p.brand).trim())}" data-a="brandPage" data-k="${esc(String(p.brand).trim())}" dir="ltr">${brandMark(String(p.brand).trim())}</a>` : ''}</nav>` : ''}
         <h1 dir="auto">${esc(p.name)}</h1>
         ${p.size ? `<div class="size" dir="auto">${esc(p.size)}</div>` : ''}
         <div class="pricebox">${p.price ? `${priceHtml(p)}${up ? `<span class="unit">(${up})</span>` : ''}` : `<span class="small">${T('priceLater')}</span>`}</div>
@@ -1500,12 +1772,12 @@ function initV3(){
 }
 let lastPage = null;
 function renderPage(){
-  if (!U.page) { $('page').innerHTML = ''; lastPage = null; document.title = WS ? T('wsTitle') : T('title'); setProductLd(null); if (!U.sheet) document.body.style.overflow = ''; return; }
+  if (!U.page) { $('page').innerHTML = ''; lastPage = null; setTitle(); setProductLd(null); syncLock(); return; }
   const keep = U.page === lastPage ? $('pdp')?.scrollTop : 0;
   const slide = U.page === lastPage ? U.slide || 0 : 0;
   $('page').innerHTML = pageHtml(); lastPage = U.page; U.slide = slide;
-  document.title = byId(U.page).name + ' · LUMIA'; setProductLd(byId(U.page));
-  document.body.style.overflow = 'hidden';
+  setTitle(); setProductLd(byId(U.page));
+  syncLock();
   $('pdp').scrollTop = keep || 0;
   initV3();
   const tr = $('track');
@@ -1524,14 +1796,100 @@ function setProductLd(p){
     offers: p.price ? { '@type': 'Offer', priceCurrency: 'EGP', price: p.price, url: location.href, availability: 'https://schema.org/' + (p.stock > 0 ? 'InStock' : p.incoming > 0 || p.preorder ? 'PreOrder' : 'OutOfStock') } : undefined };
   const s = document.createElement('script'); s.type = 'application/ld+json'; s.id = 'pld'; s.textContent = JSON.stringify(d); document.head.appendChild(s);
 }
-function route(){
-  const m = /^#p-(.+)$/.exec(location.hash);
-  const id = m ? decodeURIComponent(m[1]) : null;
-  U.page = id && D && byId(id) ? id : null;
-  if (U.page && U.sheet) { if (ovState() === 'sheet') history.replaceState(null, ''); doCloseSheet(); }
-  renderPage(); renderCart();
+/* ---------- category and brand pages (#c-<category>, #b-<brand>) ----------
+   A full-screen list (#list, under the product page and the basket bar) drawn over the homepage. The homepage is
+   never redrawn or scrolled while it is open, so closing it shows the homepage exactly where it was.
+   U.list = { t: 'c'|'b', k, name, brand, cat, av, sort, q } — brand/cat are the narrowing chips inside the page.
+   Before leaving the page for a product (or another list), its filters + scroll are kept in that history entry
+   (history.state.lst), so Back restores it even if it had to be redrawn. state.back = opened from inside the shop,
+   so the in-page Back can use history.back(); without it (a shared link) Back goes to the homepage. */
+const lName = L => L.t === 'c' ? catName(L.k) : L.name;
+const listSrc = L => D.products.filter(p => L.t === 'c' ? p.category === L.k : bk(p.brand) === bk(L.k));
+const lf = L => ({ cat: L.t === 'c' ? L.k : L.cat, brand: L.t === 'b' ? L.k : L.brand, av: L.av, sort: L.sort, q: L.q });
+function saveList(){ if (U.list && !U.page && $('lp')) { try { history.replaceState(Object.assign({}, history.state, { lst: Object.assign({}, U.list, { top: $('lp').scrollTop }) }), ''); } catch (e) {} } }
+function setList(t, k){
+  if (!t) { if (U.list) closeList(); return; }
+  if (!D) return;
+  const first = D.products.find(p => t === 'c' ? p.category === k : bk(p.brand) && bk(p.brand) === bk(k));
+  // unknown category / brand: go to the homepage
+  if (!first) { try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {} if (U.list) closeList(); return; }
+  const L = U.list;
+  if (L && L.t === t && (t === 'c' ? L.k === k : bk(L.k) === bk(k))) return;   // same page (back from a product): keep it as it is
+  const s = history.state && history.state.lst, same = s && s.t === t && s.k === k;
+  U.list = Object.assign({ brand: '', cat: '', av: 'all', sort: 'group', q: '' }, same ? s : {}, { t, k, name: t === 'b' ? String(first.brand).trim() : k });
+  delete U.list.top;
+  renderList(); syncLock(); setTitle();
+  if (same && s.top) $('lp').scrollTop = s.top;
+  $('lpH').focus({ preventScroll: true });
 }
-window.addEventListener('hashchange', route);
+function closeList(){
+  U.list = null; $('list').innerHTML = ''; syncLock(); setTitle();
+  const o = U.lopener; U.lopener = null;
+  if (o && o.isConnected) o.focus({ preventScroll: true });   // back to the tile / brand that opened it
+}
+function renderList(keep){
+  const L = U.list; if (!L) return;
+  const top = keep ? $('lp')?.scrollTop : 0, src = listSrc(L), t = totals(), n = lName(L);
+  const vis = L.t === 'c' ? collage(src, 'lp-col', n, true) : '';
+  // brand page: the logo is the title (its alt text is the name); without a logo the name in Latin letters
+  $('list').innerHTML = `<div class="lp" id="lp" role="dialog" aria-labelledby="lpH">
+    <div class="pdp-top"><button class="ib" type="button" data-a="lback" aria-label="${T('back')}">${PI.back}</button><span class="mk">LUMIA</span>
+      <button class="ib" type="button" id="lpBag" data-a="cart" aria-label="${T('order')}">${PI.bag}${t.count ? `<span class="n">${t.count}</span>` : ''}</button></div>
+    <div class="wrap lp-body">
+      <div class="lp-head">${vis}<div><h1 id="lpH" tabindex="-1" dir="${L.t === 'b' ? 'ltr' : 'auto'}">${L.t === 'b' ? brandMark(L.name, 'lg', false) : esc(n)}</h1><div class="count">${T('count', src.length)}</div></div></div>
+      <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="lq" type="search" value="${esc(L.q)}" placeholder="${esc(T('lSearch', n))}" aria-label="${esc(T('lSearch', n))}" autocomplete="off"></label>
+      <div id="lpf"></div>
+      <div id="lpg"></div>
+    </div></div>`;
+  listFilters(); listGrid();
+  if (top) $('lp').scrollTop = top;
+}
+/* inside a category: one chip per brand in it; inside a brand: one chip per category it has; then availability + sort */
+function listFilters(){
+  const L = U.list, src = listSrc(L), sub = L.t === 'c' ? 'brand' : 'cat', seen = new Map();
+  src.forEach(p => { const v = String((sub === 'brand' ? p.brand : p.category) || '').trim(), k = sub === 'brand' ? bk(v) : v; if (k && !seen.has(k)) seen.set(k, v); });
+  const opts = [...seen.values()].sort((a, b) => (sub === 'cat' ? catName(a) : a).localeCompare(sub === 'cat' ? catName(b) : b));
+  const on = v => sub === 'brand' ? bk(L.brand) === bk(v) : L.cat === v;
+  const chips = opts.length > 1 ? `<div class="filters"><div class="cats" role="group" aria-label="${esc(T(sub === 'brand' ? 'byBrand' : 'byCat'))}">${['', ...opts].map(v => `<button type="button" data-a="lsub" data-k="${esc(v)}" class="${on(v) ? 'on' : ''}" aria-pressed="${on(v)}"${v && sub === 'brand' ? ' dir="ltr"' : ''}>${v ? (sub === 'brand' ? brandMark(v) : esc(catName(v))) : T(sub === 'brand' ? 'allBrands' : 'allCats')}</button>`).join('')}</div></div>` : '';
+  $('lpf').innerHTML = chips + `<div class="filters">${segHtml(L.av, src.some(p => p.was), 'lav')}${sortHtml(L.sort, 'lsort')}</div>`;
+}
+function listGrid(){
+  const L = U.list; if (!L || !$('lpg')) return;
+  const src = listSrc(L), f = lf(L), list = filterList(src, f);
+  const ch = [L.t === 'c' && L.brand && { k: 'sub', l: L.brand }, L.t === 'b' && L.cat && { k: 'sub', l: catName(L.cat) }, L.av !== 'all' && { k: 'av', l: avName(L.av) }, L.q.trim() && { k: 'q', l: T('qChip', L.q.trim()) }].filter(Boolean);
+  $('lpg').innerHTML = chipRow(ch, 'lunf', 'lunfAll', T('clearF'))
+    + (ch.length ? `<div class="count" id="lcnt" tabindex="-1">${T('countOf', list.length, src.length)}</div>` : '')
+    + (list.length ? `<div class="grid">${gridHtml(list, f)}</div>` : `<div class="empty"><b>${T('lEmptyB')}</b>${T('lEmptyS')}<br><button type="button" class="fall" data-a="lunfAll">${T('clearF')}</button></div>`);
+}
+function listBag(){ const b = $('lpBag'), n = totals().count; if (b) b.innerHTML = PI.bag + (n ? `<span class="n">${n}</span>` : ''); }
+/* open a category / brand page from a link (tile, marquee, card, product page) */
+function openList(t, k, el, e){
+  if (e && (e.ctrlKey || e.metaKey || e.shiftKey)) return;   // new tab: let the browser do it
+  if (e) e.preventDefault();
+  const L = U.list;
+  if (L && !U.page && L.t === t && (t === 'c' ? L.k === k : bk(L.k) === bk(k))) return;   // already here
+  if (!U.list && !U.page) U.lopener = el;
+  saveList();
+  try { history.pushState({ back: 1 }, '', location.pathname + location.search + '#' + t + '-' + encodeURIComponent(k)); } catch (e2) { location.hash = t + '-' + encodeURIComponent(k); return; }
+  route();
+}
+let routed = null;
+function route(){
+  routed = location.hash;
+  const m = /^#([pcb])-(.+)$/.exec(location.hash);
+  let k = null; try { k = m ? decodeURIComponent(m[2]) : null; } catch (e) {}
+  const t = m && k ? m[1] : '', was = U.page;
+  U.page = t === 'p' && D && byId(k) ? k : null;
+  // a product page keeps the category/brand page under it, so Back returns to it unchanged
+  if (t !== 'p') setList(t, k);
+  if (U.page && U.sheet) { if (ovState() === 'sheet') history.replaceState(Object.assign({}, history.state, { ov: '' }), ''); doCloseSheet(); }
+  renderPage(); renderCart();
+  if (was && !U.page && U.list) { const a = $('lp') && $('lp').querySelector(`.nm a[data-id="${CSS.escape(was)}"]`); (a || $('lpH')).focus({ preventScroll: true }); }
+}
+// Back/Forward: the hash usually changes (hashchange); when the language in the link changed too, only popstate comes
+window.addEventListener('hashchange', () => { if (location.hash !== routed) route(); });
+window.addEventListener('popstate', () => setTimeout(() => { if (D && location.hash !== routed) route(); }, 0));
 
 function orderMessage(){
   const now = [], later = [];
@@ -1557,16 +1915,45 @@ function orderMessage(){
 }
 
 let tt;
-function toast(m){ document.querySelector('.toast')?.remove(); clearTimeout(tt); const t = document.createElement('div'); t.className = 'toast'; t.textContent = m; document.body.appendChild(t); tt = setTimeout(() => t.remove(), 2300); }
+/* toast(msg) — or toast(msg, { label, fn, ms }) for one with an action button (e.g. Undo) */
+function toast(m, act){
+  document.querySelector('.toast')?.remove(); clearTimeout(tt);
+  const t = document.createElement('div'); t.className = 'toast'; t.setAttribute('role', 'status'); t.textContent = m;
+  if (act) { const b = document.createElement('button'); b.type = 'button'; b.className = 'tact'; b.textContent = act.label;
+    b.addEventListener('click', () => { clearTimeout(tt); t.remove(); act.fn(); }); t.classList.add('wact'); t.append(b); }
+  document.body.appendChild(t); tt = setTimeout(() => t.remove(), act ? act.ms || 6000 : 2300);
+}
 
 const A = {
   inc: d => { const first = !cart[d.id]; setQty(d.id, (cart[d.id] || 0) + 1); if (first && cart[d.id] && !U.sheet) toast(T('added')); },
   lang: (d, el, e) => { if (e) e.preventDefault(); setLang(EN() ? 'ar' : 'en'); },
   dec: d => setQty(d.id, (cart[d.id] || 0) - 1),
-  view: (d, el, e) => { if (e && el && el.tagName === 'A') e.preventDefault(); U.fromGrid = true; location.hash = 'p-' + encodeURIComponent(d.id); },
+  view: (d, el, e) => { if (e && el && el.tagName === 'A') e.preventDefault(); saveList(); U.fromGrid = true; location.hash = 'p-' + encodeURIComponent(d.id); },
   back: () => { if (U.fromGrid) { U.fromGrid = false; history.back(); } else { history.replaceState(null, '', location.pathname + location.search); route(); } },
   special: () => { const el = $('special'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); },
-  brand: d => { history.replaceState(null, '', location.pathname + location.search); U.fromGrid = false; route(); U.q = d.k; $('q').value = d.k; U.cat = ''; U.av = 'all'; renderFilters(); renderGrid(); $('shop').scrollIntoView(); },
+  // poster banners
+  bnrStep: d => bnrGo(BN.i + (+d.d || 1), +d.d || 1),
+  bnrTo: d => bnrGo(+d.i, +d.i >= BN.i ? 1 : -1),
+  bnrOffers: (d, el, e) => { if (e) e.preventDefault(); A.av({ k: 'sale', go: 1 }); },
+  // category and brand pages
+  catPage: (d, el, e) => openList('c', d.k, el, e),
+  brandPage: (d, el, e) => openList('b', d.k, el, e),
+  brand: (d, el, e) => openList('b', d.k, el, e),
+  lback: () => { if (history.state && history.state.back) history.back(); else { try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {} route(); } },
+  lsub: d => { const L = U.list; if (L.t === 'c') L.brand = d.k; else L.cat = d.k; listFilters(); listGrid(); keepFocus('#lpf', d); },
+  lav: d => { U.list.av = d.k; listFilters(); listGrid(); keepFocus('#lpf', d); },
+  lunf: d => { const L = U.list; if (d.k === 'sub') L.brand = L.cat = ''; if (d.k === 'av') L.av = 'all'; if (d.k === 'q') { L.q = ''; $('lq').value = ''; } listFilters(); listGrid(); chipFocus('#lpg', 'lpH'); },
+  lunfAll: () => { Object.assign(U.list, { brand: '', cat: '', av: 'all', q: '' }); $('lq').value = ''; listFilters(); listGrid(); $('lpH').focus({ preventScroll: true }); },
+  // main list: remove one filter chip / all of them
+  unf: d => { if (d.k === 'cat') U.cat = ''; if (d.k === 'av') U.av = 'all'; if (d.k === 'q') { U.q = ''; $('q').value = ''; } renderFilters(); renderGrid(); chipFocus('#grid', 'cnt'); },
+  unfAll: () => { U.cat = ''; U.av = 'all'; U.q = ''; $('q').value = ''; renderFilters(); renderGrid(); $('cnt')?.focus({ preventScroll: true }); },
+  // empty the basket (name/phone/address stay); the toast offers Undo for 6 seconds
+  emptyCart: () => {
+    const prev = Object.assign({}, cart);
+    cart = {}; U.sent = false; store.set(CART_KEY, cart); refreshCart();
+    document.querySelector('.sheet .x')?.focus();
+    toast(T('emptied'), { label: T('undo'), ms: 6000, fn: () => { cart = Object.assign({}, prev); U.sent = false; store.set(CART_KEY, cart); refreshCart(); document.querySelector('.sheet [data-a=emptyCart]')?.focus(); toast(T('restored')); } });
+  },
   v3d: () => { U.v3 = U.v3 === U.page ? null : U.page; renderPage(); },
   slide: d => { const tr = $('track'); tr.scrollTo({ left: tr.clientWidth * +d.i, behavior: 'smooth' }); },
   share: async () => {
@@ -1582,9 +1969,9 @@ const A = {
   close: () => closeSheet(),
   scrim: (d, el, e) => { if (e.target === el) closeSheet(); },
   // (from the homepage tiles/banner: also jump down to the products)
-  av: d => { U.av = d.k; renderFilters(); renderGrid(); if (d.go) $('shop').scrollIntoView({ behavior: 'smooth' }); },
-  cat: d => { U.cat = d.k; renderFilters(); renderGrid(); if (d.go) $('shop').scrollIntoView({ behavior: 'smooth' }); },
-  clear: () => { U.promo = ''; store.set('lumia_promo', ''); cart = {}; store.set(CART_KEY, cart); U.sent = false; closeSheet(); renderGrid(); toast(T('thanks')); },
+  av: d => { U.av = d.k; renderFilters(); renderGrid(); if (d.go) $('shop').scrollIntoView({ behavior: 'smooth' }); else keepFocus('#filters', d); },
+  cat: d => { U.cat = d.k; renderFilters(); renderGrid(); if (d.go) $('shop').scrollIntoView({ behavior: 'smooth' }); else keepFocus('#filters', d); },
+  clear: () => { U.promo = ''; store.set('lumia_promo', ''); cart = {}; store.set(CART_KEY, cart); U.sent = false; closeSheet(); renderGrid(); if (U.list) { listGrid(); listBag(); } toast(T('thanks')); },
   send: () => {
     if (!form.name.trim()) { toast(T('needName')); $('fn')?.focus(); return; }
     if (!Object.keys(cart).length) { toast(T('emptyOrder')); return; }
@@ -1663,7 +2050,7 @@ async function sendChat(text){
   chat.busy = false; saveChat(); renderChat();
 }
 Object.assign(A, {
-  chatOpen: () => { if (ovState() !== 'chat') { try { history.pushState({ ov: 'chat' }, ''); } catch (e) {} } $('chat').hidden = false; $('chatFab').hidden = true; document.body.style.overflow = 'hidden'; renderChat(); setTimeout(() => window.matchMedia('(min-width:700px)').matches && $('chatIn').focus(), 50); },
+  chatOpen: () => { if (ovState() !== 'chat') { try { history.pushState({ ov: 'chat' }, ''); } catch (e) {} } $('chat').hidden = false; $('chatFab').hidden = true; syncLock(); renderChat(); setTimeout(() => window.matchMedia('(min-width:700px)').matches && $('chatIn').focus(), 50); },
   chatClose: () => { if (ovState() === 'chat') history.back(); else doChatClose(); },
   chatAsk: d => sendChat(d.t),
   chatNoImg: () => { chat.img = ''; $('chatPend').hidden = true; },
@@ -1677,12 +2064,13 @@ document.addEventListener('click', e => {
   A[el.dataset.a] && A[el.dataset.a](el.dataset, el, e);
 });
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { if (U.sheet) closeSheet(); else if (U.page) A.back(); }
+  if (e.key === 'Escape') { if (U.sheet) closeSheet(); else if (U.page) A.back(); else if (U.list) A.lback(); }
   if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.sl[data-a=view]')) { e.preventDefault(); A.view(e.target.dataset); }
 });
-document.addEventListener('input', e => { const f = e.target.dataset.f; if (f) form[f] = e.target.value; });
+document.addEventListener('input', e => { const f = e.target.dataset.f; if (f) form[f] = e.target.value;
+  if (e.target.id === 'lq' && U.list) { U.list.q = e.target.value; listGrid(); } });   // search inside a category/brand page
 $('q').addEventListener('input', e => { U.q = e.target.value; renderGrid(); });
-document.addEventListener('change', e => { if (e.target.id === 'sort') { U.sort = e.target.value; renderGrid(); } });
+document.addEventListener('change', e => { if (e.target.id === 'sort') { U.sort = e.target.value; renderGrid(); } if (e.target.id === 'lsort' && U.list) { U.list.sort = e.target.value; listGrid(); } });
 new IntersectionObserver(([en]) => $('shop').classList.toggle('stuck', !en.isIntersecting), { threshold: 0 }).observe(document.querySelector('.hero'));
 
 /* sample data, only used when the page is opened without its data file */
@@ -1733,7 +2121,7 @@ const doInstall = async () => {
     <p class="small" style="margin:0 0 6px">${T('instP')}</p>
     <ol class="ios-steps">${steps.map(x => `<li><span>${x}</span></li>`).join('')}</ol>
     <button class="cta" id="iosDone">${T('instDone')}</button><button class="ghost" data-a="close">${T('later')}</button></div></div>`;
-  U.sheet = { type: 'help' }; document.body.style.overflow = 'hidden';
+  U.sheet = { type: 'help' }; syncLock();
   $('iosDone').addEventListener('click', () => { markInstalled(); closeSheet(); });
 };
 $('installBtn').addEventListener('click', doInstall);
