@@ -814,7 +814,7 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
   </div>
   <div class="wrap hero-in">
     <div class="hero-copy">
-      <div class="brandmk"><img class="logo" src="logo-care.png" alt="LUMIA Care — Imported Gems" width="685" height="526" fetchpriority="high"><span class="care" aria-hidden="true"><i>C</i><i>A</i><i>R</i><i>E</i></span><img class="logo gems" src="logo-gems.png" alt="" width="685" height="194"></div>
+      <div class="brandmk"><img class="logo" src="logo-care.webp" alt="LUMIA Care — Imported Gems" width="685" height="526" fetchpriority="high"><span class="care" aria-hidden="true"><i>C</i><i>A</i><i>R</i><i>E</i></span><img class="logo gems" src="logo-gems.webp" alt="" width="685" height="194"></div>
       <p class="tag" id="tag">منتجات أصلية نستوردها خصيصاً من ألمانيا إلى مصر، لتصل إليك حتى باب منزلك</p>
       <div class="route" aria-hidden="true"><span><i class="flag de"></i><span data-t="de">ألمانيا</span></span><span class="ln"><span class="plane"><svg viewBox="0 0 64 48"><path d="M26 19 23.5 30M38 19 40.5 30" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".75"/><rect x="18" y="29.5" width="28" height="17" rx="3" fill="#f6cfa6" stroke="#b9786b" stroke-width="1.5"/><path d="M32 29.5v17M18 36h28" stroke="#b9786b" stroke-width="1.4"/><path d="M29 29.5c-2-3-6-3-6-.5M35 29.5c2-3 6-3 6-.5" fill="none" stroke="#b9786b" stroke-width="1.3"/><path fill="currentColor" d="M4 14c0-3.5 4-5 8-5h32l8-7h5l-3 9c4 1 6 2 6 3.5 0 2.5-5 4.5-11 4.5H12c-4 0-8-1.5-8-5z"/><path fill="#a95f52" d="M23 15h13l-8 10h-6z"/><path fill="#fff" d="M7 12.5c1-1.6 3-2.3 5-2.3v3.3H7z" opacity=".9"/><g fill="#fff" opacity=".9"><circle cx="17" cy="12" r="1.1"/><circle cx="21.5" cy="12" r="1.1"/><circle cx="26" cy="12" r="1.1"/><circle cx="30.5" cy="12" r="1.1"/><circle cx="35" cy="12" r="1.1"/></g></svg></span></span><span><i class="flag eg"></i><span data-t="eg">مصر</span></span></div>
       <div class="ctas">
@@ -836,7 +836,7 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
 
 <section class="bnr" id="bnr" hidden></section>
 
-<section class="brands" data-ta="brandsAria" aria-label="العلامات التجارية">
+<section class="brands" id="brandsSec" data-ta="brandsAria" aria-label="العلامات التجارية">
   <h2 data-t="brandsH">منتجات من dm وRossmann وأشهر العلامات الألمانية والأوروبية</h2>
   <div class="marq" id="marq"></div><div class="fade"></div>
 </section>
@@ -894,7 +894,7 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
 </section>
 
 <footer><div class="wrap">
-  <div class="fbrand"><img src="logo-mark.png" alt="" width="40" height="40" loading="lazy"><div><span class="mk">LUMIA</span><small data-t="footNote">منتجات أصلية من ألمانيا إلى مصر</small></div></div>
+  <div class="fbrand"><img src="logo-mark.webp" alt="" width="40" height="40" loading="lazy"><div><span class="mk">LUMIA</span><small data-t="footNote">منتجات أصلية من ألمانيا إلى مصر</small></div></div>
   <div class="fcol"><span><span data-t="waLabel">واتساب:</span> <span class="num" id="wa"></span></span><span class="soc" id="soc"></span></div>
   <div class="fcol"><button type="button" class="flang" data-a="lang"><span data-t="langBtn">English</span></button><span id="upd"></span></div>
 </div></footer>
@@ -1228,7 +1228,7 @@ function gate(err){
   let g = $('gate');
   if (!g) {
     g = document.createElement('div'); g.id = 'gate'; g.className = 'gate';
-    g.innerHTML = `<form class="box" id="gateForm" autocomplete="off"><img src="../logo-care.png" alt="LUMIA Care" style="width:130px"><div class="care" style="margin:6px 0 4px"><i style="animation:none;opacity:1;transform:none;filter:none">C</i><i style="animation:none;opacity:1;transform:none;filter:none">A</i><i style="animation:none;opacity:1;transform:none;filter:none">R</i><i style="animation:none;opacity:1;transform:none;filter:none">E</i></div>
+    g.innerHTML = `<form class="box" id="gateForm" autocomplete="off"><img src="../logo-care.webp" alt="LUMIA Care" style="width:130px"><div class="care" style="margin:6px 0 4px"><i style="animation:none;opacity:1;transform:none;filter:none">C</i><i style="animation:none;opacity:1;transform:none;filter:none">A</i><i style="animation:none;opacity:1;transform:none;filter:none">R</i><i style="animation:none;opacity:1;transform:none;filter:none">E</i></div>
       <h1>${T('wsBadge')}</h1><p>${T('gateP')}</p>
       <input id="gateIn" placeholder="${esc(T('gateCode'))}" autocapitalize="off" spellcheck="false" aria-label="${esc(T('gateCode'))}">
       <button type="submit" id="gateBtn">${T('gateGo')}</button><div class="err" id="gateErr"></div>
@@ -1322,7 +1322,11 @@ const brandMark = (b, sz = 'sm', lazy = true) => {
 function brandStrip(){
   const ps = (D && D.products) || [], own = [...new Set(ps.map(p => String(p.brand || '').trim()).filter(Boolean))];
   const seen = new Set(), list = [];
-  for (const b of [...BRANDS, ...own]) { const k = bk(b); if (k && !seen.has(k)) { seen.add(k); list.push(b); } }
+  // only brands that are sold in the shop AND have a logo picture (no text names, no brands we don't carry);
+  // with fewer than 3 such logos the strip falls back to the names of the brands in the shop
+  for (const b of own) { const k = bk(b); if (k && !seen.has(k) && brandLogo(b)) { seen.add(k); list.push(b); } }
+  if (list.length < 3) for (const b of own) { const k = bk(b); if (k && !seen.has(k)) { seen.add(k); list.push(b); } }
+  $('brandsSec') && ($('brandsSec').hidden = !list.length);
   // brands that have products are links to their brand page; the copy that makes the loop seamless is hidden from screen readers and the keyboard
   const has = new Map(ps.filter(p => bk(p.brand)).map(p => [bk(p.brand), String(p.brand).trim()]));
   const row = dup => list.map(b => { const real = has.get(bk(b)), cls = `${brandLogo(b) ? 'lg' : ''}${dup ? ' dup' : ''}`.trim(), hid = dup ? ' aria-hidden="true"' : '';
@@ -1991,7 +1995,7 @@ function initChat(){
   document.body.insertAdjacentHTML('beforeend', `<button class="chatfab" id="chatFab" type="button" data-a="chatOpen" data-ta="chatAria" aria-label="${T('chatAria')}"><span class="dot"></span>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg><span data-t="chatFab">${T('chatFab')}</span></button>
   <section class="chat" id="chat" hidden role="dialog" data-ta="chatTitle" aria-label="${T('chatTitle')}">
-    <div class="hd"><img src="${WS ? '../' : ''}logo-mark.png" alt=""><div><b data-t="chatTitle">${T('chatTitle')}</b><small data-t="chatSub">${T('chatSub')}</small></div><button class="x" type="button" data-a="chatClose" data-ta="closeA" aria-label="${T('closeA')}">✕</button></div>
+    <div class="hd"><img src="${WS ? '../' : ''}logo-mark.webp" alt=""><div><b data-t="chatTitle">${T('chatTitle')}</b><small data-t="chatSub">${T('chatSub')}</small></div><button class="x" type="button" data-a="chatClose" data-ta="closeA" aria-label="${T('closeA')}">✕</button></div>
     <div class="msgs" id="chatMsgs"></div>
     <div class="chips" id="chatChips"></div>
     <div class="pend" id="chatPend" hidden></div>

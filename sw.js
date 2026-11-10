@@ -1,6 +1,6 @@
 /* LUMIA shop — works offline with the last products seen, always fetches fresh data when online. */
-const CACHE = 'lumia-v6';   // v6: category & brand pages, filter chips, brand logos, poster banners
-const CORE = ['./', 'index.html', 'logo-full.png', 'logo-mark.png', 'icon-192.png', 'icon-512.png', 'manifest.webmanifest'];
+const CACHE = 'lumia-v7';   // v6: category & brand pages, filter chips, brand logos, poster banners
+const CORE = ['./', 'index.html', 'logo-full.png', 'logo-mark.webp', 'logo-care.webp', 'icon-192.png', 'icon-512.png', 'manifest.webmanifest'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
 });
