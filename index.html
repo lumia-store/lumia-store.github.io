@@ -1043,6 +1043,20 @@ html:not(.lng) .hero .tag,html:not(.lng) .hero .ctas,html:not(.lng) .hic,html:no
 .ann span{overflow:hidden;text-overflow:ellipsis}
 @media (max-width:560px){.hero .ctas{flex-direction:column;align-items:stretch;width:min(320px,100%)}.hero .ctas a{justify-content:center}}
 html.ld .hnav,html.ld .mnav{visibility:hidden}
+/* brand video: a title, the cover with one large round play button in the middle, framed like the banners */
+.vid{padding:clamp(48px,7vw,88px) 0 0}
+.vbox{position:relative;aspect-ratio:16/9;background:var(--well);border-radius:2px;overflow:hidden;max-height:none}
+.vbox video{display:block;width:100%;height:100%;max-height:none;object-fit:cover;background:var(--well);border-radius:0}
+.vbox::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 50%,rgba(44,30,28,.18),transparent 70%);pointer-events:none;transition:opacity .3s}
+.vplay{position:absolute;top:50%;left:50%;z-index:1;width:clamp(72px,9vw,104px);height:clamp(72px,9vw,104px);margin:0;padding:0;transform:translate(-50%,-50%);border:0;border-radius:50%;
+  background:rgba(251,243,238,.92);color:var(--primary);display:flex;align-items:center;justify-content:center;cursor:pointer;
+  box-shadow:0 14px 40px -12px rgba(44,30,28,.55),0 0 0 10px rgba(251,243,238,.28);transition:transform .25s,background .25s,color .25s}
+.vplay svg{width:42%;height:42%;margin-left:7%}   /* (the triangle points right in both languages; nudged so it looks centred) */
+.vplay:hover{transform:translate(-50%,-50%) scale(1.06);background:var(--primary);color:var(--on-primary)}
+.vplay:focus-visible{outline:2px solid var(--on-primary);outline-offset:4px}
+.vbox.on .vplay,.vbox.on::after{opacity:0;pointer-events:none}
+.vbox.on .vplay{visibility:hidden}
+.vbox.nop{background:radial-gradient(70% 70% at 50% 45%,#fbf4ef,var(--well))}
 </style>
 </head>
 <body>
@@ -1263,7 +1277,7 @@ const I18N = {
     instH: 'تثبيت تطبيق LUMIA', instP: 'أضف المتجر إلى شاشتك الرئيسية لتفتحه بلمسة واحدة مثل أي تطبيق.',
     instSteps: ['اضغط على زر المشاركة <b>⬆︎</b> أسفل الشاشة في Safari.', 'اختر <b>«إضافة إلى الشاشة الرئيسية»</b>.', 'اضغط <b>«إضافة»</b>، وستجد أيقونة LUMIA على شاشتك.'],
     instDone: 'تم التثبيت', later: 'لاحقاً', installed: 'تم تثبيت تطبيق LUMIA على جهازك',
-    video: 'فيديو LUMIA', play: 'تشغيل الفيديو',
+    video: 'فيديو LUMIA', play: 'تشغيل الفيديو', vidH: 'لمحة من LUMIA',
     // category / brand pages, filter chips, empty basket
     countOf: (n, m) => `${n} من أصل ${m} منتج`, showAll: 'عرض جميع المنتجات', clearF: 'مسح عوامل التصفية',
     rmF: x => `إزالة عامل التصفية: ${x}`, fActive: 'عوامل التصفية المطبّقة', qChip: q => `«${q}»`,
@@ -1360,7 +1374,7 @@ const I18N = {
     instH: 'Install the LUMIA app', instP: 'Add the shop to your home screen to open it with one tap, like any app.',
     instSteps: ['Tap the Share button <b>⬆︎</b> at the bottom of Safari.', 'Choose <b>“Add to Home Screen”</b>.', 'Tap <b>“Add”</b> — the LUMIA icon appears on your screen.'],
     instDone: 'Done', later: 'Later', installed: 'The LUMIA app is installed on your device',
-    video: 'LUMIA video', play: 'Play the video',
+    video: 'LUMIA video', play: 'Play the video', vidH: 'A look at LUMIA',
     countOf: (n, m) => `${n} of ${m} product${m === 1 ? '' : 's'}`, showAll: 'Show all products', clearF: 'Clear filters',
     rmF: x => `Remove filter: ${x}`, fActive: 'Active filters', qChip: q => `“${q}”`,
     allBrands: 'All brands', byBrand: 'Filter by brand', byCat: 'Filter by category', avAria: 'Availability',
@@ -1581,7 +1595,15 @@ function renderSections(){
   // brand video (only when a video link is set in the app; the poster shows until it is played)
   const v = D.videoUrl;
   $('vidSec').hidden = !v;
-  $('vidSec').innerHTML = v ? `<div class="wrap"><video controls preload="none" playsinline ${D.videoPoster ? `poster="${esc(D.videoPoster)}"` : ''} aria-label="${esc(T('video'))}"><source src="${esc(v)}" type="video/mp4"></video></div>` : '';
+  // the cover with one big play button; the player's own controls appear once it plays. No link → no section at all.
+  $('vidSec').innerHTML = v ? `<div class="wrap"><div class="shead"><h2 class="sec-h">${esc(T('vidH'))}</h2></div>
+    <div class="vbox${D.videoPoster ? '' : ' nop'}"><video preload="none" playsinline ${D.videoPoster ? `poster="${esc(asset(D.videoPoster))}"` : ''} aria-label="${esc(T('video'))}"><source src="${esc(asset(v))}" type="video/mp4"></video>
+    <button type="button" class="vplay" data-a="vplay" aria-label="${esc(T('play'))}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></button></div></div>` : '';
+  const vid = $('vidSec').querySelector('video');
+  if (vid) { const box = vid.parentElement;
+    vid.addEventListener('play', () => box.classList.add('on'));
+    vid.addEventListener('ended', () => { box.classList.remove('on'); vid.controls = false; vid.load(); });
+    vid.addEventListener('error', () => { $('vidSec').hidden = true; }, true); }   // a broken link hides the section instead of showing an empty player
 }
 /* brand names are matched loosely: lowercase, no accents, letters/digits only ("L'Oréal" = "loreal", "essence" = "Essence") */
 const bk = s => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/!/g, 'i').replace(/[^a-z0-9\u0600-\u06ff]/g, '');   // "!" reads as "i": "trend !t up" = "trend it up"
@@ -2216,6 +2238,7 @@ const A = {
   goSec: (d, el, e) => { if (e) e.preventDefault(); const t = $(d.k); if (t && !t.hidden) t.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }); },
   goSearch: () => { const q = $('q'); $('allH').scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }); setTimeout(() => q && q.focus({ preventScroll: true }), reduceMotion() ? 0 : 450); },
   goTop: (d, el, e) => { if (e) e.preventDefault(); scrollTo({ top: 0, behavior: reduceMotion() ? 'auto' : 'smooth' }); },
+  vplay: () => { const v = $('vidSec').querySelector('video'); if (!v) return; v.controls = true; const p = v.play(); if (p && p.catch) p.catch(() => {}); },
   special: () => { const el = $('special'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); },
   // poster banners
   bnrStep: d => bnrGo(BN.i + (+d.d || 1), +d.d || 1),
