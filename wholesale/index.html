@@ -1057,7 +1057,7 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
 <header class="site" id="siteHd">
   <div class="wrap shd">
     <nav class="hnav" data-ta="navAria" aria-label="أقسام الموقع"><a href="#catsSec" data-a="goSec" data-k="catsSec" data-t="navCats">الأقسام</a><a href="#brandTiles" data-a="goSec" data-k="brandTiles" data-t="navBrands">العلامات التجارية</a><a href="#shop" data-a="av" data-k="sale" data-go="1" class="navSale" hidden data-t="navSale">العروض</a><a href="#shop" data-a="goSec" data-k="allH" data-t="navAll">جميع المنتجات</a></nav>
-    <a class="wm" href="#top" data-a="goTop" aria-label="LUMIA Care"><img src="logo-mark.webp" alt="" width="40" height="40"><span><b>LUMIA</b><small>CARE</small></span></a>
+    <a class="wm" href="#top" data-a="goTop" aria-label="LUMIA Care"><img src="../logo-mark.webp" alt="" width="40" height="40"><span><b>LUMIA</b><small>CARE</small></span></a>
     <div class="hic">
       <button class="langbtn" type="button" data-a="lang" data-ta="langAria" aria-label="Switch to English"><span data-t="langBtn">English</span></button>
       <button class="install hib" id="installBtn" type="button" hidden data-ta="installAria" aria-label="تثبيت تطبيق LUMIA على جهازك"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v10"/><path d="M8 10l4 4 4-4"/><rect x="5" y="17" width="14" height="3" rx="1.5"/></svg></button>
@@ -1070,7 +1070,7 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
 </header>
 <section class="hero" id="top">
   <div class="wrap hero-in">
-    <div class="brandmk"><img class="logo" src="logo-care.webp" alt="LUMIA Care — Imported Gems" width="685" height="526" fetchpriority="high"><span class="care" aria-hidden="true"><i>C</i><i>A</i><i>R</i><i>E</i></span><img class="logo gems" src="logo-gems.webp" alt="" width="685" height="194"></div>
+    <div class="brandmk"><img class="logo" src="../logo-care.webp" alt="LUMIA Care — Imported Gems" width="685" height="526" fetchpriority="high"><span class="care" aria-hidden="true"><i>C</i><i>A</i><i>R</i><i>E</i></span><img class="logo gems" src="../logo-gems.webp" alt="" width="685" height="194"></div>
     <p class="tag" id="tag">منتجات أصلية نستوردها خصيصاً من ألمانيا إلى مصر، لتصل إليك حتى باب منزلك</p>
     <div class="ctas">
       <a class="cta-main" href="#shop" id="goShop" data-t="shopAll">تسوّق جميع المنتجات</a>
@@ -1151,7 +1151,7 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
 </section>
 
 <footer><div class="wrap fgrid">
-  <div class="fbrand"><img src="logo-mark.webp" alt="" width="40" height="40" loading="lazy"><div><span class="mk">LUMIA</span><small data-t="footNote">منتجات أصلية من ألمانيا إلى مصر</small></div></div>
+  <div class="fbrand"><img src="../logo-mark.webp" alt="" width="40" height="40" loading="lazy"><div><span class="mk">LUMIA</span><small data-t="footNote">منتجات أصلية من ألمانيا إلى مصر</small></div></div>
   <div class="fcol"><b data-t="fShop">تسوّق</b><a href="#catsSec" data-a="goSec" data-k="catsSec" data-t="navCats">الأقسام</a><a href="#brandTiles" data-a="goSec" data-k="brandTiles" data-t="navBrands">العلامات التجارية</a><a href="#shop" data-a="av" data-k="sale" data-go="1" class="navSale" hidden data-t="navSale">العروض</a><a href="#allH" data-a="goSec" data-k="allH" data-t="navAll">جميع المنتجات</a></div>
   <div class="fcol"><b data-t="fHelp">المساعدة</b><a href="#howSec" data-a="goSec" data-k="howSec" data-t="fHow">طريقة الطلب</a><a href="#dpH" data-a="goSec" data-k="dpH" data-t="fDeliv">التوصيل والدفع</a><button type="button" class="flink" data-a="special" data-t="fSpecial">طلب منتج خاص</button></div>
   <div class="fcol"><b data-t="fContact">تواصل معنا</b><span><span data-t="waLabel">واتساب:</span> <span class="num" id="wa"></span></span><span class="soc" id="soc"></span><button type="button" class="flang" data-a="lang"><span data-t="langBtn">English</span></button></div>
@@ -1216,7 +1216,7 @@ const I18N = {
     pcs: n => n === 1 ? 'قطعة واحدة' : n === 2 ? 'قطعتان' : n <= 10 ? `${n} قطع` : `${n} قطعة`,
     wsBoth: (s, i) => `متوفر: ${s} · قيد الشحن: ${i}`, wsIn: p => `متوفر الآن · ${p}`, wsWay: p => `قيد الشحن · ${p}`,
     last1: 'القطعة الأخيرة', last2: 'آخر قطعتين', inN: n => `متوفر · ${n} قطع`, way: 'قيد الشحن', pre: 'طلب مسبق', offStock: 'غير متوفر حالياً',
-    onlyN: n => `الكمية المتاحة ${n} فقط`, unavailable: 'هذا المنتج غير متوفر حالياً',
+    onlyN: n => `الكمية المتاحة ${n} فقط`, noMore: 'لا تتوفر كمية أكبر حالياً', avail: 'متوفر', unavailable: 'هذا المنتج غير متوفر حالياً',
     fAll: 'الكل', fNow: 'متوفر الآن', fPre: 'طلب مسبق', fSale: 'العروض', allCats: 'جميع الأقسام', sortAria: 'ترتيب المنتجات',
     sGroup: 'حسب القسم والعلامة', sAvail: 'المتوفر أولاً', sLow: 'السعر: من الأقل', sHigh: 'السعر: من الأعلى', sBrand: 'العلامة التجارية',
     incA: 'زيادة', decA: 'تقليل', addA: n => `إضافة ${n} إلى الطلب`,
@@ -1228,7 +1228,7 @@ const I18N = {
     other: 'أخرى', count: n => `${n} منتج`,
     order: 'طلبك', closeA: 'إغلاق', emptyB: 'طلبك فارغ', emptyS: 'اضغط على علامة + بجوار أي منتج لإضافته.',
     sentB: 'تم فتح واتساب برسالة طلبك', sentS: 'إذا لم تُرسَل الرسالة، يمكنك فتح واتساب مرة أخرى.', reopen: 'فتح واتساب مرة أخرى', newOrder: 'تم الإرسال، بدء طلب جديد',
-    lnIn: 'متوفر', lnMix: (a, b) => `${a} متوفر + ${b} طلب مسبق`,
+    lnIn: 'متوفر', lnPart: 'جزء متوفر الآن والباقي بطلب مسبق', lnMix: (a, b) => `${a} متوفر + ${b} طلب مسبق`,
     total: 'الإجمالي', totalNote: '(دون المنتجات التي يُحدَّد سعرها عند الطلب)', preNote: 'تُحضَر منتجات الطلب المسبق مع أول شحنة قادمة.',
     fName: 'الاسم', fPhone: 'رقم الهاتف', fAddr: 'العنوان', fAddrPh: 'المحافظة، المنطقة، الشارع', fNotes: 'ملاحظات', optional: '(اختيارية)',
     send: 'إرسال الطلب عبر واتساب', sendNote: 'سيُفتح واتساب برسالة جاهزة تتضمن جميع التفاصيل.', checkout: 'إتمام الطلب',
@@ -1313,7 +1313,7 @@ const I18N = {
     pcs: n => n === 1 ? '1 piece' : `${n} pieces`,
     wsBoth: (s, i) => `In stock: ${s} · On the way: ${i}`, wsIn: p => `In stock now · ${p}`, wsWay: p => `On the way · ${p}`,
     last1: 'Last piece', last2: 'Last 2 pieces', inN: n => `In stock · ${n} pcs`, way: 'On the way', pre: 'Pre-order', offStock: 'Currently unavailable',
-    onlyN: n => `Only ${n} available`, unavailable: 'This product is currently unavailable',
+    onlyN: n => `Only ${n} available`, noMore: 'No more available right now', avail: 'Available', unavailable: 'This product is currently unavailable',
     fAll: 'All', fNow: 'In stock', fPre: 'Pre-order', fSale: 'Offers', allCats: 'All categories', sortAria: 'Sort products',
     sGroup: 'By category & brand', sAvail: 'In stock first', sLow: 'Price: low to high', sHigh: 'Price: high to low', sBrand: 'Brand',
     incA: 'Increase', decA: 'Decrease', addA: n => `Add ${n} to your order`,
@@ -1325,7 +1325,7 @@ const I18N = {
     other: 'Other', count: n => `${n} product${n === 1 ? '' : 's'}`,
     order: 'Your order', closeA: 'Close', emptyB: 'Your order is empty', emptyS: 'Tap + next to any product to add it.',
     sentB: 'WhatsApp opened with your order', sentS: 'If the message wasn’t sent, you can open WhatsApp again.', reopen: 'Open WhatsApp again', newOrder: 'Sent — start a new order',
-    lnIn: 'In stock', lnMix: (a, b) => `${a} in stock + ${b} pre-order`,
+    lnIn: 'In stock', lnPart: 'Part available now, the rest on pre-order', lnMix: (a, b) => `${a} in stock + ${b} pre-order`,
     total: 'Total', totalNote: '(excluding products priced on request)', preNote: 'Pre-order products come with the next shipment.',
     fName: 'Name', fPhone: 'Phone number', fAddr: 'Address', fAddrPh: 'Governorate, area, street', fNotes: 'Notes', optional: '(optional)',
     send: 'Send order on WhatsApp', sendNote: 'WhatsApp opens with a ready message that includes all the details.', checkout: 'Checkout',
@@ -1568,9 +1568,9 @@ function renderSections(){
   const bt = [...brs.values()].sort((a, b) => b.list.length - a.list.length).slice(0, 8).map(g => {
     const name = Object.entries(g.names).sort((a, b) => b[1] - a[1])[0][0];
     return `<a class="btile" href="#b-${encodeURIComponent(name)}" data-a="brandPage" data-k="${esc(name)}"><span class="blg${!brandLogo(name) && name.split(/\s+/).some(w => w.length > 9) ? ' long' : ''}" dir="ltr">${brandMark(name, 'lg')}</span><small>${T('catCount', g.list.length)}</small></a>`; });
-  if ($('brandTiles')) { $('brandTiles').hidden = WS || bt.length < 2; $('btiles').innerHTML = bt.join(''); }
+  if ($('brandTiles')) { $('brandTiles').hidden = bt.length < 2; $('btiles').innerHTML = bt.join(''); }
   document.querySelectorAll('.navSale').forEach(a => { a.hidden = !ps.some(p => p.was && p.price); });
-  document.querySelectorAll('.hnav a[data-k=brandTiles],.mnav a[data-k=brandTiles]').forEach(a => { a.hidden = WS || bt.length < 2; });
+  document.querySelectorAll('.hnav a[data-k=brandTiles],.mnav a[data-k=brandTiles]').forEach(a => { a.hidden = bt.length < 2; });
   // offers banner: only when real discounts exist
   const sale = ps.filter(p => p.was && p.price), maxPct = Math.max(0, ...sale.map(pct));
   $('offers').hidden = !sale.length;
@@ -1759,12 +1759,9 @@ function avail(p){
   // the wholesale page always shows exact quantities, also for what is on the way
   if (WS && p.stock > 0) return { k: 'in', c: 'var(--ok)', can: true, low: false, label: p.incoming > 0 ? T('wsBoth', p.stock, p.incoming) : T('wsIn', pcs(p.stock)) };
   if (WS && p.incoming > 0) return { k: 'way', c: 'var(--way)', can: true, label: T('wsWay', pcs(p.incoming)) };
-  if (p.stock > 0) {
-    const low = p.stock <= 2;
-    return { k: 'in', c: 'var(--ok)', can: true, low,
-      label: p.stock === 1 ? T('last1') : p.stock === 2 ? T('last2') : T('inN', p.stock) };
-  }
-  if (p.incoming > 0) return { k: 'way', c: 'var(--way)', can: true, label: T('way') };
+  // the customer site never shows quantities: available now, or pre-order (also for what is on the way)
+  if (p.stock > 0) return { k: 'in', c: 'var(--ok)', can: true, low: false, label: T('avail') };
+  if (p.incoming > 0) return { k: 'pre', c: 'var(--pre)', can: true, label: T('pre') };
   if (p.preorder) return { k: 'pre', c: 'var(--pre)', can: true, label: T('pre') };
   return { k: 'off', c: 'var(--off)', can: false, label: T('offStock') };
 }
@@ -1775,7 +1772,7 @@ const split = (p, q) => { const now = Math.min(q, Math.max(0, p.stock)); return 
 function setQty(id, q){
   const p = byId(id); if (!p) return;
   const max = maxQty(p);
-  if (q > max) { toast(max ? T('onlyN', max) : T('unavailable')); q = max; }
+  if (q > max) { toast(max ? (WS ? T('onlyN', max) : T('noMore')) : T('unavailable')); q = max; }
   q = Math.max(0, q);
   if (q) cart[id] = q; else delete cart[id];
   U.sent = false; store.set(CART_KEY, cart);
@@ -1931,7 +1928,7 @@ function cartHtml(){
   // "Empty basket": quiet text button next to the title (can be undone from the toast)
   return `<div class="grab"></div><div class="sh-top"><h2>${T('order')}</h2><button type="button" class="tbtn" data-a="emptyCart">${T('emptyCart')}</button>${X}</div>
     ${ids.map(id => { const p = byId(id), q = cart[id], s = split(p, q);
-      const st = s.later === 0 ? T('lnIn') : s.now === 0 ? (p.incoming > 0 ? T('way') : T('pre')) : T('lnMix', s.now, s.later);
+      const st = s.later === 0 ? T('lnIn') : s.now === 0 ? (WS && p.incoming > 0 ? T('way') : T('pre')) : WS ? T('lnMix', s.now, s.later) : T('lnPart');
       return `<div class="line"><div class="th">${pic(p)}</div><div class="t"><b dir="auto">${esc(p.name)}</b><span>${st}${p.price ? ' · ' + money(p.price * q) + ' ' + cur() : ''}</span></div>
         <div class="qty"><button data-a="inc" data-id="${id}" aria-label="${T('incA')}">+</button><b>${q}</b><button data-a="dec" data-id="${id}" aria-label="${T('decA')}">−</button></div></div>`; }).join('')}
     <div class="tot"><span>${T('total')}${t.unpriced ? ` <span class="small">${T('totalNote')}</span>` : ''}</span><span class="price">${money(t.sum)}<small>${cur()}</small></span></div>
