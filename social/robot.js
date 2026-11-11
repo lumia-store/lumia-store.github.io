@@ -84,7 +84,11 @@ async function prepare() {
   const data = loadData(), q = loadQueue(), today = env('ROBOT_TODAY') || P.cairoParts().date;   // (ROBOT_TODAY: tests only)
   const keys = { claude: env('CLAUDE_KEY'), gemini: env('GEMINI_KEY'), prefer: env('AI_PREFER') === 'gemini' ? 'gemini' : 'claude' };
   const fake = env('AI_FAKE') === '1';
-  if (!fake && !keys.claude && !keys.gemini) throw new Error('No AI key: add CLAUDE_KEY or GEMINI_KEY (the app does this in Settings → Social & Ads → Connect robot).');
+  if (!fake && !keys.claude && !keys.gemini) {   // not connected yet (More → Social & Ads → Connect robot): wait quietly
+    log('not connected yet — nothing to do');
+    q.robot = Object.assign({}, q.robot, { waitingForSetup: true, lastCheck: new Date().toISOString() }); saveQueue(q); return;
+  }
+  if (q.robot) delete q.robot.waitingForSetup;
   const byId = Object.fromEntries(data.products.map(p => [p.id, p]));
   let br = null, made = 0, cost = 0;
   try {
