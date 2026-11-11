@@ -1056,6 +1056,13 @@ html.ld .hnav,html.ld .mnav{visibility:hidden}
 .vbox.on .vplay,.vbox.on::after{opacity:0;pointer-events:none}
 .vbox.on .vplay{visibility:hidden}
 .vbox.nop{background:radial-gradient(70% 70% at 50% 45%,#fbf4ef,var(--well))}
+/* footer: the contact column takes the full width on phones; the number never breaks; titles in normal case */
+@media (max-width:799px){footer .fgrid .fcol:nth-of-type(4){grid-column:1/-1}}
+footer .num{white-space:nowrap;unicode-bidi:isolate;direction:ltr;display:inline-block}
+footer .fcol b{text-transform:none;letter-spacing:.02em;font-size:13px}
+/* the original (packaging) name under the translated one */
+.info .size .orig{display:block;margin-top:2px;font:italic 500 14px/1.4 var(--f-latin);color:var(--muted);text-align:start}
+.info .size .orig:only-child{margin-top:0}
 </style>
 <meta name="robots" content="noindex, nofollow">
 <script>window.SHOP_MODE = "wholesale";</script>
@@ -1395,6 +1402,34 @@ let LANG = (() => { let q = ''; try { q = new URLSearchParams(location.search).g
 const EN = () => LANG === 'en';
 const T = (k, ...a) => { const v = k in I18N[LANG] ? I18N[LANG][k] : I18N.ar[k]; return typeof v === 'function' ? v(...a) : v; };
 const catName = c => { c = String(c || '').trim(); return EN() ? ((D && D.catEn && D.catEn[c]) || CAT_EN[c] || c) : c; };
+/* product names in the shopper's language (AI-written, checked in the app); the original name stays for orders and as a small line */
+const pName = p => (EN() ? p.nameEn : p.nameAr) || p.name;
+const pOrig = p => { const t = EN() ? p.nameEn : p.nameAr; return t && t !== p.name ? p.name : ''; };
+/* sizes in the shopper's language: "250 ml" → "250 مل", "60 Tabletten" → "60 قرص" / "60 tablets"; unknown words stay as written */
+const SIZE_UNITS = [
+  [/\b(?:brause-?tabletten|effervescent tablets?)\b/gi, 'قرص فوار', 'effervescent tablets'],
+  [/\b(?:tabletten|tablets?|tabs?)\b/gi, 'قرص', 'tablets'],
+  [/\b(?:kapseln|capsules?|caps)\b/gi, 'كبسولة', 'capsules'],
+  [/\b(?:dragees?|dragées?)\b/gi, 'قرص', 'tablets'],
+  [/\b(?:stück|stueck|st\.?|stk\.?|pcs\.?|pieces?|piece)(?=\s|$|\))/gi, 'قطعة', 'pcs'],
+  [/\b(?:beutel|sachets?|bags?)\b/gi, 'كيس', 'sachets'],
+  [/\b(?:tücher|tuecher|wipes?)\b/gi, 'منديل', 'wipes'],
+  [/\b(?:pads?)\b/gi, 'قطنة', 'pads'],
+  [/\b(?:paar|pairs?)\b/gi, 'زوج', 'pairs'],
+  [/\b(?:portionen|servings?)\b/gi, 'حصة', 'servings'],
+  [/\b(?:gummies|fruchtgummis?|gummis?)\b/gi, 'قطعة جيلي', 'gummies'],
+  [/\b(?:strips?|streifen)\b/gi, 'شريط', 'strips'],
+  [/\b(?:sticks?)\b/gi, 'عبوة', 'sticks'],
+  [/\b(?:sets?)\b/gi, 'مجموعة', 'set'],
+  [/\bml\b/gi, 'مل', 'ml'], [/\bmg\b/gi, 'مجم', 'mg'], [/\bkg\b/gi, 'كجم', 'kg'], [/\bg\b/gi, 'جم', 'g'], [/\bl\b/gi, 'لتر', 'l'], [/\bcm\b/gi, 'سم', 'cm'], [/\bm\b/gi, 'متر', 'm']
+];
+function sizeIn(size, lang) {
+  let v = String(size || '').trim(); if (!v) return '';
+  for (const [re, ar, en] of SIZE_UNITS) v = v.replace(re, lang === 'en' ? en : ar);
+  return lang === 'en' ? v : v.replace(/\s*[xX×]\s*/g, ' × ').replace(/(\d),(\d)/g, '$1.$2');
+}
+const pSize = p => sizeIn(p.size, EN() ? 'en' : 'ar');
+
 /* product text in the chosen language (English is filled in the app; Arabic shows when there is no English yet) */
 const ptx = (p, k) => (EN() && p.en && p.en[k] && (Array.isArray(p.en[k]) ? p.en[k].length : String(p.en[k]).trim())) ? p.en[k] : p[k];
 const cur = () => T('cur');
@@ -1551,8 +1586,8 @@ function showStrip(){
     A.slide({ d: 1 });
   }, 3200);
 }
-const slide = p => `<article class="sl" data-a="view" data-id="${p.id}" role="button" tabindex="0" aria-label="${esc(p.name)}"><div class="ph2">${discTag(p)}${pic(p)}</div>
-    <div class="tx">${bk(p.brand) ? `<div class="b">${brandMark(p.brand)}</div>` : ''}<div class="n" dir="auto">${esc(p.name)}</div>${p.price ? `<div>${priceHtml(p)}</div>` : `<div class="small">${T('onRequest')}</div>`}</div></article>`;
+const slide = p => `<article class="sl" data-a="view" data-id="${p.id}" role="button" tabindex="0" aria-label="${esc(pName(p))}"><div class="ph2">${discTag(p)}${pic(p)}</div>
+    <div class="tx">${bk(p.brand) ? `<div class="b">${brandMark(p.brand)}</div>` : ''}<div class="n" dir="auto">${esc(pName(p))}</div>${p.price ? `<div>${priceHtml(p)}</div>` : `<div class="small">${T('onRequest')}</div>`}</div></article>`;
 /* a few real products that stand for a category: photos only, in-stock first, a different brand each where possible */
 function picks(list, n = 4){
   const ok = list.filter(p => p.image).sort((a, b) => (b.stock > 0) - (a.stock > 0) || (b.incoming > 0) - (a.incoming > 0)), out = [], br = new Set(), im = new Set();
@@ -1771,7 +1806,7 @@ function fillStatic(){
 const byId = id => D.products.find(p => p.id === id);
 function imgSrc(u){ u = String(u || ''); if (u.startsWith('drive:')) return 'https://lh3.googleusercontent.com/d/' + u.slice(6) + '=w800'; return u; }
 const pic = (p, cls = '') => p.image
-  ? `<img src="${esc(imgSrc(p.image))}" alt="${esc(p.name)}${p.brand && !String(p.name).includes(p.brand) ? ' – ' + esc(p.brand) : ''}" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'noimg',textContent:${esc(JSON.stringify(p.brand || 'LUMIA'))}}))">`
+  ? `<img src="${esc(imgSrc(p.image))}" alt="${esc(pName(p))}${p.brand ? ' – ' + esc(p.brand) : ''}" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'noimg',textContent:${esc(JSON.stringify(p.brand || 'LUMIA'))}}))">`
   : `<div class="noimg ${cls}">${esc(p.brand || 'LUMIA')}</div>`;
 
 /* ---------- availability ---------- */
@@ -1836,7 +1871,7 @@ function renderFilters(){
 /* one filter + sort for every product list. f = { q, cat, brand, av, sort } (empty = no limit) */
 function filterList(src, f){
   const q = String(f.q || '').trim().toLowerCase();
-  let list = src.filter(p => (!f.cat || p.category === f.cat) && (!f.brand || bk(p.brand) === bk(f.brand)) && (!q || [p.name, p.brand, p.category, catName(p.category), (D.catEn || {})[p.category] || '', CAT_EN[p.category] || '', p.description, p.en && p.en.description].join(' ').toLowerCase().includes(q)));
+  let list = src.filter(p => (!f.cat || p.category === f.cat) && (!f.brand || bk(p.brand) === bk(f.brand)) && (!q || [p.name, p.nameAr, p.nameEn, ...(p.terms || []), p.brand, p.category, catName(p.category), (D.catEn || {})[p.category] || '', CAT_EN[p.category] || '', p.description, p.en && p.en.description].join(' ').toLowerCase().includes(q)));
   if (f.av === 'now') list = list.filter(p => p.stock > 0);
   if (f.av === 'pre') list = list.filter(p => p.stock <= 0 && (p.preorder || p.incoming > 0));
   if (f.av === 'sale') list = list.filter(p => p.was);
@@ -1868,7 +1903,7 @@ const keepFocus = (box, d) => { const b = document.querySelector(`${box} [data-a
 function control(p){
   const q = cart[p.id] || 0, a = avail(p);
   if (q) return `<div class="step"><button data-a="inc" data-id="${p.id}" aria-label="${T('incA')}">+</button><b>${q}</b><button data-a="dec" data-id="${p.id}" aria-label="${T('decA')}">−</button></div>`;
-  return a.can ? `<button class="add" data-a="inc" data-id="${p.id}" aria-label="${esc(T('addA', p.name))}">${IC.plus}</button>` : '';
+  return a.can ? `<button class="add" data-a="inc" data-id="${p.id}" aria-label="${esc(T('addA', pName(p)))}">${IC.plus}</button>` : '';
 }
 /* the brand line is a link to the brand's page */
 const brandLink = p => bk(p.brand) ? `<a class="brand" dir="ltr" href="#b-${encodeURIComponent(String(p.brand).trim())}" data-a="brandPage" data-k="${esc(String(p.brand).trim())}">${brandMark(String(p.brand).trim())}</a>` : '';
@@ -1877,8 +1912,8 @@ function card(p){
   return `<article class="p ${a.can ? '' : 'sold'}">
       <div class="ph" data-a="view" data-id="${p.id}">${discTag(p)}${pic(p)}${control(p)}</div>
       ${brandLink(p)}
-      <h3 class="nm" dir="auto"><a href="#p-${encodeURIComponent(p.id)}" data-a="view" data-id="${p.id}">${esc(p.name)}</a></h3>
-      ${p.size ? `<div class="sz" dir="auto">${esc(p.size)}</div>` : ''}
+      <h3 class="nm" dir="auto"><a href="#p-${encodeURIComponent(p.id)}" data-a="view" data-id="${p.id}">${esc(pName(p))}</a></h3>
+      ${p.size ? `<div class="sz" dir="auto">${esc(pSize(p))}</div>` : ''}
       <div class="meta">${p.price ? `<span>${priceHtml(p)}</span>` : `<span class="small">${T('onRequest')}</span>`}${avHtml(a)}</div>
     </article>`;
 }
@@ -1951,7 +1986,7 @@ function cartHtml(){
   return `<div class="grab"></div><div class="sh-top"><h2>${T('order')}</h2><button type="button" class="tbtn" data-a="emptyCart">${T('emptyCart')}</button>${X}</div>
     ${ids.map(id => { const p = byId(id), q = cart[id], s = split(p, q);
       const st = s.later === 0 ? T('lnIn') : s.now === 0 ? (WS && p.incoming > 0 ? T('way') : T('pre')) : WS ? T('lnMix', s.now, s.later) : T('lnPart');
-      return `<div class="line"><div class="th">${pic(p)}</div><div class="t"><b dir="auto">${esc(p.name)}</b><span>${st}${p.price ? ' · ' + money(p.price * q) + ' ' + cur() : ''}</span></div>
+      return `<div class="line"><div class="th">${pic(p)}</div><div class="t"><b dir="auto">${esc(pName(p))}</b><span>${st}${p.price ? ' · ' + money(p.price * q) + ' ' + cur() : ''}</span></div>
         <div class="qty"><button data-a="inc" data-id="${id}" aria-label="${T('incA')}">+</button><b>${q}</b><button data-a="dec" data-id="${id}" aria-label="${T('decA')}">−</button></div></div>`; }).join('')}
     <div class="tot"><span>${T('total')}${t.unpriced ? ` <span class="small">${T('totalNote')}</span>` : ''}</span><span class="price">${money(t.sum)}<small>${cur()}</small></span></div>
     ${promoHtml()}
@@ -1998,7 +2033,7 @@ function related(p){
 function pageHtml(){
   const p = byId(U.page), a = avail(p), q = cart[p.id] || 0, t = totals();
   const imgs = (p.images && p.images.length ? p.images : (p.image ? [p.image] : []));
-  const slides = imgs.length ? imgs.map((u, i) => `<img src="${esc(imgSrc(u))}" alt="${esc(p.name)} – ${T('photoN', i + 1)}" ${i ? 'loading="lazy"' : ''}>`).join('') : `<div class="noimg">${esc(p.brand || 'LUMIA')}</div>`;
+  const slides = imgs.length ? imgs.map((u, i) => `<img src="${esc(imgSrc(u))}" alt="${esc(pName(p))} – ${T('photoN', i + 1)}" ${i ? 'loading="lazy"' : ''}>`).join('') : `<div class="noimg">${esc(p.brand || 'LUMIA')}</div>`;
   const up = unitPrice(p), rel = related(p);
   const delivery = a.k === 'in' ? T('dIn')
     : a.k === 'way' ? T('dWay')
@@ -2015,7 +2050,7 @@ function pageHtml(){
     ? (q ? `<div class="qty"><button data-a="inc" data-id="${p.id}" aria-label="${T('incA')}">+</button><b>${q}</b><button data-a="dec" data-id="${p.id}" aria-label="${T('decA')}">−</button></div><button class="cta" data-a="cart">${T('checkout')}</button>`
          : `<button class="cta" data-a="inc" data-id="${p.id}">${T('addToOrder')}</button>`)
     : `<button class="cta" disabled>${T('offStock')}</button>`;
-  return `<div class="pdp" id="pdp" role="dialog" aria-label="${esc(p.name)}">
+  return `<div class="pdp" id="pdp" role="dialog" aria-label="${esc(pName(p))}">
     <div class="pdp-top"><button class="ib" data-a="back" aria-label="${T('back')}">${PI.back}</button><span class="mk">LUMIA</span>
       <button class="ib" data-a="share" aria-label="${T('share')}">${PI.share}</button>
       <button class="ib" data-a="cart" aria-label="${T('order')}">${PI.bag}${t.count ? `<span class="n">${t.count}</span>` : ''}</button></div>
@@ -2029,8 +2064,8 @@ function pageHtml(){
       </div>
       <div class="info">
         ${p.category || bk(p.brand) ? `<nav class="crumbs" aria-label="${esc(T('crumbA'))}">${p.category ? `<a href="#c-${encodeURIComponent(p.category)}" data-a="catPage" data-k="${esc(p.category)}" dir="auto">${esc(catName(p.category))}</a>` : ''}${p.category && bk(p.brand) ? '<span aria-hidden="true">·</span>' : ''}${bk(p.brand) ? `<a href="#b-${encodeURIComponent(String(p.brand).trim())}" data-a="brandPage" data-k="${esc(String(p.brand).trim())}" dir="ltr">${brandMark(String(p.brand).trim())}</a>` : ''}</nav>` : ''}
-        <h1 dir="auto">${esc(p.name)}</h1>
-        ${p.size ? `<div class="size" dir="auto">${esc(p.size)}</div>` : ''}
+        <h1 dir="auto">${esc(pName(p))}</h1>
+        ${p.size || pOrig(p) ? `<div class="size" dir="auto">${p.size ? esc(pSize(p)) : ''}${pOrig(p) ? `<span class="orig"><bdi>${esc(pOrig(p))}</bdi></span>` : ''}</div>` : ''}
         <div class="pricebox">${p.price ? `${priceHtml(p)}${up ? `<span class="unit">(${up})</span>` : ''}` : `<span class="small">${T('priceLater')}</span>`}</div>
         ${p.was ? `<span class="saleinfo">${T('saleUntil', pct(p), p.saleUntil ? p.saleUntil.split('-').reverse().join('/') : '')}</span>` : ''}
         ${WS && (p.storeEUR || p.weightG) ? `<div class="wsinfo">${p.storeEUR ? `${T('storeEUR')} <b class="num">€${String(p.storeEUR).replace('.', ',')}</b>` : ''}${p.storeEUR && p.weightG ? ' · ' : ''}${p.weightG ? `${T('weight')} <b class="num">${money(p.weightG)} ${T('g')}</b>` : ''}</div>` : ''}
@@ -2199,8 +2234,8 @@ window.addEventListener('popstate', () => setTimeout(() => { if (D && location.h
 function orderMessage(){
   const now = [], later = [];
   for (const [id, q] of Object.entries(cart)) { const p = byId(id), s = split(p, q);
-    if (s.now) now.push(`▫️ ${s.now} × ${p.name} [${p.code}]`);
-    if (s.later) later.push(`▫️ ${s.later} × ${p.name} [${p.code}]`); }
+    if (s.now) now.push(`▫️ ${s.now} × ${p.name}${p.size ? ' ' + p.size : ''} [${p.code}]`);
+    if (s.later) later.push(`▫️ ${s.later} × ${p.name}${p.size ? ' ' + p.size : ''} [${p.code}]`); }
   const t = totals(), L = [];
   // the app reads this message back ("Paste an order"), in Arabic and in English
   L.push(WS ? T('msgWs', D.storeName) : T('msgNew', D.storeName));
@@ -2268,7 +2303,7 @@ const A = {
   slide: d => { const tr = $('track'); tr.scrollTo({ left: tr.clientWidth * +d.i, behavior: 'smooth' }); },
   share: async () => {
     const p = byId(U.page), url = location.href;
-    try { if (navigator.share) { await navigator.share({ title: p.name + ' · LUMIA', url }); return; } } catch (e) { return; }
+    try { if (navigator.share) { await navigator.share({ title: pName(p) + ' · LUMIA', url }); return; } } catch (e) { return; }
     try { await navigator.clipboard.writeText(url); toast(T('copied')); } catch (e) { toast(url); }
   },
   cart: () => openSheet({ type: 'cart' }),
@@ -2329,7 +2364,7 @@ function shrinkPhoto(file){
 }
 function relangChat(){ if ($('chat')) { applyLang(); if (!$('chat').hidden) renderChat(); } }
 function recCard(p){
-  return `<div class="rec"><div class="im">${p.image ? `<img src="${esc(imgSrc(p.image))}" alt="" loading="lazy">` : ''}</div><div class="t">${esc(p.name)}</div>
+  return `<div class="rec"><div class="im">${p.image ? `<img src="${esc(imgSrc(p.image))}" alt="" loading="lazy">` : ''}</div><div class="t">${esc(pName(p))}</div>
     <div class="pr">${p.price ? money(p.price) + ' ' + cur() : `<span style="font-weight:400;color:var(--muted)">${T('onRequest')}</span>`}</div>
     <div class="b"><button type="button" data-a="chatView" data-id="${esc(p.id)}">${T('chatView')}</button>${avail(p).can ? `<button type="button" class="radd" data-a="chatAdd" data-id="${esc(p.id)}">${T('chatAdd')}</button>` : ''}</div></div>`;
 }
