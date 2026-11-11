@@ -72,7 +72,7 @@ h1.m{font-size:64px}
 `;
 
 const head = (chip) => `<div class="top"><div class="brand"><img src="logo-mark.png"><b>LUMIA</b></div>${chip ? `<div class="chip">${hx(chip)}</div>` : ''}</div>`;
-const band = (d) => `<div class="band">التوصيل لجميع المحافظات <em>|</em> الدفع عند الاستلام <em>|</em> الطلب عبر واتساب</div>`;
+const band = (d) => `<div class="band">التوصيل لجميع المحافظات <em>|</em> الدفع عند الاستلام <em>|</em> الطلب عبر الموقع أو واتساب</div>`;
 const priceBadge = (p, top) => `<div class="price" style="top:${top}px">${+p.was > +p.price ? `<s>${hx(p.was)}</s>` : ''}<b>${hx(p.price)}</b><i>جنيه</i></div>`;
 const preChip = p => (p.stock > 0 ? '' : `<span class="pre">طلب مسبق</span>`);
 const sizeTxt = p => p.size ? ` · <span class="lat">${hx(p.size)}</span>` : '';
@@ -85,13 +85,12 @@ const T = {
       <h1${(w.headline || '').length > 26 ? ' class="m"' : ''}>${hx(w.headline || nm(p))}</h1>
       <div class="sub"><span class="lat">${hx(p.brand)}</span> · ${hx(nm(p))}${sizeTxt(p)}</div>
       <div class="card" style="top:${cardTop}px;height:${cardH}px"><img src="${hx(p.image)}"></div>
-      ${priceBadge(p, cardTop - 30)}
       <div class="feat" style="top:${cardTop + cardH + 26}px">${preChip(p)}${(w.chips || []).map(c => `<span>${hx(c)}</span>`).join('')}</div>
       ${band()}</div>`;
   },
   compare(w, ps) {
     return `<div class="s">${head('أيهما يناسب؟')}<h1>${hx(w.title)}</h1><div class="sub">${hx(w.sub || '')}</div>
-      <div class="two">${ps.map(p => `<div><img src="${hx(p.image)}"><p>${hx((w.labels || {})[p.id] || nm(p))}</p><small>${hx(p.brand)} · ${hx(p.price)} EGP</small></div>`).join('')}</div>
+      <div class="two">${ps.map(p => `<div><img src="${hx(p.image)}"><p>${hx((w.labels || {})[p.id] || nm(p))}</p><small>${hx(p.brand)}</small></div>`).join('')}</div>
       <div class="vs">vs</div>${band()}</div>`;
   },
   guideCover(w, ps, n) {
@@ -103,20 +102,20 @@ const T = {
     return `<div class="s"><div class="num">${i + 1} / ${n}</div>${head('')}
       <h1 class="m" style="padding-top:30px">${hx(sl.title)}</h1>
       <div class="card" style="top:290px;height:560px"><img src="${hx(p.image)}"></div>
-      <div class="pn"><span class="lat">${hx(p.brand)}</span> · ${hx(nm(p))}${sizeTxt(p)} · <b style="color:var(--wine)">${hx(p.price)} جنيه</b></div>
+      <div class="pn"><span class="lat">${hx(p.brand)}</span> · ${hx(nm(p))}${sizeTxt(p)}</div>
       <ul class="pts">${sl.points.map(x => `<li>${hx(x)}</li>`).join('')}</ul>
       <div class="dots">${Array.from({ length: n }, (_, k) => `<i${k === i ? ' class="on"' : ''}></i>`).join('')}</div>${band()}</div>`;
   },
   cta(d, i, n) {
-    return `<div class="s"><div class="cta"><div class="brand big"><img src="logo-mark.png"><b>LUMIA</b></div><h2>للطلب عبر واتساب</h2>
-      <div class="wa">${hx(d.waText)}</div><p>منتجات أصلية مستوردة من ألمانيا<br>التوصيل لجميع المحافظات · الدفع عند الاستلام</p></div>
+    return `<div class="s"><div class="cta"><div class="brand big"><img src="logo-mark.png"><b>LUMIA</b></div><h2>للطلب عبر الموقع أو واتساب</h2>
+      <div class="wa" style="background:var(--band)">${hx(d.site)}</div><div class="wa">${hx(d.waText)}</div><p>منتجات أصلية مستوردة من ألمانيا<br>التوصيل لجميع المحافظات · الدفع عند الاستلام</p></div>
       ${n ? `<div class="dots">${Array.from({ length: n }, (_, k) => `<i${k === i ? ' class="on"' : ''}></i>`).join('')}</div>` : ''}</div>`;
   },
   routine(w, ps) {
     const by = Object.fromEntries(ps.map(p => [p.id, p]));
     const steps = (w.steps || []).filter(s => by[s.id]).slice(0, 3);
     return `<div class="s">${head(w.when || 'روتين العناية')}<h1>${hx(w.title)}</h1>
-      <div class="steps">${steps.map((s, i) => { const p = by[s.id]; return `<div class="st"><div class="n">${i + 1}</div><img src="${hx(p.image)}"><div><h3>${hx(s.step)}</h3><p>${hx(s.why)}</p><b><span class="lat">${hx(p.brand)}</span> · ${hx(p.price)} جنيه</b></div></div>`; }).join('')}</div>
+      <div class="steps">${steps.map((s, i) => { const p = by[s.id]; return `<div class="st"><div class="n">${i + 1}</div><img src="${hx(p.image)}"><div><h3>${hx(s.step)}</h3><p>${hx(s.why)}</p><b><span class="lat">${hx(p.brand)}</span></b></div></div>`; }).join('')}</div>
       ${band()}</div>`;
   },
   trust(w, ps) {
@@ -137,7 +136,7 @@ function pagesFor(item, w, ps, d) {
   const by = Object.fromEntries(ps.map(p => [p.id, p]));
   const chosen = (w.chosen && w.chosen.length ? w.chosen : item.products).map(id => by[id]).filter(Boolean);
   if (item.type === 'spotlight' || item.type === 'offer') {
-    const chip = item.occasion ? `بمناسبة ${item.occasion.ar}` : item.type === 'offer' && +ps[0].was > +ps[0].price ? 'سعر خاص' : 'أصلي من ألمانيا';
+    const chip = item.occasion ? `بمناسبة ${item.occasion.ar}` : item.type === 'offer' ? 'اختيار الأسبوع' : 'أصلي من ألمانيا';
     return { feed: [T.spotlight(w, ps, { chip })], story: T.spotlight(w, ps, { chip, tall: true }), used: ps };
   }
   if (item.type === 'compare') { const two = chosen.slice(0, 2); return { feed: [T.compare(w, two)], used: two }; }
@@ -190,7 +189,7 @@ function makeReel(stills, out) {
 /* renders all pictures (and the Reel) of a post into outDir; returns relative file names */
 async function renderPost({ item, words, products, data, siteDir, outDir, browser }) {
   fs.mkdirSync(outDir, { recursive: true });
-  const d = { waText: '+' + String(data.whatsapp || '').replace(/^(\d{2})(\d{2})(\d{4})(\d+)$/, '$1 $2 $3 $4') };
+  const d = { waText: '+' + String(data.whatsapp || '').replace(/^(\d{2})(\d{2})(\d{4})(\d+)$/, '$1 $2 $3 $4'), site: (process.env.SITE_URL || 'https://lumia-store.github.io/').replace(/^https?:\/\//, '').replace(/\/$/, '') };
   const pg = pagesFor(item, words, products, d), files = { images: [], used: pg.used.map(p => p.id) };
   const base = item.id;
   if (pg.feed) for (let i = 0; i < pg.feed.length; i++) { const f = `${base}-${i + 1}.jpg`; await shoot(browser, pg.feed[i], path.join(outDir, f), siteDir, false); files.images.push(f); }

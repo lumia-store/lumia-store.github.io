@@ -54,25 +54,22 @@ function fakeWords(item, ps) {
   };
 }
 
-/* the full caption: the AI's words + facts the robot adds itself (product, real price, stock, how to order) */
+/* the full caption: the AI's words + facts the robot adds itself (product, stock, how to order). No prices — Mina's choice. */
 function captionFor(item, words, products, data, platform) {
-  const wa = String(data.whatsapp || '').replace(/\D/g, '');
+  const wa = String(data.whatsapp || '').replace(/\D/g, ''), waNice = '+' + wa.replace(/^(\d{2})(\d{2})(\d{4})(\d+)$/, '$1 $2 $3 $4');
+  const site = SITE_URL.replace(/^https?:\/\//, '').replace(/\/$/, '');
   const pre = data.preorderNote || 'طلب مسبق: يصل خلال أسبوع إلى أسبوعين';
   const line = p => `${p.brand} · ${p.nameAr || p.nameEn || p.name}${p.size ? ' · ' + p.size : ''}`;
-  const price = p => `${p.price} جنيه${+p.was > +p.price ? ` بدلاً من ${p.was}` : ''}`;
   const out = [String(words.caption || '').trim(), ''];
   if (item.type !== 'trust') {
-    if (products.length === 1) {
-      const p = products[0];
-      out.push(`✨ ${line(p)}`, `💰 السعر: ${price(p)}`, p.stock > 0 ? '📦 متوفر الآن' : `📦 ${pre}`);
-      if (platform === 'fb') out.push(`🔗 ${P.pageOf(SITE_URL, p)}`);
-    } else {
-      for (const p of products) out.push(`• ${line(p)} — ${price(p)}${p.stock > 0 ? '' : ' (طلب مسبق)'}`);
-      if (platform === 'fb') out.push('', `🔗 ${SITE_URL}`);
-    }
+    if (products.length === 1) { const p = products[0]; out.push(`✨ ${line(p)}`, p.stock > 0 ? '📦 متوفر الآن' : `📦 ${pre}`); }
+    else for (const p of products) out.push(`• ${line(p)}${p.stock > 0 ? '' : ' (طلب مسبق)'}`);
     out.push('');
   }
-  out.push(platform === 'fb' ? `📲 للطلب عبر واتساب: https://wa.me/${wa}` : `📲 للطلب عبر واتساب: +${wa.replace(/^(\d{2})(\d{2})(\d{4})(\d+)$/, '$1 $2 $3 $4')}\n🔗 رابط المتجر في البايو`);
+  // how to order: the website or WhatsApp (Instagram does not make links clickable, so it points to the bio)
+  const page = products.length === 1 && item.type !== 'trust' ? P.pageOf(SITE_URL, products[0]) : SITE_URL;
+  if (platform === 'fb') out.push('🛍️ للطلب عبر الموقع أو واتساب:', `🌐 ${page}`, `📲 https://wa.me/${wa}`);
+  else out.push('🛍️ للطلب عبر الموقع أو واتساب:', `🌐 ${site} (الرابط في البايو)`, `📲 ${waNice}`);
   out.push('🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام', '');
   const tags = [...new Set([...(words.hashtags || []), '#LUMIACare', '#منتجات_ألمانية_أصلية'])].slice(0, platform === 'fb' ? 5 : 10);
   out.push(tags.join(' '));
@@ -125,7 +122,7 @@ async function prepare() {
         br = br || await browser();
         const files = await renderPost({ item: Object.assign({}, ad, { type: 'spotlight', id: ad.id }), words: w.words, products: [p], data, siteDir: SITE_DIR, outDir: MEDIA, browser: br });
         Object.assign(ad, { words: w.words, media: { images: files.images.map(mediaUrl) }, files: files.images, status: 'waiting', createdAt: new Date().toISOString(),
-          adText: `${String(w.words.caption || '').split('\n').slice(0, 2).join('\n')}\n✨ ${p.brand} · ${p.nameAr || p.name}\n💰 ${p.price} جنيه${+p.was > +p.price ? ` بدلاً من ${p.was}` : ''}\n🛍️ للطلب من المتجر أو عبر واتساب — التوصيل لجميع المحافظات`,
+          adText: `${String(w.words.caption || '').split('\n').slice(0, 2).join('\n')}\n✨ ${p.brand} · ${p.nameAr || p.name}\n🛍️ للطلب عبر الموقع أو واتساب — التوصيل لجميع المحافظات`,
           link: P.pageOf(SITE_URL, p),
           headline: (w.words.headline || p.nameAr || p.name).slice(0, 40) });
         q.items.push(ad); made++;
@@ -170,7 +167,7 @@ async function post() {
       if (ps.some(p => !p)) { it.status = 'failed'; it.note = 'A product in this post was removed from the shop.'; continue; }
       const sold = ps.filter(p => P.availOf(p) === 'out');
       if (sold.length) { it.status = 'failed'; it.note = 'Not posted: sold out — ' + sold.map(p => p.name).join(', '); continue; }
-      const changed = ps.some(p => { const s = it.snapshot[p.id] || {}; return +s.price !== +p.price || (+s.was || 0) !== (+p.was || 0) || s.avail !== P.availOf(p); });
+      const changed = ps.some(p => (it.snapshot[p.id] || {}).avail !== P.availOf(p));   // pictures show no prices, only the stock label
       if (changed && it.type !== 'trust') {
         log('price/stock changed → redrawing', it.id);
         br = br || await browser();
@@ -178,7 +175,7 @@ async function post() {
         const v = '?v=' + Date.now().toString(36);   // new address, so Meta does not reuse the old picture
         it.media = { images: files.images.map(f => mediaUrl(f) + v), story: files.story ? mediaUrl(files.story) + v : '', video: files.video ? mediaUrl(files.video) + v : '', cover: files.cover ? mediaUrl(files.cover) + v : '' };
         it.snapshot = Object.fromEntries(ps.map(p => [p.id, { price: +p.price, was: +p.was || 0, avail: P.availOf(p) }]));
-        it.note = 'Price or stock changed since approval: the picture was updated automatically.';
+        it.note = 'Stock changed since approval (in stock ↔ pre-order): the picture was updated automatically.';
         if (!dry) { saveQueue(q); await waitLive(it.media.images[0]); }
       }
       const fbText = captionFor(it, it.words, ps, data, 'fb'), igText = captionFor(it, it.words, ps, data, 'ig');
