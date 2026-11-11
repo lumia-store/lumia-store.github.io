@@ -1772,7 +1772,20 @@ function bnrGo(i, dir){
 const pct = p => p.was && p.price ? Math.round((1 - p.price / p.was) * 100) : 0;
 const discTag = p => pct(p) >= 1 ? `<span class="disc">${T('off', pct(p))}</span>` : '';
 const priceHtml = p => `<span class="price${p.was ? ' sale' : ''}">${money(p.price)}<small>${cur()}</small></span>${p.was ? `<span class="was">${money(p.was)} ${cur()}</span>` : ''}`;
+/* ---------- Meta Pixel (only when set in the app; never on the wholesale page) ----------
+   measures what visitors coming from the ads do: product opened, added to the order, order sent on WhatsApp */
+const PX = { on: false };
+function pixelStart(d){
+  const id = String((d && d.metaPixelId) || '');
+  if (WS || PX.on || !/^\d{6,20}$/.test(id)) return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', id); fbq('track', 'PageView'); PX.on = true;
+}
+function px(ev, o){ try { if (PX.on && window.fbq) fbq('track', ev, o || {}); } catch (e) { /* never break the shop */ } }
+const pxItem = p => ({ content_ids: [p.id], content_type: 'product', content_name: p.name, ...(+p.price ? { value: +p.price, currency: 'EGP' } : {}) });
+
 function start(d){
+  pixelStart(d);
   const todayIso = new Date().toISOString().slice(0, 10);
   for (const p of d.products || []) if (p.was && p.saleUntil && p.saleUntil < todayIso) { p.price = p.was; delete p.was; }
   D = d; applyLang(); renderBanners(); brandStrip(); showStrip(); renderSections(); setTimeout(initChat, 400);
@@ -1830,6 +1843,7 @@ function setQty(id, q){
   const max = maxQty(p);
   if (q > max) { toast(max ? (WS ? T('onlyN', max) : T('noMore')) : T('unavailable')); q = max; }
   q = Math.max(0, q);
+  if (q > (cart[id] || 0)) px('AddToCart', pxItem(p));
   if (q) cart[id] = q; else delete cart[id];
   U.sent = false; store.set(CART_KEY, cart);
   refreshCart();
@@ -2220,6 +2234,7 @@ function route(){
   let k = null; try { k = m ? decodeURIComponent(m[2]) : null; } catch (e) {}
   const t = m && k ? m[1] : '', was = U.page;
   U.page = t === 'p' && D && byId(k) ? k : null;
+  if (U.page && U.page !== was) px('ViewContent', pxItem(byId(U.page)));
   // a product page keeps the category/brand page under it, so Back returns to it unchanged
   if (t !== 'p') setList(t, k);
   if (U.page && U.sheet) { if (ovState() === 'sheet') history.replaceState(Object.assign({}, history.state, { ov: '' }), ''); doCloseSheet(); }
@@ -2322,6 +2337,7 @@ const A = {
     store.set('lumia_me', form);
     const num = String(D.whatsapp || '').replace(/\D/g, '');
     window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(orderMessage()), '_blank');
+    px('Contact', { content_ids: Object.keys(cart), content_type: 'product', num_items: Object.values(cart).reduce((a, b) => a + b, 0) });
     U.sent = true; renderSheet();
   }
 };

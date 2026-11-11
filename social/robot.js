@@ -108,7 +108,8 @@ async function prepare() {
         products: files.used, snapshot: Object.fromEntries(used.map(p => [p.id, { price: +p.price, was: +p.was || 0, avail: P.availOf(p) }])),
         words: w.words, media: { images: files.images.map(mediaUrl), story: files.story ? mediaUrl(files.story) : '', video: files.video ? mediaUrl(files.video) : '', cover: files.cover ? mediaUrl(files.cover) : '' },
         files: [...files.images, files.story, files.video].filter(Boolean),
-        preview: { fb: captionFor(plan, w.words, used, data, 'fb'), ig: captionFor(plan, w.words, used, data, 'ig') },
+        preview: { fb: captionFor(plan, w.words, used, data, 'fb'), ig: captionFor(plan, w.words, used, data, 'ig'),
+          igTail: captionFor(plan, Object.assign({}, w.words, { caption: '' }), used, data, 'ig') },   // price/stock/order lines, added after an edited text when shared by hand
         status: 'waiting', ai: w.provider, createdAt: new Date().toISOString()
       });
       delete item.pick;
@@ -124,7 +125,8 @@ async function prepare() {
         br = br || await browser();
         const files = await renderPost({ item: Object.assign({}, ad, { type: 'spotlight', id: ad.id }), words: w.words, products: [p], data, siteDir: SITE_DIR, outDir: MEDIA, browser: br });
         Object.assign(ad, { words: w.words, media: { images: files.images.map(mediaUrl) }, files: files.images, status: 'waiting', createdAt: new Date().toISOString(),
-          adText: `${String(w.words.caption || '').split('\n').slice(0, 2).join('\n')}\n✨ ${p.brand} · ${p.nameAr || p.name}\n💰 ${p.price} جنيه${+p.was > +p.price ? ` بدلاً من ${p.was}` : ''}\n📲 راسلونا على واتساب للطلب — التوصيل لجميع المحافظات`,
+          adText: `${String(w.words.caption || '').split('\n').slice(0, 2).join('\n')}\n✨ ${p.brand} · ${p.nameAr || p.name}\n💰 ${p.price} جنيه${+p.was > +p.price ? ` بدلاً من ${p.was}` : ''}\n🛍️ للطلب من المتجر أو عبر واتساب — التوصيل لجميع المحافظات`,
+          link: P.pageOf(SITE_URL, p),
           headline: (w.words.headline || p.nameAr || p.name).slice(0, 40) });
         q.items.push(ad); made++;
         log('ad suggestion', p.name, ad.reason);
@@ -158,7 +160,7 @@ async function post() {
   const due = q.items.filter(it => it.type !== 'ad' && it.status === 'approved' && Date.parse(it.postAt) <= now && it.date >= P.addDays(today, -1));
   if (!due.length) { log('nothing to post now'); q.robot = Object.assign({}, q.robot, { lastPostCheck: new Date().toISOString() }); saveQueue(q); return; }
   const token = env('META_TOKEN'), pageId = env('META_PAGE_ID'), igId = env('META_IG_ID'), dry = env('META_DRY') === '1';
-  if (!token || !pageId) throw new Error('Meta is not connected: add META_TOKEN and META_PAGE_ID (the app does this in Settings → Social & Ads → Connect robot).');
+  if (!token || !pageId) { log('Meta is not connected — approved posts are shared by hand from the app'); return; }
   let br = null;
   try {
     for (const it of due) {
