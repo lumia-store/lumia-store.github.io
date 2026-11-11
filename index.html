@@ -1173,7 +1173,7 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
 <footer><div class="wrap fgrid">
   <div class="fbrand"><img src="logo-mark.webp" alt="" width="40" height="40" loading="lazy"><div><span class="mk">LUMIA</span><small data-t="footNote">منتجات أصلية من ألمانيا إلى مصر</small></div></div>
   <div class="fcol"><b data-t="fShop">تسوّق</b><a href="#catsSec" data-a="goSec" data-k="catsSec" data-t="navCats">الأقسام</a><a href="#brandTiles" data-a="goSec" data-k="brandTiles" data-t="navBrands">العلامات التجارية</a><a href="#shop" data-a="av" data-k="sale" data-go="1" class="navSale" hidden data-t="navSale">العروض</a><a href="#allH" data-a="goSec" data-k="allH" data-t="navAll">جميع المنتجات</a></div>
-  <div class="fcol"><b data-t="fHelp">المساعدة</b><a href="#howSec" data-a="goSec" data-k="howSec" data-t="fHow">طريقة الطلب</a><a href="#dpH" data-a="goSec" data-k="dpH" data-t="fDeliv">التوصيل والدفع</a><button type="button" class="flink" data-a="special" data-t="fSpecial">طلب منتج خاص</button></div>
+  <div class="fcol"><b data-t="fHelp">المساعدة</b><a href="#howSec" data-a="goSec" data-k="howSec" data-t="fHow">طريقة الطلب</a><a href="#dpH" data-a="goSec" data-k="dpH" data-t="fDeliv">التوصيل والدفع</a><button type="button" class="flink" data-a="special" data-t="fSpecial">طلب منتج خاص</button><a href="returns/" class="pol" data-t="fReturns">الاستبدال والاسترجاع</a><a href="delivery/" class="pol" data-t="fDelivPol">سياسة التوصيل والدفع</a><a href="terms/" class="pol" data-t="fTerms">الشروط والأحكام</a><a href="about/" class="pol" data-t="fAbout">من نحن</a></div>
   <div class="fcol"><b data-t="fContact">تواصل معنا</b><span><span data-t="waLabel">واتساب:</span> <span class="num" id="wa"></span></span><span class="soc" id="soc"></span><button type="button" class="flang" data-a="lang"><span data-t="langBtn">English</span></button></div>
   <div class="fbot"><span>© <span id="yr"></span> LUMIA Care</span><span id="upd"></span></div>
 </div></footer>
@@ -1300,7 +1300,7 @@ const I18N = {
     shopAll: 'تسوّق جميع المنتجات', shopByBrand: 'تسوّق حسب العلامة', promiseAria: 'لماذا LUMIA',
     pr1: 'نشتريها بأنفسنا من المتاجر الألمانية', pr3: 'تُحدَّد الرسوم بحسب منطقتك', pr4b: 'الدفع عند الاستلام', pr4: 'أو InstaPay أو المحافظ الإلكترونية', pr5: 'اطلب منتجاً غير موجود',
     brandsK: 'علاماتنا', catsK: 'الأقسام', btK: 'العلامات التجارية', btH: 'تسوّق حسب العلامة', showK: 'مختارات LUMIA', newK: 'جديد', allK: 'المتجر', viewAll: 'عرض الكل',
-    fShop: 'تسوّق', fHelp: 'المساعدة', fContact: 'تواصل معنا', fHow: 'طريقة الطلب', fDeliv: 'التوصيل والدفع', fSpecial: 'طلب منتج خاص'
+    fShop: 'تسوّق', fHelp: 'المساعدة', fContact: 'تواصل معنا', fHow: 'طريقة الطلب', fDeliv: 'التوصيل والدفع', fSpecial: 'طلب منتج خاص', fReturns: 'الاستبدال والاسترجاع', fDelivPol: 'سياسة التوصيل والدفع', fTerms: 'الشروط والأحكام', fAbout: 'من نحن'
   },
   en: {
     title: 'LUMIA Care · Imported Gems', wsTitle: 'LUMIA · Wholesale prices',
@@ -1394,7 +1394,7 @@ const I18N = {
     shopAll: 'Shop all products', shopByBrand: 'Shop by brand', promiseAria: 'Why LUMIA',
     pr1: 'Bought by us in German stores', pr3: 'The fee depends on your area', pr4b: 'Cash on delivery', pr4: 'Or InstaPay or e-wallets', pr5: 'Ask for a product we don’t list',
     brandsK: 'Our brands', catsK: 'Categories', btK: 'Brands', btH: 'Shop by brand', showK: 'LUMIA picks', newK: 'New', allK: 'The shop', viewAll: 'View all',
-    fShop: 'Shop', fHelp: 'Help', fContact: 'Contact', fHow: 'How to order', fDeliv: 'Delivery & payment', fSpecial: 'Special order'
+    fShop: 'Shop', fHelp: 'Help', fContact: 'Contact', fHow: 'How to order', fDeliv: 'Delivery & payment', fSpecial: 'Special order', fReturns: 'Returns & refunds', fDelivPol: 'Delivery & payment policy', fTerms: 'Terms & conditions', fAbout: 'About us'
   }
 };
 let LANG = (() => { let q = ''; try { q = new URLSearchParams(location.search).get('lang') || ''; } catch (e) {} if (q === 'en' || q === 'ar') return q; try { const s = JSON.parse(localStorage.getItem('lumia_lang')); if (s === 'en' || s === 'ar') return s; } catch (e) {} return 'ar'; })();
