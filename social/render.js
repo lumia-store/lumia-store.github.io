@@ -59,7 +59,7 @@ h1.m{font-size:64px}
 .st h3{font-size:36px;color:var(--band)}.st p{font-size:27px;color:var(--muted);line-height:1.4}.st b{font-size:25px;color:var(--pri);font-weight:500}
 .facts{position:absolute;top:430px;left:70px;right:70px;display:flex;flex-direction:column;gap:26px}
 .fact{background:#fff;border-radius:28px;padding:30px 36px;display:flex;align-items:center;gap:28px;font-size:36px;color:var(--band);box-shadow:0 12px 34px rgba(74,44,40,.08)}
-.fact i{font-style:normal;font-size:52px}
+.fact i{font-style:normal;font-size:40px}.fact .ic{flex:none;width:76px;height:76px;border-radius:50%;background:var(--wine);color:#fff;display:flex;align-items:center;justify-content:center;font-family:Montserrat;font-weight:600}
 .row3{position:absolute;bottom:170px;left:70px;right:70px;display:flex;gap:24px}
 .row3 div{flex:1;background:#fff;border-radius:24px;height:280px;display:flex;align-items:center;justify-content:center}
 .row3 img{max-height:240px;max-width:90%;object-fit:contain}
@@ -121,9 +121,9 @@ const T = {
   },
   trust(w, ps) {
     return `<div class="s">${head('LUMIA Care')}<h1>${hx(w.title || 'أصلية من ألمانيا… إلى باب البيت')}</h1>
-      <div class="facts"><div class="fact"><i>🇩🇪</i>منتجات أصلية مختومة، من ألمانيا مباشرة</div>
-      <div class="fact"><i>🚚</i>التوصيل لجميع المحافظات خلال 2 إلى 5 أيام عمل</div>
-      <div class="fact"><i>💵</i>الدفع عند الاستلام، أو InstaPay والمحافظ الإلكترونية</div></div>
+      <div class="facts"><div class="fact"><i class="ic">✓</i>منتجات أصلية مختومة، من ألمانيا مباشرة</div>
+      <div class="fact"><i class="ic">⟶</i>التوصيل لجميع المحافظات خلال 2 إلى 5 أيام عمل</div>
+      <div class="fact"><i class="ic">◎</i>الدفع عند الاستلام، أو InstaPay والمحافظ الإلكترونية</div></div>
       <div class="row3">${ps.slice(0, 3).map(p => `<div><img src="${hx(p.image)}"></div>`).join('')}</div>${band()}</div>`;
   },
   reelScene(line, img, k) {
