@@ -1,0 +1,6 @@
+{
+  "name": "lumia-social-robot",
+  "private": true,
+  "description": "Prepares and posts LUMIA's daily Facebook and Instagram posts (runs on GitHub Actions)",
+  "dependencies": { "playwright-core": "1.56.1" }
+}

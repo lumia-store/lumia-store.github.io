@@ -1,0 +1,51 @@
+# LUMIA social robot — prepares posts every morning, posts approved ones at 8:30 PM Cairo time.
+# Installed by the LUMIA Orders project (social/deploy.sh). Settings are GitHub secrets, added from the app.
+name: Social robot
+on:
+  schedule:
+    - cron: '10 4 * * *'          # ~6–7 AM Cairo: prepare the next 3 days for approval
+    - cron: '35 17,18,19,20 * * *' # evening checks: post what is approved and due (8:30 PM Cairo, summer or winter time)
+  workflow_dispatch:
+    inputs:
+      mode: { description: 'prepare or post', required: true, default: 'prepare', type: choice, options: [prepare, post] }
+permissions:
+  contents: write
+  pages: write
+concurrency: { group: social-robot, cancel-in-progress: false }
+jobs:
+  robot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Tools (ffmpeg, emoji font)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-noto-color-emoji >/dev/null
+      - name: Robot packages
+        run: cd social && npm ci --no-audit --no-fund --silent
+      - name: Run
+        env:
+          MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || (github.event.schedule == '10 4 * * *' && 'prepare' || 'post') }}
+          CHROME_PATH: /usr/bin/google-chrome
+          ROBOT_PUSH: '1'
+          SITE_URL: https://${{ github.repository_owner }}.github.io/
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+          META_IG_ID: ${{ secrets.META_IG_ID }}
+          CLAUDE_KEY: ${{ secrets.CLAUDE_KEY }}
+          GEMINI_KEY: ${{ secrets.GEMINI_KEY }}
+          AI_PREFER: ${{ secrets.AI_PREFER }}
+        run: |
+          git config user.name "LUMIA robot"; git config user.email "robot@users.noreply.github.com"
+          node social/robot.js "$MODE"
+      - name: Save
+        if: always()
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          git add -A social/queue.json media/social 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -qm "Robot: ${MODE:-update} $(date -u +%F)"
+            for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done
+            gh api -X POST "repos/${{ github.repository }}/pages/builds" >/dev/null 2>&1 || true
+          fi
