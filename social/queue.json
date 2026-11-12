@@ -307,7 +307,8 @@
   "lastPrepare": "2026-11-11T22:19:06.916Z",
   "lastPrepareMade": 0,
   "aiCostUsd": 0,
-  "lastError": "",
-  "lastPostCheck": "2026-11-11T23:39:26.024Z"
+  "lastError": "prepare: fetch failed",
+  "lastPostCheck": "2026-11-11T23:39:26.024Z",
+  "lastErrorAt": "2026-11-12T09:37:55.021Z"
  }
 }
