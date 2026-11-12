@@ -307,9 +307,10 @@ async function askJson({ claudeKey, geminiKey, prompt: text, prefer = 'claude', 
   const viaClaude = async () => {
     const m = CLAUDE.fast;
     const res = await fetchImpl('https://api.anthropic.com/v1/messages', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-api-key': claudeKey, 'anthropic-version': '2023-06-01' },
-      body: JSON.stringify({ model: m.model, max_tokens: maxTokens, temperature, messages: [{ role: 'user', content: text + '\nAnswer with the JSON only.' }] }) });
+      body: JSON.stringify({ model: m.model, max_tokens: maxTokens, messages: [{ role: 'user', content: text + '\nAnswer with the JSON only.' }] }) });   // (no temperature: the current Haiku no longer accepts it)
     const json = await res.json().catch(() => null);
-    if (!res.ok) fail('Claude answered with error ' + res.status + (res.status === 401 ? ' (the Claude key was not accepted)' : res.status === 400 && /credit/i.test(JSON.stringify(json || {})) ? ' (no credit left on the Claude account)' : res.status === 404 ? ' (model not found)' : '') + '.');
+    const why = String(((json || {}).error || {}).message || '').slice(0, 140);
+    if (!res.ok) fail('Claude answered with error ' + res.status + (why ? ' — ' + why : '') + (res.status === 401 ? ' (the Claude key was not accepted)' : res.status === 400 && /credit/i.test(JSON.stringify(json || {})) ? ' (no credit left on the Claude account)' : res.status === 404 ? ' (model not found)' : '') + '.');
     const u = (json && json.usage) || {};
     return { data: parseJson(((json && json.content) || []).filter(c => c.type === 'text').map(c => c.text).join('')), cost: ((u.input_tokens || 0) * m.inPrice + (u.output_tokens || 0) * m.outPrice) / 1e6, provider: m.label };
   };
