@@ -834,7 +834,12 @@ html[lang=en] .hnav a,html[lang=en] .mnav a{text-transform:uppercase;font-size:1
   .wm{justify-self:start}
   .wm img{width:30px;height:30px}.wm b{font-size:20px}
 }
-@media (max-width:420px){.mnav .wrap{justify-content:flex-start;gap:20px}.site .langbtn{padding:8px 6px}.hib{width:38px}}
+@media (max-width:420px){.mnav .wrap{justify-content:flex-start;gap:20px}.site .langbtn{padding:8px 6px}.hib{width:36px}
+  /* phones: short language label, and WhatsApp lives in the chat button, the "تابعونا" row and the footer, so the header always fits */
+  .hic .hib.wa{display:none}.shd{gap:6px}.hic{min-width:0}.site .langbtn{padding:8px 4px;font-size:12.5px}
+  .wm{gap:8px}.wm img{width:28px;height:28px}.wm b{font-size:19px;letter-spacing:.3em;padding-inline-start:.3em}}
+@media (max-width:370px){.hib{width:34px}.hib svg{width:20px;height:20px}.wm{gap:6px}.wm img{width:26px;height:26px}.wm b{font-size:17px;letter-spacing:.26em;padding-inline-start:.26em}.wm small{font-size:7.5px;letter-spacing:.5em;padding-inline-start:.5em}}
+@media (max-width:340px){.hic .install{display:none}}
 /* hero: the logo, one line, two buttons — nothing else */
 .hero{background:radial-gradient(60% 90% at 50% 0%,#fffaf2 0%,transparent 70%),var(--page);color:var(--ink)}
 .hero::before{content:none}
@@ -1090,7 +1095,7 @@ footer .fcol b{text-transform:none;letter-spacing:.02em;font-size:13px}
 /* ---------- social icons (top "follow us" row + footer) ---------- */
 .sbtn{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;text-decoration:none;transition:transform .15s}
 .sbtn svg{width:20px;height:20px}
-.sbtn.wa{background:#25a35a}.sbtn.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0,#fd5949 45%,#d6249f 60%,#285aeb 90%)}.sbtn.fb{background:#1877f2}
+.sbtn.wa{background:#1d7f46}.sbtn.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0,#fd5949 45%,#d6249f 60%,#285aeb 90%)}.sbtn.fb{background:#1877f2}
 .sbtn:hover{transform:translateY(-2px)}
 .hsoc{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px}
 .hsoc[hidden]{display:none}
@@ -1102,7 +1107,7 @@ footer .fcol b{text-transform:none;letter-spacing:.02em;font-size:13px}
 .fcol .soc .sbtn svg{flex:none}
 footer .fcol a.sbtn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:38px;border-radius:20px;padding:0 14px 0 12px;color:#fff;font-size:13.5px;font-weight:600;line-height:1;cursor:pointer;box-sizing:border-box}
 footer .fcol a.sbtn:hover{color:#fff;text-decoration:none;transform:translateY(-2px)}
-footer .fcol a.sbtn.wa{background:#25a35a}footer .fcol a.sbtn.fb{background:#1877f2}footer .fcol a.sbtn.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
+footer .fcol a.sbtn.wa{background:#1d7f46}footer .fcol a.sbtn.fb{background:#1877f2}footer .fcol a.sbtn.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
 footer .fcol a.sbtn svg{width:18px;height:18px}
 body.sheetopen .chatfab{display:none!important}
 </style>
@@ -1350,7 +1355,7 @@ const I18N = {
   en: {
     title: 'LUMIA Care · Imported Gems', wsTitle: 'LUMIA · Wholesale prices',
     metaDesc: 'Original products imported from Germany: Balea, Mivolis, essence and more. Browse and order on WhatsApp.',
-    langBtn: 'العربية', langAria: 'التحويل إلى العربية',
+    langBtn: 'عربي', langAria: 'التحويل إلى العربية',
     install: 'Install app', installAria: 'Install the LUMIA app on your device',
     tag: 'Original products we import from Germany to Egypt, delivered to your door',
     de: 'Germany', eg: 'Egypt', shopNow: 'Shop products', waContact: 'Chat on WhatsApp',
