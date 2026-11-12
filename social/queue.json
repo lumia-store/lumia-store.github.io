@@ -178,6 +178,62 @@
    "changedAt": "2026-11-11T22:09:57.751Z"
   },
   {
+   "id": "2026-11-12-offer-r1",
+   "date": "2026-11-12",
+   "postAt": "2026-11-12T18:30:00.000Z",
+   "type": "offer",
+   "title": "Offer / weekend pick",
+   "occasion": null,
+   "products": [
+    "llzybxc1kq"
+   ],
+   "snapshot": {
+    "llzybxc1kq": {
+     "price": 450,
+     "was": 500,
+     "avail": "in"
+    }
+   },
+   "words": {
+    "headline": "عناية لطيفة بفروة الرأس لروتين شعر صحي 🌿",
+    "chips": [
+     "مستخلص زهر اللوز",
+     "تركيبة نباتية",
+     "خالٍ من السيليكون"
+    ],
+    "caption": "عناية يومية لفروة الرأس تدعم المظهر الصحي للشعر بتركيبة نباتية خالية من السيليكون. تحتوي على مستخلص زهر اللوز ومادة AnaGain™ الفعالة لتجربة لطيفة تمنح الشعر مظهراً حيوياً.",
+    "hashtags": [
+     "#عناية_بالشعر",
+     "#شعر_صحي",
+     "#منتجات_ألمانية",
+     "#منتجات_أصلية",
+     "#LANGHAARMAEDCHEN"
+    ],
+    "alt_en": "Gentle daily scalp care for a healthy hair look with almond blossom extract, vegan and silicone-free formula."
+   },
+   "media": {
+    "images": [
+     "https://lumia-store.github.io/media/social/2026-11-12-offer-r1-1.jpg"
+    ],
+    "story": "https://lumia-store.github.io/media/social/2026-11-12-offer-r1-story.jpg",
+    "video": "",
+    "cover": ""
+   },
+   "files": [
+    "2026-11-12-offer-r1-1.jpg",
+    "2026-11-12-offer-r1-story.jpg"
+   ],
+   "preview": {
+    "fb": "عناية يومية لفروة الرأس تدعم المظهر الصحي للشعر بتركيبة نباتية خالية من السيليكون. تحتوي على مستخلص زهر اللوز ومادة AnaGain™ الفعالة لتجربة لطيفة تمنح الشعر مظهراً حيوياً.\n\n✨ LANGHAARMÄDCHEN · تونيك تقوية فروة الرأس · 75 ml\n📦 متوفر الآن\n\n🛍️ للطلب عبر الموقع أو واتساب:\n🌐 https://lumia-store.github.io/p/langhaarmadchen-kopfhaut-booster-tonic-lovely-long-llzyb/\n📲 https://wa.me/201061227556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n\n#عناية_بالشعر #شعر_صحي #منتجات_ألمانية #منتجات_أصلية #LANGHAARMAEDCHEN",
+    "ig": "عناية يومية لفروة الرأس تدعم المظهر الصحي للشعر بتركيبة نباتية خالية من السيليكون. تحتوي على مستخلص زهر اللوز ومادة AnaGain™ الفعالة لتجربة لطيفة تمنح الشعر مظهراً حيوياً.\n\n✨ LANGHAARMÄDCHEN · تونيك تقوية فروة الرأس · 75 ml\n📦 متوفر الآن\n\n🛍️ للطلب عبر الموقع أو واتساب:\n🌐 lumia-store.github.io (الرابط في البايو)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n\n#عناية_بالشعر #شعر_صحي #منتجات_ألمانية #منتجات_أصلية #LANGHAARMAEDCHEN #LUMIACare #منتجات_ألمانية_أصلية",
+    "igTail": "✨ LANGHAARMÄDCHEN · تونيك تقوية فروة الرأس · 75 ml\n📦 متوفر الآن\n\n🛍️ للطلب عبر الموقع أو واتساب:\n🌐 lumia-store.github.io (الرابط في البايو)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n\n#عناية_بالشعر #شعر_صحي #منتجات_ألمانية #منتجات_أصلية #LANGHAARMAEDCHEN #LUMIACare #منتجات_ألمانية_أصلية"
+   },
+   "status": "waiting",
+   "ai": "Gemini",
+   "aiNote": "Claude did not work: Claude answered with error 400.",
+   "createdAt": "2026-11-12T09:43:34.320Z"
+  },
+  {
    "id": "2026-11-13-trust",
    "date": "2026-11-13",
    "postAt": "2026-11-13T18:30:00.000Z",
@@ -243,6 +299,68 @@
    "changedAt": "2026-11-11T22:10:10.487Z"
   },
   {
+   "id": "2026-11-13-trust-r1",
+   "date": "2026-11-13",
+   "postAt": "2026-11-13T18:30:00.000Z",
+   "type": "trust",
+   "title": "Why LUMIA",
+   "occasion": null,
+   "products": [
+    "ndbs1dd13l",
+    "848a41i1xa",
+    "5g0v8b8r25"
+   ],
+   "snapshot": {
+    "ndbs1dd13l": {
+     "price": 350,
+     "was": 0,
+     "avail": "in"
+    },
+    "848a41i1xa": {
+     "price": 430,
+     "was": 0,
+     "avail": "in"
+    },
+    "5g0v8b8r25": {
+     "price": 250,
+     "was": 0,
+     "avail": "in"
+    }
+   },
+   "words": {
+    "title": "منتجات أصلية مختارة بعناية من ألمانيا",
+    "caption": "تجربة عناية أصلية تأتيكم مباشرةً من المتاجر الألمانية الكبرى لتلبي احتياجات الروتين اليومي للبشرة والجسم بكل نعومة ورقة ✨🌿",
+    "hashtags": [
+     "#منتجات_ألمانية",
+     "#منتجات_أصلية",
+     "#عناية_بالبشرة",
+     "#عناية_بالجسم",
+     "#روتين_العناية"
+    ],
+    "alt_en": "Original beauty and care products carefully sourced from German drugstores to bring gentle daily care to your routine."
+   },
+   "media": {
+    "images": [
+     "https://lumia-store.github.io/media/social/2026-11-13-trust-r1-1.jpg"
+    ],
+    "story": "",
+    "video": "",
+    "cover": ""
+   },
+   "files": [
+    "2026-11-13-trust-r1-1.jpg"
+   ],
+   "preview": {
+    "fb": "تجربة عناية أصلية تأتيكم مباشرةً من المتاجر الألمانية الكبرى لتلبي احتياجات الروتين اليومي للبشرة والجسم بكل نعومة ورقة ✨🌿\n\n🛍️ للطلب عبر الموقع أو واتساب:\n🌐 https://lumia-store.github.io/\n📲 https://wa.me/201061227556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n\n#منتجات_ألمانية #منتجات_أصلية #عناية_بالبشرة #عناية_بالجسم #روتين_العناية",
+    "ig": "تجربة عناية أصلية تأتيكم مباشرةً من المتاجر الألمانية الكبرى لتلبي احتياجات الروتين اليومي للبشرة والجسم بكل نعومة ورقة ✨🌿\n\n🛍️ للطلب عبر الموقع أو واتساب:\n🌐 lumia-store.github.io (الرابط في البايو)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n\n#منتجات_ألمانية #منتجات_أصلية #عناية_بالبشرة #عناية_بالجسم #روتين_العناية #LUMIACare #منتجات_ألمانية_أصلية",
+    "igTail": "🛍️ للطلب عبر الموقع أو واتساب:\n🌐 lumia-store.github.io (الرابط في البايو)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n\n#منتجات_ألمانية #منتجات_أصلية #عناية_بالبشرة #عناية_بالجسم #روتين_العناية #LUMIACare #منتجات_ألمانية_أصلية"
+   },
+   "status": "waiting",
+   "ai": "Gemini",
+   "aiNote": "Claude did not work: Claude answered with error 400.",
+   "createdAt": "2026-11-12T09:43:39.647Z"
+  },
+  {
    "id": "2026-11-14-spotlight",
    "date": "2026-11-14",
    "postAt": "2026-11-14T18:30:00.000Z",
@@ -304,11 +422,13 @@
   }
  ],
  "robot": {
-  "lastPrepare": "2026-11-11T22:19:06.916Z",
-  "lastPrepareMade": 0,
+  "lastPrepare": "2026-11-12T09:43:39.719Z",
+  "lastPrepareMade": 2,
   "aiCostUsd": 0,
-  "lastError": "prepare: fetch failed",
+  "lastError": "",
   "lastPostCheck": "2026-11-11T23:39:26.024Z",
-  "lastErrorAt": "2026-11-12T09:37:55.021Z"
+  "lastErrorAt": "2026-11-12T09:37:55.021Z",
+  "aiNote": "Written with the backup AI because Claude did not work: Claude answered with error 400.",
+  "aiKeys": "Claude ✓ Gemini ✓ · first choice: claude"
  }
 }
