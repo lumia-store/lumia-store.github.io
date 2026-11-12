@@ -91,8 +91,13 @@ async function prepare() {
   try {
     for (let i = 0; i < DAYS_AHEAD; i++) {
       const date = P.addDays(today, i);
-      if (q.items.some(it => it.date === date && it.type !== 'ad')) continue;
+      // one post a day; if Mina skipped it (today or later), a replacement is written — at most 2 a day
+      const mine = q.items.filter(it => it.date === date && it.type !== 'ad');
+      if (mine.some(it => it.status !== 'skipped' && it.status !== 'expired')) continue;
+      const redo = mine.filter(it => it.status === 'skipped').length;
+      if (redo > 2) continue;
       const plan = P.planDay(data, q, date);
+      if (redo) plan.id = `${plan.id}-r${redo}`;
       const cands = plan.products.map(id => byId[id]).filter(Boolean);
       log('preparing', date, plan.type, cands.map(p => p.name).join(' | '));
       let w;

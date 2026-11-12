@@ -3,7 +3,7 @@
 name: Social robot
 on:
   schedule:
-    - cron: '10 4 * * *'          # ~6–7 AM Cairo: prepare the next 3 days for approval
+    - cron: '10 2 * * *'          # ~4–5 AM Cairo (GitHub may start it later): prepare the next 3 days for approval
     - cron: '35 17,18,19,20 * * *' # evening checks: post what is approved and due (8:30 PM Cairo, summer or winter time)
   workflow_dispatch:
     inputs:
@@ -16,7 +16,7 @@ jobs:
   robot:
     runs-on: ubuntu-latest
     env:
-      MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || (github.event.schedule == '10 4 * * *' && 'prepare' || 'post') }}
+      MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || (github.event.schedule == '10 2 * * *' && 'prepare' || 'post') }}
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4

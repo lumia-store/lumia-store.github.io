@@ -73,7 +73,8 @@ const usable = p => p && p.id && p.image && +p.price > 0 && availOf(p) !== 'out'
 /* how recently each product was used in a post (from the queue), so the same product does not come back for 45 days */
 function lastUsed(queue) {
   const m = {};
-  for (const it of queue.items || []) if (it.status !== 'skipped') for (const id of it.products || []) m[id] = Math.max(m[id] || 0, Date.parse(it.date));
+  // skipped posts count too: a product Mina skipped is not offered again straight away
+  for (const it of queue.items || []) for (const id of it.products || []) m[id] = Math.max(m[id] || 0, Date.parse(it.date));
   return m;
 }
 function score(p, used, today, salt) {

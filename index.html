@@ -1064,6 +1064,48 @@ footer .fcol b{text-transform:none;letter-spacing:.02em;font-size:13px}
 /* the original (packaging) name under the translated one */
 .info .size .orig{display:block;margin-top:2px;font:italic 500 14px/1.4 var(--f-latin);color:var(--muted);text-align:start}
 .info .size .orig:only-child{margin-top:0}
+
+/* ---------- customer accounts ---------- */
+.hib.acc.in{color:var(--wine)}
+.hib.acc.in::after{content:"";position:absolute;bottom:6px;inset-inline-end:6px;width:7px;height:7px;border-radius:50%;background:#2e7d4f;border:1.5px solid var(--page,#fff)}
+.hib.acc{position:relative}
+.fav{position:absolute;top:8px;inset-inline-start:8px;z-index:3;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.88);color:var(--ink,#2c2325);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.fav svg{width:18px;height:18px}.fav.on{color:var(--wine,#8a3445)}.fav.on svg{fill:currentColor}
+.pdp-top .ib.fav{position:static;box-shadow:none;background:transparent}
+.accwhy{margin:2px 0 12px;line-height:1.6}
+.gbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;border-radius:12px;border:1.5px solid var(--line,#dcc3b8);background:#fff;font:inherit;font-weight:600;color:var(--ink,#2c2325);cursor:pointer}
+.gbtn:disabled,.cta:disabled{opacity:.6}
+.accor{display:flex;align-items:center;gap:10px;margin:16px 0 4px;color:var(--muted,#6a5d5e);font-size:13px}.accor::before,.accor::after{content:"";flex:1;height:1px;background:var(--line,#e5d6cf)}
+.accerr{background:#fbe9ec;color:#8a1c2c;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:14px}
+.acclinks{display:flex;justify-content:space-between;gap:10px;margin-top:12px;flex-wrap:wrap}
+.tbtn.danger{color:#a3263a}
+.acctabs{display:flex;gap:6px;margin:4px 0 14px;overflow-x:auto}
+.acctabs button{flex:1;min-height:40px;border-radius:20px;border:1.5px solid var(--line,#e2d2ca);background:transparent;font:inherit;font-size:14px;color:var(--ink,#2c2325);cursor:pointer;white-space:nowrap;padding:0 12px}
+.acctabs button.on{background:var(--pri,#6e4438);border-color:var(--pri,#6e4438);color:#fff}
+.accord{border:1px solid var(--line,#eadcd5);border-radius:12px;padding:12px;margin-bottom:10px;display:flex;flex-direction:column;gap:6px}
+.accord .row1{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ghost.sm{min-height:36px;padding:0 14px;font-size:13px;width:auto}
+.accwish .line .fav{position:static;box-shadow:none}
+.accnudge{display:flex;align-items:center;gap:8px;margin:12px 0 2px;color:var(--pri,#6e4438)}.accnudge svg{width:18px;height:18px}
+
+/* ---------- social icons (top "follow us" row + footer) ---------- */
+.sbtn{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;text-decoration:none;transition:transform .15s}
+.sbtn svg{width:20px;height:20px}
+.sbtn.wa{background:#25a35a}.sbtn.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0,#fd5949 45%,#d6249f 60%,#285aeb 90%)}.sbtn.fb{background:#1877f2}
+.sbtn:hover{transform:translateY(-2px)}
+.hsoc{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px}
+.hsoc[hidden]{display:none}
+.hsoc>span{font-size:13px;letter-spacing:.5px;color:var(--muted,#6a5d5e)}
+.hsoc .sbtn{width:36px;height:36px}.hsoc .sbtn svg{width:18px;height:18px}
+.soc{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 6px}
+.soc .sbtn{width:auto;height:40px;border-radius:22px;padding:0 14px 0 12px;gap:8px;font-size:14px;font-weight:600}
+.fcol .soc .sbtn span{color:#fff;display:inline;margin:0;padding:0;font-size:14px;line-height:1}
+.fcol .soc .sbtn svg{flex:none}
+footer .fcol a.sbtn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:38px;border-radius:20px;padding:0 14px 0 12px;color:#fff;font-size:13.5px;font-weight:600;line-height:1;cursor:pointer;box-sizing:border-box}
+footer .fcol a.sbtn:hover{color:#fff;text-decoration:none;transform:translateY(-2px)}
+footer .fcol a.sbtn.wa{background:#25a35a}footer .fcol a.sbtn.fb{background:#1877f2}footer .fcol a.sbtn.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
+footer .fcol a.sbtn svg{width:18px;height:18px}
+body.sheetopen .chatfab{display:none!important}
 </style>
 </head>
 <body>
@@ -1083,6 +1125,7 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
       <button class="install hib" id="installBtn" type="button" hidden data-ta="installAria" aria-label="تثبيت تطبيق LUMIA على جهازك"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v10"/><path d="M8 10l4 4 4-4"/><rect x="5" y="17" width="14" height="3" rx="1.5"/></svg></button>
       <button class="hib" type="button" data-a="goSearch" data-ta="searchAria" aria-label="البحث"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/></svg></button>
       <a class="hib wa" id="waTop" href="#" target="_blank" rel="noopener" data-ta="waContact" aria-label="تواصل عبر واتساب"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg></a>
+      <button class="hib acc" type="button" data-a="acct" id="hdAcc" hidden aria-label="حسابي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-3.9 4.1-5.8 7.5-5.8s6.3 1.9 7.5 5.8"/></svg></button>
       <button class="hib bag" type="button" data-a="cart" id="hdBag" data-ta="order" aria-label="طلبي"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1 12H7z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="n" id="hdN" hidden></span></button>
     </div>
   </div>
@@ -1096,6 +1139,7 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
       <a class="cta-main" href="#shop" id="goShop" data-t="shopAll">تسوّق جميع المنتجات</a>
       <a class="cta-ghost" href="#brandTiles" data-a="goSec" data-k="brandTiles" data-t="shopByBrand">تسوّق حسب العلامة</a>
     </div>
+    <div class="hsoc" id="hsoc" hidden></div>
   </div>
 </section>
 
@@ -1229,7 +1273,7 @@ const I18N = {
     dpOrigB: 'منتجات أصلية من ألمانيا', dpOrigS: 'نشتري المنتجات من dm وRossmann وغيرها من المتاجر الألمانية، ونوفّر أي منتج آخر بطلب خاص.',
     howSpecial: 'لم تجد المنتج الذي تبحث عنه؟ يمكننا توفير أي منتج من dm وRossmann وغيرها من المتاجر الألمانية بطلب خاص؛ أرسل لنا اسمه أو رابطه أو صورته عبر واتساب.',
     waBandH: 'لديك سؤال أو طلب خاص؟', waBandP: 'راسلنا عبر واتساب، ويسعدنا مساعدتك في اختيار المنتج المناسب.', waBandBtn: 'راسلنا عبر واتساب',
-    waLabel: 'واتساب:', updated: d => 'آخر تحديث: ' + d, fb: 'فيسبوك', ig: 'إنستجرام', footNote: 'منتجات أصلية من ألمانيا إلى مصر',
+    waLabel: 'واتساب:', updated: d => 'آخر تحديث: ' + d, fb: 'فيسبوك', ig: 'إنستجرام', waName: 'واتساب', followUs: 'تابعونا', footNote: 'منتجات أصلية من ألمانيا إلى مصر',
     deliveryLbl: 'التوصيل:', paymentLbl: 'الدفع:',
     waHello: n => 'مرحباً، أود الاستفسار عن منتجات ' + n,
     cur: 'ج.م', off: p => `خصم ${p}%`, onRequest: 'السعر عند الطلب',
@@ -1326,7 +1370,7 @@ const I18N = {
     dpOrigB: 'Original products from Germany', dpOrigS: 'We buy from dm, Rossmann and other German stores, and can get any other product on special request.',
     howSpecial: 'Can’t find the product you’re looking for? We can get any product from dm, Rossmann and other German stores on special request — send us its name, link or photo on WhatsApp.',
     waBandH: 'A question or a special request?', waBandP: 'Message us on WhatsApp — we’re happy to help you choose the right product.', waBandBtn: 'Message us on WhatsApp',
-    waLabel: 'WhatsApp:', updated: d => 'Last updated: ' + d, fb: 'Facebook', ig: 'Instagram', footNote: 'Original products from Germany to Egypt',
+    waLabel: 'WhatsApp:', updated: d => 'Last updated: ' + d, fb: 'Facebook', ig: 'Instagram', waName: 'WhatsApp', followUs: 'Follow us', footNote: 'Original products from Germany to Egypt',
     deliveryLbl: 'Delivery:', paymentLbl: 'Payment:',
     waHello: n => `Hello, I'd like to ask about ${n} products`,
     cur: 'EGP', off: p => `${p}% off`, onRequest: 'Price on request',
@@ -1457,7 +1501,7 @@ function setLang(l){
 const CART_KEY = WS ? 'lumia_wcart' : 'lumia_cart';
 let cart = store.get(CART_KEY, {});
 U.promo = WS ? '' : store.get('lumia_promo', '');
-const form = Object.assign({ name: '', phone: '', addr: '', notes: '' }, store.get('lumia_me', {}));
+const form = Object.assign({ name: '', phone: '', addr: '', notes: '', email: '' }, store.get('lumia_me', {}));
 
 /* small SHA-256 (same result on the laptop, the phone and the website) — used to publish promo codes without showing them */
 function sha256hex(str){
@@ -1784,8 +1828,22 @@ function pixelStart(d){
 function px(ev, o){ try { if (PX.on && window.fbq) fbq('track', ev, o || {}); } catch (e) { /* never break the shop */ } }
 const pxItem = p => ({ content_ids: [p.id], content_type: 'product', content_name: p.name, ...(+p.price ? { value: +p.price, currency: 'EGP' } : {}) });
 
+/* social links with recognisable icons (WhatsApp from the shop number; Instagram and Facebook from the app's settings) */
+const SOCI = {
+  wa: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.2.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>',
+  ig: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>',
+  fb: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4a21 21 0 0 0-2.3-.1c-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z"/></svg>'
+};
+function socialLinks(){
+  const num = String((D && D.whatsapp) || '').replace(/\D/g, ''), out = [];
+  if (num) out.push({ k: 'wa', href: 'https://wa.me/' + num, label: T('waName'), icon: SOCI.wa });
+  if (D && D.instagram) out.push({ k: 'ig', href: D.instagram, label: T('ig'), icon: SOCI.ig });
+  if (D && D.facebook) out.push({ k: 'fb', href: D.facebook, label: T('fb'), icon: SOCI.fb });
+  return out;
+}
 function start(d){
   pixelStart(d);
+  setTimeout(() => { accHeader(); if (accOn() && store.get('lumia_acc', 0)) fb().catch(() => {}); }, 0);   // a signed-in customer stays signed in
   const todayIso = new Date().toISOString().slice(0, 10);
   for (const p of d.products || []) if (p.was && p.saleUntil && p.saleUntil < todayIso) { p.price = p.was; delete p.was; }
   D = d; applyLang(); renderBanners(); brandStrip(); showStrip(); renderSections(); setTimeout(initChat, 400);
@@ -1812,7 +1870,11 @@ function fillStatic(){
   $('waTop').href = $('waBandBtn').href = 'https://wa.me/' + waNum + '?text=' + encodeURIComponent(T('waHello', D.storeName || 'LUMIA'));
   const dn = noteFor('deliveryNote', 'deliveryNoteEn'), pn = noteFor('paymentNote', 'paymentNoteEn');
   $('dpDeliv').textContent = dn || T('dpDelivS'); $('dpPay').textContent = pn || T('dpPayS');
-  $('soc').innerHTML = [D.facebook ? `<a href="${esc(D.facebook)}" target="_blank" rel="noopener">${T('fb')}</a>` : '', D.instagram ? `<a href="${esc(D.instagram)}" target="_blank" rel="noopener">${T('ig')}</a>` : ''].join('');
+  // WhatsApp, Instagram and Facebook as clear round icons: a small "follow us" row at the top, and in the footer
+  const socs = socialLinks();
+  $('soc').innerHTML = socs.map(x => `<a class="sbtn ${x.k}" href="${esc(x.href)}" target="_blank" rel="noopener" aria-label="${esc(x.label)}">${x.icon}<span>${esc(x.label)}</span></a>`).join('');
+  $('hsoc').innerHTML = socs.length ? `<span>${T('followUs')}</span>` + socs.map(x => `<a class="sbtn ${x.k}" href="${esc(x.href)}" target="_blank" rel="noopener" aria-label="${esc(x.label)}">${x.icon}</a>`).join('') : '';
+  $('hsoc').hidden = WS || !socs.length;
   setTitle();
 }
 const byId = id => D.products.find(p => p.id === id);
@@ -1860,7 +1922,8 @@ function refreshCart(){
   }
 }
 /* page scrolling is locked while any full-screen layer is open, and only then */
-function syncLock(){ const c = $('chat'), on = !!(U.page || U.list || U.sheet || (c && !c.hidden) || $('gate')); document.body.style.overflow = on ? 'hidden' : ''; bnrWhy('ovl', on); }
+function syncLock(){ const c = $('chat'), on = !!(U.page || U.list || U.sheet || (c && !c.hidden) || $('gate')); document.body.style.overflow = on ? 'hidden' : ''; bnrWhy('ovl', on);
+  document.body.classList.toggle('sheetopen', !!U.sheet); }   // the floating chat button steps aside while the bag or account panel is open
 function setTitle(){ document.title = U.page && byId(U.page) ? byId(U.page).name + ' · LUMIA' : U.list ? lName(U.list) + ' · LUMIA' : WS ? T('wsTitle') : T('title'); }
 /* a small "pop" on the basket so adding something is clearly seen */
 function bump(){ const b = document.querySelector('.cartbar button'); if (!b || matchMedia('(prefers-reduced-motion:reduce)').matches) return; b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); }
@@ -1923,7 +1986,7 @@ const brandLink = p => bk(p.brand) ? `<a class="brand" dir="ltr" href="#b-${enco
 function card(p){
   const a = avail(p);
   return `<article class="p ${a.can ? '' : 'sold'}">
-      <div class="ph" data-a="view" data-id="${p.id}">${discTag(p)}${pic(p)}${control(p)}</div>
+      <div class="ph" data-a="view" data-id="${p.id}">${discTag(p)}${pic(p)}${control(p)}${favHtml(p)}</div>
       ${brandLink(p)}
       <h3 class="nm" dir="auto"><a href="#p-${encodeURIComponent(p.id)}" data-a="view" data-id="${p.id}">${esc(pName(p))}</a></h3>
       ${p.size ? `<div class="sz" dir="auto">${esc(pSize(p))}</div>` : ''}
@@ -1983,7 +2046,7 @@ function closeSheet(){ if (U.sheet && ovState() === 'sheet') history.back(); els
 function renderSheet(){
   const keep = document.querySelector('.sheet')?.scrollTop;
   const fid = document.activeElement?.id;
-  $('sheet').innerHTML = `<div class="scrim" data-a="scrim"><div class="sheet" role="dialog" aria-modal="true">${cartHtml()}</div></div>`;
+  $('sheet').innerHTML = `<div class="scrim" data-a="scrim"><div class="sheet" role="dialog" aria-modal="true">${U.sheet && U.sheet.type === 'acct' ? acctHtml() : cartHtml()}</div></div>`;
   if (keep != null) document.querySelector('.sheet').scrollTop = keep;
   if (fid && $(fid)) $(fid).focus();
 }
@@ -1992,7 +2055,7 @@ function cartHtml(){
   const X = `<button class="x" data-a="close" aria-label="${T('closeA')}">${IC.x}</button>`;
   if (!ids.length && !U.sent) return `<div class="grab"></div><div class="sh-top"><h2>${T('order')}</h2>${X}</div><div class="empty"><b>${T('emptyB')}</b>${T('emptyS')}</div>`;
   if (U.sent) return `<div class="grab"></div><div class="sh-top"><span></span>${X}</div>
-    <div class="done"><b>${T('sentB')}</b><div class="small">${T('sentS')}</div></div>
+    <div class="done"><b>${T('sentB')}</b><div class="small">${T('sentS')}</div>${U.orderNo ? `<div class="small" style="margin-top:6px">${tA('orderNo')}: <b dir="ltr">${esc(U.orderNo)}</b></div>` : ''}${U.mailed ? `<div class="small">${tA('mailSent')}</div>` : ''}</div>
     <button class="cta" data-a="send">${IC.wa} ${T('reopen')}</button><button class="ghost" data-a="clear">${T('newOrder')}</button>`;
   const later = ids.some(id => split(byId(id), cart[id]).later > 0);
   // "Empty basket": quiet text button next to the title (can be undone from the toast)
@@ -2008,6 +2071,8 @@ function cartHtml(){
     <label class="fl" for="fn">${T('fName')}</label><input class="f" id="fn" data-f="name" value="${esc(form.name)}" autocomplete="name">
     <label class="fl" for="fp">${T('fPhone')}</label><input class="f" id="fp" data-f="phone" inputmode="tel" dir="ltr" style="text-align:${EN() ? 'left' : 'right'}" value="${esc(form.phone)}" placeholder="01xxxxxxxxx" autocomplete="tel">
     <label class="fl" for="fa">${T('fAddr')}</label><input class="f" id="fa" data-f="addr" value="${esc(form.addr)}" placeholder="${esc(T('fAddrPh'))}" autocomplete="street-address">
+    ${!WS && D.mailUrl && !ACC.user ? `<label class="fl" for="fe">${tA('mailOpt')} <span class="small">${T('optional')}</span></label><input class="f" id="fe" data-f="email" type="email" dir="ltr" inputmode="email" autocomplete="email" value="${esc(form.email || '')}">` : ''}
+    ${!WS && accOn() && !ACC.user ? `<button type="button" class="tbtn accnudge" data-a="acct">${ICA.user} ${tA('nudge')}</button>` : ''}
     <label class="fl" for="fo">${T('fNotes')} <span class="small">${T('optional')}</span></label><textarea class="f" id="fo" data-f="notes" rows="2">${esc(form.notes)}</textarea>
     <button class="cta" data-a="send">${IC.wa} ${T('send')}</button>
     <div class="small" style="text-align:center;margin-top:10px">${T('sendNote')}</div>`;
@@ -2065,7 +2130,7 @@ function pageHtml(){
     : `<button class="cta" disabled>${T('offStock')}</button>`;
   return `<div class="pdp" id="pdp" role="dialog" aria-label="${esc(pName(p))}">
     <div class="pdp-top"><button class="ib" data-a="back" aria-label="${T('back')}">${PI.back}</button><span class="mk">LUMIA</span>
-      <button class="ib" data-a="share" aria-label="${T('share')}">${PI.share}</button>
+      ${accOn() ? favHtml(p).replace('class="fav', 'class="ib fav') : ''}<button class="ib" data-a="share" aria-label="${T('share')}">${PI.share}</button>
       <button class="ib" data-a="cart" aria-label="${T('order')}">${PI.bag}${t.count ? `<span class="n">${t.count}</span>` : ''}</button></div>
     <div class="pdp-body">
       <div class="gal">
@@ -2253,6 +2318,7 @@ function orderMessage(){
   const t = totals(), L = [];
   // the app reads this message back ("Paste an order"), in Arabic and in English
   L.push(WS ? T('msgWs', D.storeName) : T('msgNew', D.storeName));
+  if (U.orderNo) L.push('🧾 ' + tA('orderNo') + ': ' + U.orderNo);
   L.push(T('msgName') + form.name.trim());
   if (form.phone.trim()) L.push(T('msgPhone') + form.phone.trim());
   if (form.addr.trim()) L.push(T('msgAddr') + form.addr.trim());
@@ -2276,6 +2342,184 @@ function toast(m, act){
   if (act) { const b = document.createElement('button'); b.type = 'button'; b.className = 'tact'; b.textContent = act.label;
     b.addEventListener('click', () => { clearTimeout(tt); t.remove(); act.fn(); }); t.classList.add('wact'); t.append(b); }
   document.body.appendChild(t); tt = setTimeout(() => t.remove(), act ? act.ms || 6000 : 2300);
+}
+
+/* ---------- customer accounts: Google or email sign-in · saved details · order history · wishlist · order email ----------
+   Guest shopping stays the default. Uses Google Firebase (free plan), loaded only when it is needed, so the shop stays fast.
+   Each customer can read and change only their own data (see firestore.rules). Retail website only, never wholesale. */
+const FBV = '11.10.0';
+const ACC = { draft: {}, fb: null, loading: null, user: null, profile: null, orders: null, view: 'main', mode: 'in', busy: false, err: '', wish: new Set(store.get('lumia_wish', [])) };
+const accOn = () => !WS && !!(D && D.fbConfig && D.fbConfig.apiKey && D.fbConfig.projectId);
+const inAppGoogleBlocked = () => /FBAN|FBAV|Instagram|FB_IAB|Line\/|Snapchat|TikTok/i.test(navigator.userAgent || '');
+const AT = {
+  ar: { acc: 'حسابي', accA: 'حسابي في LUMIA', hello: n => `أهلاً ${n}`, signIn: 'تسجيل الدخول', signUp: 'إنشاء حساب', google: 'المتابعة باستخدام Google',
+    or: 'أو بالبريد الإلكتروني', email: 'البريد الإلكتروني', pass: 'كلمة المرور', passNew: 'كلمة المرور (6 أحرف على الأقل)', name: 'الاسم',
+    forgot: 'نسيت كلمة المرور؟', haveAcc: 'لديك حساب؟ سجّل الدخول', noAcc: 'ليس لديك حساب؟ أنشئ حساباً', guest: 'يمكنك دائماً الطلب كضيف دون حساب.',
+    why: 'مع الحساب: تُحفظ بياناتك للطلب التالي، وتجد طلباتك السابقة وقائمة المفضلة على أي جهاز، وتصلك رسالة تأكيد بالبريد.',
+    inApp: 'تسجيل الدخول بحساب Google لا يعمل داخل فيسبوك أو إنستغرام. افتح الموقع في المتصفح (⋮ ← فتح في المتصفح) أو استخدم البريد الإلكتروني.',
+    details: 'بياناتي', orders: 'طلباتي', wish: 'المفضلة', out: 'تسجيل الخروج', del: 'حذف الحساب', save: 'حفظ', saved: 'تم الحفظ ✓',
+    phone: 'رقم الموبايل', addr: 'العنوان بالتفصيل', noOrders: 'لا توجد طلبات بعد. ستظهر هنا طلباتك المرسلة من الموقع.', reorder: 'إعادة الطلب',
+    noWish: 'قائمة المفضلة فارغة. اضغط ♡ على أي منتج لحفظه.', wishAdded: 'أُضيف إلى المفضلة ♡', wishRemoved: 'أُزيل من المفضلة',
+    wishLocal: 'حُفظ على هذا الجهاز. سجّل الدخول لتجده على أي جهاز.', reordered: n => `أُضيف ${n} منتج إلى طلبك`, notAvail: 'بعض المنتجات لم تعد متوفرة',
+    delQ: 'هل تريد حذف حسابك وكل بياناته (البيانات والطلبات والمفضلة) نهائياً؟', deleted: 'تم حذف الحساب', reset: 'أرسلنا رابط تغيير كلمة المرور إلى بريدك.',
+    welcome: 'تم تسجيل الدخول ✓', bye: 'تم تسجيل الخروج', verify: 'أرسلنا رسالة لتأكيد بريدك الإلكتروني.', back: 'رجوع', orderNo: 'رقم الطلب',
+    nudge: 'سجّل الدخول لحفظ بياناتك ومتابعة طلباتك', mailOpt: 'بريدك الإلكتروني لاستلام تأكيد الطلب', mailSent: 'ستصلك رسالة تأكيد على بريدك.', items: n => `${n} منتج`, loading: 'جارٍ التحميل…',
+    e: { 'auth/invalid-credential': 'البريد أو كلمة المرور غير صحيحة.', 'auth/wrong-password': 'البريد أو كلمة المرور غير صحيحة.', 'auth/user-not-found': 'لا يوجد حساب بهذا البريد.',
+      'auth/email-already-in-use': 'يوجد حساب بهذا البريد بالفعل — سجّل الدخول.', 'auth/weak-password': 'كلمة المرور قصيرة: 6 أحرف على الأقل.', 'auth/invalid-email': 'البريد الإلكتروني غير صحيح.',
+      'auth/too-many-requests': 'محاولات كثيرة. حاول بعد قليل.', 'auth/network-request-failed': 'لا يوجد اتصال بالإنترنت.', 'auth/requires-recent-login': 'لأمان حسابك: سجّل الخروج ثم الدخول مرة أخرى، ثم احذف الحساب.',
+      'auth/popup-blocked': 'المتصفح منع نافذة Google. حاول مرة أخرى.', 'auth/unauthorized-domain': 'تسجيل الدخول غير مفعّل لهذا الموقع بعد.', other: 'حدث خطأ. حاول مرة أخرى.' } },
+  en: { acc: 'Account', accA: 'My LUMIA account', hello: n => `Hello ${n}`, signIn: 'Sign in', signUp: 'Create account', google: 'Continue with Google',
+    or: 'or with email', email: 'Email', pass: 'Password', passNew: 'Password (at least 6 characters)', name: 'Name',
+    forgot: 'Forgot password?', haveAcc: 'Have an account? Sign in', noAcc: 'No account? Create one', guest: 'You can always order as a guest, without an account.',
+    why: 'With an account your details are saved for next time, your past orders and wishlist are on any device, and you get an email confirmation.',
+    inApp: 'Google sign-in does not work inside Facebook or Instagram. Open the site in your browser (⋮ → Open in browser) or use email.',
+    details: 'My details', orders: 'My orders', wish: 'Wishlist', out: 'Sign out', del: 'Delete account', save: 'Save', saved: 'Saved ✓',
+    phone: 'Mobile number', addr: 'Full address', noOrders: 'No orders yet. Orders you send from the website appear here.', reorder: 'Order again',
+    noWish: 'Your wishlist is empty. Tap ♡ on any product to save it.', wishAdded: 'Added to wishlist ♡', wishRemoved: 'Removed from wishlist',
+    wishLocal: 'Saved on this device. Sign in to have it on any device.', reordered: n => `${n} product(s) added to your order`, notAvail: 'Some products are no longer available',
+    delQ: 'Delete your account and all its data (details, orders, wishlist) for good?', deleted: 'Account deleted', reset: 'We sent a password reset link to your email.',
+    welcome: 'Signed in ✓', bye: 'Signed out', verify: 'We sent an email to confirm your address.', back: 'Back', orderNo: 'Order no.',
+    nudge: 'Sign in to save your details and follow your orders', mailOpt: 'Your email, to receive the order confirmation', mailSent: 'A confirmation is on its way to your email.', items: n => `${n} item(s)`, loading: 'Loading…',
+    e: { 'auth/invalid-credential': 'Wrong email or password.', 'auth/wrong-password': 'Wrong email or password.', 'auth/user-not-found': 'No account with this email.',
+      'auth/email-already-in-use': 'An account with this email already exists — sign in.', 'auth/weak-password': 'Password too short: at least 6 characters.', 'auth/invalid-email': 'That email address is not valid.',
+      'auth/too-many-requests': 'Too many attempts. Try again shortly.', 'auth/network-request-failed': 'No internet connection.', 'auth/requires-recent-login': 'For your security: sign out and in again, then delete the account.',
+      'auth/popup-blocked': 'The browser blocked the Google window. Try again.', 'auth/unauthorized-domain': 'Sign-in is not enabled for this website yet.', other: 'Something went wrong. Please try again.' } }
+};
+const tA = (k, ...a) => { const v = AT[EN() ? 'en' : 'ar'][k]; return typeof v === 'function' ? v(...a) : v; };
+const accErr = e => { const m = AT[EN() ? 'en' : 'ar'].e; return m[e && e.code] || m.other; };
+const ICA = {
+  user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-3.9 4.1-5.8 7.5-5.8s6.3 1.9 7.5 5.8"/></svg>',
+  heart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>',
+  g: '<svg viewBox="0 0 24 24" width="18" height="18"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5a5.6 5.6 0 0 1-2.4 3.6v3h3.9c2.2-2.1 3.5-5.1 3.5-8.8z"/><path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-2.9l-3.9-3c-1.1.7-2.5 1.2-4.1 1.2-3.1 0-5.8-2.1-6.7-5H1.3v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.3 14.3a7.2 7.2 0 0 1 0-4.6V6.6H1.3a12 12 0 0 0 0 10.8z"/><path fill="#EA4335" d="M12 4.8c1.8 0 3.3.6 4.6 1.8l3.4-3.4A12 12 0 0 0 1.3 6.6l4 3.1c.9-2.9 3.6-4.9 6.7-4.9z"/></svg>'
+};
+
+/* Firebase is loaded on demand (first time the account or a ♡ is used, or straight away for someone who was signed in) */
+function fb(){
+  if (ACC.fb) return Promise.resolve(ACC.fb);
+  if (ACC.loading) return ACC.loading;
+  const base = (window.LUMIA_FB_BASE || `https://www.gstatic.com/firebasejs/${FBV}/`);
+  ACC.loading = Promise.all(['firebase-app.js', 'firebase-auth.js', 'firebase-firestore.js'].map(f => import(base + f))).then(([app, A2, F]) => {
+    const a = app.initializeApp(D.fbConfig);
+    const auth = A2.getAuth(a); auth.languageCode = EN() ? 'en' : 'ar';
+    ACC.fb = { auth, A: A2, db: F.getFirestore(a), F };
+    A2.onAuthStateChanged(auth, u => accChanged(u));
+    if (A2.getRedirectResult) A2.getRedirectResult(auth).catch(e => { ACC.err = accErr(e); accRender(); });
+    return ACC.fb;
+  }).catch(e => { ACC.loading = null; throw e; });
+  return ACC.loading;
+}
+const accKeep = () => { if ($('aE')) ACC.draft.e = $('aE').value.trim(); if ($('aN') && !ACC.user) ACC.draft.n = $('aN').value.trim(); };
+const meRef = () => ACC.fb.F.doc(ACC.fb.db, 'users', ACC.user.uid);
+async function accChanged(u){
+  ACC.user = u || null; ACC.orders = null; store.set('lumia_acc', u ? 1 : 0);
+  if (u) {
+    try {
+      const snap = await ACC.fb.F.getDoc(meRef());
+      ACC.profile = snap.exists() ? snap.data() : {};
+      // the wishlist kept on this device joins the account's list
+      const both = new Set([...(ACC.profile.wish || []), ...ACC.wish]);
+      if (both.size !== (ACC.profile.wish || []).length) await ACC.fb.F.setDoc(meRef(), { wish: [...both].slice(0, 200), updatedAt: ACC.fb.F.serverTimestamp() }, { merge: true });
+      ACC.wish = both; store.set('lumia_wish', [...both]);
+      // the order form is filled from the account where it is empty
+      for (const k of ['name', 'phone', 'addr']) if (!String(form[k] || '').trim() && ACC.profile[k]) form[k] = ACC.profile[k];
+      if (!String(form.name || '').trim() && u.displayName) form.name = u.displayName;
+    } catch (e) { ACC.profile = {}; }
+  } else ACC.profile = null;
+  accHeader(); renderHearts(); accRender();
+}
+function accHeader(){
+  const b = $('hdAcc'); if (!b) return;
+  b.hidden = !accOn(); b.classList.toggle('in', !!ACC.user);
+  b.setAttribute('aria-label', ACC.user ? tA('hello', ACC.user.displayName || ACC.user.email || '') : tA('accA'));
+}
+function accRender(){ if (U.sheet && U.sheet.type === 'acct') renderSheet(); }
+
+/* the account sheet */
+function acctHtml(){
+  const X = `<button class="x" data-a="close" aria-label="${T('closeA')}">${IC.x}</button>`;
+  const top = t => `<div class="grab"></div><div class="sh-top"><h2>${t}</h2>${X}</div>`;
+  if (!ACC.fb) return top(tA('accA')) + `<div class="empty">${tA('loading')}</div>`;
+  const err = ACC.err ? `<div class="accerr" role="alert">${esc(ACC.err)}</div>` : '';
+  if (!ACC.user) {
+    const up = ACC.mode === 'up';
+    return top(up ? tA('signUp') : tA('signIn')) + `<p class="small accwhy">${tA('why')}</p>
+      ${inAppGoogleBlocked() ? `<div class="note">${tA('inApp')}</div>` : ''}
+      <button class="gbtn" data-a="accGoogle" ${ACC.busy ? 'disabled' : ''}>${ICA.g} ${tA('google')}</button>
+      <div class="accor"><span>${tA('or')}</span></div>${err}
+      ${up ? `<label class="fl" for="aN">${tA('name')}</label><input class="f" id="aN" autocomplete="name" value="${esc(ACC.draft.n || '')}">` : ''}
+      <label class="fl" for="aE">${tA('email')}</label><input class="f" id="aE" type="email" dir="ltr" autocomplete="email" inputmode="email" value="${esc(ACC.draft.e || '')}">
+      <label class="fl" for="aP">${up ? tA('passNew') : tA('pass')}</label><input class="f" id="aP" type="password" dir="ltr" autocomplete="${up ? 'new-password' : 'current-password'}">
+      <button class="cta" data-a="accEmail" ${ACC.busy ? 'disabled' : ''}>${up ? tA('signUp') : tA('signIn')}</button>
+      <div class="acclinks">${up ? '' : `<button type="button" class="tbtn" data-a="accReset">${tA('forgot')}</button>`}<button type="button" class="tbtn" data-a="accMode">${up ? tA('haveAcc') : tA('noAcc')}</button></div>
+      <div class="small" style="text-align:center;margin-top:12px">${tA('guest')}</div>`;
+  }
+  const u = ACC.user, p = ACC.profile || {};
+  const tabs = ['main', 'orders', 'wish'].map(v => `<button class="${ACC.view === v ? 'on' : ''}" data-a="accView" data-k="${v}">${v === 'main' ? tA('details') : v === 'orders' ? tA('orders') : tA('wish')}${v === 'wish' && ACC.wish.size ? ` <small>${ACC.wish.size}</small>` : ''}</button>`).join('');
+  let body = '';
+  if (ACC.view === 'main') body = `${err}
+      <label class="fl" for="aN">${tA('name')}</label><input class="f" id="aN" value="${esc(p.name || u.displayName || '')}" autocomplete="name">
+      <label class="fl" for="aPh">${tA('phone')}</label><input class="f" id="aPh" dir="ltr" inputmode="tel" style="text-align:${EN() ? 'left' : 'right'}" value="${esc(p.phone || '')}" placeholder="01xxxxxxxxx" autocomplete="tel">
+      <label class="fl" for="aA">${tA('addr')}</label><input class="f" id="aA" value="${esc(p.addr || '')}" autocomplete="street-address" placeholder="${esc(T('fAddrPh'))}">
+      <button class="cta" data-a="accSave">${tA('save')}</button>
+      <div class="acclinks"><button type="button" class="tbtn" data-a="accOut">${tA('out')}</button><button type="button" class="tbtn danger" data-a="accDel">${tA('del')}</button></div>`;
+  if (ACC.view === 'orders') {
+    if (!ACC.orders) { setTimeout(accLoadOrders, 0); body = `<div class="empty">${tA('loading')}</div>`; }
+    else body = ACC.orders.length ? ACC.orders.map(o => `<div class="accord"><div class="row1"><b>${esc(o.no || '')}</b><span class="small">${esc(o.date || '')}</span></div>
+        <div class="small">${(o.items || []).map(i => `${i.qty} × ${esc(i.name)}`).join(' · ')}</div>
+        <div class="row1"><span class="price">${o.total ? money(o.total) + ' <small>' + cur() + '</small>' : ''}</span><button class="ghost sm" data-a="accReorder" data-k="${esc(o.id)}">${tA('reorder')}</button></div></div>`).join('')
+      : `<div class="empty">${tA('noOrders')}</div>`;
+  }
+  if (ACC.view === 'wish') {
+    const ps = [...ACC.wish].map(byId).filter(Boolean);
+    body = ps.length ? `<div class="accwish">${ps.map(pp => `<div class="line"><div class="th" data-a="view" data-id="${pp.id}">${pic(pp)}</div><div class="t" data-a="view" data-id="${pp.id}"><b dir="auto">${esc(pName(pp))}</b><span>${pp.price ? money(pp.price) + ' ' + cur() : ''}</span></div>
+        <button class="fav on" data-a="fav" data-id="${pp.id}" aria-label="${tA('wishRemoved')}">${ICA.heart}</button></div>`).join('')}</div>` : `<div class="empty">${tA('noWish')}</div>`;
+  }
+  return top(tA('hello', esc(p.name || u.displayName || (u.email || '').split('@')[0]))) + `<div class="acctabs">${tabs}</div>${body}`;
+}
+
+async function accLoadOrders(){
+  if (!ACC.user || ACC.orders) return;
+  const F = ACC.fb.F;
+  try {
+    const qs = await F.getDocs(F.query(F.collection(ACC.fb.db, 'users', ACC.user.uid, 'orders'), F.orderBy('createdAt', 'desc'), F.limit(30)));
+    ACC.orders = qs.docs.map(d => { const o = d.data(), t = o.createdAt && o.createdAt.toDate ? o.createdAt.toDate() : null;
+      return Object.assign({ id: d.id }, o, { date: t ? t.toLocaleDateString(EN() ? 'en-GB' : 'ar-EG', { day: 'numeric', month: 'short', year: 'numeric' }) : '' }); });
+  } catch (e) { ACC.orders = []; ACC.err = accErr(e); }
+  accRender();
+}
+
+/* ♡ on product cards and pages: works for guests (this device) and for accounts (any device) */
+const favHtml = p => accOn() ? `<button type="button" class="fav${ACC.wish.has(p.id) ? ' on' : ''}" data-a="fav" data-id="${p.id}" aria-pressed="${ACC.wish.has(p.id)}" aria-label="${tA('wish')}">${ICA.heart}</button>` : '';
+function renderHearts(){
+  document.querySelectorAll('.fav[data-id]').forEach(b => { const on = ACC.wish.has(b.dataset.id); b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+}
+
+/* order number shown in the WhatsApp message, the account and the email */
+const newOrderNo = () => { const d = new Date(), p = n => String(n).padStart(2, '0'); return `LUM-${String(d.getFullYear()).slice(2)}${p(d.getMonth() + 1)}${p(d.getDate())}-${Math.floor(1000 + Math.random() * 9000)}`; };
+
+/* after "Send on WhatsApp": keep the order in the account, save the details, ask for the email confirmation */
+async function accAfterSend(no){
+  const items = Object.entries(cart).map(([id, q]) => { const p = byId(id); return { id, qty: q, name: p ? p.name : id, price: p ? +p.price || 0 : 0 }; });
+  const t = totals(), pr = promoNow(), total = Math.max(0, t.sum - ((pr && pr.off) || 0));
+  if (ACC.user && ACC.fb) {
+    const F = ACC.fb.F;
+    try {
+      await F.addDoc(F.collection(ACC.fb.db, 'users', ACC.user.uid, 'orders'), { no, items: items.slice(0, 100), total, currency: 'EGP', promo: (pr && pr.code) || '', status: 'sent', createdAt: F.serverTimestamp() });
+      await F.setDoc(meRef(), { name: form.name.trim().slice(0, 80), phone: form.phone.trim().slice(0, 30), addr: form.addr.trim().slice(0, 300), updatedAt: F.serverTimestamp() }, { merge: true });
+      ACC.profile = Object.assign({}, ACC.profile, { name: form.name.trim(), phone: form.phone.trim(), addr: form.addr.trim() }); ACC.orders = null;
+    } catch (e) { /* the order itself went to WhatsApp; keeping history is a bonus */ }
+  }
+  const mail = ACC.user ? ACC.user.email : String(form.email || '').trim();
+  if (D.mailUrl && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail || '')) {
+    let idToken = '';
+    try { if (ACC.user) idToken = await ACC.user.getIdToken(); } catch (e) { /* send as guest */ }
+    try {
+      // a simple request (no custom headers), so the browser sends it straight to the Google script
+      await fetch(D.mailUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ v: 1, idToken, email: idToken ? '' : mail, lang: EN() ? 'en' : 'ar', no, name: form.name.trim().slice(0, 60), items: items.map(i => ({ id: i.id, qty: i.qty })), promo: (pr && pr.code) || '' }) });
+      U.mailed = true;
+    } catch (e) { /* no email this time */ }
+  }
 }
 
 const A = {
@@ -2321,6 +2565,78 @@ const A = {
     try { await navigator.clipboard.writeText(url); toast(T('copied')); } catch (e) { toast(url); }
   },
   cart: () => openSheet({ type: 'cart' }),
+  // ---- account ----
+  acct: () => { ACC.err = ''; openSheet({ type: 'acct' }); fb().then(accRender).catch(() => { ACC.err = accErr({}); accRender(); }); },
+  accMode: () => { accKeep(); ACC.mode = ACC.mode === 'up' ? 'in' : 'up'; ACC.err = ''; renderSheet(); },
+  accView: d => { ACC.view = d.k; ACC.err = ''; renderSheet(); },
+  accGoogle: async () => {
+    const { auth, A: FA } = await fb(); ACC.err = ''; ACC.busy = true; renderSheet();
+    const prov = new FA.GoogleAuthProvider();
+    try { await FA.signInWithPopup(auth, prov); toast(tA('welcome')); }
+    catch (e) {
+      if (e && (e.code === 'auth/popup-blocked' || e.code === 'auth/operation-not-supported-in-this-environment')) { try { await FA.signInWithRedirect(auth, prov); return; } catch (e2) { e = e2; } }
+      if (!(e && (e.code === 'auth/popup-closed-by-user' || e.code === 'auth/cancelled-popup-request'))) ACC.err = accErr(e);
+    }
+    ACC.busy = false; renderSheet();
+  },
+  accEmail: async () => {
+    const { auth, A: FA } = await fb(), up = ACC.mode === 'up';
+    accKeep();
+    const em = ($('aE') || {}).value.trim(), pw = ($('aP') || {}).value, nm = up ? ($('aN') || {}).value.trim() : '';
+    if (up && !nm) { ACC.err = T('needName'); renderSheet(); return; }
+    ACC.err = ''; ACC.busy = true; renderSheet();
+    try {
+      if (up) {
+        const r = await FA.createUserWithEmailAndPassword(auth, em, pw);
+        await FA.updateProfile(r.user, { displayName: nm });
+        if (!String(form.name || '').trim()) form.name = nm;
+        try { await FA.sendEmailVerification(r.user); toast(tA('verify')); } catch (e) { toast(tA('welcome')); }
+        if (ACC.fb) await ACC.fb.F.setDoc(ACC.fb.F.doc(ACC.fb.db, 'users', r.user.uid), { name: nm.slice(0, 80), updatedAt: ACC.fb.F.serverTimestamp() }, { merge: true });
+        ACC.profile = Object.assign({}, ACC.profile, { name: nm });
+      } else { await FA.signInWithEmailAndPassword(auth, em, pw); toast(tA('welcome')); }
+    } catch (e) { ACC.err = accErr(e); }
+    ACC.busy = false; renderSheet();
+  },
+  accReset: async () => {
+    accKeep();
+    const { auth, A: FA } = await fb(), em = ($('aE') || {}).value.trim();
+    if (!em) { ACC.err = AT[EN() ? 'en' : 'ar'].e['auth/invalid-email']; renderSheet(); return; }
+    try { await FA.sendPasswordResetEmail(auth, em); ACC.err = ''; toast(tA('reset')); } catch (e) { ACC.err = accErr(e); }
+    renderSheet();
+  },
+  accSave: async () => {
+    const F = ACC.fb.F, v = { name: $('aN').value.trim().slice(0, 80), phone: $('aPh').value.trim().slice(0, 30), addr: $('aA').value.trim().slice(0, 300) };
+    try { await F.setDoc(meRef(), Object.assign({}, v, { updatedAt: F.serverTimestamp() }), { merge: true }); ACC.profile = Object.assign({}, ACC.profile, v);
+      Object.assign(form, v); store.set('lumia_me', form); ACC.err = ''; toast(tA('saved')); } catch (e) { ACC.err = accErr(e); }
+    renderSheet();
+  },
+  accOut: async () => { await ACC.fb.A.signOut(ACC.fb.auth); ACC.view = 'main'; toast(tA('bye')); },
+  accDel: async () => {
+    if (!confirm(tA('delQ'))) return;
+    const F = ACC.fb.F, u = ACC.user;
+    try {
+      const qs = await F.getDocs(F.collection(ACC.fb.db, 'users', u.uid, 'orders'));
+      for (const d of qs.docs) await F.deleteDoc(d.ref);
+      await F.deleteDoc(meRef());
+      await ACC.fb.A.deleteUser(u);
+      ACC.wish = new Set(); store.set('lumia_wish', []); ACC.view = 'main'; toast(tA('deleted')); renderHearts();
+    } catch (e) { ACC.err = accErr(e); renderSheet(); }
+  },
+  accReorder: d => {
+    const o = (ACC.orders || []).find(x => x.id === d.k); if (!o) return;
+    let n = 0, miss = 0;
+    for (const it of o.items || []) { const p = byId(it.id); if (p && avail(p).can) { setQty(it.id, (cart[it.id] || 0) + it.qty); n++; } else miss++; }
+    toast(miss ? tA('notAvail') : tA('reordered', n)); U.sent = false; openSheet({ type: 'cart' });
+  },
+  fav: async (d, el, e) => {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    const id = d.id, on = !ACC.wish.has(id);
+    if (on) ACC.wish.add(id); else ACC.wish.delete(id);
+    store.set('lumia_wish', [...ACC.wish]); renderHearts();
+    if (U.sheet && U.sheet.type === 'acct') renderSheet();
+    if (ACC.user && ACC.fb) { const F = ACC.fb.F; try { await F.setDoc(meRef(), { wish: on ? F.arrayUnion(id) : F.arrayRemove(id), updatedAt: F.serverTimestamp() }, { merge: true }); } catch (x) { /* kept on this device */ } toast(on ? tA('wishAdded') : tA('wishRemoved')); }
+    else if (on) toast(tA('wishLocal'), { label: tA('signIn'), fn: () => A.acct() }); else toast(tA('wishRemoved'));
+  },
   promoApply: () => { const v = normPromo($('promoIn')?.value); if (!v) { toast(T('promoEnter')); return; }
     U.promo = v; const r = promoNow(); if (r.err && !r.min) { U.promo = ''; toast(r.err); return; }
     store.set('lumia_promo', U.promo); renderSheet(); toast(r.off ? T('promoDone', money(r.off)) : T('promoSaved')); },
@@ -2330,13 +2646,15 @@ const A = {
   // (from the homepage tiles/banner: also jump down to the products)
   av: d => { U.av = d.k; renderFilters(); renderGrid(); if (d.go) $('shop').scrollIntoView({ behavior: 'smooth' }); else keepFocus('#filters', d); },
   cat: d => { U.cat = d.k; renderFilters(); renderGrid(); if (d.go) $('shop').scrollIntoView({ behavior: 'smooth' }); else keepFocus('#filters', d); },
-  clear: () => { U.promo = ''; store.set('lumia_promo', ''); cart = {}; store.set(CART_KEY, cart); U.sent = false; closeSheet(); renderGrid(); if (U.list) { listGrid(); listBag(); } toast(T('thanks')); },
+  clear: () => { U.promo = ''; store.set('lumia_promo', ''); cart = {}; store.set(CART_KEY, cart); U.sent = false; U.orderNo = ''; U.mailed = false; closeSheet(); renderGrid(); if (U.list) { listGrid(); listBag(); } toast(T('thanks')); },
   send: () => {
     if (!form.name.trim()) { toast(T('needName')); $('fn')?.focus(); return; }
     if (!Object.keys(cart).length) { toast(T('emptyOrder')); return; }
     store.set('lumia_me', form);
+    if (!U.orderNo) U.orderNo = WS ? '' : newOrderNo();
     const num = String(D.whatsapp || '').replace(/\D/g, '');
     window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(orderMessage()), '_blank');
+    if (!WS && !U.sent) accAfterSend(U.orderNo).then(() => { if (U.sheet) renderSheet(); });
     px('Contact', { content_ids: Object.keys(cart), content_type: 'product', num_items: Object.values(cart).reduce((a, b) => a + b, 0) });
     U.sent = true; renderSheet();
   }
