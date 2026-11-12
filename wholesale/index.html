@@ -2072,8 +2072,8 @@ function cartHtml(){
     <label class="fl" for="fn">${T('fName')}</label><input class="f" id="fn" data-f="name" value="${esc(form.name)}" autocomplete="name">
     <label class="fl" for="fp">${T('fPhone')}</label><input class="f" id="fp" data-f="phone" inputmode="tel" dir="ltr" style="text-align:${EN() ? 'left' : 'right'}" value="${esc(form.phone)}" placeholder="01xxxxxxxxx" autocomplete="tel">
     <label class="fl" for="fa">${T('fAddr')}</label><input class="f" id="fa" data-f="addr" value="${esc(form.addr)}" placeholder="${esc(T('fAddrPh'))}" autocomplete="street-address">
-    ${!WS && D.mailUrl && !ACC.user ? `<label class="fl" for="fe">${tA('mailOpt')} <span class="small">${T('optional')}</span></label><input class="f" id="fe" data-f="email" type="email" dir="ltr" inputmode="email" autocomplete="email" value="${esc(form.email || '')}"><div class="small" style="margin-top:4px">${tA('mailHint')}</div>` : ''}
-    ${!WS && accOn() && !ACC.user ? `<button type="button" class="tbtn accnudge" data-a="acct">${ICA.user} ${tA('nudge')}</button>` : ''}
+    ${D.mailUrl && !ACC.user ? `<label class="fl" for="fe">${tA('mailOpt')} <span class="small">${T('optional')}</span></label><input class="f" id="fe" data-f="email" type="email" dir="ltr" inputmode="email" autocomplete="email" value="${esc(form.email || '')}"><div class="small" style="margin-top:4px">${tA('mailHint')}</div>` : ''}
+    ${accOn() && !ACC.user ? `<button type="button" class="tbtn accnudge" data-a="acct">${ICA.user} ${tA('nudge')}</button>` : ''}
     <label class="fl" for="fo">${T('fNotes')} <span class="small">${T('optional')}</span></label><textarea class="f" id="fo" data-f="notes" rows="2">${esc(form.notes)}</textarea>
     <button class="cta" data-a="send">${IC.wa} ${T('send')}</button>
     <div class="small" style="text-align:center;margin-top:10px">${T('sendNote')}</div>`;
@@ -2350,7 +2350,7 @@ function toast(m, act){
    Each customer can read and change only their own data (see firestore.rules). Retail website only, never wholesale. */
 const FBV = '11.10.0';
 const ACC = { draft: {}, fb: null, loading: null, user: null, profile: null, orders: null, view: 'main', mode: 'in', busy: false, err: '', wish: new Set(store.get('lumia_wish', [])) };
-const accOn = () => !WS && !!(D && D.fbConfig && D.fbConfig.apiKey && D.fbConfig.projectId);
+const accOn = () => !!(D && D.fbConfig && D.fbConfig.apiKey && D.fbConfig.projectId);
 const inAppGoogleBlocked = () => /FBAN|FBAV|Instagram|FB_IAB|Line\/|Snapchat|TikTok/i.test(navigator.userAgent || '');
 const AT = {
   ar: { acc: 'حسابي', accA: 'حسابي في LUMIA', hello: n => `أهلاً ${n}`, signIn: 'تسجيل الدخول', signUp: 'إنشاء حساب', google: 'المتابعة باستخدام Google',
@@ -2465,7 +2465,7 @@ function acctHtml(){
       <div class="acclinks"><button type="button" class="tbtn" data-a="accOut">${tA('out')}</button><button type="button" class="tbtn danger" data-a="accDel">${tA('del')}</button></div>`;
   if (ACC.view === 'orders') {
     if (!ACC.orders) { setTimeout(accLoadOrders, 0); body = `<div class="empty">${tA('loading')}</div>`; }
-    else body = ACC.orders.length ? ACC.orders.map(o => `<div class="accord"><div class="row1"><b>${esc(o.no || '')}</b><span class="small">${esc(o.date || '')}</span></div>
+    else body = ACC.orders.length ? ACC.orders.map(o => `<div class="accord"><div class="row1"><b>${o.status === 'sent-bulk' ? '📦 ' : ''}${esc(o.no || '')}</b><span class="small">${esc(o.date || '')}</span></div>
         <div class="small">${(o.items || []).map(i => `${i.qty} × ${esc(i.name)}`).join(' · ')}</div>
         <div class="row1"><span class="price">${o.total ? money(o.total) + ' <small>' + cur() + '</small>' : ''}</span><button class="ghost sm" data-a="accReorder" data-k="${esc(o.id)}">${tA('reorder')}</button></div></div>`).join('')
       : `<div class="empty">${tA('noOrders')}</div>`;
@@ -2502,24 +2502,26 @@ const newOrderNo = () => { const d = new Date(), p = n => String(n).padStart(2, 
 async function accAfterSend(no){
   const items = Object.entries(cart).map(([id, q]) => { const p = byId(id); return { id, qty: q, name: p ? p.name : id, price: p ? +p.price || 0 : 0 }; });
   const t = totals(), pr = promoNow(), total = Math.max(0, t.sum - ((pr && pr.off) || 0));
+  const mail = ACC.user ? ACC.user.email : String(form.email || '').trim();
+  if (D.mailUrl) {   // every order goes to the shop's own Google script: it alerts the shop and emails the customer (if an email was given)
+    const okMail = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail || '');
+    let idToken = '';
+    try { if (ACC.user && okMail) idToken = await ACC.user.getIdToken(); } catch (e) { /* send as guest */ }
+    try {
+      // a simple request (no custom headers), so the browser sends it straight to the Google script; keepalive: it still goes if WhatsApp takes over the screen
+      await fetch(D.mailUrl, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ v: 2, wholesale: WS ? 1 : 0, idToken, email: idToken || !okMail ? '' : mail, lang: EN() ? 'en' : 'ar', no, name: form.name.trim().slice(0, 60), phone: form.phone.trim().slice(0, 30),
+          addr: form.addr.trim().slice(0, 300), notes: String(form.notes || '').trim().slice(0, 300), items: items.map(i => ({ id: i.id, qty: i.qty, name: WS ? String(i.name).slice(0, 80) : undefined })), promo: (pr && pr.code) || '' }) });
+      if (okMail) U.mailed = true;
+    } catch (e) { /* no email this time */ }
+  }
   if (ACC.user && ACC.fb) {
     const F = ACC.fb.F;
     try {
-      await F.addDoc(F.collection(ACC.fb.db, 'users', ACC.user.uid, 'orders'), { no, items: items.slice(0, 100), total, currency: 'EGP', promo: (pr && pr.code) || '', status: 'sent', createdAt: F.serverTimestamp() });
+      await F.addDoc(F.collection(ACC.fb.db, 'users', ACC.user.uid, 'orders'), { no, items: items.slice(0, 100), total, currency: 'EGP', promo: (pr && pr.code) || '', status: WS ? 'sent-bulk' : 'sent', createdAt: F.serverTimestamp() });
       await F.setDoc(meRef(), { name: form.name.trim().slice(0, 80), phone: form.phone.trim().slice(0, 30), addr: form.addr.trim().slice(0, 300), updatedAt: F.serverTimestamp() }, { merge: true });
       ACC.profile = Object.assign({}, ACC.profile, { name: form.name.trim(), phone: form.phone.trim(), addr: form.addr.trim() }); ACC.orders = null;
     } catch (e) { /* the order itself went to WhatsApp; keeping history is a bonus */ }
-  }
-  const mail = ACC.user ? ACC.user.email : String(form.email || '').trim();
-  if (D.mailUrl && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail || '')) {
-    let idToken = '';
-    try { if (ACC.user) idToken = await ACC.user.getIdToken(); } catch (e) { /* send as guest */ }
-    try {
-      // a simple request (no custom headers), so the browser sends it straight to the Google script
-      await fetch(D.mailUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({ v: 1, idToken, email: idToken ? '' : mail, lang: EN() ? 'en' : 'ar', no, name: form.name.trim().slice(0, 60), items: items.map(i => ({ id: i.id, qty: i.qty })), promo: (pr && pr.code) || '' }) });
-      U.mailed = true;
-    } catch (e) { /* no email this time */ }
   }
 }
 
@@ -2652,10 +2654,10 @@ const A = {
     if (!form.name.trim()) { toast(T('needName')); $('fn')?.focus(); return; }
     if (!Object.keys(cart).length) { toast(T('emptyOrder')); return; }
     store.set('lumia_me', form);
-    if (!U.orderNo) U.orderNo = WS ? '' : newOrderNo();
+    if (!U.orderNo) U.orderNo = newOrderNo();
     const num = String(D.whatsapp || '').replace(/\D/g, '');
     window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(orderMessage()), '_blank');
-    if (!WS && !U.sent) accAfterSend(U.orderNo).then(() => { if (U.sheet) renderSheet(); });
+    if (!U.sent) accAfterSend(U.orderNo).then(() => { if (U.sheet) renderSheet(); });
     px('Contact', { content_ids: Object.keys(cart), content_type: 'product', num_items: Object.values(cart).reduce((a, b) => a + b, 0) });
     U.sent = true; renderSheet();
   }
