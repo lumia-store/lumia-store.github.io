@@ -2071,7 +2071,7 @@ function cartHtml(){
     <label class="fl" for="fn">${T('fName')}</label><input class="f" id="fn" data-f="name" value="${esc(form.name)}" autocomplete="name">
     <label class="fl" for="fp">${T('fPhone')}</label><input class="f" id="fp" data-f="phone" inputmode="tel" dir="ltr" style="text-align:${EN() ? 'left' : 'right'}" value="${esc(form.phone)}" placeholder="01xxxxxxxxx" autocomplete="tel">
     <label class="fl" for="fa">${T('fAddr')}</label><input class="f" id="fa" data-f="addr" value="${esc(form.addr)}" placeholder="${esc(T('fAddrPh'))}" autocomplete="street-address">
-    ${!WS && D.mailUrl && !ACC.user ? `<label class="fl" for="fe">${tA('mailOpt')} <span class="small">${T('optional')}</span></label><input class="f" id="fe" data-f="email" type="email" dir="ltr" inputmode="email" autocomplete="email" value="${esc(form.email || '')}">` : ''}
+    ${!WS && D.mailUrl && !ACC.user ? `<label class="fl" for="fe">${tA('mailOpt')} <span class="small">${T('optional')}</span></label><input class="f" id="fe" data-f="email" type="email" dir="ltr" inputmode="email" autocomplete="email" value="${esc(form.email || '')}"><div class="small" style="margin-top:4px">${tA('mailHint')}</div>` : ''}
     ${!WS && accOn() && !ACC.user ? `<button type="button" class="tbtn accnudge" data-a="acct">${ICA.user} ${tA('nudge')}</button>` : ''}
     <label class="fl" for="fo">${T('fNotes')} <span class="small">${T('optional')}</span></label><textarea class="f" id="fo" data-f="notes" rows="2">${esc(form.notes)}</textarea>
     <button class="cta" data-a="send">${IC.wa} ${T('send')}</button>
@@ -2363,7 +2363,7 @@ const AT = {
     wishLocal: 'حُفظ على هذا الجهاز. سجّل الدخول لتجده على أي جهاز.', reordered: n => `أُضيف ${n} منتج إلى طلبك`, notAvail: 'بعض المنتجات لم تعد متوفرة',
     delQ: 'هل تريد حذف حسابك وكل بياناته (البيانات والطلبات والمفضلة) نهائياً؟', deleted: 'تم حذف الحساب', reset: 'أرسلنا رابط تغيير كلمة المرور إلى بريدك.',
     welcome: 'تم تسجيل الدخول ✓', bye: 'تم تسجيل الخروج', verify: 'أرسلنا رسالة لتأكيد بريدك الإلكتروني.', back: 'رجوع', orderNo: 'رقم الطلب',
-    nudge: 'سجّل الدخول لحفظ بياناتك ومتابعة طلباتك', mailOpt: 'بريدك الإلكتروني لاستلام تأكيد الطلب', mailSent: 'ستصلك رسالة تأكيد على بريدك.', items: n => `${n} منتج`, loading: 'جارٍ التحميل…',
+    nudge: 'سجّل الدخول لحفظ بياناتك ومتابعة طلباتك', mailOpt: 'بريدك الإلكتروني لاستلام تأكيد الطلب', mailSent: 'ستصلك رسالة تأكيد على بريدك. إذا لم تجدها في البريد الوارد، يُرجى مراجعة مجلد الرسائل غير المرغوب فيها (Spam) وتحديدها كـ «ليست رسالة غير مرغوب فيها».', mailHint: 'قد تصل رسالة التأكيد إلى مجلد الرسائل غير المرغوب فيها (Spam).', items: n => `${n} منتج`, loading: 'جارٍ التحميل…',
     e: { 'auth/invalid-credential': 'البريد أو كلمة المرور غير صحيحة.', 'auth/wrong-password': 'البريد أو كلمة المرور غير صحيحة.', 'auth/user-not-found': 'لا يوجد حساب بهذا البريد.',
       'auth/email-already-in-use': 'يوجد حساب بهذا البريد بالفعل — سجّل الدخول.', 'auth/weak-password': 'كلمة المرور قصيرة: 6 أحرف على الأقل.', 'auth/invalid-email': 'البريد الإلكتروني غير صحيح.',
       'auth/too-many-requests': 'محاولات كثيرة. حاول بعد قليل.', 'auth/network-request-failed': 'لا يوجد اتصال بالإنترنت.', 'auth/requires-recent-login': 'لأمان حسابك: سجّل الخروج ثم الدخول مرة أخرى، ثم احذف الحساب.',
@@ -2379,7 +2379,7 @@ const AT = {
     wishLocal: 'Saved on this device. Sign in to have it on any device.', reordered: n => `${n} product(s) added to your order`, notAvail: 'Some products are no longer available',
     delQ: 'Delete your account and all its data (details, orders, wishlist) for good?', deleted: 'Account deleted', reset: 'We sent a password reset link to your email.',
     welcome: 'Signed in ✓', bye: 'Signed out', verify: 'We sent an email to confirm your address.', back: 'Back', orderNo: 'Order no.',
-    nudge: 'Sign in to save your details and follow your orders', mailOpt: 'Your email, to receive the order confirmation', mailSent: 'A confirmation is on its way to your email.', items: n => `${n} item(s)`, loading: 'Loading…',
+    nudge: 'Sign in to save your details and follow your orders', mailOpt: 'Your email, to receive the order confirmation', mailSent: 'A confirmation is on its way to your email. If it is not in your inbox, please check your Spam folder and mark it as "Not spam".', mailHint: 'The confirmation may land in your Spam folder.', items: n => `${n} item(s)`, loading: 'Loading…',
     e: { 'auth/invalid-credential': 'Wrong email or password.', 'auth/wrong-password': 'Wrong email or password.', 'auth/user-not-found': 'No account with this email.',
       'auth/email-already-in-use': 'An account with this email already exists — sign in.', 'auth/weak-password': 'Password too short: at least 6 characters.', 'auth/invalid-email': 'That email address is not valid.',
       'auth/too-many-requests': 'Too many attempts. Try again shortly.', 'auth/network-request-failed': 'No internet connection.', 'auth/requires-recent-login': 'For your security: sign out and in again, then delete the account.',
