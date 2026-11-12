@@ -430,7 +430,7 @@
   "lastPrepareMade": 2,
   "aiCostUsd": 0,
   "lastError": "",
-  "lastPostCheck": "2026-11-11T23:39:26.024Z",
+  "lastPostCheck": "2026-11-12T22:50:59.531Z",
   "lastErrorAt": "2026-11-12T09:37:55.021Z",
   "aiNote": "Written with the backup AI because Claude did not work: Claude answered with error 400.",
   "aiKeys": "Claude ✓ Gemini ✓ · first choice: claude"
