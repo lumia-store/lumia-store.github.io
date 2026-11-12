@@ -294,7 +294,8 @@ async function askJson({ claudeKey, geminiKey, prompt: text, prefer = 'claude', 
     const body = { contents: [{ role: 'user', parts: [{ text }] }], generationConfig: { temperature, responseMimeType: 'application/json' } };
     let last = '';
     for (const model of MODELS) {
-      const { res, text: t } = await geminiCall({ key: geminiKey, model, body, fetchImpl });
+      let res, t;
+      try { ({ res, text: t } = await geminiCall({ key: geminiKey, model, body, fetchImpl })); } catch (e) { last = 'busy'; continue; }   // no answer: try the next model
       if (res.status === 404 || res.status === 429 || res.status >= 500) { last = res.status === 429 ? 'limit' : 'busy'; continue; }
       if (!res.ok) fail('The AI service answered with error ' + res.status + '.');
       let json = null; try { json = JSON.parse(t); } catch (e) { /* not json */ }
@@ -308,14 +309,18 @@ async function askJson({ claudeKey, geminiKey, prompt: text, prefer = 'claude', 
     const res = await fetchImpl('https://api.anthropic.com/v1/messages', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-api-key': claudeKey, 'anthropic-version': '2023-06-01' },
       body: JSON.stringify({ model: m.model, max_tokens: maxTokens, temperature, messages: [{ role: 'user', content: text + '\nAnswer with the JSON only.' }] }) });
     const json = await res.json().catch(() => null);
-    if (!res.ok) fail('Claude answered with error ' + res.status + '.');
+    if (!res.ok) fail('Claude answered with error ' + res.status + (res.status === 401 ? ' (the Claude key was not accepted)' : res.status === 400 && /credit/i.test(JSON.stringify(json || {})) ? ' (no credit left on the Claude account)' : res.status === 404 ? ' (model not found)' : '') + '.');
     const u = (json && json.usage) || {};
     return { data: parseJson(((json && json.content) || []).filter(c => c.type === 'text').map(c => c.text).join('')), cost: ((u.input_tokens || 0) * m.inPrice + (u.output_tokens || 0) * m.outPrice) / 1e6, provider: m.label };
   };
   if (!geminiKey && !claudeKey) fail('No AI key.');
   const first = prefer === 'claude' && claudeKey ? viaClaude : geminiKey ? viaGemini : viaClaude;
   const second = first === viaClaude ? (geminiKey ? viaGemini : null) : (claudeKey ? viaClaude : null);
-  try { return await first(); } catch (e) { if (!second) throw e; return await second(); }
+  try { return await first(); } catch (e) {
+    if (!second) throw e;
+    const r = await second();
+    return Object.assign(r, { fallback: (first === viaClaude ? 'Claude' : 'Gemini') + ' did not work: ' + (e.userMessage || e.message) });   // so the app can say why the backup was used
+  }
 }
 
 module.exports = { fillProduct, claudeFill, geminiFill, clean, CLAUDE, translateProducts, rewriteProducts, askJson, COPY_GUIDE };

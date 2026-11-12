@@ -66,7 +66,7 @@ function tidy(text) {
 const tag = h => '#' + String(h || '').replace(/^#+/, '').trim().replace(/\s+/g, '_');
 
 async function writePost(item, products, keys) {
-  const { data, provider, cost } = await askJson({ claudeKey: keys.claude, geminiKey: keys.gemini, prefer: keys.prefer || 'claude', prompt: promptFor(item, products), temperature: 0.7 });
+  const { data, provider, cost, fallback } = await askJson({ claudeKey: keys.claude, geminiKey: keys.gemini, prefer: keys.prefer || 'claude', prompt: promptFor(item, products), temperature: 0.7 });
   const out = Object.assign({}, data);
   for (const k of ['caption', 'headline', 'title', 'sub']) if (out[k]) out[k] = tidy(out[k]);
   if (Array.isArray(out.lines)) out.lines = out.lines.map(tidy).filter(Boolean).slice(0, 3);
@@ -78,7 +78,7 @@ async function writePost(item, products, keys) {
   const ok = new Map(HASHTAGS.map(h => [h.toLowerCase(), h]));
   out.hashtags = [...new Set([].concat(out.hashtags || []).map(tag).map(h => ok.get(h.toLowerCase())).filter(Boolean))].slice(0, 7);
   if (out.hashtags.length < 3) out.hashtags = [...new Set([...out.hashtags, '#منتجات_ألمانية', '#منتجات_أصلية', '#skincareegypt'])];
-  return { words: out, provider, cost };
+  return { words: out, provider, cost, fallback };
 }
 
 module.exports = { writePost, promptFor, tidy, SOCIAL_RULES, HASHTAGS };

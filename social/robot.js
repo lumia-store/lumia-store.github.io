@@ -87,7 +87,7 @@ async function prepare() {
   }
   if (q.robot) delete q.robot.waitingForSetup;
   const byId = Object.fromEntries(data.products.map(p => [p.id, p]));
-  let br = null, made = 0, cost = 0;
+  let br = null, made = 0, cost = 0; const errors = [], aiNotes = [];
   try {
     for (let i = 0; i < DAYS_AHEAD; i++) {
       const date = P.addDays(today, i);
@@ -102,7 +102,14 @@ async function prepare() {
       log('preparing', date, plan.type, cands.map(p => p.name).join(' | '));
       let w;
       if (fake) w = { words: fakeWords(plan, cands), provider: 'test', cost: 0 };
-      else w = await writePost(plan, cands, keys);
+      else {
+        // the AI service sometimes does not answer for a moment: try again (3 times), then go on with the next day
+        for (let t = 1; ; t++) {
+          try { w = await writePost(plan, cands, keys); break; }
+          catch (e) { log('AI try', t, 'failed:', e.userMessage || e.message); if (t >= 3) { errors.push(`${date}: ${e.userMessage || e.message}`); break; } await new Promise(r => setTimeout(r, 8000 * t)); }
+        }
+        if (!w) continue;
+      }
       br = br || await browser();
       const files = await renderPost({ item: plan, words: w.words, products: cands, data, siteDir: SITE_DIR, outDir: MEDIA, browser: br });
       const used = files.used.map(id => byId[id]);
@@ -112,10 +119,12 @@ async function prepare() {
         files: [...files.images, files.story, files.video].filter(Boolean),
         preview: { fb: captionFor(plan, w.words, used, data, 'fb'), ig: captionFor(plan, w.words, used, data, 'ig'),
           igTail: captionFor(plan, Object.assign({}, w.words, { caption: '' }), used, data, 'ig') },   // price/stock/order lines, added after an edited text when shared by hand
-        status: 'waiting', ai: w.provider, createdAt: new Date().toISOString()
+        status: 'waiting', ai: w.provider, aiNote: w.fallback || '', createdAt: new Date().toISOString()
       });
       delete item.pick;
       q.items.push(item); made++; cost += w.cost || 0;
+      if (w.fallback) aiNotes.push(w.fallback);
+      saveQueue(q);   // saved straight away, so one failure later never loses the posts already made
     }
     // the weekly ad suggestion (Thursday morning, or when there has been none for 7 days)
     const lastAd = q.items.filter(it => it.type === 'ad').map(it => it.date).sort().pop();
@@ -123,20 +132,25 @@ async function prepare() {
       const ad = P.planAd(data, q, today);
       if (ad) {
         const p = byId[ad.products[0]];
-        const w = fake ? { words: fakeWords({ type: 'spotlight' }, [p]) } : await writePost({ type: 'spotlight', products: [p.id] }, [p], keys);
+        let w = null;
+        try { w = fake ? { words: fakeWords({ type: 'spotlight' }, [p]) } : await writePost({ type: 'spotlight', products: [p.id] }, [p], keys); }
+        catch (e) { errors.push('ad: ' + (e.userMessage || e.message)); }
+        if (w) {
         br = br || await browser();
         const files = await renderPost({ item: Object.assign({}, ad, { type: 'spotlight', id: ad.id }), words: w.words, products: [p], data, siteDir: SITE_DIR, outDir: MEDIA, browser: br });
         Object.assign(ad, { words: w.words, media: { images: files.images.map(mediaUrl) }, files: files.images, status: 'waiting', createdAt: new Date().toISOString(),
           adText: `${String(w.words.caption || '').split('\n').slice(0, 2).join('\n')}\n✨ ${p.brand} · ${p.nameAr || p.name}\n🛍️ للطلب عبر الموقع أو واتساب — التوصيل لجميع المحافظات`,
           link: P.pageOf(SITE_URL, p),
           headline: (w.words.headline || p.nameAr || p.name).slice(0, 40) });
-        q.items.push(ad); made++;
+        q.items.push(ad); made++; saveQueue(q);
         log('ad suggestion', p.name, ad.reason);
+        }
       }
     }
   } finally { if (br) await br.close(); }
   cleanup(q, today);
-  q.robot = Object.assign({}, q.robot, { lastPrepare: new Date().toISOString(), lastPrepareMade: made, aiCostUsd: +((q.robot && q.robot.aiCostUsd || 0) + cost).toFixed(4), lastError: '' });
+  q.robot = Object.assign({}, q.robot, { lastPrepare: new Date().toISOString(), lastPrepareMade: made, aiCostUsd: +((q.robot && q.robot.aiCostUsd || 0) + cost).toFixed(4), lastError: errors.length ? 'Some posts could not be written (the AI did not answer); the robot tries again at the next run.' : '',
+    aiNote: aiNotes.length ? 'Written with the backup AI because ' + aiNotes[0] : '', aiKeys: (keys.claude ? 'Claude ✓ ' : 'no Claude key · ') + (keys.gemini ? 'Gemini ✓' : 'no Gemini key') + ' · first choice: ' + keys.prefer });
   saveQueue(q);
   log('done:', made, 'new item(s)');
 }
