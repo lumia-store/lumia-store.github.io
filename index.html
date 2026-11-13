@@ -10,10 +10,8 @@
 <meta property="og:description" content="منتجات أصلية مستوردة من ألمانيا. تصفّح المنتجات واطلب عبر واتساب.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://lumia-store.github.io/icon-512.png">
-<meta property="og:url" content="https://lumia-store.github.io/">
 <meta property="og:locale" content="ar_EG">
 <meta property="og:locale:alternate" content="en_US">
-<link rel="canonical" href="https://lumia-store.github.io/" data-base="https://lumia-store.github.io/">
 <link rel="alternate" hreflang="ar" href="https://lumia-store.github.io/">
 <link rel="alternate" hreflang="en" href="https://lumia-store.github.io/?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://lumia-store.github.io/">
@@ -1491,7 +1489,10 @@ function applyLang(){
   document.querySelectorAll('[data-ta]').forEach(el => { el.setAttribute('aria-label', T(el.dataset.ta)); });
   const md = document.querySelector('meta[name=description]'); if (md) md.content = T('metaDesc');
   const og = document.querySelector('meta[property="og:locale"]'); if (og) og.content = EN() ? 'en_US' : 'ar_EG';
-  const can = document.querySelector('link[rel=canonical]'); if (can && can.dataset.base) can.href = can.dataset.base + (EN() ? '?lang=en' : '');
+  // no fixed address in the page: a shared link (WhatsApp, Messenger) opens exactly the page that was shared — the wholesale link stays wholesale
+  let can = document.querySelector('link[rel=canonical]');
+  if (!can) { can = document.createElement('link'); can.rel = 'canonical'; can.dataset.base = location.origin + location.pathname.replace(/[^/]*$/, ''); document.head.appendChild(can); }
+  if (can.dataset.base) can.href = can.dataset.base + (EN() ? '?lang=en' : '');
 }
 function setLang(l){
   if (l === LANG) return;
