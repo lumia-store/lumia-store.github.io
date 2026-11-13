@@ -74,7 +74,7 @@ h1.m{font-size:64px}
 const head = (chip) => `<div class="top"><div class="brand"><img src="logo-mark.png"><b>LUMIA</b></div>${chip ? `<div class="chip">${hx(chip)}</div>` : ''}</div>`;
 const band = (d) => `<div class="band">التوصيل لجميع المحافظات <em>|</em> الدفع عند الاستلام <em>|</em> الطلب عبر الموقع أو واتساب</div>`;
 const priceBadge = (p, top) => `<div class="price" style="top:${top}px">${+p.was > +p.price ? `<s>${hx(p.was)}</s>` : ''}<b>${hx(p.price)}</b><i>جنيه</i></div>`;
-const preChip = p => (p.stock > 0 ? '' : `<span class="pre">طلب مسبق</span>`);
+const preChip = () => '';   // Mina: pictures never show stock or pre-order
 const sizeTxt = p => p.size ? ` · <span class="lat">${hx(p.size)}</span>` : '';
 
 /* one page (slide) of a post → HTML */
@@ -96,7 +96,7 @@ const T = {
   guideCover(w, ps, n) {
     return `<div class="s">${head('دليل العناية')}<h1>${hx(w.title)}</h1><div class="sub">${hx(w.sub || '')}</div>
       <div class="two" style="top:470px">${ps.slice(0, 3).map(p => `<div style="height:560px"><img src="${hx(p.image)}" style="height:420px"></div>`).join('')}</div>
-      <div class="swipe">اسحب لمعرفة المزيد ←</div><div class="dots">${Array.from({ length: n }, (_, i) => `<i${i ? '' : ' class="on"'}></i>`).join('')}</div>${band()}</div>`;
+      ${band()}</div>`;   // no "swipe" line: the same pictures go to Facebook
   },
   guideSlide(sl, p, i, n) {
     return `<div class="s"><div class="num">${i + 1} / ${n}</div>${head('')}
@@ -104,12 +104,12 @@ const T = {
       <div class="card" style="top:290px;height:560px"><img src="${hx(p.image)}"></div>
       <div class="pn"><span class="lat">${hx(p.brand)}</span> · ${hx(nm(p))}${sizeTxt(p)}</div>
       <ul class="pts">${sl.points.map(x => `<li>${hx(x)}</li>`).join('')}</ul>
-      <div class="dots">${Array.from({ length: n }, (_, k) => `<i${k === i ? ' class="on"' : ''}></i>`).join('')}</div>${band()}</div>`;
+      ${band()}</div>`;
   },
   cta(d, i, n) {
     return `<div class="s"><div class="cta"><div class="brand big"><img src="logo-mark.png"><b>LUMIA</b></div><h2>للطلب عبر الموقع أو واتساب</h2>
       <div class="wa" style="background:var(--band)">${hx(d.site)}</div><div class="wa">${hx(d.waText)}</div><p>منتجات أصلية مستوردة من ألمانيا<br>التوصيل لجميع المحافظات · الدفع عند الاستلام</p></div>
-      ${n ? `<div class="dots">${Array.from({ length: n }, (_, k) => `<i${k === i ? ' class="on"' : ''}></i>`).join('')}</div>` : ''}</div>`;
+      </div>`;   // no swipe dots: Facebook shows the pictures as a grid
   },
   routine(w, ps) {
     const by = Object.fromEntries(ps.map(p => [p.id, p]));

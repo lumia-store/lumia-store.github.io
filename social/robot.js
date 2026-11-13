@@ -11,7 +11,38 @@
  * Settings come from GitHub secrets: META_TOKEN, META_PAGE_ID, META_IG_ID, CLAUDE_KEY, GEMINI_KEY, AI_PREFER.
  */
 const fs = require('fs'), path = require('path');
-const P = require('./plan.js'), { writePost } = require('./write.js'), { renderPost } = require('./render.js');
+const P = require('./plan.js'), { writePost, tidy } = require('./write.js'), { renderPost } = require('./render.js');
+
+/* Posts written before a rule changed are cleaned once: text tidied again and pictures redrawn.
+   v2 (Nov 2026, Mina): no stock / pre-order words and no "swipe" (the same post goes to Facebook). */
+const CLEAN_V = 2;
+function cleanWords(w) {
+  const o = Object.assign({}, w);
+  for (const k of ['caption', 'headline', 'title', 'sub']) if (o[k]) o[k] = tidy(o[k]);
+  for (const k of ['lines', 'chips']) if (Array.isArray(o[k])) o[k] = o[k].map(tidy).filter(Boolean);
+  if (Array.isArray(o.slides)) o.slides = o.slides.map(x => Object.assign({}, x, { title: tidy(x.title), points: [].concat(x.points || []).map(tidy).filter(Boolean) }));
+  if (Array.isArray(o.steps)) o.steps = o.steps.map(x => Object.assign({}, x, { step: tidy(x.step), why: tidy(x.why) }));
+  return o;
+}
+async function refreshOld(items, data, byId, getBrowser) {
+  let n = 0;
+  for (const it of items) {
+    if ((it.cleanV || 0) >= CLEAN_V || it.type === 'ad' || !['waiting', 'approved'].includes(it.status)) continue;   // ads: in-stock products only, no labels
+    const ps = (it.products || []).map(id => byId[id]);
+    if (!ps.length || ps.some(p => !p)) continue;
+    try {
+      it.words = cleanWords(it.words || {});
+      const files = await renderPost({ item: it, words: it.words, products: ps, data, siteDir: SITE_DIR, outDir: MEDIA, browser: await getBrowser() });
+      const v = '?v=' + Date.now().toString(36);   // new address, so Meta and the app do not reuse the old picture
+      it.media = { images: files.images.map(f => mediaUrl(f) + v), story: files.story ? mediaUrl(files.story) + v : '', video: files.video ? mediaUrl(files.video) + v : '', cover: files.cover ? mediaUrl(files.cover) + v : '' };
+      it.files = [...files.images, files.story, files.video].filter(Boolean);
+      it.preview = { fb: captionFor(it, it.words, ps, data, 'fb'), ig: captionFor(it, it.words, ps, data, 'ig'), igTail: captionFor(it, Object.assign({}, it.words, { caption: '' }), ps, data, 'ig') };
+      it.cleanV = CLEAN_V; n++;
+      log('cleaned an older post', it.id);
+    } catch (e) { log('could not clean', it.id, e.message); }
+  }
+  return n;
+}
 const need = n => { try { return require('./' + n); } catch (e) { if (e.code !== 'MODULE_NOT_FOUND') throw e; return require('../desktop/' + n); } };
 const meta = need('meta.js');
 
@@ -54,16 +85,15 @@ function fakeWords(item, ps) {
   };
 }
 
-/* the full caption: the AI's words + facts the robot adds itself (product, stock, how to order). No prices — Mina's choice. */
+/* the full caption: the AI's words + facts the robot adds itself (product, how to order). No prices, no stock words — Mina's choice. */
 function captionFor(item, words, products, data, platform) {
   const wa = String(data.whatsapp || '').replace(/\D/g, ''), waNice = '+' + wa.replace(/^(\d{2})(\d{2})(\d{4})(\d+)$/, '$1 $2 $3 $4');
   const site = SITE_URL.replace(/^https?:\/\//, '').replace(/\/$/, '');
-  const pre = data.preorderNote || 'طلب مسبق: يصل خلال أسبوع إلى أسبوعين';
   const line = p => `${p.brand} · ${p.nameAr || p.nameEn || p.name}${p.size ? ' · ' + p.size : ''}`;
   const out = [String(words.caption || '').trim(), ''];
   if (item.type !== 'trust') {
-    if (products.length === 1) { const p = products[0]; out.push(`✨ ${line(p)}`, p.stock > 0 ? '📦 متوفر الآن' : `📦 ${pre}`); }
-    else for (const p of products) out.push(`• ${line(p)}${p.stock > 0 ? '' : ' (طلب مسبق)'}`);
+    if (products.length === 1) out.push(`✨ ${line(products[0])}`);
+    else for (const p of products) out.push(`• ${line(p)}`);
     out.push('');
   }
   // how to order: the website or WhatsApp (Instagram does not make links clickable, so it points to the bio)
@@ -89,6 +119,7 @@ async function prepare() {
   const byId = Object.fromEntries(data.products.map(p => [p.id, p]));
   let br = null, made = 0, cost = 0; const errors = [], aiNotes = [];
   try {
+    if (await refreshOld(q.items, data, byId, async () => (br = br || await browser()))) saveQueue(q);
     for (let i = 0; i < DAYS_AHEAD; i++) {
       const date = P.addDays(today, i);
       // one post a day; if Mina skipped it (today or later), a replacement is written — at most 2 a day
@@ -119,7 +150,7 @@ async function prepare() {
         files: [...files.images, files.story, files.video].filter(Boolean),
         preview: { fb: captionFor(plan, w.words, used, data, 'fb'), ig: captionFor(plan, w.words, used, data, 'ig'),
           igTail: captionFor(plan, Object.assign({}, w.words, { caption: '' }), used, data, 'ig') },   // price/stock/order lines, added after an edited text when shared by hand
-        status: 'waiting', ai: w.provider, aiNote: w.fallback || '', createdAt: new Date().toISOString()
+        status: 'waiting', cleanV: CLEAN_V, ai: w.provider, aiNote: w.fallback || '', createdAt: new Date().toISOString()
       });
       delete item.pick;
       q.items.push(item); made++; cost += w.cost || 0;
@@ -179,6 +210,7 @@ async function post() {
   if (!token || !pageId) { log('Meta is not connected — approved posts are shared by hand from the app'); return; }
   let br = null;
   try {
+    if (!dry && await refreshOld(due, data, byId, async () => (br = br || await browser()))) { saveQueue(q); for (const it of due) if (it.media && it.media.images[0]) await waitLive(it.media.images[0]); }
     for (const it of due) {
       it.status = 'posting'; it.results = it.results || {};
       // 1. check the shop again
@@ -186,7 +218,7 @@ async function post() {
       if (ps.some(p => !p)) { it.status = 'failed'; it.note = 'A product in this post was removed from the shop.'; continue; }
       const sold = ps.filter(p => P.availOf(p) === 'out');
       if (sold.length) { it.status = 'failed'; it.note = 'Not posted: sold out — ' + sold.map(p => p.name).join(', '); continue; }
-      const changed = ps.some(p => (it.snapshot[p.id] || {}).avail !== P.availOf(p));   // pictures show no prices, only the stock label
+      const changed = false;   // pictures show no prices and no stock, so nothing to redraw
       if (changed && it.type !== 'trust') {
         log('price/stock changed → redrawing', it.id);
         br = br || await browser();

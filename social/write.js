@@ -19,6 +19,7 @@ STRICT RULES:
 4. Do not address one gender. Avoid "اطلبي/جربي/بشرتكِ" and "اطلب/جرب/بشرتك"; use neutral phrases: "للطلب"، "تجربة لطيفة لـ…"، "البشرة"، "الشعر".
 5. NEVER write a price, a discount, "عرض"، "خصم"، "كمية محدودة"، "آخر قطعة" or any urgency.
 5b. NEVER write how to order, WhatsApp, the website, delivery, shipping or payment — the system adds these lines itself after your text.
+5d. NEVER mention stock or availability (متوفر، متاح الآن، طلب مسبق، نفد، الكمية) and NEVER ask to swipe/slide or refer to "the next picture" — the same post goes to Facebook, where photos are not swiped.
 5c. Our products come from German drugstores/shops (متاجر ألمانية مثل dm وRossmann) — never call them pharmacies (صيدليات) or medical products.
 6. Brand names stay in their original Latin spelling (Balea, essence, Eucerin, LANGHAARMÄDCHEN…). Product names in Arabic as shoppers in Egypt say them.
 7. No hashtags inside the caption text; put them only in "hashtags".
@@ -59,9 +60,10 @@ ${SHAPES[item.type]}`;
 /* small safety net on top of the rules: removes words the AI must never use, and any price it slipped in */
 const BANNED = /(يعالج|يشفي|يقضي على|نهائياً|نهائيا|الأفضل|مضمون[ةه]?|رقم 1|كمية محدودة|آخر قطعة|خصم|عرض خاص)/g;
 const PRICEY = /\d+\s*(ج\.?م|جنيه|EGP|LE)\b/gi;
+const STATUS_LINE = /(اسحب|اسحبي|مرر|مرّر|swipe|الصورة التالية|الصور التالية|متوفر|متوفّر|متاح الآن|متوفرة الآن|طلب مسبق|الطلب المسبق|بالطلب المسبق|المخزون|نفد|نفذت|pre-?order|in stock)/i;   // Mina: no stock words, no swiping (Facebook)
 const ORDER_LINE = /(واتساب|واتس|الواتس|whatsapp|للطلب|اطلب|التوصيل|توصيل|الشحن|شحن|الدفع|عند الاستلام|الموقع|الرابط|البايو)/i;
 function tidy(text) {
-  return String(text || '').split('\n').filter(l => !ORDER_LINE.test(l)).join('\n').replace(PRICEY, '').replace(BANNED, '').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').replace(/ {2,}/g, ' ').trim();
+  return String(text || '').split('\n').filter(l => !ORDER_LINE.test(l) && !STATUS_LINE.test(l)).join('\n').replace(PRICEY, '').replace(BANNED, '').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').replace(/ {2,}/g, ' ').trim();
 }
 const tag = h => '#' + String(h || '').replace(/^#+/, '').trim().replace(/\s+/g, '_');
 

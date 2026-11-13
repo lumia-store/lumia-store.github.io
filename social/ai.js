@@ -107,7 +107,7 @@ async function geminiFill({ key, images, categories, context, fetchImpl = fetch,
   if ((!images || !images.length) && !context) fail('Add a photo of the product first.');
   const body = {
     contents: [{ role: 'user', parts: [{ text: prompt(categories || [], context) }, ...(images || []).slice(0, 4).map(b64 => ({ inline_data: { mime_type: 'image/jpeg', data: b64 } }))] }],
-    generationConfig: { temperature: 0.2, responseMimeType: 'application/json' }
+    generationConfig: { temperature: 0.2, responseMimeType: 'application/json', maxOutputTokens: 8192 }
   };
   let lastErr = '';
   for (const model of (geminiModel === 'lite' ? MODELS_LITE : MODELS)) {
@@ -127,7 +127,7 @@ async function geminiFill({ key, images, categories, context, fetchImpl = fetch,
     const parts = json && json.candidates && json.candidates[0] && json.candidates[0].content && json.candidates[0].content.parts || [];
     const raw = parts.map(p => p.text || '').join('').trim().replace(/^```(?:json)?\s*|\s*```$/g, '');
     let data;
-    try { data = JSON.parse(raw); } catch (e) { fail('The AI answer could not be read. Try again, or use a sharper photo.'); }
+    try { data = parseJson(raw); } catch (e) { fail('The AI answer could not be read. Try again, or use a sharper photo.'); }
     const out = clean(Array.isArray(data) ? data[0] || {} : data);
     return { data: out, provider: 'Gemini', model, cost: 0 };
    }
@@ -158,7 +158,7 @@ async function claudeFill({ key, images, categories, context, tier = 'fast', fet
   if ((!images || !images.length) && !context) fail('Add a photo of the product first.');
   const m = CLAUDE[tier] || CLAUDE.fast;
   const body = {
-    model: m.model, max_tokens: 3500,
+    model: m.model, max_tokens: 8000,   // Arabic + English texts + the full ingredient list need room
     messages: [{ role: 'user', content: [
       ...(images || []).slice(0, 4).map(b64 => ({ type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: b64 } })),
       { type: 'text', text: prompt(categories || [], context) + '\nAnswer with the JSON object only.' }
@@ -186,8 +186,13 @@ async function claudeFill({ key, images, categories, context, tier = 'fast', fet
     }
     if (!res.ok) fail('Claude answered with error ' + res.status + (msg ? ': ' + msg : '') + '.');
     const raw = ((json && json.content) || []).filter(c => c.type === 'text').map(c => c.text).join('');
+    const cut = json && json.stop_reason === 'max_tokens';
     let data;
-    try { data = parseJson(raw); } catch (e) { fail('The AI answer could not be read. Try again, or use a sharper photo.'); }
+    try { data = parseJson(raw); } catch (e) {
+      // the answer was cut off (too long) or came back broken: ask once more for a shorter answer, then let Gemini try
+      if (attempt === 0) { body.max_tokens = 12000; body.messages[0].content[body.messages[0].content.length - 1].text += '\nKeep every text short (description max 3 sentences, features max 5 short items). Output complete, valid JSON.'; continue; }
+      const er = new Error('unreadable'); er.userMessage = cut ? 'Claude\'s answer was too long and got cut off.' : 'Claude\'s answer could not be read.'; er.fallback = true; throw er;
+    }
     const u = (json && json.usage) || {};
     const cost = ((u.input_tokens || 0) * m.inPrice + (u.output_tokens || 0) * m.outPrice) / 1e6;
     return { data: clean(data), provider: m.label, model: m.model, cost, usage: u };
