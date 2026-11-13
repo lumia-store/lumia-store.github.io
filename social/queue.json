@@ -423,16 +423,123 @@
    "createdAt": "2026-11-11T22:10:40.138Z",
    "sharedAt": "2026-11-11T22:17:05.276Z",
    "changedAt": "2026-11-11T22:17:06.316Z"
+  },
+  {
+   "id": "2026-11-15-guide",
+   "date": "2026-11-15",
+   "postAt": "2026-11-15T18:30:00.000Z",
+   "type": "guide",
+   "title": "Care guide (carousel)",
+   "occasion": null,
+   "products": [
+    "kqidrke7bo",
+    "v7qusazpzw",
+    "69kir9cfta"
+   ],
+   "snapshot": {
+    "kqidrke7bo": {
+     "price": 470,
+     "was": 500,
+     "avail": "pre"
+    },
+    "v7qusazpzw": {
+     "price": 600,
+     "was": 650,
+     "avail": "pre"
+    },
+    "69kir9cfta": {
+     "price": 2700,
+     "was": 0,
+     "avail": "pre"
+    }
+   },
+   "words": {
+    "chosen": [
+     "kqidrke7bo",
+     "v7qusazpzw",
+     "69kir9cfta"
+    ],
+    "title": "دليل الترطيب اليومي للبشرة",
+    "sub": "ثلاث خطوات لترطيب يدوم ونضارة واضحة",
+    "slides": [
+     {
+      "id": "kqidrke7bo",
+      "title": "ترطيب ونضارة بالهيالورونيك",
+      "points": [
+       "سبعة أنواع من حمض الهيالورونيك",
+       "قوام خفيف يمتصه الجلد بسرعة",
+       "يُستخدم صباحاً ومساءً حسب الحاجة"
+      ]
+     },
+     {
+      "id": "v7qusazpzw",
+      "title": "ترطيب إضافي بمظهر ممتلئ",
+      "points": [
+       "بولي غلوتاميك وهيالورونيك وبيتا غلوكان",
+       "يمنح البشرة مظهراً ممتلئاً ومشرقاً",
+       "تركيبة خالية من العطور"
+      ]
+     },
+     {
+      "id": "69kir9cfta",
+      "title": "كريم ليلي غني للبشرة الناضجة",
+      "points": [
+       "قوام غني يمنح نعومة ومرونة ليلاً",
+       "يساعد على تعزيز تجدد البشرة ليلاً",
+       "يحتوي على حمض الهيالورونيك"
+      ]
+     }
+    ],
+    "caption": "ترطيب يومي بثلاث خطوات متكاملة ✨\nسيروم خفيف صباحاً ومساءً\nوترطيب إضافي يمنح البشرة مظهراً ممتلئاً\nوكريم ليلي غني يرافق البشرة طوال الليل 🤍",
+    "hashtags": [
+     "#ترطيب",
+     "#عناية_بالبشرة",
+     "#سيروم",
+     "#روتين_العناية",
+     "#نضارة_البشرة",
+     "#منتجات_ألمانية",
+     "#skincare"
+    ],
+    "alt_en": "A daily hydration guide featuring three German skincare products: a hyaluronic acid serum, a plump and glow serum, and a rich night cream."
+   },
+   "media": {
+    "images": [
+     "https://lumia-store.github.io/media/social/2026-11-15-guide-1.jpg",
+     "https://lumia-store.github.io/media/social/2026-11-15-guide-2.jpg",
+     "https://lumia-store.github.io/media/social/2026-11-15-guide-3.jpg",
+     "https://lumia-store.github.io/media/social/2026-11-15-guide-4.jpg",
+     "https://lumia-store.github.io/media/social/2026-11-15-guide-5.jpg"
+    ],
+    "story": "",
+    "video": "",
+    "cover": ""
+   },
+   "files": [
+    "2026-11-15-guide-1.jpg",
+    "2026-11-15-guide-2.jpg",
+    "2026-11-15-guide-3.jpg",
+    "2026-11-15-guide-4.jpg",
+    "2026-11-15-guide-5.jpg"
+   ],
+   "preview": {
+    "fb": "ترطيب يومي بثلاث خطوات متكاملة ✨\nسيروم خفيف صباحاً ومساءً\nوترطيب إضافي يمنح البشرة مظهراً ممتلئاً\nوكريم ليلي غني يرافق البشرة طوال الليل 🤍\n\n• Balea · سيروم الهيالورونيك للبشرة · 30 ml (طلب مسبق)\n• Balea · سيروم بلوم أند جلو · 30 ml (طلب مسبق)\n• Eucerin · كريم ليلي هيالورون فيلر + إيلاستيسيتي لمكافحة الشيخوخة · 50 ml (طلب مسبق)\n\n🛍️ للطلب عبر الموقع أو واتساب:\n🌐 https://lumia-store.github.io/\n📲 https://wa.me/201061227556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n\n#ترطيب #عناية_بالبشرة #سيروم #روتين_العناية #نضارة_البشرة",
+    "ig": "ترطيب يومي بثلاث خطوات متكاملة ✨\nسيروم خفيف صباحاً ومساءً\nوترطيب إضافي يمنح البشرة مظهراً ممتلئاً\nوكريم ليلي غني يرافق البشرة طوال الليل 🤍\n\n• Balea · سيروم الهيالورونيك للبشرة · 30 ml (طلب مسبق)\n• Balea · سيروم بلوم أند جلو · 30 ml (طلب مسبق)\n• Eucerin · كريم ليلي هيالورون فيلر + إيلاستيسيتي لمكافحة الشيخوخة · 50 ml (طلب مسبق)\n\n🛍️ للطلب عبر الموقع أو واتساب:\n🌐 lumia-store.github.io (الرابط في البايو)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n\n#ترطيب #عناية_بالبشرة #سيروم #روتين_العناية #نضارة_البشرة #منتجات_ألمانية #skincare #LUMIACare #منتجات_ألمانية_أصلية",
+    "igTail": "• Balea · سيروم الهيالورونيك للبشرة · 30 ml (طلب مسبق)\n• Balea · سيروم بلوم أند جلو · 30 ml (طلب مسبق)\n• Eucerin · كريم ليلي هيالورون فيلر + إيلاستيسيتي لمكافحة الشيخوخة · 50 ml (طلب مسبق)\n\n🛍️ للطلب عبر الموقع أو واتساب:\n🌐 lumia-store.github.io (الرابط في البايو)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n\n#ترطيب #عناية_بالبشرة #سيروم #روتين_العناية #نضارة_البشرة #منتجات_ألمانية #skincare #LUMIACare #منتجات_ألمانية_أصلية"
+   },
+   "status": "waiting",
+   "ai": "Claude Haiku",
+   "aiNote": "",
+   "createdAt": "2026-11-13T09:27:50.528Z"
   }
  ],
  "robot": {
-  "lastPrepare": "2026-11-12T09:43:39.719Z",
-  "lastPrepareMade": 2,
-  "aiCostUsd": 0,
+  "lastPrepare": "2026-11-13T09:27:50.600Z",
+  "lastPrepareMade": 1,
+  "aiCostUsd": 0.0019,
   "lastError": "",
   "lastPostCheck": "2026-11-12T22:50:59.531Z",
   "lastErrorAt": "2026-11-12T09:37:55.021Z",
-  "aiNote": "Written with the backup AI because Claude did not work: Claude answered with error 400.",
+  "aiNote": "",
   "aiKeys": "Claude ✓ Gemini ✓ · first choice: claude"
  }
 }
