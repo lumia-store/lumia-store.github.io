@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>LUMIA Care · Imported Gems</title>
+<title>LUMIA Care · أسعار الجملة</title>
 <meta name="description" content="منتجات أصلية مستوردة من ألمانيا: Balea وMivolis وEssence وغيرها. تصفّح المنتجات واطلب عبر واتساب.">
 <meta name="theme-color" content="#f3ebde">
-<meta property="og:title" content="LUMIA Care">
-<meta property="og:description" content="منتجات أصلية مستوردة من ألمانيا. تصفّح المنتجات واطلب عبر واتساب.">
+<meta property="og:title" content="LUMIA Care · أسعار الجملة">
+<meta property="og:description" content="أسعار الجملة لعملاء LUMIA — أدخل كود الدخول لعرض الأسعار والكميات.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://lumia-store.github.io/icon-512.png">
+<meta property="og:url" content="https://lumia-store.github.io/wholesale/">
 <meta property="og:locale" content="ar_EG">
 <meta property="og:locale:alternate" content="en_US">
 <link rel="alternate" hreflang="ar" href="https://lumia-store.github.io/">
@@ -1328,6 +1329,7 @@ const I18N = {
     chatErr: 'عذراً، حدث خطأ. حاولي مرة أخرى.', chatOff: 'تعذّر الاتصال الآن. تحققي من الإنترنت ثم حاولي مرة أخرى، أو تواصلي معنا عبر واتساب.', chatView: 'عرض', chatAdd: 'أضف',
     wsBadge: 'أسعار الجملة', gateP: 'هذه الصفحة مخصّصة لعملاء الجملة. يُرجى إدخال كود الدخول الذي حصلت عليه منّا.', gateCode: 'كود الدخول', gateGo: 'دخول', gateOpening: 'جارٍ الفتح…', gateShop: 'الانتقال إلى المتجر',
     gateLoad: 'تعذّر تحميل قائمة الأسعار. يُرجى التحقق من الاتصال بالإنترنت ثم إعادة المحاولة.', gateOffline: 'صفحة الجملة غير مفعّلة حالياً.',
+    gateOld: 'متصفح الهاتف قديم ولا يمكنه فتح قائمة الأسعار. يُرجى فتح الرابط في Google Chrome.', gateBroke: 'الكود صحيح، لكن حدث خطأ أثناء فتح الأسعار. يُرجى إعادة تحميل الصفحة أو فتح الرابط في Google Chrome.',
     gateChanged: 'تم تغيير كود الدخول. يُرجى إدخال الكود الجديد.', gateWrong: 'الكود غير صحيح. يُرجى التأكد منه والمحاولة مرة أخرى.',
     instH: 'تثبيت تطبيق LUMIA', instP: 'أضف المتجر إلى شاشتك الرئيسية لتفتحه بلمسة واحدة مثل أي تطبيق.',
     instSteps: ['اضغط على زر المشاركة <b>⬆︎</b> أسفل الشاشة في Safari.', 'اختر <b>«إضافة إلى الشاشة الرئيسية»</b>.', 'اضغط <b>«إضافة»</b>، وستجد أيقونة LUMIA على شاشتك.'],
@@ -1425,6 +1427,7 @@ const I18N = {
     chatErr: 'Sorry, something went wrong. Please try again.', chatOff: 'Can’t connect right now. Check your internet and try again, or message us on WhatsApp.', chatView: 'View', chatAdd: 'Add',
     wsBadge: 'Wholesale prices', gateP: 'This page is for wholesale customers. Please enter the access code you received from us.', gateCode: 'Access code', gateGo: 'Enter', gateOpening: 'Opening…', gateShop: 'Go to the shop',
     gateLoad: 'Could not load the price list. Please check your internet connection and try again.', gateOffline: 'The wholesale page is not active right now.',
+    gateOld: 'This phone browser is too old to open the price list. Please open the link in Google Chrome.', gateBroke: 'The code is correct, but the prices could not be opened. Please reload the page or open the link in Google Chrome.',
     gateChanged: 'The access code has changed. Please enter the new code.', gateWrong: 'The code is not correct. Please check it and try again.',
     instH: 'Install the LUMIA app', instP: 'Add the shop to your home screen to open it with one tap, like any app.',
     instSteps: ['Tap the Share button <b>⬆︎</b> at the bottom of Safari.', 'Choose <b>“Add to Home Screen”</b>.', 'Tap <b>“Add”</b> — the LUMIA icon appears on your screen.'],
@@ -1565,7 +1568,7 @@ function load(){
 }
 /* ---------- wholesale page: the price list is encrypted; it opens only with the code ---------- */
 const WCODE_KEY = 'lumia_wcode';
-const normCode = c => String(c || '').trim().replace(/\s+/g, '').replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).toLowerCase();
+const normCode = c => String(c || '').replace(/[\u00ad\u061c\u200b-\u200f\u202a-\u202e\u2060-\u2069\ufeff]/g, '').trim().replace(/\s+/g, '').replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).toLowerCase();   // invisible direction marks come along when a code is copied from Arabic chat text
 const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
 async function decryptW(w, code){
   const enc = new TextEncoder();
@@ -1586,15 +1589,16 @@ async function tryCode(raw, silent){
   const code = normCode(raw);
   if (!window.WDATA) return gate(T('gateOffline'));
   if (!code) return gate('');
-  try {
-    const d = await decryptW(window.WDATA, code);
-    store.set(WCODE_KEY, code);
-    $('gate')?.remove();
-    start(d);
-  } catch (e) {
+  if (!(window.crypto && crypto.subtle)) return gate(T('gateOld'));   // very old phone browser: cannot unlock the list
+  let d;
+  try { d = await decryptW(window.WDATA, code); }
+  catch (e) {   // only this means the code is wrong
     try { localStorage.removeItem(WCODE_KEY); } catch (x) {}
-    gate(silent ? T('gateChanged') : T('gateWrong'));
+    return gate(silent ? T('gateChanged') : T('gateWrong'));
   }
+  store.set(WCODE_KEY, code);
+  try { $('gate')?.remove(); start(d); }
+  catch (e) { console.error(e); gate(T('gateBroke') + ' (' + String(e && e.message || e).slice(0, 80) + ')'); }
 }
 function gate(err){
   let g = $('gate');
