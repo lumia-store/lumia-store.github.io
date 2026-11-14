@@ -504,11 +504,11 @@
    },
    "media": {
     "images": [
-     "https://lumia-store.github.io/media/social/2026-11-15-guide-1.jpg?v=mwgiy1sc",
-     "https://lumia-store.github.io/media/social/2026-11-15-guide-2.jpg?v=mwgiy1sc",
-     "https://lumia-store.github.io/media/social/2026-11-15-guide-3.jpg?v=mwgiy1sc",
-     "https://lumia-store.github.io/media/social/2026-11-15-guide-4.jpg?v=mwgiy1sc",
-     "https://lumia-store.github.io/media/social/2026-11-15-guide-5.jpg?v=mwgiy1sc"
+     "https://lumia-store.github.io/media/social/2026-11-15-guide-1.jpg?v=mwgjoj9m",
+     "https://lumia-store.github.io/media/social/2026-11-15-guide-2.jpg?v=mwgjoj9m",
+     "https://lumia-store.github.io/media/social/2026-11-15-guide-3.jpg?v=mwgjoj9m",
+     "https://lumia-store.github.io/media/social/2026-11-15-guide-4.jpg?v=mwgjoj9m",
+     "https://lumia-store.github.io/media/social/2026-11-15-guide-5.jpg?v=mwgjoj9m"
     ],
     "story": "",
     "video": "",
@@ -530,7 +530,7 @@
    "ai": "Claude Haiku",
    "aiNote": "",
    "createdAt": "2026-11-13T09:27:50.528Z",
-   "cleanV": 5
+   "cleanV": 6
   },
   {
    "id": "2026-11-16-routine",
@@ -588,8 +588,8 @@
    },
    "media": {
     "images": [
-     "https://lumia-store.github.io/media/social/2026-11-16-routine-1.jpg?v=mwgiy3j3",
-     "https://lumia-store.github.io/media/social/2026-11-16-routine-2.jpg?v=mwgiy3j3"
+     "https://lumia-store.github.io/media/social/2026-11-16-routine-1.jpg?v=mwgjol7j",
+     "https://lumia-store.github.io/media/social/2026-11-16-routine-2.jpg?v=mwgjol7j"
     ],
     "story": "",
     "video": "",
@@ -605,7 +605,7 @@
     "igTail": "• Balea · سيروم بي دي آر إن القوي · 30 ml\n• Sundance · سائل واقي الشمس المضاد للشيخوخة · 50 ml\n\n🛍️ للطلب عبر الموقع أو واتساب:\n🌐 lumia-store.github.io (الرابط في البايو)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n\n#عناية_بالبشرة #روتين_العناية #سيروم #واقي_شمس #ترطيب #skincare #Sundance #LUMIACare #منتجات_ألمانية_أصلية"
    },
    "status": "waiting",
-   "cleanV": 5,
+   "cleanV": 6,
    "ai": "Claude Haiku",
    "aiNote": "",
    "createdAt": "2026-11-14T08:55:16.656Z"
@@ -647,11 +647,11 @@
    },
    "media": {
     "images": [
-     "https://lumia-store.github.io/media/social/2026-11-17-reel-cover.jpg"
+     "https://lumia-store.github.io/media/social/2026-11-17-reel-cover.jpg?v=mwgjox5c"
     ],
     "story": "",
-    "video": "https://lumia-store.github.io/media/social/2026-11-17-reel.mp4",
-    "cover": "https://lumia-store.github.io/media/social/2026-11-17-reel-cover.jpg"
+    "video": "https://lumia-store.github.io/media/social/2026-11-17-reel.mp4?v=mwgjox5c",
+    "cover": "https://lumia-store.github.io/media/social/2026-11-17-reel-cover.jpg?v=mwgjox5c"
    },
    "files": [
     "2026-11-17-reel-cover.jpg",
@@ -663,15 +663,15 @@
     "igTail": "✨ Balea · زيت العناية الغني · 100 ml\n\n🛍️ للطلب عبر الموقع أو واتساب:\n🌐 lumia-store.github.io (الرابط في البايو)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n\n#عناية_بالجسم #عناية_بالبشرة #منتجات_ألمانية #منتجات_أصلية #Balea #bodycare #germanbeauty #LUMIACare #منتجات_ألمانية_أصلية"
    },
    "status": "waiting",
-   "cleanV": 5,
+   "cleanV": 6,
    "ai": "Claude Haiku",
    "aiNote": "",
    "createdAt": "2026-11-14T14:52:28.020Z"
   }
  ],
  "robot": {
-  "lastPrepare": "2026-11-14T14:52:28.059Z",
-  "lastPrepareMade": 1,
+  "lastPrepare": "2026-11-14T15:12:59.146Z",
+  "lastPrepareMade": 0,
   "aiCostUsd": 0.0046,
   "lastError": "",
   "lastPostCheck": "2026-11-13T22:48:46.520Z",
