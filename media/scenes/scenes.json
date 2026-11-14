@@ -1,1 +1,86 @@
-[]
+[
+ {
+  "file": "sun-1.jpg",
+  "theme": "sun",
+  "h": 1341,
+  "podium": {
+   "cx": 540,
+   "cy": 944,
+   "w": 708
+  },
+  "top": "#d0b68e",
+  "base": "#d5bb91"
+ },
+ {
+  "file": "citrus-1.jpg",
+  "theme": "citrus",
+  "h": 1341,
+  "podium": {
+   "cx": 539,
+   "cy": 874,
+   "w": 702
+  },
+  "top": "#ecbf91",
+  "base": "#f9cfa4"
+ },
+ {
+  "file": "aqua-1.jpg",
+  "theme": "aqua",
+  "h": 1341,
+  "podium": {
+   "cx": 538,
+   "cy": 921,
+   "w": 623
+  },
+  "top": "#c3e2dc",
+  "base": "#cbe8e4"
+ },
+ {
+  "file": "blush-2.jpg",
+  "theme": "blush",
+  "h": 1341,
+  "podium": {
+   "cx": 539,
+   "cy": 972,
+   "w": 660
+  },
+  "top": "#dfc0bf",
+  "base": "#e3cbc9"
+ },
+ {
+  "file": "ivory-1.jpg",
+  "theme": "ivory",
+  "h": 1341,
+  "podium": {
+   "cx": 539,
+   "cy": 958,
+   "w": 660
+  },
+  "top": "#cdbfab",
+  "base": "#dfd7c7"
+ },
+ {
+  "file": "ivory-2.jpg",
+  "theme": "ivory",
+  "h": 1341,
+  "podium": {
+   "cx": 539,
+   "cy": 983,
+   "w": 655
+  },
+  "top": "#e2dcd1",
+  "base": "#e6dfd5"
+ },
+ {
+  "file": "blush-1.jpg",
+  "theme": "blush",
+  "h": 1341,
+  "podium": {
+   "cx": 539,
+   "cy": 959,
+   "w": 640
+  },
+  "top": "#ddbbb3",
+  "base": "#e5c8c1"
+ }
+]

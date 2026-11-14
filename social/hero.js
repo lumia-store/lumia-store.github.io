@@ -27,13 +27,18 @@ function themeOf(p) {
 }
 
 /* optional scene pictures (made once in Gemini from the prompts in SCENES.md): media/scenes/scenes.json
-   [{ "file": "blush-1.jpg", "theme": "blush", "podium": { "cx": 540, "top": 930, "w": 640 } }] — podium = where the product stands */
+   [{ "file": "blush-1.jpg", "theme": "blush", "h": 1341, "podium": { "cx": 539, "cy": 959, "w": 640 }, "top": "#…", "base": "#…" }]
+   pictures are 1080 wide; podium = the centre and width of the podium's top surface (where the product stands) */
 function scenesIn(siteDir) {
-  try { return JSON.parse(fs.readFileSync(path.join(siteDir, 'media/scenes/scenes.json'), 'utf8')).filter(s => s && s.file && THEMES[s.theme]); } catch (e) { return []; }
+  try { return JSON.parse(fs.readFileSync(path.join(siteDir, 'media/scenes/scenes.json'), 'utf8')).filter(s => s && s.file && THEMES[s.theme] && s.podium && s.podium.cy && fs.existsSync(path.join(siteDir, 'media/scenes', s.file))); } catch (e) { return []; }
 }
+const NEAR = { blush: ['ivory', 'citrus', 'aqua', 'sun'], ivory: ['blush', 'aqua', 'citrus', 'sun'], aqua: ['ivory', 'blush', 'citrus', 'sun'], citrus: ['sun', 'blush', 'ivory', 'aqua'], sun: ['citrus', 'ivory', 'blush', 'aqua'] };
 function sceneFor(siteDir, theme, key) {
-  const list = scenesIn(siteDir).filter(s => s.theme === theme);
-  if (!list.length) return null;
+  const all = scenesIn(siteDir);
+  let list = all.filter(s => s.theme === theme);
+  for (const t of NEAR[theme] || []) { if (list.length) break; list = all.filter(s => s.theme === t); }   // no scene for this theme yet: the closest one
+  if (!list.length) list = all;
+  if (!list.length) return null;   // no scene pictures at all: the drawn scene
   let h = 0; for (const ch of String(key || '')) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
   return list[h % list.length];   // the same post always gets the same scene; different posts rotate
 }
@@ -120,9 +125,12 @@ const CSS = `
 .hero .ben+.ben{border-right:1.5px solid var(--acc2)}
 .hero .ben .ic{width:72px;height:72px;flex:none;border-radius:50%;border:1.8px solid var(--acc);color:var(--acc);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.35)}
 .hero .ben .ic svg{width:40px;height:40px}
+.hero .bens.tight .ben{font-size:26px;padding:0 16px;gap:12px}.hero .bens.tight .ic{width:60px;height:60px}.hero .bens.tight .ic svg{width:34px;height:34px}
+.hero .bens.tighter .ben{font-size:23px;padding:0 12px;gap:10px}.hero .bens.tighter .ic{width:52px;height:52px}
 .hero .ft2{position:absolute;left:70px;right:70px;text-align:center;z-index:5}
 .hero .ft2 .ln{display:flex;align-items:center;gap:26px;justify-content:center;font-size:27px;color:var(--ink);font-weight:500}
 .hero .ft2 .ln i{flex:1;height:1.5px;background:var(--acc2)}
+.hero .glass{position:absolute;left:58px;right:58px;border-radius:30px;background:rgba(255,255,255,.62);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1.5px solid rgba(255,255,255,.75);box-shadow:0 18px 40px rgba(60,30,25,.10);z-index:4}
 .hero .ft2 .site{font-family:Montserrat;font-weight:500;font-size:24px;letter-spacing:.34em;color:var(--ink);margin-top:14px;direction:ltr;opacity:.85}
 `;
 
@@ -136,13 +144,23 @@ function heroPage(w, p, o = {}) {
   // where things go (feed / story); the story keeps clear of Instagram's top and bottom bars
   const L = tall
     ? { top: 300, podTop: 1240, podW: 720, prodH: two ? 640 : 700, name: 1440, bens: 1505, ft: 1620 }
-    : { top: 206, podTop: 860, podW: 720, prodH: two ? 450 : 520, name: 1062, bens: 1118, ft: 1226 };
-  if (scene && scene.podium) { L.podTop = scene.podium.top; L.podW = scene.podium.w; }
-  const cx = scene && scene.podium ? scene.podium.cx : 540;
-  const prodW = Math.round(L.podW * 0.9), prodBottom = L.podTop + Math.round(L.podW * 0.06) + 6;
+    : { top: 206, podTop: 860, podW: 720, prodH: two ? 450 : 520, name: 1072, bens: 1130, ft: 1250 };
+  let cx = 540, prodW = Math.round(L.podW * 0.9), prodBottom = L.podTop + Math.round(L.podW * 0.06) + 6, shift = 0;
+  if (scene) {   // the picture moves so its podium sits where the layout wants it; the product stands on its top surface
+    const target = tall ? 1235 : 860;
+    shift = target - scene.podium.cy; cx = scene.podium.cx; prodW = Math.round(scene.podium.w * 0.86);
+    prodBottom = target + Math.round(scene.podium.w * 0.012);
+    L.prodH = tall ? (two ? 600 : 660) : (two ? 400 : 455);
+    Object.assign(L, tall ? { name: 1425, bens: 1490, ft: 1610, card: [1395, 1680] } : { name: 1040, bens: 1100, ft: 1218, card: [1008, 1282] });
+  }
   const vars = `--ink:${th.ink};--acc:${th.acc};--acc2:${th.acc2}`;
+  const sh = scene ? (scene.h || 1341) : 0;
+  const bensLen = (w.chips || []).slice(0, 3).join('').length;   // long benefits get smaller so they always fit
   const bg = scene
-    ? `<div class="bg"><img src="${hx(scene.src)}"></div>`
+    ? `<div class="bg" style="background:linear-gradient(180deg,${scene.top || th.bg1} 0,${scene.top || th.bg1} ${Math.max(0, shift)}px,${scene.base || th.bg2} ${shift + sh - 2}px)">
+         <img src="${hx(scene.src)}" style="position:absolute;left:0;top:${shift}px;width:1080px;height:${sh}px;object-fit:fill">
+         ${shift > 0 ? `<div style="position:absolute;left:0;right:0;top:${shift - 2}px;height:120px;background:linear-gradient(${scene.top || th.bg1},transparent)"></div>` : ''}
+         ${shift + sh < H ? `<div style="position:absolute;left:0;right:0;top:${shift + sh - 120}px;height:122px;background:linear-gradient(transparent,${scene.base || th.bg2})"></div>` : ''}</div>`
     : `<div class="bg" style="background:radial-gradient(60% 40% at 50% ${tall ? 55 : 58}%,${th.glow},transparent 70%),linear-gradient(180deg,${th.bg1},${th.bg2})"></div>
        <div class="satin" style="right:-560px;top:${tall ? 600 : 380}px;background:linear-gradient(200deg,${th.satin},transparent 60%);transform:rotate(-18deg)"></div>
        <div class="satin" style="left:-620px;top:${tall ? 900 : 560}px;background:linear-gradient(160deg,${th.satin},transparent 55%);transform:rotate(14deg)"></div>
@@ -154,10 +172,12 @@ function heroPage(w, p, o = {}) {
     <div class="hd2" style="${tall ? 'top:150px' : ''}"><div class="cap2 r"><span>FROM GERMANY</span><i></i></div><div class="lg"><img src="logo-mark.png"><b>LUMIA</b><i>CARE</i></div><div class="cap2 l"><span>ORIGINAL</span><i></i></div></div>
     <div class="top" style="top:${L.top}px">${o.chip ? `<div class="kick2">${hx(o.chip)}</div>` : ''}<h1${hc}>${hx(headline)}</h1>${swoosh(th.acc)}</div>
     ${scene ? '' : `<div class="pod" style="top:${L.podTop}px">${podium(L.podW, th.acc, (p.id || 'x').length * 7 + headline.length)}</div>`}
+    ${scene ? `<div style="position:absolute;z-index:3;left:${cx - prodW * 0.42}px;width:${prodW * 0.84}px;top:${prodBottom - 22}px;height:40px;border-radius:50%;background:radial-gradient(closest-side,rgba(70,40,30,.38),rgba(70,40,30,0));filter:blur(5px)"></div>` : ''}
     <div class="prod2" style="left:${cx - prodW / 2}px;width:${prodW}px;top:${prodBottom - L.prodH}px;height:${L.prodH}px"><img class="cut" src="${hx(p.image)}"></div>
+    ${scene ? `<div class="glass" style="top:${L.card[0]}px;height:${L.card[1] - L.card[0]}px"></div>` : ''}
     <div class="name2" style="top:${L.name}px"><span class="lat">${hx(p.brand)}</span> · ${hx(nm(p))}${p.size ? ` · <span class="lat">${hx(p.size)}</span>` : ''}</div>
-    <div class="bens" style="top:${L.bens}px">${(w.chips || []).slice(0, 3).map(c => `<div class="ben"><span class="ic">${icon(iconFor(c))}</span>${hx(c)}</div>`).join('')}</div>
-    <div class="ft2" style="top:${L.ft}px"><div class="ln"><i></i>التوصيل لجميع المحافظات · الدفع عند الاستلام<i></i></div><div class="site">LUMIA-STORE.GITHUB.IO</div></div>
+    <div class="bens${bensLen > 34 ? ' tight' : ''}${bensLen > 44 ? ' tighter' : ''}" style="top:${L.bens}px">${(w.chips || []).slice(0, 3).map(c => `<div class="ben"><span class="ic">${icon(iconFor(c))}</span>${hx(c)}</div>`).join('')}</div>
+    <div class="ft2" style="top:${L.ft}px"><div class="ln"><i></i>التوصيل لجميع المحافظات · الدفع عند الاستلام<i></i></div></div>
   </div></div>`;
 }
 

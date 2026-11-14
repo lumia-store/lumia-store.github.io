@@ -109,7 +109,7 @@ h1.m{font-size:68px}h1.s2{font-size:58px}
 
 const frame = '<div class="frame"></div>';
 const head = (left, right) => `<div class="hd"><span class="cap">${hx(left || 'From Germany')}</span><div class="logo"><img src="logo-mark.png"><b>LUMIA</b><i>CARE</i></div><span class="cap">${hx(right || 'Original')}</span></div>`;
-const foot = () => `<div class="ft"><div class="rule"></div><p>التوصيل لجميع المحافظات<em>·</em>الدفع عند الاستلام<em>·</em><span class="lat">lumia-store.github.io</span></p></div>`;
+const foot = () => `<div class="ft"><div class="rule"></div><p>التوصيل لجميع المحافظات<em>·</em>الدفع عند الاستلام</p></div>`;
 const stage = (img, { top, w, h, left }) => `<div class="stage" style="top:${top}px;left:${left == null ? (1080 - w) / 2 : left}px;width:${w}px;height:${h}px"><div class="arch"></div><div class="shadow"></div><div class="prod"><img src="${hx(img)}"></div><div class="floor"></div></div>`;
 const hClass = t => { const n = String(t || '').length; return n > 34 ? ' class="s2"' : n > 22 ? ' class="m"' : ''; };
 const sizeTxt = p => p.size ? ` · <span class="lat">${hx(p.size)}</span>` : '';
@@ -165,7 +165,7 @@ const T = {
   cta(d) {
     return `<div class="s">${frame}<div class="end"><img class="mark" src="logo-full.png">
       <h2>الطلب عبر الموقع أو واتساب</h2>
-      <div class="links"><div class="lk"><small>الموقع</small>${hx(d.site)}</div><div class="lk"><small>واتساب</small>${hx(d.waText)}</div></div>
+      <div class="links"><div class="lk"><small>واتساب</small>${hx(d.waText)}</div></div>
       <p>منتجات أصلية مستوردة من ألمانيا<br>التوصيل لجميع المحافظات · الدفع عند الاستلام</p></div></div>`;
   },
   routine(w, ps) {
@@ -200,8 +200,8 @@ const T = {
 /* the hero post (spotlight, offer, ad, story, reel cover): real product on a podium in a themed scene */
 function heroOf(w, p, o, d) {
   const theme = HERO.themeOf(p), sc = d && d.siteDir ? HERO.sceneFor(d.siteDir, theme, (d.key || '') + p.id + (o.tall ? 't' : '')) : null;
-  const scene = sc && (!o.tall || sc.tall) ? { src: 'media/scenes/' + (o.tall ? sc.tall : sc.file), podium: o.tall ? sc.podiumTall : sc.podium } : null;
-  return HERO.heroPage(w, p, Object.assign({}, o, { theme, scene: scene && scene.podium ? scene : null }));
+  const scene = sc ? Object.assign({}, sc, { src: 'media/scenes/' + sc.file }) : null;
+  return HERO.heroPage(w, p, Object.assign({}, o, { theme, scene }));
 }
 
 /* which pages a post has */
