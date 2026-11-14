@@ -15,7 +15,7 @@ const P = require('./plan.js'), { writePost, tidy } = require('./write.js'), { r
 
 /* Posts written before a rule changed are cleaned once: text tidied again and pictures redrawn.
    v2 (Nov 2026, Mina): no stock / pre-order words and no "swipe" (the same post goes to Facebook). */
-const CLEAN_V = 4;   // v4: premium + hero design — waiting posts are redrawn once
+const CLEAN_V = 5;   // v5: every post type on the scenes (Mina) — waiting posts are redrawn once
 function cleanWords(w) {
   const o = Object.assign({}, w);
   for (const k of ['caption', 'headline', 'title', 'sub']) if (o[k]) o[k] = tidy(o[k]);
@@ -108,7 +108,7 @@ function captionFor(item, words, products, data, platform) {
 
 /* ---------------- prepare ---------------- */
 async function prepare() {
-  const data = loadData(), q = loadQueue(), today = env('ROBOT_TODAY') || P.cairoParts().date;   // (ROBOT_TODAY: tests only)
+  const data = loadData(), q = loadQueue(), today = /^\d{4}-\d{2}-\d{2}$/.test(env('ROBOT_TODAY') || '') ? env('ROBOT_TODAY') : P.cairoParts().date;   // ROBOT_TODAY: tests, or the run button's "as if today were"
   const keys = { claude: env('CLAUDE_KEY'), gemini: env('GEMINI_KEY'), prefer: env('AI_PREFER') === 'gemini' ? 'gemini' : 'claude' };
   const fake = env('AI_FAKE') === '1';
   if (!fake && !keys.claude && !keys.gemini) {   // not connected yet (More → Social & Ads → Connect robot): wait quietly

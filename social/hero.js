@@ -132,6 +132,29 @@ const CSS = `
 .hero .ft2 .ln i{flex:1;height:1.5px;background:var(--acc2)}
 .hero .glass{position:absolute;left:58px;right:58px;border-radius:30px;background:rgba(255,255,255,.62);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1.5px solid rgba(255,255,255,.75);box-shadow:0 18px 40px rgba(60,30,25,.10);z-index:4}
 .hero .ft2 .site{font-family:Montserrat;font-weight:500;font-size:24px;letter-spacing:.34em;color:var(--ink);margin-top:14px;direction:ltr;opacity:.85}
+/* multi-product stage posts (guide, routine, compare, trust, end card, reel) */
+.hero .badge{position:absolute;z-index:4;width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.85);border:1.8px solid var(--acc);color:var(--acc);font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:600;display:flex;align-items:center;justify-content:center;direction:ltr}
+.hero .or2{position:absolute;z-index:4;font-family:Amiri;font-weight:700;font-size:64px;color:var(--acc);text-shadow:0 2px 0 rgba(255,255,255,.6)}
+.hero .sub2{font-size:30px;color:var(--ink);opacity:.8;margin-top:4px;padding:0 120px;line-height:1.5}
+.hero .cardin{position:absolute;left:96px;right:96px;z-index:5;color:var(--ink)}
+.hero .pts2{list-style:none}
+.hero .pts2 li{font-size:30px;line-height:1.45;padding:9px 0;display:flex;gap:18px;align-items:baseline;border-bottom:1px solid var(--acc2)}
+.hero .pts2 li:last-child{border-bottom:0}
+.hero .pts2 li:before{content:"";flex:none;width:10px;height:10px;transform:rotate(45deg) translateY(-3px);background:var(--acc)}
+.hero .rows .rw{display:flex;align-items:center;gap:20px;padding:10px 0;border-bottom:1px solid var(--acc2)}
+.hero .rows .rw:last-child{border-bottom:0}
+.hero .rows .n{font-family:"Cormorant Garamond",serif;font-size:46px;color:var(--acc);width:58px;text-align:center;flex:none;direction:ltr}
+.hero .rows b{font-family:Amiri;font-weight:700;font-size:34px}
+.hero .rows span{font-size:25px;opacity:.85;margin-right:10px}
+.hero .cols{display:flex}
+.hero .cols>div{flex:1;text-align:center;padding:4px 16px}
+.hero .cols>div+div{border-right:1.5px solid var(--acc2)}
+.hero .cols h4{font-family:Amiri;font-weight:700;font-size:34px;line-height:1.3}
+.hero .cols p{font-size:23px;opacity:.85;line-height:1.45;margin-top:4px}
+.hero .cols .lat{font-family:Montserrat;font-size:18px;letter-spacing:.24em;text-transform:uppercase;opacity:.8;display:block;margin-top:6px}
+.hero .cols .ic{width:56px;height:56px;margin:0 auto 6px;border-radius:50%;border:1.6px solid var(--acc);color:var(--acc);display:flex;align-items:center;justify-content:center}
+.hero .cols .ic svg{width:32px;height:32px}
+.hero .wa2{display:inline-block;border:1.8px solid var(--acc);border-radius:60px;padding:12px 44px;font-family:Montserrat;font-size:34px;letter-spacing:.06em;direction:ltr;background:rgba(255,255,255,.5)}
 `;
 
 /* the post */
@@ -181,6 +204,46 @@ function heroPage(w, p, o = {}) {
   </div></div>`;
 }
 
+/* a stage post with several products (or none) on the podium:
+   o = { theme, scene, tall, kick, headline, sub, items: [src], badges: bool, over: html between two products,
+         target: podium height, card: [top, bottom], cardHtml } */
+function stagePage(o) {
+  const tall = !!o.tall, H = tall ? 1920 : 1350, th = THEMES[o.theme] || THEMES.blush, scene = o.scene;
+  const headline = String(o.headline || ''), two = headline.length > 20;
+  const hc = headline.length > 34 ? ' class="s2"' : two ? ' class="m"' : '';
+  const target = o.target || (tall ? 1235 : 860);
+  const podW = scene ? scene.podium.w : 720, cx = scene ? scene.podium.cx : 540;
+  const shift = scene ? target - scene.podium.cy : 0, sh = scene ? (scene.h || 1341) : 0;
+  const bottom = target + Math.round(podW * (scene ? 0.012 : 0.075));
+  const items = (o.items || []).slice(0, 3), k = items.length;
+  const room = target - (o.top || (tall ? 300 : 206)) - (two ? 250 : 170) - (o.sub ? 50 : 0);   // space between the headline and the podium
+  const hMax = Math.max(200, Math.min(o.maxH || (tall ? 700 : 470), room));
+  const spec = k === 1 ? [[0, 0.86, 1]] : k === 2 ? [[-0.25, 0.44, 0.92], [0.25, 0.44, 0.92]] : [[-0.31, 0.3, 0.8], [0, 0.34, 0.9], [0.31, 0.3, 0.8]];
+  const vars = `--ink:${th.ink};--acc:${th.acc};--acc2:${th.acc2}`;
+  const bg = scene
+    ? `<div class="bg" style="background:linear-gradient(180deg,${scene.top || th.bg1} 0,${scene.top || th.bg1} ${Math.max(0, shift)}px,${scene.base || th.bg2} ${shift + sh - 2}px)">
+         <img src="${hx(scene.src)}" style="position:absolute;left:0;top:${shift}px;width:1080px;height:${sh}px;object-fit:fill">
+         ${shift > 0 ? `<div style="position:absolute;left:0;right:0;top:${shift - 2}px;height:140px;background:linear-gradient(${scene.top || th.bg1},transparent)"></div>` : ''}
+         ${shift + sh < H ? `<div style="position:absolute;left:0;right:0;top:${shift + sh - 140}px;height:142px;background:linear-gradient(transparent,${scene.base || th.bg2})"></div>` : ''}</div>`
+    : `<div class="bg" style="background:radial-gradient(60% 40% at 50% 58%,${th.glow},transparent 70%),linear-gradient(180deg,${th.bg1},${th.bg2})"></div>
+       <div class="satin" style="right:-560px;top:380px;background:linear-gradient(200deg,${th.satin},transparent 60%);transform:rotate(-18deg)"></div>
+       <div class="ray"></div><div class="pod" style="top:${target - Math.round(podW * 0.075)}px">${podium(podW, th.acc, headline.length + 11)}</div>`;
+  const prods = items.map((src, i) => {
+    const [dx, ww, hh] = spec[i], w = Math.round(podW * ww), h = Math.round(hMax * hh), left = Math.round(cx + dx * podW - w / 2);
+    return `<div style="position:absolute;z-index:3;left:${left + w * 0.1}px;width:${w * 0.8}px;top:${bottom - 20}px;height:36px;border-radius:50%;background:radial-gradient(closest-side,rgba(70,40,30,.34),rgba(70,40,30,0));filter:blur(5px)"></div>
+      <div class="prod2" style="left:${left}px;width:${w}px;top:${bottom - h}px;height:${h}px"><img class="${o.noCut ? '' : 'cut'}" src="${hx(src)}"${o.darken ? ' style="filter:brightness(.55) saturate(1.5) contrast(1.15) drop-shadow(0 10px 14px rgba(60,30,25,.18))"' : ''}></div>
+      ${o.badges ? `<div class="badge" style="left:${Math.round(cx + dx * podW - 29)}px;top:${bottom + 14}px">0${i + 1}</div>` : ''}`;
+  }).join('');
+  const card = o.card || (tall ? [1395, 1690] : [1008, 1282]);
+  return `<div class="s${tall ? ' tall' : ''}" style="${vars}"><div class="hero">${bg}
+    <div class="frame2"></div>
+    <div class="hd2" style="${tall ? 'top:150px' : ''}"><div class="cap2 r"><span>FROM GERMANY</span><i></i></div><div class="lg"><img src="logo-mark.png"><b>LUMIA</b><i>CARE</i></div><div class="cap2 l"><span>ORIGINAL</span><i></i></div></div>
+    <div class="top" style="top:${o.top || (tall ? 300 : 206)}px">${o.kick ? `<div class="kick2">${hx(o.kick)}</div>` : ''}${headline ? `<h1${hc}>${hx(headline)}</h1>${swoosh(th.acc)}` : ''}${o.sub ? `<div class="sub2">${hx(o.sub)}</div>` : ''}</div>
+    ${prods}${o.over ? `<div class="or2" style="left:${cx - 40}px;top:${bottom - Math.round(hMax * 0.62)}px">${o.over}</div>` : ''}
+    ${o.cardHtml ? `<div class="glass" style="top:${card[0]}px;height:${card[1] - card[0]}px"></div><div class="cardin" style="top:${card[0]}px;height:${card[1] - card[0]}px;display:flex;flex-direction:column;justify-content:center">${o.cardHtml}</div>` : ''}
+  </div></div>`;
+}
+
 /* in the page: cut each product out of its white photo background (flood fill from the edges, so white parts
    inside the product stay), soften the edge, and crop to the product so it fills its space */
 const CUTOUT_JS = `async () => {
@@ -209,4 +272,4 @@ const CUTOUT_JS = `async () => {
   return true;
 }`;
 
-module.exports = { THEMES, themeOf, sceneFor, scenesIn, heroPage, podium, CSS, CUTOUT_JS, iconFor };
+module.exports = { THEMES, themeOf, sceneFor, scenesIn, heroPage, stagePage, podium, CSS, CUTOUT_JS, iconFor, icon, hx, nm };

@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       mode: { description: 'prepare or post', required: true, default: 'prepare', type: choice, options: [prepare, post, test] }
+      today: { description: 'optional — prepare as if today were this date (YYYY-MM-DD), e.g. to make tomorrow''s post now', required: false, default: '', type: string }
 permissions:
   contents: write
   pages: write
@@ -17,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || (github.event.schedule == '10 2 * * *' && 'prepare' || 'post') }}
+      ROBOT_TODAY: ${{ github.event_name == 'workflow_dispatch' && inputs.today || '' }}
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
