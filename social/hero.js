@@ -113,7 +113,7 @@ const CSS = `
 .hero .top{position:absolute;left:0;right:0;text-align:center;z-index:5}
 .hero .kick2{display:inline-flex;align-items:center;gap:20px;font-size:30px;color:var(--ink);font-weight:500}
 .hero .kick2:before,.hero .kick2:after{content:"";width:70px;height:1.5px;background:var(--acc)}
-.hero h1{font-family:"Amiri",serif;font-weight:700;font-size:96px;line-height:1.22;color:var(--ink);padding:6px 90px 0;text-shadow:0 2px 0 rgba(255,255,255,.35)}
+.hero h1{font-family:"Noto Naskh Arabic","Amiri",serif;font-weight:700;font-size:96px;line-height:1.22;color:var(--ink);padding:6px 90px 0;text-shadow:0 2px 0 rgba(255,255,255,.35)}
 .hero h1.m{font-size:80px}.hero h1.s2{font-size:66px}
 .hero .prod2{position:absolute;display:flex;align-items:flex-end;justify-content:center;z-index:3}
 .hero .prod2 img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 26px 30px rgba(60,30,25,.22)) drop-shadow(0 6px 8px rgba(60,30,25,.18))}
@@ -134,7 +134,7 @@ const CSS = `
 .hero .ft2 .site{font-family:Montserrat;font-weight:500;font-size:24px;letter-spacing:.34em;color:var(--ink);margin-top:14px;direction:ltr;opacity:.85}
 /* multi-product stage posts (guide, routine, compare, trust, end card, reel) */
 .hero .badge{position:absolute;z-index:4;width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.85);border:1.8px solid var(--acc);color:var(--acc);font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:600;display:flex;align-items:center;justify-content:center;direction:ltr}
-.hero .or2{position:absolute;z-index:4;font-family:Amiri;font-weight:700;font-size:64px;color:var(--acc);text-shadow:0 2px 0 rgba(255,255,255,.6)}
+.hero .or2{position:absolute;z-index:4;font-family:"Noto Naskh Arabic",Amiri;font-weight:700;font-size:64px;color:var(--acc);text-shadow:0 2px 0 rgba(255,255,255,.6)}
 .hero .sub2{font-size:30px;color:var(--ink);opacity:.8;margin-top:4px;padding:0 120px;line-height:1.5}
 .hero .cardin{position:absolute;left:96px;right:96px;z-index:5;color:var(--ink)}
 .hero .pts2{list-style:none}
@@ -144,12 +144,12 @@ const CSS = `
 .hero .rows .rw{display:flex;align-items:center;gap:20px;padding:10px 0;border-bottom:1px solid var(--acc2)}
 .hero .rows .rw:last-child{border-bottom:0}
 .hero .rows .n{font-family:"Cormorant Garamond",serif;font-size:46px;color:var(--acc);width:58px;text-align:center;flex:none;direction:ltr}
-.hero .rows b{font-family:Amiri;font-weight:700;font-size:34px}
+.hero .rows b{font-family:"Noto Naskh Arabic",Amiri;font-weight:700;font-size:34px}
 .hero .rows span{font-size:25px;opacity:.85;margin-right:10px}
 .hero .cols{display:flex}
 .hero .cols>div{flex:1;text-align:center;padding:4px 16px}
 .hero .cols>div+div{border-right:1.5px solid var(--acc2)}
-.hero .cols h4{font-family:Amiri;font-weight:700;font-size:34px;line-height:1.3}
+.hero .cols h4{font-family:"Noto Naskh Arabic",Amiri;font-weight:700;font-size:34px;line-height:1.3}
 .hero .cols p{font-size:23px;opacity:.85;line-height:1.45;margin-top:4px}
 .hero .cols .lat{font-family:Montserrat;font-size:18px;letter-spacing:.24em;text-transform:uppercase;opacity:.8;display:block;margin-top:6px}
 .hero .cols .ic{width:56px;height:56px;margin:0 auto 6px;border-radius:50%;border:1.6px solid var(--acc);color:var(--acc);display:flex;align-items:center;justify-content:center}
@@ -176,6 +176,7 @@ function heroPage(w, p, o = {}) {
     L.prodH = tall ? (two ? 600 : 660) : (two ? 400 : 455);
     Object.assign(L, tall ? { name: 1425, bens: 1490, ft: 1610, card: [1395, 1680] } : { name: 1040, bens: 1100, ft: 1218, card: [1008, 1282] });
   }
+  if (!(w.chips || []).length) { L.ft = L.name + (tall ? 85 : 70); if (L.card) L.card = [L.card[0], L.ft + (tall ? 75 : 65)]; }
   const vars = `--ink:${th.ink};--acc:${th.acc};--acc2:${th.acc2}`;
   const sh = scene ? (scene.h || 1341) : 0;
   const bensLen = (w.chips || []).slice(0, 3).join('').length;   // long benefits get smaller so they always fit
@@ -253,14 +254,14 @@ const CUTOUT_JS = `async () => {
       const w = img.naturalWidth, h = img.naturalHeight; if (!w || !h) continue;
       const c = document.createElement('canvas'); c.width = w; c.height = h; const x = c.getContext('2d'); x.drawImage(img, 0, 0);
       const d = x.getImageData(0, 0, w, h), a = d.data, seen = new Uint8Array(w * h), st = [];
-      const light = i => { const r = a[i * 4], g = a[i * 4 + 1], b = a[i * 4 + 2], mn = Math.min(r, g, b), mx = Math.max(r, g, b); return mn >= 236 && mx - mn < 16; };
+      const light = i => { const r = a[i * 4], g = a[i * 4 + 1], b = a[i * 4 + 2], mn = Math.min(r, g, b), mx = Math.max(r, g, b); return mn >= 247 && mx - mn < 9; };
       for (let X = 0; X < w; X++) st.push(X, (h - 1) * w + X); for (let Y = 0; Y < h; Y++) st.push(Y * w, Y * w + w - 1);
       while (st.length) { const i = st.pop(); if (seen[i]) continue; seen[i] = 1; if (!light(i)) continue; a[i * 4 + 3] = 0; const X = i % w;
         if (X > 0) st.push(i - 1); if (X < w - 1) st.push(i + 1); if (i >= w) st.push(i - w); if (i < w * (h - 1)) st.push(i + w); }
       // soft edge: light pixels touching the removed background fade out
       for (let i = 0; i < w * h; i++) { if (a[i * 4 + 3] === 0) continue; const X = i % w;
         const nb = (X > 0 && a[(i - 1) * 4 + 3] === 0) || (X < w - 1 && a[(i + 1) * 4 + 3] === 0) || (i >= w && a[(i - w) * 4 + 3] === 0) || (i < w * (h - 1) && a[(i + w) * 4 + 3] === 0);
-        if (nb) { const mn = Math.min(a[i * 4], a[i * 4 + 1], a[i * 4 + 2]); a[i * 4 + 3] = mn > 200 ? Math.max(40, 255 - (mn - 200) * 6) : 235; } }
+        if (nb) { const mn = Math.min(a[i * 4], a[i * 4 + 1], a[i * 4 + 2]); a[i * 4 + 3] = mn > 238 ? 150 : 235; } }
       let x0 = w, y0 = h, x1 = 0, y1 = 0;
       for (let Y = 0; Y < h; Y++) for (let X = 0; X < w; X++) if (a[(Y * w + X) * 4 + 3] > 30) { if (X < x0) x0 = X; if (X > x1) x1 = X; if (Y < y0) y0 = Y; if (Y > y1) y1 = Y; }
       if (x1 <= x0 || y1 <= y0) continue;

@@ -7,7 +7,7 @@ const fs = require('fs'), path = require('path'), { execFileSync } = require('ch
 const { pathToFileURL } = require('url');
 const HERO = require('./hero.js');
 
-const FONT_CSS = process.env.FONT_CSS || 'https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap';
+const FONT_CSS = process.env.FONT_CSS || 'https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@600;700&family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap';
 const hx = v => String(v == null ? '' : v).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const nm = p => p.nameAr || p.nameEn || p.name;
 

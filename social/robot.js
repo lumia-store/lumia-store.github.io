@@ -15,7 +15,7 @@ const P = require('./plan.js'), { writePost, tidy } = require('./write.js'), { r
 
 /* Posts written before a rule changed are cleaned once: text tidied again and pictures redrawn.
    v2 (Nov 2026, Mina): no stock / pre-order words and no "swipe" (the same post goes to Facebook). */
-const CLEAN_V = 5;   // v5: every post type on the scenes (Mina) — waiting posts are redrawn once
+const CLEAN_V = 6;   // v6: Noto Naskh headlines, whole dropper caps, compact Reel card — waiting posts are redrawn once
 function cleanWords(w) {
   const o = Object.assign({}, w);
   for (const k of ['caption', 'headline', 'title', 'sub']) if (o[k]) o[k] = tidy(o[k]);
