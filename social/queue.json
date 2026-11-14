@@ -504,11 +504,11 @@
    },
    "media": {
     "images": [
-     "https://lumia-store.github.io/media/social/2026-11-15-guide-1.jpg?v=mwgfnu80",
-     "https://lumia-store.github.io/media/social/2026-11-15-guide-2.jpg?v=mwgfnu80",
-     "https://lumia-store.github.io/media/social/2026-11-15-guide-3.jpg?v=mwgfnu80",
-     "https://lumia-store.github.io/media/social/2026-11-15-guide-4.jpg?v=mwgfnu80",
-     "https://lumia-store.github.io/media/social/2026-11-15-guide-5.jpg?v=mwgfnu80"
+     "https://lumia-store.github.io/media/social/2026-11-15-guide-1.jpg?v=mwgiy1sc",
+     "https://lumia-store.github.io/media/social/2026-11-15-guide-2.jpg?v=mwgiy1sc",
+     "https://lumia-store.github.io/media/social/2026-11-15-guide-3.jpg?v=mwgiy1sc",
+     "https://lumia-store.github.io/media/social/2026-11-15-guide-4.jpg?v=mwgiy1sc",
+     "https://lumia-store.github.io/media/social/2026-11-15-guide-5.jpg?v=mwgiy1sc"
     ],
     "story": "",
     "video": "",
@@ -530,7 +530,7 @@
    "ai": "Claude Haiku",
    "aiNote": "",
    "createdAt": "2026-11-13T09:27:50.528Z",
-   "cleanV": 4
+   "cleanV": 5
   },
   {
    "id": "2026-11-16-routine",
@@ -588,8 +588,8 @@
    },
    "media": {
     "images": [
-     "https://lumia-store.github.io/media/social/2026-11-16-routine-1.jpg?v=mwgfnvub",
-     "https://lumia-store.github.io/media/social/2026-11-16-routine-2.jpg?v=mwgfnvub"
+     "https://lumia-store.github.io/media/social/2026-11-16-routine-1.jpg?v=mwgiy3j3",
+     "https://lumia-store.github.io/media/social/2026-11-16-routine-2.jpg?v=mwgiy3j3"
     ],
     "story": "",
     "video": "",
@@ -605,16 +605,74 @@
     "igTail": "• Balea · سيروم بي دي آر إن القوي · 30 ml\n• Sundance · سائل واقي الشمس المضاد للشيخوخة · 50 ml\n\n🛍️ للطلب عبر الموقع أو واتساب:\n🌐 lumia-store.github.io (الرابط في البايو)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n\n#عناية_بالبشرة #روتين_العناية #سيروم #واقي_شمس #ترطيب #skincare #Sundance #LUMIACare #منتجات_ألمانية_أصلية"
    },
    "status": "waiting",
-   "cleanV": 4,
+   "cleanV": 5,
    "ai": "Claude Haiku",
    "aiNote": "",
    "createdAt": "2026-11-14T08:55:16.656Z"
+  },
+  {
+   "id": "2026-11-17-reel",
+   "date": "2026-11-17",
+   "postAt": "2026-11-17T18:30:00.000Z",
+   "type": "reel",
+   "title": "Reel",
+   "occasion": null,
+   "products": [
+    "kcjb8ubl3t"
+   ],
+   "snapshot": {
+    "kcjb8ubl3t": {
+     "price": 500,
+     "was": 0,
+     "avail": "in"
+    }
+   },
+   "words": {
+    "lines": [
+     "نعومة تدوم مع كل لمسة",
+     "زيت بذور القنب العضوي وخلاصة الورد",
+     "مناسب لجميع أنواع البشرة"
+    ],
+    "caption": "زيت Balea الغني يُعنى بنعومة البشرة وليونتها، ويمنح الجسم لمسة مريحة وغنية 🌿\nبتركيبة تحتوي على زيت بذور القنب العضوي وخلاصة الورد.\nمناسب للاستخدام اليومي لجميع أنواع البشرة.",
+    "hashtags": [
+     "#عناية_بالجسم",
+     "#عناية_بالبشرة",
+     "#منتجات_ألمانية",
+     "#منتجات_أصلية",
+     "#Balea",
+     "#bodycare",
+     "#germanbeauty"
+    ],
+    "alt_en": "Balea Rich Care Oil, 100 ml, a nourishing body and skin oil with organic hemp seed oil and rose extract for soft, smooth skin."
+   },
+   "media": {
+    "images": [
+     "https://lumia-store.github.io/media/social/2026-11-17-reel-cover.jpg"
+    ],
+    "story": "",
+    "video": "https://lumia-store.github.io/media/social/2026-11-17-reel.mp4",
+    "cover": "https://lumia-store.github.io/media/social/2026-11-17-reel-cover.jpg"
+   },
+   "files": [
+    "2026-11-17-reel-cover.jpg",
+    "2026-11-17-reel.mp4"
+   ],
+   "preview": {
+    "fb": "زيت Balea الغني يُعنى بنعومة البشرة وليونتها، ويمنح الجسم لمسة مريحة وغنية 🌿\nبتركيبة تحتوي على زيت بذور القنب العضوي وخلاصة الورد.\nمناسب للاستخدام اليومي لجميع أنواع البشرة.\n\n✨ Balea · زيت العناية الغني · 100 ml\n\n🛍️ للطلب عبر الموقع أو واتساب:\n🌐 https://lumia-store.github.io/p/balea-reichhaltiges-pflegeol-kcjb8/\n📲 https://wa.me/201061227556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n\n#عناية_بالجسم #عناية_بالبشرة #منتجات_ألمانية #منتجات_أصلية #Balea",
+    "ig": "زيت Balea الغني يُعنى بنعومة البشرة وليونتها، ويمنح الجسم لمسة مريحة وغنية 🌿\nبتركيبة تحتوي على زيت بذور القنب العضوي وخلاصة الورد.\nمناسب للاستخدام اليومي لجميع أنواع البشرة.\n\n✨ Balea · زيت العناية الغني · 100 ml\n\n🛍️ للطلب عبر الموقع أو واتساب:\n🌐 lumia-store.github.io (الرابط في البايو)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n\n#عناية_بالجسم #عناية_بالبشرة #منتجات_ألمانية #منتجات_أصلية #Balea #bodycare #germanbeauty #LUMIACare #منتجات_ألمانية_أصلية",
+    "igTail": "✨ Balea · زيت العناية الغني · 100 ml\n\n🛍️ للطلب عبر الموقع أو واتساب:\n🌐 lumia-store.github.io (الرابط في البايو)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n\n#عناية_بالجسم #عناية_بالبشرة #منتجات_ألمانية #منتجات_أصلية #Balea #bodycare #germanbeauty #LUMIACare #منتجات_ألمانية_أصلية"
+   },
+   "status": "waiting",
+   "cleanV": 5,
+   "ai": "Claude Haiku",
+   "aiNote": "",
+   "createdAt": "2026-11-14T14:52:28.020Z"
   }
  ],
  "robot": {
-  "lastPrepare": "2026-11-14T13:20:12.348Z",
-  "lastPrepareMade": 0,
-  "aiCostUsd": 0.0036,
+  "lastPrepare": "2026-11-14T14:52:28.059Z",
+  "lastPrepareMade": 1,
+  "aiCostUsd": 0.0046,
   "lastError": "",
   "lastPostCheck": "2026-11-13T22:48:46.520Z",
   "lastErrorAt": "2026-11-12T09:37:55.021Z",
