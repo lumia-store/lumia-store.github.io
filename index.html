@@ -2575,7 +2575,7 @@ const A = {
     try { if (navigator.share) { await navigator.share({ title: pName(p) + ' · LUMIA', url }); return; } } catch (e) { return; }
     try { await navigator.clipboard.writeText(url); toast(T('copied')); } catch (e) { toast(url); }
   },
-  cart: () => openSheet({ type: 'cart' }),
+  cart: () => { const t = totals(); if (t.count) px('InitiateCheckout', { content_ids: Object.keys(cart), content_type: 'product', num_items: t.count, ...(t.sum ? { value: t.sum, currency: 'EGP' } : {}) }); openSheet({ type: 'cart' }); },
   // ---- account ----
   acct: () => { ACC.err = ''; openSheet({ type: 'acct' }); fb().then(accRender).catch(() => { ACC.err = accErr({}); accRender(); }); },
   accMode: () => { accKeep(); ACC.mode = ACC.mode === 'up' ? 'in' : 'up'; ACC.err = ''; renderSheet(); },
@@ -2667,6 +2667,8 @@ const A = {
     window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(orderMessage()), '_blank');
     if (!U.sent) accAfterSend(U.orderNo).then(() => { if (U.sheet) renderSheet(); });
     px('Contact', { content_ids: Object.keys(cart), content_type: 'product', num_items: Object.values(cart).reduce((a, b) => a + b, 0) });
+    // the order is placed (cash on delivery): this is what the ads learn from. Once per order, even if the button is pressed again.
+    if (!U.sent) { const t = totals(); px('Purchase', { content_ids: Object.keys(cart), contents: Object.entries(cart).map(([id, quantity]) => ({ id, quantity })), content_type: 'product', num_items: t.count, value: t.sum || 0, currency: 'EGP', order_id: U.orderNo }); }
     U.sent = true; renderSheet();
   }
 };

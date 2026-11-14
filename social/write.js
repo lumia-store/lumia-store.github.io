@@ -36,6 +36,7 @@ const facts = p => ({
 
 const SHAPES = {
   spotlight: `{"headline": "≤ 7 Arabic words: the result or feeling the product gives (no brand, no price)", "chips": ["3 tiny facts ≤ 4 words each, from the features"], "caption": "3–5 short lines: the feeling/result, the key ingredient, who it suits, how it is used. No price.", "hashtags": [], "alt_en": "short English description of the image"}`,
+  ad: `{"headline": "≤ 6 Arabic words: the clearest benefit (no brand, no price)", "chips": ["3 tiny facts ≤ 4 words each, from the features"], "ad_text": "exactly 3 short lines for a paid ad, written by a senior beauty marketer: 1) a hook that names the result people want (not a problem they have), 2) the proof: key ingredient or texture + original from Germany, 3) who it suits / how it fits their day. No price, no order words, no emojis except one at the end of line 1.", "caption": "same idea as ad_text in 3–4 lines", "hashtags": [], "alt_en": ""}`,
   offer: `{"headline": "≤ 7 Arabic words about the product's result (no price, no word عرض)", "chips": ["3 tiny facts ≤ 4 words"], "caption": "3–5 short lines about the product. No price, no offer words.", "hashtags": [], "alt_en": ""}`,
   reel: `{"lines": ["3 lines of ≤ 6 Arabic words each, shown one after another on the video: 1) the feeling/result 2) the key ingredient or texture 3) who it suits"], "caption": "2–4 short lines", "hashtags": [], "alt_en": ""}`,
   compare: `{"chosen": ["exactly 2 product ids from the list that make a USEFUL comparison (same kind of product, different purpose)"], "title": "≤ 6 Arabic words, a question like: نياسيناميد أم فيتامين C؟", "sub": "≤ 8 words", "labels": {"<id>": "≤ 4 words: what this one is for"}, "caption": "4–6 short lines: what each one is for and who it suits, then: أيهما يناسب روتينكم؟ (neutral plural)", "hashtags": [], "alt_en": ""}`,
@@ -70,7 +71,7 @@ const tag = h => '#' + String(h || '').replace(/^#+/, '').trim().replace(/\s+/g,
 async function writePost(item, products, keys) {
   const { data, provider, cost, fallback } = await askJson({ claudeKey: keys.claude, geminiKey: keys.gemini, prefer: keys.prefer || 'claude', prompt: promptFor(item, products), temperature: 0.7 });
   const out = Object.assign({}, data);
-  for (const k of ['caption', 'headline', 'title', 'sub']) if (out[k]) out[k] = tidy(out[k]);
+  for (const k of ['caption', 'headline', 'title', 'sub', 'ad_text']) if (out[k]) out[k] = tidy(out[k]);
   if (Array.isArray(out.lines)) out.lines = out.lines.map(tidy).filter(Boolean).slice(0, 3);
   if (Array.isArray(out.chips)) out.chips = out.chips.map(tidy).filter(Boolean).slice(0, 3);
   const ids = new Set(products.map(p => p.id));

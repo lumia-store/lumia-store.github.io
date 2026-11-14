@@ -15,7 +15,7 @@ const P = require('./plan.js'), { writePost, tidy } = require('./write.js'), { r
 
 /* Posts written before a rule changed are cleaned once: text tidied again and pictures redrawn.
    v2 (Nov 2026, Mina): no stock / pre-order words and no "swipe" (the same post goes to Facebook). */
-const CLEAN_V = 2;
+const CLEAN_V = 4;   // v4: premium + hero design — waiting posts are redrawn once
 function cleanWords(w) {
   const o = Object.assign({}, w);
   for (const k of ['caption', 'headline', 'title', 'sub']) if (o[k]) o[k] = tidy(o[k]);
@@ -164,13 +164,13 @@ async function prepare() {
       if (ad) {
         const p = byId[ad.products[0]];
         let w = null;
-        try { w = fake ? { words: fakeWords({ type: 'spotlight' }, [p]) } : await writePost({ type: 'spotlight', products: [p.id] }, [p], keys); }
+        try { w = fake ? { words: fakeWords({ type: 'spotlight' }, [p]) } : await writePost({ type: 'ad', products: [p.id] }, [p], keys); }   // ad copy of its own: hook, proof, who it suits
         catch (e) { errors.push('ad: ' + (e.userMessage || e.message)); }
         if (w) {
         br = br || await browser();
         const files = await renderPost({ item: Object.assign({}, ad, { type: 'spotlight', id: ad.id }), words: w.words, products: [p], data, siteDir: SITE_DIR, outDir: MEDIA, browser: br });
         Object.assign(ad, { words: w.words, media: { images: files.images.map(mediaUrl) }, files: files.images, status: 'waiting', createdAt: new Date().toISOString(),
-          adText: `${String(w.words.caption || '').split('\n').slice(0, 2).join('\n')}\n✨ ${p.brand} · ${p.nameAr || p.name}\n🛍️ للطلب عبر الموقع أو واتساب — التوصيل لجميع المحافظات`,
+          adText: `${String(w.words.ad_text || w.words.caption || '').split('\n').filter(Boolean).slice(0, 3).join('\n')}\n\n✨ ${p.brand} · ${p.nameAr || p.name}\n🛍️ الطلب من الموقع بسهولة — توصيل لجميع المحافظات والدفع عند الاستلام`,
           link: P.pageOf(SITE_URL, p),
           headline: (w.words.headline || p.nameAr || p.name).slice(0, 40) });
         q.items.push(ad); made++; saveQueue(q);
