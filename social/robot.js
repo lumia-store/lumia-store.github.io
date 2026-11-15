@@ -74,14 +74,14 @@ async function browser() {
 function fakeWords(item, ps) {
   const ids = ps.map(p => p.id);
   return {
-    headline: 'إشراقة ناعمة تدوم طوال اليوم', chips: ['تركيبة خفيفة', 'للاستخدام اليومي', 'أصلي من ألمانيا'],
+    headline: 'إشراقة ناعمة تدوم طوال اليوم', chips: ['تركيبة خفيفة', 'للاستخدام اليومي', 'أصلي من المانيا'],
     caption: 'تركيبة خفيفة يمتصها الجلد بسرعة ✨\nتمنح البشرة مظهراً أكثر نضارة.\nمناسبة للاستخدام اليومي صباحاً ومساءً.',
     lines: ['نضارة كل صباح', 'ملمس خفيف سريع الامتصاص', 'لروتين بسيط وأنيق'],
     chosen: ids.slice(0, item.pick || 3), title: 'أيهما يناسب روتينكم؟', sub: 'تعرّف على الفرق بينهما',
     labels: Object.fromEntries(ids.map(id => [id, 'للترطيب والنضارة'])),
     slides: ids.slice(0, 3).map(id => ({ id, title: 'ترطيب يدوم', points: ['ملمس خفيف غير دهني', 'يناسب الاستخدام اليومي'] })),
     steps: ids.slice(0, 3).map((id, i) => ({ id, step: ['التنظيف', 'السيروم', 'الترطيب'][i], why: 'خطوة لطيفة تهيئ البشرة لما بعدها' })), when: 'مساءً',
-    hashtags: ['#عناية_بالبشرة', '#منتجات_ألمانية', '#skincareegypt', '#LUMIACare', '#روتين_العناية', '#Balea']
+    hashtags: ['#عناية_بالبشرة', '#منتجات_المانية', '#skincareegypt', '#LUMIACare', '#روتين_العناية', '#Balea']
   };
 }
 
@@ -101,7 +101,7 @@ function captionFor(item, words, products, data, platform) {
   if (platform === 'fb') out.push('🛍️ للطلب عبر الموقع أو واتساب:', `🌐 ${page}`, `📲 https://wa.me/${wa}`);
   else out.push('🛍️ للطلب عبر الموقع أو واتساب:', `🌐 ${site} (الرابط في البايو)`, `📲 ${waNice}`);
   out.push('🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام', '');
-  const tags = [...new Set([...(words.hashtags || []), '#LUMIACare', '#منتجات_ألمانية_أصلية'])].slice(0, platform === 'fb' ? 5 : 10);
+  const tags = [...new Set([...(words.hashtags || []), '#LUMIACare', '#منتجات_المانية_أصلية'])].slice(0, platform === 'fb' ? 5 : 10);
   out.push(tags.join(' '));
   return out.join('\n').replace(/\n{3,}/g, '\n\n').trim();
 }

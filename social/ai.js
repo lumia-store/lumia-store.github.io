@@ -31,7 +31,7 @@ ENGLISH:
 - Same honesty rules: "helps", "cares for", "gives a … look"; never "cures", "treats", "the best", or invented numbers.
 - Features: short benefit-led phrases, no full stops.`;
 /* names in Arabic/English and Google search info (product form, bulk fill) */
-const SEO_RULES = `- Write every Arabic word with its correct hamza: ألمانيا، ألماني، الألمانية، أطفال، أصلي، أسنان، أقراص (never المانيا، الماني، اطفال، اصلي).
+const SEO_RULES = `- Write Germany / German / Europe / European WITHOUT hamza: المانيا، الماني، المانية، اوروبا، اوروبي (never ألمانيا، ألماني، أوروبي). Every other word in normal correct spelling.
 - "name_ar": the product name in natural Arabic as shoppers in Egypt would say it, WITHOUT the brand and WITHOUT the size. Example: "كريم اليوريا لليدين".
 - "name_en": the product name in clear English, WITHOUT the brand and WITHOUT the size. Example: "Urea Hand Cream".
 - "search_terms": array of 4–8 short phrases people in Egypt would type into Google to find this product: mostly Arabic, a few English; include the brand written in Arabic letters the way the shop writes it (Balea = "باليا", Mivolis = "ميفوليس", ISANA = "إيسانا", Dontodent = "دونتودنت", essence = "إيسنس", alverde = "ألفيردي", Langhaarmädchen = "لانجهارمادشن", Doppelherz = "دوبلهيرتس") together with the product type, and what it is for. No prices, no claims.

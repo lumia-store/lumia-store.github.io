@@ -166,7 +166,7 @@ const T = {
     return `<div class="s">${frame}<div class="end"><img class="mark" src="logo-full.png">
       <h2>الطلب عبر الموقع أو واتساب</h2>
       <div class="links"><div class="lk"><small>واتساب</small>${hx(d.waText)}</div></div>
-      <p>منتجات أصلية مستوردة من ألمانيا<br>التوصيل لجميع المحافظات · الدفع عند الاستلام</p></div></div>`;
+      <p>منتجات أصلية مستوردة من المانيا<br>التوصيل لجميع المحافظات · الدفع عند الاستلام</p></div></div>`;
   },
   routine(w, ps) {
     const by = Object.fromEntries(ps.map(p => [p.id, p]));
@@ -180,9 +180,9 @@ const T = {
   trust(w, ps) {
     return `<div class="s">${frame}${head('Our promise', 'From Germany')}
       <div class="flow"><div class="kick">LUMIA Care</div>
-      <h1 class="m">${hx(w.title || 'أصلية من ألمانيا… إلى باب البيت')}</h1>
+      <h1 class="m">${hx(w.title || 'أصلية من المانيا… إلى باب البيت')}</h1>
       <div class="pillars">
-        <div class="pillar">${ICON.seal}<h4>أصلية ومختومة</h4><p>من ألمانيا مباشرة إلى يديك</p></div>
+        <div class="pillar">${ICON.seal}<h4>أصلية ومختومة</h4><p>من المانيا مباشرة إلى يديك</p></div>
         <div class="pillar">${ICON.van}<h4>لكل المحافظات</h4><p>التوصيل خلال 2 إلى 5 أيام عمل</p></div>
         <div class="pillar">${ICON.hand}<h4>الدفع عند الاستلام</h4><p>أو InstaPay والمحافظ الإلكترونية</p></div></div>
       <div class="grow"><div class="stage" style="left:100px;right:100px;width:auto;top:6%;bottom:0"><div class="arch" style="border-radius:440px 440px 0 0;opacity:.75"></div>
@@ -213,14 +213,14 @@ const ICO = HERO.icon, esc = hx;
 const pnameLine = p => `<div style="text-align:center;font-size:27px;margin-bottom:6px"><span style="font-family:Montserrat;font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-size:21px">${esc(p.brand)}</span> · ${esc(nm(p))}${p.size ? ` · <span style="font-family:Montserrat;font-size:21px">${esc(p.size)}</span>` : ''}</div>`;
 const endCard = (d, key, tall) => stageOf({ tall, theme: 'blush', headline: 'الطلب عبر الموقع أو واتساب', items: ['logo-full.png'], noCut: true, darken: true, maxH: tall ? 420 : 300, target: tall ? 1180 : 880,
   cardHtml: `<div style="text-align:center"><div class="wa2"><small style="display:block;font-family:'IBM Plex Sans Arabic';font-size:20px;letter-spacing:0;opacity:.75">واتساب</small>${esc(d.waText)}</div>
-    <div style="font-size:26px;margin-top:16px;line-height:1.6">منتجات أصلية مستوردة من ألمانيا<br>التوصيل لجميع المحافظات · الدفع عند الاستلام</div></div>`, card: tall ? [1360, 1640] : [1030, 1280] }, [], d, key + '-end');
+    <div style="font-size:26px;margin-top:16px;line-height:1.6">منتجات أصلية مستوردة من المانيا<br>التوصيل لجميع المحافظات · الدفع عند الاستلام</div></div>`, card: tall ? [1360, 1640] : [1030, 1280] }, [], d, key + '-end');
 
 /* which pages a post has */
 function pagesFor(item, w, ps, d) {
   const by = Object.fromEntries(ps.map(p => [p.id, p]));
   const chosen = (w.chosen && w.chosen.length ? w.chosen : item.products).map(id => by[id]).filter(Boolean);
   if (item.type === 'spotlight' || item.type === 'offer') {
-    const chip = item.occasion ? `بمناسبة ${item.occasion.ar}` : item.type === 'offer' ? 'اختيار الأسبوع' : 'أصلي من ألمانيا';
+    const chip = item.occasion ? `بمناسبة ${item.occasion.ar}` : item.type === 'offer' ? 'اختيار الأسبوع' : 'أصلي من المانيا';
     return { feed: [heroOf(w, ps[0], { chip }, d)], story: heroOf(w, ps[0], { chip, tall: true }, d), used: ps };
   }
   if (item.type === 'compare') {
@@ -243,8 +243,8 @@ function pagesFor(item, w, ps, d) {
   }
   if (item.type === 'trust') {
     const three = ps.slice(0, 3);
-    const P3 = [['shield', 'أصلية ومختومة', 'من ألمانيا مباشرة إلى يديك'], ['spark', 'لكل المحافظات', 'التوصيل خلال 2 إلى 5 أيام عمل'], ['lotus', 'الدفع عند الاستلام', 'أو InstaPay والمحافظ الإلكترونية']];
-    return { feed: [stageOf({ kick: 'LUMIA Care', headline: w.title || 'أصلية من ألمانيا… إلى باب البيت', items: three.map(p => p.image), target: 820,
+    const P3 = [['shield', 'أصلية ومختومة', 'من المانيا مباشرة إلى يديك'], ['spark', 'لكل المحافظات', 'التوصيل خلال 2 إلى 5 أيام عمل'], ['lotus', 'الدفع عند الاستلام', 'أو InstaPay والمحافظ الإلكترونية']];
+    return { feed: [stageOf({ kick: 'LUMIA Care', headline: w.title || 'أصلية من المانيا… إلى باب البيت', items: three.map(p => p.image), target: 820,
       cardHtml: `<div class="cols">${P3.map(([ic, h, t]) => `<div><div class="ic">${ICO(ic)}</div><h4>${h}</h4><p>${t}</p></div>`).join('')}</div>`, card: [995, 1255] }, three, d, 't')], used: three };
   }
   if (item.type === 'reel') {
