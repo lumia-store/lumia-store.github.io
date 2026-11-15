@@ -211,7 +211,7 @@ function stageOf(o, ps, d, key) {
 }
 const ICO = HERO.icon, esc = hx;
 const pnameLine = p => `<div style="text-align:center;font-size:27px;margin-bottom:6px"><span style="font-family:Montserrat;font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-size:21px">${esc(p.brand)}</span> · ${esc(nm(p))}${p.size ? ` · <span style="font-family:Montserrat;font-size:21px">${esc(p.size)}</span>` : ''}</div>`;
-const endCard = (d, key, tall) => stageOf({ tall, theme: 'blush', headline: 'الطلب عبر الموقع أو واتساب', items: ['logo-full.png'], noCut: true, darken: true, maxH: tall ? 420 : 300, target: tall ? 1180 : 880,
+const endCard = (d, key, tall) => stageOf({ tall, theme: 'blush', headline: 'الطلب عبر الموقع أو واتساب', headlineEn: 'Order on our website or WhatsApp', items: ['logo-full.png'], noCut: true, darken: true, maxH: tall ? 420 : 300, target: tall ? 1180 : 880,
   cardHtml: `<div style="text-align:center"><div class="wa2"><small style="display:block;font-family:'IBM Plex Sans Arabic';font-size:20px;letter-spacing:0;opacity:.75">واتساب</small>${esc(d.waText)}</div>
     <div style="font-size:26px;margin-top:16px;line-height:1.6">منتجات أصلية مستوردة من المانيا<br>التوصيل لجميع المحافظات · الدفع عند الاستلام</div></div>`, card: tall ? [1360, 1640] : [1030, 1280] }, [], d, key + '-end');
 
@@ -225,33 +225,33 @@ function pagesFor(item, w, ps, d) {
   }
   if (item.type === 'compare') {
     const two = chosen.slice(0, 2);
-    return { feed: [stageOf({ kick: 'أيهما يناسبك؟', headline: w.title, sub: w.sub, items: two.map(p => p.image), over: 'أم', target: 880,
+    return { feed: [stageOf({ kick: 'أيهما يناسبك؟', headline: w.title, headlineEn: w.title_en, sub: w.sub, items: two.map(p => p.image), over: 'أم', target: 880,
       cardHtml: `<div class="cols">${two.map(p => `<div><h4>${esc((w.labels || {})[p.id] || nm(p))}</h4><span class="lat">${esc(p.brand)}</span><p>${esc(nm(p))}</p></div>`).join('')}</div>`, card: [1035, 1245] }, two, d, 'c')], used: two };
   }
   if (item.type === 'routine') {
     const steps = (w.steps || []).filter(x => by[x.id]).slice(0, 3), sp = steps.map(x => by[x.id]);
-    return { feed: [stageOf({ kick: w.when || 'روتين العناية', headline: w.title, items: sp.map(p => p.image), badges: true, target: 760,
+    return { feed: [stageOf({ kick: w.when || 'روتين العناية', headline: w.title, headlineEn: w.title_en, items: sp.map(p => p.image), badges: true, target: 760,
       cardHtml: `<div class="rows">${steps.map((x, i) => `<div class="rw"><div class="n">0${i + 1}</div><div><b>${esc(x.step)}</b><span>${esc(x.why)}</span></div></div>`).join('')}</div>`, card: [940, 1270] }, sp, d, 'r'), endCard(d, 'r')], used: sp };
   }
   if (item.type === 'guide') {
     const slides = (w.slides || []).filter(x => by[x.id]).slice(0, 3), used = slides.map(x => by[x.id]), n = slides.length + 2;
-    const cover = stageOf({ kick: 'دليل العناية', headline: w.title, items: used.map(p => p.image), target: 880,
+    const cover = stageOf({ kick: 'دليل العناية', headline: w.title, headlineEn: w.title_en, items: used.map(p => p.image), target: 880,
       cardHtml: `<div style="text-align:center;font-size:30px;line-height:1.5">${esc(w.sub || '')}</div><div style="text-align:center;font-family:Montserrat;font-size:19px;letter-spacing:.3em;margin-top:14px;opacity:.8">${esc([...new Set(used.map(p => p.brand))].join('  ·  ').toUpperCase())}</div>`, card: [1045, 1215] }, used, d, 'g0');
-    const pages = slides.map((x, i) => stageOf({ kick: `الخطوة ${i + 1} من ${slides.length}`, headline: x.title, items: [by[x.id].image], target: 800,
+    const pages = slides.map((x, i) => stageOf({ kick: `الخطوة ${i + 1} من ${slides.length}`, headline: x.title, headlineEn: x.title_en, items: [by[x.id].image], target: 800,
       cardHtml: `${pnameLine(by[x.id])}<ul class="pts2">${(x.points || []).slice(0, 3).map(t => `<li>${esc(t)}</li>`).join('')}</ul>`, card: [955, 1275] }, [by[x.id]], d, 'g' + (i + 1)));
     return { feed: [cover, ...pages, endCard(d, 'g')], used };
   }
   if (item.type === 'trust') {
     const three = ps.slice(0, 3);
     const P3 = [['shield', 'أصلية ومختومة', 'من المانيا مباشرة إلى يديك'], ['spark', 'لكل المحافظات', 'التوصيل خلال 2 إلى 5 أيام عمل'], ['lotus', 'الدفع عند الاستلام', 'أو InstaPay والمحافظ الإلكترونية']];
-    return { feed: [stageOf({ kick: 'LUMIA Care', headline: w.title || 'أصلية من المانيا… إلى باب البيت', items: three.map(p => p.image), target: 820,
+    return { feed: [stageOf({ kick: 'LUMIA Care', headline: w.title || 'أصلية من المانيا… إلى باب البيت', headlineEn: w.title_en || 'Original from Germany, to your door', items: three.map(p => p.image), target: 820,
       cardHtml: `<div class="cols">${P3.map(([ic, h, t]) => `<div><div class="ic">${ICO(ic)}</div><h4>${h}</h4><p>${t}</p></div>`).join('')}</div>`, card: [995, 1255] }, three, d, 't')], used: three };
   }
   if (item.type === 'reel') {
     const p = ps[0];
     const lines = (w.lines && w.lines.length ? w.lines : [nm(p)]).slice(0, 3);
-    return { scenes: lines.map((l, k) => stageOf({ tall: true, headline: l, items: [p.image], cardHtml: pnameLine(p) + `<div style="text-align:center;font-size:26px;margin-top:8px">التوصيل لجميع المحافظات · الدفع عند الاستلام</div>`, card: [1400, 1560] }, [p], d, 'reel')),
-      end: endCard(d, 'reel', true), cover: heroOf({ headline: lines[0], chips: w.chips || [] }, p, { tall: true }, d), used: [p] };
+    return { scenes: lines.map((l, k) => stageOf({ tall: true, headline: l, headlineEn: (w.lines_en || [])[k], items: [p.image], cardHtml: pnameLine(p) + `<div style="text-align:center;font-size:26px;margin-top:8px">التوصيل لجميع المحافظات · الدفع عند الاستلام</div>`, card: [1400, 1560] }, [p], d, 'reel')),
+      end: endCard(d, 'reel', true), cover: heroOf({ headline: lines[0], headline_en: (w.lines_en || [])[0], chips: w.chips || [] }, p, { tall: true }, d), used: [p] };
   }
   throw new Error('unknown type ' + item.type);
 }

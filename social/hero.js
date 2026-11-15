@@ -135,6 +135,8 @@ const CSS = `
 /* multi-product stage posts (guide, routine, compare, trust, end card, reel) */
 .hero .badge{position:absolute;z-index:4;width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.85);border:1.8px solid var(--acc);color:var(--acc);font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:600;display:flex;align-items:center;justify-content:center;direction:ltr}
 .hero .or2{position:absolute;z-index:4;font-family:"Noto Naskh Arabic",Amiri;font-weight:700;font-size:64px;color:var(--acc);text-shadow:0 2px 0 rgba(255,255,255,.6)}
+.hero .en2{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:38px;line-height:1.2;color:var(--ink);opacity:.82;margin-top:2px;padding:0 120px;letter-spacing:.01em}
+.hero.tallf .en2{font-size:42px}
 .hero .sub2{font-size:30px;color:var(--ink);opacity:.8;margin-top:4px;padding:0 120px;line-height:1.5}
 .hero .cardin{position:absolute;left:96px;right:96px;z-index:5;color:var(--ink)}
 .hero .pts2{list-style:none}
@@ -176,6 +178,8 @@ function heroPage(w, p, o = {}) {
     L.prodH = tall ? (two ? 600 : 660) : (two ? 400 : 455);
     Object.assign(L, tall ? { name: 1425, bens: 1490, ft: 1610, card: [1395, 1680] } : { name: 1040, bens: 1100, ft: 1218, card: [1008, 1282] });
   }
+  const en = String(w.headline_en || '').trim();
+  if (en) L.prodH -= tall ? 50 : 46;   // the English line under the headline needs a little room
   if (!(w.chips || []).length) { L.ft = L.name + (tall ? 85 : 70); if (L.card) L.card = [L.card[0], L.ft + (tall ? 75 : 65)]; }
   const vars = `--ink:${th.ink};--acc:${th.acc};--acc2:${th.acc2}`;
   const sh = scene ? (scene.h || 1341) : 0;
@@ -194,7 +198,7 @@ function heroPage(w, p, o = {}) {
   return `<div class="s${tall ? ' tall' : ''}" style="${vars}"><div class="hero">${bg}
     <div class="frame2"></div>
     <div class="hd2" style="${tall ? 'top:150px' : ''}"><div class="cap2 r"><span>FROM GERMANY</span><i></i></div><div class="lg"><img src="logo-mark.png"><b>LUMIA</b><i>CARE</i></div><div class="cap2 l"><span>ORIGINAL</span><i></i></div></div>
-    <div class="top" style="top:${L.top}px">${o.chip ? `<div class="kick2">${hx(o.chip)}</div>` : ''}<h1${hc}>${hx(headline)}</h1>${swoosh(th.acc)}</div>
+    <div class="top" style="top:${L.top}px">${o.chip ? `<div class="kick2">${hx(o.chip)}</div>` : ''}<h1${hc}>${hx(headline)}</h1>${swoosh(th.acc)}${en ? `<div class="en2" dir="ltr">${hx(en)}</div>` : ''}</div>
     ${scene ? '' : `<div class="pod" style="top:${L.podTop}px">${podium(L.podW, th.acc, (p.id || 'x').length * 7 + headline.length)}</div>`}
     ${scene ? `<div style="position:absolute;z-index:3;left:${cx - prodW * 0.42}px;width:${prodW * 0.84}px;top:${prodBottom - 22}px;height:40px;border-radius:50%;background:radial-gradient(closest-side,rgba(70,40,30,.38),rgba(70,40,30,0));filter:blur(5px)"></div>` : ''}
     <div class="prod2" style="left:${cx - prodW / 2}px;width:${prodW}px;top:${prodBottom - L.prodH}px;height:${L.prodH}px"><img class="cut" src="${hx(p.image)}"></div>
@@ -217,7 +221,8 @@ function stagePage(o) {
   const shift = scene ? target - scene.podium.cy : 0, sh = scene ? (scene.h || 1341) : 0;
   const bottom = target + Math.round(podW * (scene ? 0.012 : 0.075));
   const items = (o.items || []).slice(0, 3), k = items.length;
-  const room = target - (o.top || (tall ? 300 : 206)) - (two ? 250 : 170) - (o.sub ? 50 : 0);   // space between the headline and the podium
+  const en = String(o.headlineEn || '').trim();
+  const room = target - (o.top || (tall ? 300 : 206)) - (two ? 250 : 170) - (o.sub ? 50 : 0) - (en ? 48 : 0);   // space between the headline and the podium
   const hMax = Math.max(200, Math.min(o.maxH || (tall ? 700 : 470), room));
   const spec = k === 1 ? [[0, 0.86, 1]] : k === 2 ? [[-0.25, 0.44, 0.92], [0.25, 0.44, 0.92]] : [[-0.31, 0.3, 0.8], [0, 0.34, 0.9], [0.31, 0.3, 0.8]];
   const vars = `--ink:${th.ink};--acc:${th.acc};--acc2:${th.acc2}`;
@@ -239,7 +244,7 @@ function stagePage(o) {
   return `<div class="s${tall ? ' tall' : ''}" style="${vars}"><div class="hero">${bg}
     <div class="frame2"></div>
     <div class="hd2" style="${tall ? 'top:150px' : ''}"><div class="cap2 r"><span>FROM GERMANY</span><i></i></div><div class="lg"><img src="logo-mark.png"><b>LUMIA</b><i>CARE</i></div><div class="cap2 l"><span>ORIGINAL</span><i></i></div></div>
-    <div class="top" style="top:${o.top || (tall ? 300 : 206)}px">${o.kick ? `<div class="kick2">${hx(o.kick)}</div>` : ''}${headline ? `<h1${hc}>${hx(headline)}</h1>${swoosh(th.acc)}` : ''}${o.sub ? `<div class="sub2">${hx(o.sub)}</div>` : ''}</div>
+    <div class="top" style="top:${o.top || (tall ? 300 : 206)}px">${o.kick ? `<div class="kick2">${hx(o.kick)}</div>` : ''}${headline ? `<h1${hc}>${hx(headline)}</h1>${swoosh(th.acc)}` : ''}${en ? `<div class="en2" dir="ltr">${hx(en)}</div>` : ''}${o.sub ? `<div class="sub2">${hx(o.sub)}</div>` : ''}</div>
     ${prods}${o.over ? `<div class="or2" style="left:${cx - 40}px;top:${bottom - Math.round(hMax * 0.62)}px">${o.over}</div>` : ''}
     ${o.cardHtml ? `<div class="glass" style="top:${card[0]}px;height:${card[1] - card[0]}px"></div><div class="cardin" style="top:${card[0]}px;height:${card[1] - card[0]}px;display:flex;flex-direction:column;justify-content:center">${o.cardHtml}</div>` : ''}
   </div></div>`;

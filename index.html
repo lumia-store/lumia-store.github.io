@@ -1749,7 +1749,13 @@ const I18N = {
 };
 let LANG = (() => { let q = ''; try { q = new URLSearchParams(location.search).get('lang') || ''; } catch (e) {} if (q === 'en' || q === 'ar') return q; try { const s = JSON.parse(localStorage.getItem('lumia_lang')); if (s === 'en' || s === 'ar') return s; } catch (e) {} return 'ar'; })();
 const EN = () => LANG === 'en';
-const T = (k, ...a) => { const v = k in I18N[LANG] ? I18N[LANG][k] : I18N.ar[k]; return typeof v === 'function' ? v(...a) : v; };
+/* the owner's own wording (LUMIA app → Website texts) replaces the standard text, per language; empty = standard text */
+const TX_RICH = { heroH: 1 };
+const txOwn = k => { const o = D && D.texts && D.texts[LANG]; const v = o && o[k]; return typeof v === 'string' && v.trim() ? v.trim() : null; };
+const txRich = v => esc(v).replace(/\*([^*\n]+)\*/g, '<em>$1</em>').replace(/\n/g, '<br>');
+const T = (k, ...a) => { let own = txOwn(k);
+  if (own != null) { own = own.replace(/<[^>]*>/g, '').replace(/[<>]/g, ''); return TX_RICH[k] ? txRich(own) : own; }
+  const v = k in I18N[LANG] ? I18N[LANG][k] : I18N.ar[k]; return typeof v === 'function' ? v(...a) : v; };
 const catName = c => { c = String(c || '').trim(); return EN() ? ((D && D.catEn && D.catEn[c]) || CAT_EN[c] || c) : c; };
 /* product names in the shopper's language (AI-written, checked in the app); the original name stays for orders and as a small line */
 const pName = p => (EN() ? p.nameEn : p.nameAr) || p.name;
@@ -2175,6 +2181,7 @@ const hasAr = t => /[\u0600-\u06FF]/.test(String(t || ''));
 const noteFor = (ar, en) => EN() ? (D[en] || '') : (hasAr(D[ar]) ? D[ar] : '');
 function fillStatic(){
   if (!D) return;
+  { const hi = document.querySelector('.hero .hmedia img'); if (hi && D.heroImg) { const u = asset(D.heroImg); if (hi.getAttribute('src') !== u) hi.src = u; } }
   const intro = EN() ? D.introEn : D.intro;
   $('tag').textContent = intro || T('tag');
   if (D.updated) { try { $('upd').textContent = T('updated', new Date(D.updated).toLocaleDateString(EN() ? 'en-GB' : 'ar-EG', { day: 'numeric', month: 'long' })); } catch (e) {} }

@@ -26,6 +26,10 @@ STRICT RULES:
 8. Hashtags: choose 5–7 ONLY from this list (copy them exactly; never invent new ones): ${HASHTAGS.join(' ')}
 9. Every word must be correct, common Arabic that a native reader finds natural. If unsure of a word, use a simpler one. Short sentences.
 10. Caption length: 2–4 short lines, at most 280 characters.
+11. BILINGUAL: every post is Arabic + English. For each Arabic text field also give its English version in the matching "_en" field
+    (headline_en, title_en, sub_en, caption_en, lines_en, and title_en inside each slide). English: natural, elegant, warm and short — written
+    for an English reader in Egypt, not a word-for-word translation. All rules above apply to the English too (no prices, offers, stock words,
+    ordering, delivery, swiping, medical claims, or telling the reader they have a problem).
 
 ${COPY_GUIDE}`;
 
@@ -55,14 +59,21 @@ PRODUCTS (facts you may use):
 ${JSON.stringify(products.map(facts), null, 1)}
 
 Answer with JSON exactly in this shape:
-${SHAPES[item.type]}`;
+${SHAPES[item.type]}${EN_RULES}`;
 }
 
 /* small safety net on top of the rules: removes words the AI must never use, and any price it slipped in */
 const BANNED = /(يعالج|يشفي|يقضي على|نهائياً|نهائيا|الأفضل|مضمون[ةه]?|رقم 1|كمية محدودة|آخر قطعة|خصم|عرض خاص)/g;
 const PRICEY = /\d+\s*(ج\.?م|جنيه|EGP|LE)\b/gi;
+const EN_RULES = '\nAlso add the English fields: "headline_en" / "title_en" / "sub_en" / "caption_en" / "lines_en" (and "title_en" in each slide) — one for every Arabic text field in the shape.';
 const STATUS_LINE = /(اسحب|اسحبي|مرر|مرّر|swipe|الصورة التالية|الصور التالية|متوفر|متوفّر|متاح الآن|متوفرة الآن|طلب مسبق|الطلب المسبق|بالطلب المسبق|المخزون|نفد|نفذت|pre-?order|in stock)/i;   // Mina: no stock words, no swiping (Facebook)
 const ORDER_LINE = /(واتساب|واتس|الواتس|whatsapp|للطلب|اطلب|التوصيل|توصيل|الشحن|شحن|الدفع|عند الاستلام|الموقع|الرابط|البايو)/i;
+/* English lines: the same safety net in English */
+const EN_BANNED = /\b(cures?|heals?|treats?|the best|number one|guaranteed|discount|sale|limited (offer|stock)|last piece)\b/gi;
+const EN_LINE = /\b(swipe|next (photo|picture|slide)|in stock|out of stock|pre-?order|available now|whatsapp|order now|to order|delivery|deliver|shipping|cash on delivery|payment|link in bio|website)\b/i;
+function tidyEn(text) {
+  return String(text || '').split('\n').filter(l => !EN_LINE.test(l)).join('\n').replace(PRICEY, '').replace(EN_BANNED, '').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').replace(/ {2,}/g, ' ').trim();
+}
 function tidy(text) {
   return String(text || '').split('\n').filter(l => !ORDER_LINE.test(l) && !STATUS_LINE.test(l)).join('\n').replace(PRICEY, '').replace(BANNED, '').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').replace(/ {2,}/g, ' ').trim();
 }
@@ -72,11 +83,13 @@ async function writePost(item, products, keys) {
   const { data, provider, cost, fallback } = await askJson({ claudeKey: keys.claude, geminiKey: keys.gemini, prefer: keys.prefer || 'claude', prompt: promptFor(item, products), temperature: 0.7 });
   const out = Object.assign({}, data);
   for (const k of ['caption', 'headline', 'title', 'sub', 'ad_text']) if (out[k]) out[k] = tidy(out[k]);
+  for (const k of ['caption_en', 'headline_en', 'title_en', 'sub_en']) if (out[k]) out[k] = tidyEn(out[k]);
+  if (Array.isArray(out.lines_en)) out.lines_en = out.lines_en.map(tidyEn).slice(0, 3);
   if (Array.isArray(out.lines)) out.lines = out.lines.map(tidy).filter(Boolean).slice(0, 3);
   if (Array.isArray(out.chips)) out.chips = out.chips.map(tidy).filter(Boolean).slice(0, 3);
   const ids = new Set(products.map(p => p.id));
   if (Array.isArray(out.chosen)) out.chosen = out.chosen.map(String).filter(id => ids.has(id));
-  if (Array.isArray(out.slides)) out.slides = out.slides.filter(x => ids.has(String(x.id))).map(x => ({ id: String(x.id), title: tidy(x.title), points: [].concat(x.points || []).map(tidy).filter(Boolean).slice(0, 3) }));
+  if (Array.isArray(out.slides)) out.slides = out.slides.filter(x => ids.has(String(x.id))).map(x => ({ id: String(x.id), title: tidy(x.title), title_en: tidyEn(x.title_en), points: [].concat(x.points || []).map(tidy).filter(Boolean).slice(0, 3) }));
   if (Array.isArray(out.steps)) out.steps = out.steps.filter(x => ids.has(String(x.id))).map(x => ({ id: String(x.id), step: tidy(x.step), why: tidy(x.why) }));
   const ok = new Map(HASHTAGS.map(h => [h.toLowerCase(), h]));
   out.hashtags = [...new Set([].concat(out.hashtags || []).map(tag).map(h => ok.get(h.toLowerCase())).filter(Boolean))].slice(0, 7);
@@ -84,4 +97,4 @@ async function writePost(item, products, keys) {
   return { words: out, provider, cost, fallback };
 }
 
-module.exports = { writePost, promptFor, tidy, SOCIAL_RULES, HASHTAGS };
+module.exports = { writePost, promptFor, tidy, tidyEn, SOCIAL_RULES, HASHTAGS };

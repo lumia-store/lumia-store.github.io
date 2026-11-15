@@ -11,7 +11,7 @@
  * Settings come from GitHub secrets: META_TOKEN, META_PAGE_ID, META_IG_ID, CLAUDE_KEY, GEMINI_KEY, AI_PREFER.
  */
 const fs = require('fs'), path = require('path');
-const P = require('./plan.js'), { writePost, tidy } = require('./write.js'), { renderPost } = require('./render.js');
+const P = require('./plan.js'), { writePost, tidy, tidyEn } = require('./write.js'), { renderPost } = require('./render.js');
 
 /* Posts written before a rule changed are cleaned once: text tidied again and pictures redrawn.
    v2 (Nov 2026, Mina): no stock / pre-order words and no "swipe" (the same post goes to Facebook). */
@@ -20,6 +20,8 @@ function cleanWords(w) {
   const o = Object.assign({}, w);
   for (const k of ['caption', 'headline', 'title', 'sub']) if (o[k]) o[k] = tidy(o[k]);
   for (const k of ['lines', 'chips']) if (Array.isArray(o[k])) o[k] = o[k].map(tidy).filter(Boolean);
+  for (const k of ['caption_en', 'headline_en', 'title_en', 'sub_en']) if (o[k]) o[k] = tidyEn(o[k]);
+  if (Array.isArray(o.lines_en)) o.lines_en = o.lines_en.map(tidyEn);
   if (Array.isArray(o.slides)) o.slides = o.slides.map(x => Object.assign({}, x, { title: tidy(x.title), points: [].concat(x.points || []).map(tidy).filter(Boolean) }));
   if (Array.isArray(o.steps)) o.steps = o.steps.map(x => Object.assign({}, x, { step: tidy(x.step), why: tidy(x.why) }));
   return o;
@@ -77,9 +79,11 @@ function fakeWords(item, ps) {
     headline: 'إشراقة ناعمة تدوم طوال اليوم', chips: ['تركيبة خفيفة', 'للاستخدام اليومي', 'أصلي من المانيا'],
     caption: 'تركيبة خفيفة يمتصها الجلد بسرعة ✨\nتمنح البشرة مظهراً أكثر نضارة.\nمناسبة للاستخدام اليومي صباحاً ومساءً.',
     lines: ['نضارة كل صباح', 'ملمس خفيف سريع الامتصاص', 'لروتين بسيط وأنيق'],
+    headline_en: 'A soft glow that lasts all day', caption_en: 'A light texture that sinks in quickly ✨\nFor a fresher-looking complexion, morning and evening.',
+    lines_en: ['A fresh glow every morning', 'Light and quick to absorb', 'For a simple, elegant routine'], title_en: 'Which one suits your routine?', sub_en: 'See the difference',
     chosen: ids.slice(0, item.pick || 3), title: 'أيهما يناسب روتينكم؟', sub: 'تعرّف على الفرق بينهما',
     labels: Object.fromEntries(ids.map(id => [id, 'للترطيب والنضارة'])),
-    slides: ids.slice(0, 3).map(id => ({ id, title: 'ترطيب يدوم', points: ['ملمس خفيف غير دهني', 'يناسب الاستخدام اليومي'] })),
+    slides: ids.slice(0, 3).map(id => ({ id, title: 'ترطيب يدوم', title_en: 'Lasting moisture', points: ['ملمس خفيف غير دهني', 'يناسب الاستخدام اليومي'] })),
     steps: ids.slice(0, 3).map((id, i) => ({ id, step: ['التنظيف', 'السيروم', 'الترطيب'][i], why: 'خطوة لطيفة تهيئ البشرة لما بعدها' })), when: 'مساءً',
     hashtags: ['#عناية_بالبشرة', '#منتجات_المانية', '#skincareegypt', '#LUMIACare', '#روتين_العناية', '#Balea']
   };
@@ -89,8 +93,10 @@ function fakeWords(item, ps) {
 function captionFor(item, words, products, data, platform) {
   const wa = String(data.whatsapp || '').replace(/\D/g, ''), waNice = '+' + wa.replace(/^(\d{2})(\d{2})(\d{4})(\d+)$/, '$1 $2 $3 $4');
   const site = SITE_URL.replace(/^https?:\/\//, '').replace(/\/$/, '');
-  const line = p => `${p.brand} · ${p.nameAr || p.nameEn || p.name}${p.size ? ' · ' + p.size : ''}`;
+  const line = p => `${p.brand} · ${p.nameAr || p.nameEn || p.name}${p.nameAr && p.nameEn && words.caption_en ? ' · ' + p.nameEn : ''}${p.size ? ' · ' + p.size : ''}`;
+  const en = String(words.caption_en || '').trim();
   const out = [String(words.caption || '').trim(), ''];
+  if (en) out.push(en, '');
   if (item.type !== 'trust') {
     if (products.length === 1) out.push(`✨ ${line(products[0])}`);
     else for (const p of products) out.push(`• ${line(p)}`);
@@ -98,9 +104,12 @@ function captionFor(item, words, products, data, platform) {
   }
   // how to order: the website or WhatsApp (Instagram does not make links clickable, so it points to the bio)
   const page = products.length === 1 && item.type !== 'trust' ? P.pageOf(SITE_URL, products[0]) : SITE_URL;
-  if (platform === 'fb') out.push('🛍️ للطلب عبر الموقع أو واتساب:', `🌐 ${page}`, `📲 https://wa.me/${wa}`);
-  else out.push('🛍️ للطلب عبر الموقع أو واتساب:', `🌐 ${site} (الرابط في البايو)`, `📲 ${waNice}`);
-  out.push('🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام', '');
+  const ask = en ? '🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:' : '🛍️ للطلب عبر الموقع أو واتساب:';
+  if (platform === 'fb') out.push(ask, `🌐 ${page}`, `📲 https://wa.me/${wa}`);
+  else out.push(ask, `🌐 ${site} (${en ? 'الرابط في البايو · link in bio' : 'الرابط في البايو'})`, `📲 ${waNice}`);
+  out.push('🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام');
+  if (en) out.push('🚚 Delivery all over Egypt · Cash on delivery');
+  out.push('');
   const tags = [...new Set([...(words.hashtags || []), '#LUMIACare', '#منتجات_المانية_أصلية'])].slice(0, platform === 'fb' ? 5 : 10);
   out.push(tags.join(' '));
   return out.join('\n').replace(/\n{3,}/g, '\n\n').trim();
