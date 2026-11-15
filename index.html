@@ -28,7 +28,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Jost:wght@300;400;500;600&family=Noto+Naskh+Arabic:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* Layout: full-bleed taupe brand header (logo + flight line) → sticky search/filter bar → photo-led product grid → how-to-order steps → footer.
    Content is right-aligned (RTL); the header is centered like the logo itself. */
@@ -1109,6 +1109,256 @@ footer .fcol a.sbtn:hover{color:#fff;text-decoration:none;transform:translateY(-
 footer .fcol a.sbtn.wa{background:#1d7f46}footer .fcol a.sbtn.fb{background:#1877f2}footer .fcol a.sbtn.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
 footer .fcol a.sbtn svg{width:18px;height:18px}
 body.sheetopen .chatfab{display:none!important}
+/* =====================================================================
+   2026 REDESIGN (design package, Nov 2026) — warm ivory ground, porcelain surfaces, cream product tiles,
+   deep espresso ink, muted rose only for offers. Jost / IBM Plex Sans Arabic for text, Cormorant / Amiri for
+   headings. Compact header, editorial hero, bottom tab bar on phones. (Overrides every layer above.)
+   ===================================================================== */
+:root{
+  --lm-ivory:#F7F2EB; --lm-porcelain:#FDFAF6; --lm-cream:#F0E8DD; --lm-sand:#E5D9C9; --lm-blush:#EFDDD4; --lm-blush-deep:#E4C0B0;
+  --lm-rose:#924F43; --lm-taupe:#916657; --lm-ink:#2B211E; --lm-ink-2:#6B5B52; --lm-espresso-2:#3B2E29; --lm-champagne:#C4A57A;
+  --page:var(--lm-ivory); --tile:var(--lm-porcelain); --well:var(--lm-cream); --soft:var(--lm-cream); --ink:var(--lm-ink); --muted:var(--lm-ink-2);
+  --line:var(--lm-sand); --primary:var(--lm-ink); --on-primary:var(--lm-porcelain); --band:var(--lm-espresso-2); --wine:var(--lm-rose);
+  --gold:var(--lm-champagne); --gold-2:#d6bf9c; --gold-text:#7d5f3a; --ok:#4D5F43; --pre:#765B37;
+  --hair:rgba(43,33,30,.10); --r-lg:2px; --r-md:2px; --tab-h:64px;
+  --f-body:"Jost","IBM Plex Sans Arabic",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-num:"Jost","IBM Plex Sans Arabic",system-ui,sans-serif;
+  --f-display:"Amiri","Cormorant Garamond",serif;
+}
+html[lang=en]{--f-display:"Cormorant Garamond","Amiri",Georgia,serif}
+html[lang=ar]{--f-body:"IBM Plex Sans Arabic","Jost",system-ui,sans-serif}
+body{background:var(--page);color:var(--ink);-webkit-font-smoothing:antialiased}
+:focus-visible{outline-color:var(--lm-rose)}
+
+/* announcement + compact header */
+.ann{background:var(--lm-espresso-2);color:#F4EAE2}
+.site{background:var(--lm-porcelain);border-bottom:1px solid var(--hair);box-shadow:none}
+.site .langbtn{border:1px solid var(--hair);border-radius:2px;background:transparent;color:var(--ink)}
+.hib .n{background:var(--lm-ink);color:var(--lm-porcelain)}
+
+/* ---------- editorial hero: real products on the shop's own scene ---------- */
+.hero.ed{position:relative;isolation:isolate;overflow:hidden;background:#E9DECF;color:var(--ink);padding:0;text-align:start}
+.hero.ed::before,.hero.ed::after{display:none}
+.hero.ed .hmedia{position:absolute;inset:0;z-index:-1}
+.hero.ed .hmedia img{width:100%;height:100%;object-fit:cover;object-position:50% 100%}
+.hero.ed .hero-in{display:flex;flex-direction:column;justify-content:space-between;align-items:stretch;gap:0;min-height:min(600px,calc(100svh - 120px));padding-block:26px 22px!important;text-align:start}
+.hero.ed .hcopy{display:flex;flex-direction:column;align-items:flex-start;text-align:start}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:500 11px/1.3 var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--lm-ink-2)}
+html[lang=ar] .eyebrow{font-size:12.5px;letter-spacing:0;text-transform:none}
+.eyebrow::before{content:"";width:18px;height:1px;background:var(--lm-champagne)}
+.hero.ed .eyebrow{color:var(--ink)}
+.hero.ed .hh{margin:12px 0 0;font:400 35px/1.42 var(--f-display);color:var(--ink);text-wrap:balance;max-width:16ch}
+html[lang=en] .hero.ed .hh{font-weight:500;font-size:42px;line-height:1.04;letter-spacing:-.005em;max-width:13ch}
+.hero.ed .hh em{font-style:normal;color:var(--lm-taupe)}
+html[lang=en] .hero.ed .hh em{font-style:italic}
+/* the shop's own line (from the app) sits under the photo on phones, beside it on wide screens */
+.hero.ed .tag{display:none}
+.hero.ed .ctas{display:grid;grid-template-columns:1.25fr 1fr;gap:8px;width:100%;max-width:none;margin:0}
+.hero.ed .ctas a{display:flex;align-items:center;justify-content:center;min-height:52px;padding:0 12px;border-radius:2px;font:500 15px/1.2 var(--f-body);text-align:center;box-shadow:none}
+html[lang=en] .hero.ed .ctas a{font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.hero.ed .cta-main{background:var(--lm-ink);color:var(--lm-porcelain);border:1px solid var(--lm-ink)}
+.hero.ed .cta-ghost{background:rgba(253,250,246,.92);color:var(--lm-ink);border:1px solid rgba(43,33,30,.18)}
+.hero.ed .hsoc{position:absolute;top:22px;inset-inline-end:max(18px,env(safe-area-inset-right))}
+.hero.ed .wsbadge{align-self:flex-start;margin-bottom:12px}
+.hero-tag{margin:22px 0 0;font:400 14.5px/1.75 var(--f-body);color:var(--lm-ink-2);max-width:42ch}
+@media (min-width:900px){
+  .hero.ed{background:var(--page)}
+  .hero.ed .hmedia{inset:0 0 0 auto;width:52%}
+  html[dir=rtl] .hero.ed .hmedia{inset:0 auto 0 0}
+  .hero.ed .hmedia img{object-position:50% 92%}
+  .hero.ed .hero-in{min-height:640px;justify-content:center;gap:32px;padding-block:64px!important}
+  .hero.ed .hcopy,.hero.ed .ctas{width:44%}
+  .hero.ed .hh{font-size:52px;line-height:1.4}
+  html[lang=en] .hero.ed .hh{font-size:66px;line-height:1.02}
+  .hero.ed .tag{display:block;margin:22px 0 0;font:400 16px/1.75 var(--f-body);color:var(--lm-ink-2);max-width:40ch;text-align:start}
+  html[lang=en] .hero.ed .tag{font:400 16px/1.75 var(--f-body)}
+  .hero.ed .ctas{grid-template-columns:auto auto;justify-content:start;gap:12px}
+  .hero.ed .ctas a{min-width:210px;padding:0 24px}
+  .hero.ed .hsoc{position:static}
+}
+
+/* trust row, sections */
+.promise{background:transparent}
+.promise svg{color:var(--lm-taupe)}
+.sec-h,.show h2,.how h2,.related h2{font-family:var(--f-display);color:var(--ink)}
+.vall{color:var(--ink);border-bottom:1px solid currentColor}
+
+/* ---------- product cards: cream 4:5 tile, packshot multiplied onto it ---------- */
+.p .ph{aspect-ratio:4/5;background:var(--lm-cream);border:0;border-radius:2px;box-shadow:none}
+.p .ph img{mix-blend-mode:multiply}
+.p .brand{font:500 10px/1.2 var(--f-body);letter-spacing:.11em;text-transform:uppercase;color:var(--lm-ink-2)}
+.p .nm{font:400 14px/1.45 var(--f-body);color:var(--ink)}
+html[lang=ar] .p .nm{font-size:14.5px;line-height:1.55}
+.price{font-family:var(--f-num);font-weight:500;color:var(--ink)}
+.price.sale{color:var(--lm-rose)}
+.was{color:var(--lm-ink-2)}
+.disc{background:var(--lm-porcelain);color:var(--lm-rose);border-radius:2px;font:500 11px/1 var(--f-body);box-shadow:none}
+.p .add{background:var(--lm-porcelain);color:var(--ink);border-radius:2px;box-shadow:0 1px 0 rgba(43,33,30,.06);border:0}
+.p .step{background:var(--lm-ink);color:var(--lm-porcelain);border-radius:2px}
+.fav.on svg{fill:var(--lm-rose);stroke:var(--lm-rose)}
+.av{color:var(--ok)}
+.av.pre,.av.way{color:var(--pre)}
+
+/* category / brand tiles */
+.ctile,.btile{border-radius:2px}
+.btile{background:var(--lm-porcelain);border:1px solid var(--hair)}
+
+/* search + filter chips */
+.bar{background:var(--page)}
+.search{background:var(--lm-porcelain);border:1px solid var(--line);border-radius:2px}
+.filters button,.chip{border-radius:2px}
+.filters button.on,.filters .on{background:var(--lm-ink);border-color:var(--lm-ink);color:var(--lm-porcelain)}
+
+/* buttons everywhere */
+.cta,.wabtn,.special a{border-radius:2px}
+.cta{background:var(--lm-ink);color:var(--lm-porcelain)}
+.cta[disabled]{background:var(--lm-sand);color:var(--lm-ink-2)}
+.ghost{border-radius:2px}
+
+/* how-to, WhatsApp band, footer */
+.how .steps li::before{color:var(--lm-taupe)}
+.waband{background:var(--lm-cream)}
+footer{background:var(--lm-espresso-2);color:#F4EAE2}
+footer .fcol b{color:var(--lm-champagne)}
+footer .flogo{display:block;width:118px;height:auto;margin:0 0 6px;filter:brightness(0) invert(.86) sepia(.25)}
+footer .fbrand{flex-direction:column;align-items:flex-start;gap:8px}
+footer .fbrand>img:not(.flogo){display:none}
+
+/* ---------- basket ---------- */
+.sheet{background:var(--lm-porcelain);border-radius:18px 18px 0 0}
+.line .th{background:var(--lm-cream);border-radius:2px}
+.line .th img{mix-blend-mode:multiply}
+.line .lb{display:block;font:500 10px/1.2 var(--f-body);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--lm-ink-2);text-align:start;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+html[dir=rtl] .line .lb{text-align:right}
+.sumrows{margin-top:14px;padding:12px 16px 4px;background:var(--page);border-radius:2px 2px 0 0}
+.sumrows .r{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;font-size:13.5px;color:var(--lm-ink-2)}
+.sumrows .r.save span:last-child{color:var(--lm-rose);font-weight:500}
+.sumrows + .tot{margin-top:0;padding:12px 16px 14px;background:var(--page);border-top:1px solid var(--line);border-radius:0 0 2px 2px}
+.note{background:var(--lm-blush);border-radius:2px}
+.f{background:var(--lm-porcelain);border:1px solid var(--line);border-radius:2px}
+.f:focus{border-color:var(--lm-ink);box-shadow:0 0 0 3px rgba(146,79,67,.14)}
+
+/* ---------- product page ---------- */
+.pdp{background:var(--page)}
+.pdp .gal,.pdp .track{background:var(--lm-cream)}
+.pdp .track img{mix-blend-mode:multiply}
+.thumbs button{background:var(--lm-cream);border-radius:2px}
+.thumbs button.on{border-color:var(--lm-ink)}
+.badge{border-radius:2px;background:var(--lm-porcelain);border:1px solid var(--line)}
+.buybar{background:rgba(253,250,246,.97);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--hair)}
+.buybar .pp{display:flex;flex-direction:column;gap:2px;line-height:1.1}
+.buybar .pp .price{font-size:19px}
+.buybar .pp .was{margin:0;font-size:11.5px}
+
+/* ---------- bottom tab bar (phones) ---------- */
+.tabbar{display:none}
+@media (max-width:899px){
+  body .tabbar{position:fixed;inset-inline:0;bottom:0;z-index:40;display:grid;grid-template-columns:repeat(var(--tabs,5),1fr);
+    height:calc(var(--tab-h) + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);
+    background:rgba(253,250,246,.96);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--hair)}
+  .tabbar>a,.tabbar>button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;
+    background:none;border:0;padding:0;color:var(--lm-ink-2);font:400 11px/1.1 var(--f-body);text-decoration:none;cursor:pointer}
+  html[lang=en] .tabbar>a,html[lang=en] .tabbar>button{font-size:10.5px}
+  .tabbar>[hidden]{display:none}
+  .tabbar svg{width:23px;height:23px}
+  .tabbar .on{color:var(--ink);font-weight:500}
+  .tabbar .on::after{content:"";position:absolute;top:0;width:22px;height:2px;background:var(--lm-ink)}
+  .tabbar .ask{color:var(--ink)}
+  .tabbar .ask .orb{width:34px;height:34px;margin-top:-6px;border-radius:50%;display:grid;place-items:center;background:var(--lm-ink);color:var(--lm-blush-deep)}
+  .tabbar .ask .orb svg{width:18px;height:18px}
+  .tabbar .n{position:absolute;top:6px;inset-inline-end:calc(50% - 22px);min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:var(--lm-ink);color:var(--lm-porcelain);font:600 10px/17px var(--f-body);text-align:center}
+  .tabbar span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+  body.ovl .tabbar{display:none}
+  /* the order bar docks just above the tab bar; the chat lives in the tab bar */
+  body:not(.ovl) .cartbar{bottom:calc(var(--tab-h) + 10px + env(safe-area-inset-bottom))}
+  body:not(.ovl) #chatFab{display:none}
+  body footer{padding-bottom:calc(var(--tab-h) + 24px + env(safe-area-inset-bottom))}
+  body.hascart footer{padding-bottom:calc(var(--tab-h) + 84px + env(safe-area-inset-bottom))}
+  /* links row under the header is the tab bar's job now: one compact header */
+  body .mnav{display:none}
+}
+.hero.ed .hsoc{position:static;align-self:center;margin-top:12px}
+.hero.ed .hsoc:not([hidden]){display:flex}
+@media (max-width:899px){
+  html[lang=en] .hero.ed .hh{font-size:36px;line-height:1.06;max-width:17ch}
+  .hero.ed .hsoc a,.hero.ed .hsoc span{color:var(--ink)}
+}
+.line .qty{border:1px solid var(--line);border-radius:2px;background:var(--lm-porcelain);box-shadow:none;gap:0}
+.line .qty button{background:none;border:0;border-radius:0;box-shadow:none;width:34px;height:34px;color:var(--ink)}
+.qty{border-radius:2px}
+.qty button{border-radius:0}
+.hero.ed .hero-in{justify-content:flex-start}
+.hero.ed .hcopy{margin-bottom:auto;padding-bottom:24px}
+.hero.ed .hsoc{padding:4px 12px 4px 6px;border-radius:999px;background:rgba(253,250,246,.86)}
+@media (min-width:900px){ .hero.ed .hero-in{justify-content:center} .hero.ed .hcopy{margin-bottom:0;padding-bottom:0} .hero.ed .hsoc{align-self:flex-start;background:none;padding:0} }
+@media (max-width:899px){ html[lang=en] .hero.ed .hh{font-size:33px;max-width:none} }
+html[lang=en] .qty,html[lang=en] .p .step{flex-direction:row-reverse}
+/* featured strip cards match the product cards */
+.sl .ph2{aspect-ratio:4/5;background:var(--lm-cream);border-radius:2px;border:0;box-shadow:none}
+.sl .ph2 img{mix-blend-mode:multiply}
+.sl .n{font:400 14px/1.45 var(--f-body);color:var(--ink)}
+html[lang=ar] .sl .n{font-size:14.5px;line-height:1.55}
+/* offers block: dusty blush panel */
+.obox{background:var(--lm-blush);border:0;border-radius:2px;box-shadow:none}
+.obox h2{font-family:var(--f-display);color:var(--ink)}
+.okick{color:var(--lm-ink-2)}
+.obox .cta-main{background:var(--lm-ink);color:var(--lm-porcelain);border-radius:2px}
+.oimgs span{background:var(--lm-porcelain);border-radius:2px}
+.oimgs img{mix-blend-mode:multiply}
+.oimgs i{background:var(--lm-porcelain);color:var(--lm-rose)}
+@media (max-width:359px){ .tabbar>a,.tabbar>button,html[lang=en] .tabbar>a,html[lang=en] .tabbar>button{font-size:9.5px;letter-spacing:-.01em} }
+/* wholesale entry page: same ivory and espresso as the shop */
+.gate{background:var(--lm-ivory)}
+.gate .box{color:var(--ink)}
+.gate h1{font-family:var(--f-display);font-weight:400;color:var(--ink)}
+.gate p{color:var(--lm-ink-2);opacity:1}
+.gate input{border-radius:2px;border:1px solid var(--line);background:var(--lm-porcelain);color:var(--ink)}
+.gate input:focus{border-color:var(--lm-ink);box-shadow:0 0 0 3px rgba(146,79,67,.14);outline:0}
+.gate button{border-radius:2px;background:var(--lm-ink);color:var(--lm-porcelain);font-weight:500}
+.gate a{color:var(--ink)}
+.gate .err{color:var(--lm-rose)}
+.hero.ed .wsbadge{margin:0 0 12px;background:var(--lm-ink);color:var(--lm-porcelain);border:0;border-radius:2px}
+@media (max-width:899px){
+  .hero.ed .hero-in{min-height:clamp(530px,calc(100svh - 120px),600px)}
+  .hero.ed .ctas a{white-space:nowrap}
+  html[lang=en] .hero.ed .eyebrow{letter-spacing:.1em;font-size:10.5px}
+}
+@media (max-width:389px){
+  .hero.ed .ctas{grid-template-columns:1fr 1fr;gap:6px}
+  .hero.ed .ctas a{font-size:13.5px;padding:0 6px}
+  html[lang=en] .hero.ed .ctas a{font-size:10.5px;letter-spacing:.06em}
+  html[lang=ar] .hero.ed .hh{font-size:31px}
+  html[lang=en] .hero.ed .hh{font-size:29px}
+  html[lang=en] .hero.ed .eyebrow{letter-spacing:.06em;font-size:10px}
+}
+/* tablets: the same side-by-side hero as on computers */
+@media (min-width:700px) and (max-width:899px){
+  .hero.ed{background:var(--page)}
+  .hero.ed .hmedia{inset:0 0 0 auto;width:50%}
+  html[dir=rtl] .hero.ed .hmedia{inset:0 auto 0 0}
+  .hero.ed .hmedia img{object-position:50% 92%}
+  .hero.ed .hero-in{min-height:560px;justify-content:center;gap:28px;padding-block:48px!important}
+  .hero.ed .hcopy{margin-bottom:0;padding-bottom:0}
+  .hero.ed .hcopy,.hero.ed .ctas{width:46%}
+  .hero.ed .ctas{grid-template-columns:1fr}
+  .hero.ed .tag{display:block;margin:18px 0 0;font:400 15px/1.75 var(--f-body);color:var(--lm-ink-2);text-align:start}
+  .hero.ed .hsoc{align-self:flex-start;background:none;padding:0}
+}
+/* wholesale on small phones: the "Wholesale prices" label takes the eyebrow's place */
+@media (max-width:389px){ .hero.ed .wsbadge ~ .eyebrow{display:none} }
+/* phones: the "follow us" row has its own reserved place under the buttons, so nothing moves when it appears */
+@media (max-width:699px){
+  .hero.ed .hero-in{position:relative;padding-bottom:76px!important}
+  .hero.ed .hsoc{position:absolute;top:auto;bottom:18px;left:50%;transform:translateX(-50%);margin:0;white-space:nowrap}
+}
+/* the tab bar shows once it knows which tabs this shop has (no jumping icons) */
+body:not(.tabs) .tabbar{visibility:hidden}
+/* Arabic headings: Noto Naskh Arabic draws every hamza clearly (أ إ لأ), same as the post designs */
+html[lang=ar]{--f-display:"Noto Naskh Arabic","Amiri",serif}
+html[lang=ar] .hero.ed .hh{font-weight:500;line-height:1.5;font-size:31px}
+@media (max-width:389px){ html[lang=ar] .hero.ed .hh{font-size:27px} }
+@media (min-width:900px){ html[lang=ar] .hero.ed .hh{font-size:46px;line-height:1.45} }
+html[lang=ar] .hero.ed .hh{max-width:none}
 </style>
 </head>
 <body>
@@ -1134,10 +1384,14 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
   </div>
   <nav class="mnav" data-ta="navAria" aria-label="أقسام الموقع"><div class="wrap"><a href="#catsSec" data-a="goSec" data-k="catsSec" data-t="navCats">الأقسام</a><a href="#brandTiles" data-a="goSec" data-k="brandTiles" data-t="navBrands">العلامات التجارية</a><a href="#shop" data-a="av" data-k="sale" data-go="1" class="navSale" hidden data-t="navSale">العروض</a><a href="#shop" data-a="goSec" data-k="allH" data-t="navAll">جميع المنتجات</a></div></nav>
 </header>
-<section class="hero" id="top">
+<section class="hero ed" id="top">
+  <div class="hmedia" aria-hidden="true"><img src="hero-home.webp" alt="" width="1080" height="1341" fetchpriority="high"></div>
   <div class="wrap hero-in">
-    <div class="brandmk"><img class="logo" src="logo-care.webp" alt="LUMIA Care — Imported Gems" width="685" height="526" fetchpriority="high"><span class="care" aria-hidden="true"><i>C</i><i>A</i><i>R</i><i>E</i></span><img class="logo gems" src="logo-gems.webp" alt="" width="685" height="194"></div>
-    <p class="tag" id="tag">منتجات أصلية نستوردها خصيصاً من ألمانيا إلى مصر، لتصل إليك حتى باب منزلك</p>
+    <div class="hcopy">
+      <span class="eyebrow" data-t="heroEyebrow">مستوردة من ألمانيا · أصلية 100%</span>
+      <h1 class="hh" data-th="heroH">جواهر الجمال <em>الأوروبي</em>،<br>من ألمانيا إلى باب بيتك</h1>
+      <p class="tag" id="tag">منتجات أصلية نستوردها خصيصاً من ألمانيا إلى مصر، لتصل إليك حتى باب منزلك</p>
+    </div>
     <div class="ctas">
       <a class="cta-main" href="#shop" id="goShop" data-t="shopAll">تسوّق جميع المنتجات</a>
       <a class="cta-ghost" href="#brandTiles" data-a="goSec" data-k="brandTiles" data-t="shopByBrand">تسوّق حسب العلامة</a>
@@ -1218,13 +1472,14 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
 </section>
 
 <footer><div class="wrap fgrid">
-  <div class="fbrand"><img src="logo-mark.webp" alt="" width="40" height="40" loading="lazy"><div><span class="mk">LUMIA</span><small data-t="footNote">منتجات أصلية من ألمانيا إلى مصر</small></div></div>
+  <div class="fbrand"><img class="flogo" src="logo-care.webp" alt="LUMIA Care — Imported Gems" width="685" height="526" loading="lazy"><img src="logo-mark.webp" alt="" width="40" height="40" loading="lazy"><div><span class="mk">LUMIA</span><small data-t="footNote">منتجات أصلية من ألمانيا إلى مصر</small></div></div>
   <div class="fcol"><b data-t="fShop">تسوّق</b><a href="#catsSec" data-a="goSec" data-k="catsSec" data-t="navCats">الأقسام</a><a href="#brandTiles" data-a="goSec" data-k="brandTiles" data-t="navBrands">العلامات التجارية</a><a href="#shop" data-a="av" data-k="sale" data-go="1" class="navSale" hidden data-t="navSale">العروض</a><a href="#allH" data-a="goSec" data-k="allH" data-t="navAll">جميع المنتجات</a></div>
   <div class="fcol"><b data-t="fHelp">المساعدة</b><a href="#howSec" data-a="goSec" data-k="howSec" data-t="fHow">طريقة الطلب</a><a href="#dpH" data-a="goSec" data-k="dpH" data-t="fDeliv">التوصيل والدفع</a><button type="button" class="flink" data-a="special" data-t="fSpecial">طلب منتج خاص</button><a href="returns/" class="pol" data-t="fReturns">الاستبدال والاسترجاع</a><a href="delivery/" class="pol" data-t="fDelivPol">سياسة التوصيل والدفع</a><a href="terms/" class="pol" data-t="fTerms">الشروط والأحكام</a><a href="about/" class="pol" data-t="fAbout">من نحن</a></div>
   <div class="fcol"><b data-t="fContact">تواصل معنا</b><span><span data-t="waLabel">واتساب:</span> <span class="num" id="wa"></span></span><span class="soc" id="soc"></span><button type="button" class="flang" data-a="lang"><span data-t="langBtn">English</span></button></div>
   <div class="fbot"><span>© <span id="yr"></span> LUMIA Care</span><span id="upd"></span></div>
 </div></footer>
 
+<nav class="tabbar" id="tabbar" data-ta="tabAria" aria-label="التنقّل"><a href="#top" data-a="goTop" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20h-5v-6H9v6H4z"/></svg><span data-t="tabHome">الرئيسية</span></a><a href="#allH" data-a="goSec" data-k="allH"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg><span data-t="tabShop">تسوّق</span></a><button type="button" class="ask" id="tabAsk" data-a="chatOpen" hidden><span class="orb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l1.8 4.7 4.7 1.8-4.7 1.8L12 16.5l-1.8-4.7L5.5 10l4.7-1.8z"/><path d="M18.5 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span><span data-t="chatFab">اسألي LUMIA</span></button><button type="button" id="tabWish" data-a="tabWish" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span class="tl">المفضلة</span><span class="n" hidden></span></button><button type="button" id="tabAcc" data-a="acct" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-3.9 4.1-5.8 7.5-5.8s6.3 1.9 7.5 5.8"/></svg><span class="tl">حسابي</span></button></nav>
 <div id="list"></div>
 <div id="page"></div>
 <div id="cartbar"></div>
@@ -1319,6 +1574,7 @@ const I18N = {
     msgNew: s => `🛍️ طلب جديد — ${s}`, msgWs: s => `🛍️ طلب جملة — ${s}`, msgName: '👤 الاسم: ', msgPhone: '📱 رقم الهاتف: ', msgAddr: '📍 العنوان: ',
     msgNow: '✅ متوفر:', msgLater: '⏳ طلب مسبق:', msgTotal: (v, u) => `💰 الإجمالي: ${v} ج.م${u ? ' + منتجات يُحدَّد سعرها لاحقاً' : ''}`,
     msgPromo: (c, v) => `🎟️ كود الخصم: ${c} (− ${v} ج.م)`, msgAfter: v => `✨ الإجمالي بعد الخصم: ${v} ج.م`, msgNotes: '📝 ملاحظات: ', msgDeliv: '🚚 رسوم التوصيل: تُحدَّد بحسب المنطقة',
+    heroEyebrow: 'مستوردة من ألمانيا · أصلية 100%', heroH: 'جواهر الجمال <em>الأوروبي</em>،<br>من ألمانيا إلى باب بيتك', tabHome: 'الرئيسية', tabShop: 'تسوّق', tabAria: 'التنقّل', subtotalN: n => `المنتجات (${n})`, savingsRow: 'قيمة التوفير',
     chatFab: 'اسألي LUMIA', chatAria: 'المساعدة', chatTitle: 'مساعدة LUMIA', chatSub: 'مستشارة العناية والجمال · تجيب خلال ثوانٍ',
     chatNote: 'المساعدة تقدّم اقتراحات عامة وليست بديلاً عن استشارة الطبيب.', chatAttach: 'إرفاق صورة', chatPh: 'اكتبي سؤالك…', chatMsg: 'رسالتك', chatSend: 'إرسال',
     chatImgOk: 'صورة مرفقة — اكتبي سؤالك ثم أرسلي', chatImgErr: 'تعذّر قراءة الصورة',
@@ -1417,6 +1673,7 @@ const I18N = {
     msgNew: s => `🛍️ New order — ${s}`, msgWs: s => `🛍️ Wholesale order — ${s}`, msgName: '👤 Name: ', msgPhone: '📱 Phone: ', msgAddr: '📍 Address: ',
     msgNow: '✅ In stock:', msgLater: '⏳ Pre-order:', msgTotal: (v, u) => `💰 Total: ${v} EGP${u ? ' + products priced later' : ''}`,
     msgPromo: (c, v) => `🎟️ Discount code: ${c} (− ${v} EGP)`, msgAfter: v => `✨ Total after discount: ${v} EGP`, msgNotes: '📝 Notes: ', msgDeliv: '🚚 Delivery fee: depends on the area',
+    heroEyebrow: 'Imported from Germany · 100% original', heroH: 'European beauty <em>gems</em>,<br>from Germany to your door', tabHome: 'Home', tabShop: 'Shop', tabAria: 'Navigation', subtotalN: n => `Products (${n})`, savingsRow: 'You save',
     chatFab: 'Ask LUMIA', chatAria: 'Help', chatTitle: 'LUMIA assistant', chatSub: 'Beauty & care advisor · answers in seconds',
     chatNote: 'The assistant gives general suggestions and is not a substitute for a doctor’s advice.', chatAttach: 'Attach a photo', chatPh: 'Type your question…', chatMsg: 'Your message', chatSend: 'Send',
     chatImgOk: 'Photo attached — type your question, then send', chatImgErr: 'Could not read the photo',
@@ -1487,6 +1744,8 @@ function applyLang(){
   h.classList.add('lng');   // (the words above the fold stay invisible until they are in the right language: no jump)
   h.lang = LANG; h.dir = EN() ? 'ltr' : 'rtl';
   document.querySelectorAll('[data-t]').forEach(el => { el.textContent = T(el.dataset.t); });
+  document.querySelectorAll('[data-th]').forEach(el => { el.innerHTML = T(el.dataset.th); });
+  if (typeof tabSync === 'function') tabSync();
   document.querySelectorAll('[data-tp]').forEach(el => { el.placeholder = T(el.dataset.tp); });
   document.querySelectorAll('[data-ta]').forEach(el => { el.setAttribute('aria-label', T(el.dataset.ta)); });
   const md = document.querySelector('meta[name=description]'); if (md) md.content = T('metaDesc');
@@ -1606,7 +1865,7 @@ function gate(err){
       <h1>${T('wsBadge')}</h1><p>${T('gateP')}</p>
       <input id="gateIn" placeholder="${esc(T('gateCode'))}" autocapitalize="off" spellcheck="false" aria-label="${esc(T('gateCode'))}">
       <button type="submit" id="gateBtn">${T('gateGo')}</button><div class="err" id="gateErr"></div>
-      <p style="margin-top:14px;font-size:13px"><a href="../">${T('gateShop')}</a> · <a href="#" data-a="lang">${T('langBtn')}</a></p></form>`;
+      <p style="margin-top:14px;font-size:13px"><a href="#" data-a="lang">${T('langBtn')}</a></p></form>`;
     document.body.appendChild(g); document.body.style.overflow = 'hidden';
     $('gateForm').addEventListener('submit', async e => { e.preventDefault(); $('gateBtn').disabled = true; $('gateBtn').textContent = T('gateOpening'); await tryCode($('gateIn').value, false); if ($('gateBtn')) { $('gateBtn').disabled = false; $('gateBtn').textContent = T('gateGo'); } });
   }
@@ -1857,7 +2116,7 @@ function start(d){
   for (const p of d.products || []) if (p.was && p.saleUntil && p.saleUntil < todayIso) { p.price = p.was; delete p.was; }
   D = d; applyLang(); renderBanners(); brandStrip(); showStrip(); renderSections(); setTimeout(initChat, 400);
   document.documentElement.classList.remove('ld');
-  if (WS) { document.body.style.overflow = ''; $('tag').insertAdjacentHTML('beforebegin', `<span class="wsbadge" data-t="wsBadge">${T('wsBadge')}</span>`); }
+  if (WS) { document.body.style.overflow = ''; (document.querySelector('.hero .hcopy') || $('tag')).insertAdjacentHTML(document.querySelector('.hero .hcopy') ? 'afterbegin' : 'beforebegin', `<span class="wsbadge" data-t="wsBadge">${T('wsBadge')}</span>`); }
   fillStatic();
   const num = String(D.whatsapp || '').replace(/\D/g, '');
   if ($('yr')) $('yr').textContent = new Date().getFullYear();
@@ -1932,7 +2191,7 @@ function refreshCart(){
 }
 /* page scrolling is locked while any full-screen layer is open, and only then */
 function syncLock(){ const c = $('chat'), on = !!(U.page || U.list || U.sheet || (c && !c.hidden) || $('gate')); document.body.style.overflow = on ? 'hidden' : ''; bnrWhy('ovl', on);
-  document.body.classList.toggle('sheetopen', !!U.sheet); }   // the floating chat button steps aside while the bag or account panel is open
+  document.body.classList.toggle('sheetopen', !!U.sheet); document.body.classList.toggle('ovl', on); tabSync(); }   // the floating chat button steps aside while the bag or account panel is open
 function setTitle(){ document.title = U.page && byId(U.page) ? byId(U.page).name + ' · LUMIA' : U.list ? lName(U.list) + ' · LUMIA' : WS ? T('wsTitle') : T('title'); }
 /* a small "pop" on the basket so adding something is clearly seen */
 function bump(){ const b = document.querySelector('.cartbar button'); if (!b || matchMedia('(prefers-reduced-motion:reduce)').matches) return; b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); }
@@ -1955,8 +2214,10 @@ function renderFilters(){
 }
 /* one filter + sort for every product list. f = { q, cat, brand, av, sort } (empty = no limit) */
 function filterList(src, f){
-  const q = String(f.q || '').trim().toLowerCase();
-  let list = src.filter(p => (!f.cat || p.category === f.cat) && (!f.brand || bk(p.brand) === bk(f.brand)) && (!q || [p.name, p.nameAr, p.nameEn, ...(p.terms || []), p.brand, p.category, catName(p.category), (D.catEn || {})[p.category] || '', CAT_EN[p.category] || '', p.description, p.en && p.en.description].join(' ').toLowerCase().includes(q)));
+  /* search ignores hamza and ة/ه, ى/ي, so «المانيا» finds «ألمانيا» */
+  const fold = t => String(t || '').toLowerCase().replace(/[أإآٱ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي').replace(/[\u064B-\u0652\u0640]/g, '');
+  const q = fold(String(f.q || '').trim());
+  let list = src.filter(p => (!f.cat || p.category === f.cat) && (!f.brand || bk(p.brand) === bk(f.brand)) && (!q || fold([p.name, p.nameAr, p.nameEn, ...(p.terms || []), p.brand, p.category, catName(p.category), (D.catEn || {})[p.category] || '', CAT_EN[p.category] || '', p.description, p.en && p.en.description].join(' ')).includes(q)));
   if (f.av === 'now') list = list.filter(p => p.stock > 0);
   if (f.av === 'pre') list = list.filter(p => p.stock <= 0 && (p.preorder || p.incoming > 0));
   if (f.av === 'sale') list = list.filter(p => p.was);
@@ -2071,8 +2332,10 @@ function cartHtml(){
   return `<div class="grab"></div><div class="sh-top"><h2>${T('order')}</h2><button type="button" class="tbtn" data-a="emptyCart">${T('emptyCart')}</button>${X}</div>
     ${ids.map(id => { const p = byId(id), q = cart[id], s = split(p, q);
       const st = s.later === 0 ? T('lnIn') : s.now === 0 ? (WS && p.incoming > 0 ? T('way') : T('pre')) : WS ? T('lnMix', s.now, s.later) : T('lnPart');
-      return `<div class="line"><div class="th">${pic(p)}</div><div class="t"><b dir="auto">${esc(pName(p))}</b><span>${st}${p.price ? ' · ' + money(p.price * q) + ' ' + cur() : ''}</span></div>
+      return `<div class="line"><div class="th">${pic(p)}</div><div class="t">${p.brand ? `<i class="lb" dir="ltr">${esc(p.brand)}</i>` : ''}<b dir="auto">${esc(pName(p))}</b><span>${st}${p.price ? ' · ' + money(p.price * q) + ' ' + cur() : ''}</span></div>
         <div class="qty"><button data-a="inc" data-id="${id}" aria-label="${T('incA')}">+</button><b>${q}</b><button data-a="dec" data-id="${id}" aria-label="${T('decA')}">−</button></div></div>`; }).join('')}
+    ${(() => { const sv = ids.reduce((a, id) => { const p = byId(id); return a + (p && p.was && p.price ? (p.was - p.price) * cart[id] : 0); }, 0);
+      return sv > 0 ? `<div class="sumrows"><div class="r"><span>${T('subtotalN', t.count)}</span><span>${money(t.sum + sv)} ${cur()}</span></div><div class="r save"><span>${T('savingsRow')}</span><span dir="ltr">− ${money(sv)} ${cur()}</span></div></div>` : ''; })()}
     <div class="tot"><span>${T('total')}${t.unpriced ? ` <span class="small">${T('totalNote')}</span>` : ''}</span><span class="price">${money(t.sum)}<small>${cur()}</small></span></div>
     ${promoHtml()}
     ${later ? `<div class="note">${esc((EN() ? D.preorderNoteEn : D.preorderNote) || T('preNote'))}</div>` : ''}
@@ -2165,7 +2428,7 @@ function pageHtml(){
       </div>
       ${rel.list.length ? `<section class="related"><h2>${esc(rel.title)}</h2><div class="rel">${rel.list.map(card).join('')}</div></section>` : ''}
     </div>
-    <div class="buybar">${p.price ? `<span class="price">${money(p.price)}<small>${cur()}</small></span>` : ''}${a.can ? (q ? `<button class="cta" data-a="cart">${T('checkout')} (${t.count})</button>` : `<button class="cta" data-a="inc" data-id="${p.id}">${T('addToOrder')}</button>`) : `<button class="cta" disabled>${T('offStock')}</button>`}</div>
+    <div class="buybar">${p.price ? `<span class="pp">${priceHtml(p)}</span>` : ''}${a.can ? (q ? `<button class="cta" data-a="cart">${T('checkout')} (${t.count})</button>` : `<button class="cta" data-a="inc" data-id="${p.id}">${T('addToOrder')}</button>`) : `<button class="cta" disabled>${T('offStock')}</button>`}</div>
   </div>`;
 }
 let v3inst = null;
@@ -2436,7 +2699,19 @@ async function accChanged(u){
   } else ACC.profile = null;
   accHeader(); renderHearts(); accRender();
 }
+/* bottom tab bar (phones): Home · Shop · Ask LUMIA (when the assistant is on) · Wishlist + Account (when accounts are on) */
+function tabSync(){ try { tabSync0(); } catch (e) { console.warn("tabSync", e); } }
+function tabSync0(){
+  const tb = $('tabbar'); if (!tb || !D) return;
+  const acc = accOn(), chatOk = !WS && !!D.chatUrl;
+  $('tabAsk').hidden = !chatOk; $('tabWish').hidden = !acc; $('tabAcc').hidden = !acc;
+  tb.style.setProperty('--tabs', 2 + chatOk + 2 * acc);
+  tb.querySelector('#tabWish .tl').textContent = tA('wish'); tb.querySelector('#tabAcc .tl').textContent = tA('acc');
+  const n = tb.querySelector('#tabWish .n'), w = ACC.wish ? ACC.wish.size : 0; n.hidden = !w; n.textContent = w || '';
+  document.body.classList.toggle('tabs', true);
+}
 function accHeader(){
+  tabSync();
   const b = $('hdAcc'); if (!b) return;
   b.hidden = !accOn(); b.classList.toggle('in', !!ACC.user);
   b.setAttribute('aria-label', ACC.user ? tA('hello', ACC.user.displayName || ACC.user.email || '') : tA('accA'));
@@ -2580,6 +2855,7 @@ const A = {
   acct: () => { ACC.err = ''; openSheet({ type: 'acct' }); fb().then(accRender).catch(() => { ACC.err = accErr({}); accRender(); }); },
   accMode: () => { accKeep(); ACC.mode = ACC.mode === 'up' ? 'in' : 'up'; ACC.err = ''; renderSheet(); },
   accView: d => { ACC.view = d.k; ACC.err = ''; renderSheet(); },
+  tabWish: () => { ACC.view = 'wish'; A.acct(); },
   accGoogle: async () => {
     const { auth, A: FA } = await fb(); ACC.err = ''; ACC.busy = true; renderSheet();
     const prov = new FA.GoogleAuthProvider();
@@ -2643,7 +2919,7 @@ const A = {
     if (e) { e.preventDefault(); e.stopPropagation(); }
     const id = d.id, on = !ACC.wish.has(id);
     if (on) ACC.wish.add(id); else ACC.wish.delete(id);
-    store.set('lumia_wish', [...ACC.wish]); renderHearts();
+    store.set('lumia_wish', [...ACC.wish]); renderHearts(); tabSync();
     if (U.sheet && U.sheet.type === 'acct') renderSheet();
     if (ACC.user && ACC.fb) { const F = ACC.fb.F; try { await F.setDoc(meRef(), { wish: on ? F.arrayUnion(id) : F.arrayRemove(id), updatedAt: F.serverTimestamp() }, { merge: true }); } catch (x) { /* kept on this device */ } toast(on ? tA('wishAdded') : tA('wishRemoved')); }
     else if (on) toast(tA('wishLocal'), { label: tA('signIn'), fn: () => A.acct() }); else toast(tA('wishRemoved'));
