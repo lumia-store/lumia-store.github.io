@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url><loc>https://lumia-store.github.io/</loc><lastmod>2026-11-15</lastmod>
+  <url><loc>https://lumia-store.github.io/</loc><lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://lumia-store.github.io/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lumia-store.github.io/?lang=en"/>
   </url>
-  <url><loc>https://lumia-store.github.io/?lang=en</loc><lastmod>2026-11-15</lastmod>
+  <url><loc>https://lumia-store.github.io/?lang=en</loc><lastmod>2026-11-16</lastmod>
     <xhtml:link rel="alternate" hreflang="ar" href="https://lumia-store.github.io/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lumia-store.github.io/?lang=en"/>
   </url>
@@ -188,6 +188,13 @@
   <url><loc>https://lumia-store.github.io/p/balea-deospray-vanille-kokos-mwx7m/</loc><image:image><image:loc>https://lumia-store.github.io/images/balea-deospray-vanille-kokos-6bcce2.jpg</image:loc></image:image></url>
   <url><loc>https://lumia-store.github.io/p/balea-parfum-deodorant-golden-blush-4dral/</loc><image:image><image:loc>https://lumia-store.github.io/images/balea-parfum-deodorant-golden-blush-ba95dc.jpg</image:loc></image:image></url>
   <url><loc>https://lumia-store.github.io/p/balea-deospray-sweet-sunshine-evqen/</loc><image:image><image:loc>https://lumia-store.github.io/images/balea-deospray-sweet-sunshine-544616.jpg</image:loc></image:image></url>
+  <url><loc>https://lumia-store.github.io/p/essence-the-super-peptide-glossy-lip-treatment-05-holomazing-g5ezc/</loc><image:image><image:loc>https://lumia-store.github.io/images/essence-the-super-peptide-glossy-lip-tre-11b987.jpg</image:loc></image:image></url>
+  <url><loc>https://lumia-store.github.io/p/balea-haarparfum-pink-blossom-cjmyo/</loc><image:image><image:loc>https://lumia-store.github.io/images/balea-haarparfum-pink-blossom-c948aa.jpg</image:loc></image:image></url>
+  <url><loc>https://lumia-store.github.io/p/balea-brazilian-nights-haarparfum-zvddj/</loc><image:image><image:loc>https://lumia-store.github.io/images/balea-brazilian-nights-haarparfum-7e2149.jpg</image:loc></image:image></url>
+  <url><loc>https://lumia-store.github.io/p/balea-men-antitranspirant-deostick-extra-dry-lyjhv/</loc><image:image><image:loc>https://lumia-store.github.io/images/balea-men-antitranspirant-deostick-extra-1747dd.jpg</image:loc></image:image></url>
+  <url><loc>https://lumia-store.github.io/p/nyx-professional-makeup-matte-finish-makeup-setting-spray-lcl71/</loc><image:image><image:loc>https://lumia-store.github.io/images/nyx-professional-makeup-matte-finish-mak-976844.jpg</image:loc></image:image></url>
+  <url><loc>https://lumia-store.github.io/p/nyx-professional-makeup-buttermelt-blush-06-for-the-butta-1m1or/</loc><image:image><image:loc>https://lumia-store.github.io/images/nyx-professional-makeup-buttermelt-blush-b560ae.jpg</image:loc></image:image></url>
+  <url><loc>https://lumia-store.github.io/p/nyx-professional-makeup-buttermelt-blush-04-u-know-butta-l9aij/</loc><image:image><image:loc>https://lumia-store.github.io/images/nyx-professional-makeup-buttermelt-blush-126350.jpg</image:loc></image:image></url>
   <url><loc>https://lumia-store.github.io/c/body-care/</loc></url>
   <url><loc>https://lumia-store.github.io/c/hair-care/</loc></url>
   <url><loc>https://lumia-store.github.io/c/weight-management/</loc></url>
@@ -217,6 +224,8 @@
   <url><loc>https://lumia-store.github.io/b/eucerin/</loc></url>
   <url><loc>https://lumia-store.github.io/b/ebelin/</loc></url>
   <url><loc>https://lumia-store.github.io/b/balea-professional/</loc></url>
+  <url><loc>https://lumia-store.github.io/b/balea-men/</loc></url>
+  <url><loc>https://lumia-store.github.io/b/nyx-professional-makeup/</loc></url>
   <url><loc>https://lumia-store.github.io/returns/</loc></url>
   <url><loc>https://lumia-store.github.io/delivery/</loc></url>
   <url><loc>https://lumia-store.github.io/terms/</loc></url>
