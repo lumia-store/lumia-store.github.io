@@ -673,12 +673,86 @@
    "createdAt": "2026-11-14T14:52:28.020Z",
    "sharedAt": "2026-11-15T11:09:58.943Z",
    "changedAt": "2026-11-15T11:10:00.231Z"
+  },
+  {
+   "id": "2026-11-18-compare",
+   "date": "2026-11-18",
+   "postAt": "2026-11-18T18:30:00.000Z",
+   "type": "compare",
+   "title": "Which one suits you?",
+   "occasion": null,
+   "products": [
+    "2lkpln7xxf",
+    "soiey5etub"
+   ],
+   "snapshot": {
+    "2lkpln7xxf": {
+     "price": 500,
+     "was": 0,
+     "avail": "pre"
+    },
+    "soiey5etub": {
+     "price": 500,
+     "was": 0,
+     "avail": "pre"
+    }
+   },
+   "words": {
+    "chosen": [
+     "2lkpln7xxf",
+     "soiey5etub"
+    ],
+    "title": "سيروم النضارة أم الكولاجين؟",
+    "title_en": "Radiance or Collagen Retinol?",
+    "sub": "إشراقة يومية أم مظهر أكثر تماسكاً للبشرة",
+    "sub_en": "Everyday glow or a firmer-looking complexion",
+    "labels": {
+     "2lkpln7xxf": "إشراقة وترطيب يومي",
+     "soiey5etub": "مظهر أكثر تماسكاً"
+    },
+    "labels_en": {
+     "2lkpln7xxf": "Everyday radiance and hydration",
+     "soiey5etub": "A firmer-looking look"
+    },
+    "caption": "سيروم جلو بي يو للإشراقة اليومية.\nقوام خفيف يُمتص بسرعة، ويمنح البشرة تألقاً ونضارة.\nسيروم الكولاجين والريتينول يُعنى بمظهر أكثر تماسكاً.\nأيهما يناسب روتينكم؟",
+    "caption_en": "Glow Serum BE YOU for everyday radiance.\nA lightweight serum with a fast-absorbing feel that leaves skin looking luminous.\nCollagen Retinol Serum cares for a firmer-looking complexion.\nWhich one suits your routine?",
+    "hashtags": [
+     "#سيروم",
+     "#روتين_العناية",
+     "#ترطيب",
+     "#نضارة_البشرة",
+     "#منتجات_المانية",
+     "#Balea"
+    ],
+    "alt_en": "Two Balea serum bottles side by side on a soft neutral background, one for everyday radiance and one for a firmer-looking complexion"
+   },
+   "media": {
+    "images": [
+     "https://lumia-store.github.io/media/social/2026-11-18-compare-1.jpg"
+    ],
+    "story": "",
+    "video": "",
+    "cover": ""
+   },
+   "files": [
+    "2026-11-18-compare-1.jpg"
+   ],
+   "preview": {
+    "fb": "سيروم جلو بي يو للإشراقة اليومية.\nقوام خفيف يُمتص بسرعة، ويمنح البشرة تألقاً ونضارة.\nسيروم الكولاجين والريتينول يُعنى بمظهر أكثر تماسكاً.\nأيهما يناسب روتينكم؟\n\nGlow Serum BE YOU for everyday radiance.\nA lightweight serum with a fast-absorbing feel that leaves skin looking luminous.\nCollagen Retinol Serum cares for a firmer-looking complexion.\nWhich one suits your routine?\n\n• Balea · سيروم النضارة والإشراق جلو بي يو · Glow Serum BE YOU · 30 ml\n• Balea · سيروم الكولاجين والريتينول للبشرة · Collagen Retinol Face Serum · 30 ml\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 https://lumia-store.github.io/\n📲 https://wa.me/201061227556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#سيروم #روتين_العناية #ترطيب #نضارة_البشرة #منتجات_المانية",
+    "ig": "سيروم جلو بي يو للإشراقة اليومية.\nقوام خفيف يُمتص بسرعة، ويمنح البشرة تألقاً ونضارة.\nسيروم الكولاجين والريتينول يُعنى بمظهر أكثر تماسكاً.\nأيهما يناسب روتينكم؟\n\nGlow Serum BE YOU for everyday radiance.\nA lightweight serum with a fast-absorbing feel that leaves skin looking luminous.\nCollagen Retinol Serum cares for a firmer-looking complexion.\nWhich one suits your routine?\n\n• Balea · سيروم النضارة والإشراق جلو بي يو · Glow Serum BE YOU · 30 ml\n• Balea · سيروم الكولاجين والريتينول للبشرة · Collagen Retinol Face Serum · 30 ml\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 lumia-store.github.io (الرابط في البايو · link in bio)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#سيروم #روتين_العناية #ترطيب #نضارة_البشرة #منتجات_المانية #Balea #LUMIACare #منتجات_المانية_أصلية",
+    "igTail": "Glow Serum BE YOU for everyday radiance.\nA lightweight serum with a fast-absorbing feel that leaves skin looking luminous.\nCollagen Retinol Serum cares for a firmer-looking complexion.\nWhich one suits your routine?\n\n• Balea · سيروم النضارة والإشراق جلو بي يو · Glow Serum BE YOU · 30 ml\n• Balea · سيروم الكولاجين والريتينول للبشرة · Collagen Retinol Face Serum · 30 ml\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 lumia-store.github.io (الرابط في البايو · link in bio)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#سيروم #روتين_العناية #ترطيب #نضارة_البشرة #منتجات_المانية #Balea #LUMIACare #منتجات_المانية_أصلية"
+   },
+   "status": "waiting",
+   "cleanV": 6,
+   "ai": "Claude Haiku",
+   "aiNote": "",
+   "createdAt": "2026-11-16T09:33:18.627Z"
   }
  ],
  "robot": {
-  "lastPrepare": "2026-11-15T09:15:11.117Z",
-  "lastPrepareMade": 0,
-  "aiCostUsd": 0.0046,
+  "lastPrepare": "2026-11-16T09:33:18.680Z",
+  "lastPrepareMade": 1,
+  "aiCostUsd": 0.0068,
   "lastError": "",
   "lastPostCheck": "2026-11-15T22:01:58.437Z",
   "lastErrorAt": "2026-11-12T09:37:55.021Z",
