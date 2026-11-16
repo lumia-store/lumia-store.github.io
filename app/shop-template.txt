@@ -2055,7 +2055,7 @@ function collage(list, cls, name, eager, n = 4){
   return `<span class="${cls} col n${ps.length}" aria-hidden="true">${ps.length ? ps.map(p => `<img src="${esc(imgSrc(p.image))}" alt=""${eager ? '' : ' loading="lazy"'} decoding="async">`).join('') : `<span class="mono">${esc(String(name || '').trim().charAt(0))}</span>`}</span>`;
 }
 /* category photo uploaded in the app (Settings → catImg = {"العناية بالبشرة": "images/cat-….webp"}), or '' */
-const catPhoto = c => { const m = (D && D.catImg) || {}; return String(m[String(c || '').trim()] || ''); };
+const catPhoto = c => { const m = (D && D.catImg) || {}, k = String(c || '').trim(); return String(m[k] || (k === 'باقات التوفير' ? 'media/cats/bundles.webp' : '')); };   // saving bundles: built-in photo unless one is uploaded
 /* homepage sections built from the real catalogue: categories (with a real product photo each), offers, new arrivals, video */
 function renderSections(){
   if (!D || !D.products) return;
