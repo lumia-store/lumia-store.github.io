@@ -1469,6 +1469,27 @@ html[lang=en] .story h2 em{font-style:italic}
 @media (max-width:759px){.story .sphotos{min-height:0}.story .sphotos span{padding:12px 10px}}
 @media (max-width:479px){.setc{grid-template-columns:38% 1fr}.setc h3{font-size:17px}.setc .stx{padding:12px 12px 10px}.setc .sim{aspect-ratio:auto;min-height:100%}}
 @media (min-width:760px){.story .sphotos{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}.story .sphotos span:first-child{grid-row:span 2}.story .sphotos span{border-inline-start:1px solid var(--hair);border-top:1px solid var(--hair)}.story .sphotos span:first-child,.story .sphotos span:nth-child(2){border-top:0}.story .sphotos img{max-height:260px}}
+/* saving bundles: the bundle photo on top, then name, contents and price */
+.setg{grid-template-columns:1fr;gap:16px}
+@media (min-width:640px){.setg{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1100px){.setg{grid-template-columns:repeat(3,1fr)}}
+.setc{display:flex;flex-direction:column;background:var(--lm-porcelain);border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.setc .sim{position:relative;display:block;aspect-ratio:4/3;padding:0;background:radial-gradient(90% 75% at 50% 35%,#fbf3ee 0,#efddd4 70%,#e8d2c6 100%);overflow:hidden}
+.setc .sim .sph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:normal}
+.setc .srow{position:absolute;inset:10% 6% 13%;display:flex;align-items:flex-end;justify-content:center;gap:2%}
+.setc .srow img{flex:1 1 0;min-width:0;max-width:34%;width:auto;height:100%;object-fit:contain;object-position:50% 100%;mix-blend-mode:multiply;filter:none;background:none}
+.setc .srow.n2 img{max-width:42%}
+.setc .sim:not(.has)::after{content:"";position:absolute;inset:auto 8% 9%;height:9%;border-radius:50%;background:radial-gradient(closest-side,rgba(110,70,55,.18),rgba(110,70,55,0))}
+.setc .ssave{top:12px;inset-inline-start:12px;z-index:2;background:var(--lm-rose);color:#fff;border-radius:2px;padding:7px 10px;font:500 12px/1 var(--f-body);box-shadow:0 4px 12px -4px rgba(60,30,25,.35)}
+.setc .stx{padding:16px 16px 14px;gap:6px}
+.setc .scount{font:500 11px/1.3 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--lm-taupe)}
+html[lang=ar] .setc .scount{letter-spacing:0;font-size:12.5px;text-transform:none}
+.setc h3{font:400 22px/1.4 var(--f-display)}
+.setc p{-webkit-line-clamp:3}
+.setc,.setc .sim{grid-template-columns:none}
+@media (max-width:479px){.setc .sim{aspect-ratio:4/3;min-height:0}.setc h3{font-size:19px}}
+.setg>.setc:only-child{width:100%;max-width:560px;justify-self:center}
+@media (min-width:640px){.setg:has(>.setc:only-child){grid-template-columns:1fr}}
 </style>
 <meta name="robots" content="noindex, nofollow">
 <script>window.SHOP_MODE = "wholesale";</script>
@@ -1543,7 +1564,7 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
 
 <section class="story" id="storySec" data-ta="storyKick" aria-label="قصتنا" hidden></section>
 
-<section class="sets" id="setsSec" data-ta="setsH" aria-label="مجموعات بسعر أوفر" hidden></section>
+<section class="sets" id="setsSec" data-ta="setsH" aria-label="باقات التوفير" hidden></section>
 
 <section class="offers reveal" id="offers" hidden></section>
 
@@ -1633,7 +1654,7 @@ const I18N = {
     trust1: 'منتجات أصلية 100%', trust2: 'شحن مباشر من المانيا', trust3: 'التوصيل إلى جميع محافظات مصر', trust4: 'الدفع عند الاستلام أو InstaPay', trust5: 'نوفّر أي منتج بطلب خاص',
     brandsH: 'منتجات من dm وRossmann وأشهر العلامات الالمانية والاوروبية', brandsAria: 'العلامات التجارية',
     catsH: 'تسوّق حسب القسم', catsAria: 'الأقسام', catCount: n => `${n} منتج`,
-    showAria: 'منتجات مختارة', storyKick: 'قصتنا', storyH: 'نختار كل منتج بأنفسنا من *المانيا*', storyP: 'LUMIA متجر مصري صغير. نشتري منتجاتنا بأنفسنا من المتاجر الالمانية مثل dm وRossmann، ونشحنها إلى مصر، ثم نوصلها إلى جميع المحافظات. لم تجدي ما تبحثين عنه؟ اطلبيه ونحضره لكِ مع الشحنة القادمة.', storyBtn: 'اعرفي المزيد عنّا', setsH: 'مجموعات بسعر أوفر', setsSub: 'منتجات تُستخدم معاً، بسعر أقل من شرائها منفردة', setsCat: 'مجموعات', setIn: 'تضم: ', setSave: n => `توفير ${n}`, setOf: n => `${n} منتجات`, showTitle: 'اكتشفي منتجاتنا', showTitleSale: 'منتجات مختارة وعروض', newH: 'وصل حديثاً',
+    showAria: 'منتجات مختارة', storyKick: 'قصتنا', storyH: 'نختار كل منتج بأنفسنا من *المانيا*', storyP: 'LUMIA متجر مصري صغير. نشتري منتجاتنا بأنفسنا من المتاجر الالمانية مثل dm وRossmann، ونشحنها إلى مصر، ثم نوصلها إلى جميع المحافظات. لم تجدي ما تبحثين عنه؟ اطلبيه ونحضره لكِ مع الشحنة القادمة.', storyBtn: 'اعرفي المزيد عنّا', setsH: 'باقات التوفير', setsSub: 'منتجات تُستخدم معاً، بسعر أقل من شرائها منفردة', setsCat: 'مجموعات', setIn: 'تضم: ', setSave: n => `توفير ${n}`, setOf: n => `باقة من ${n} منتجات`, showTitle: 'اكتشفي منتجاتنا', showTitleSale: 'منتجات مختارة وعروض', newH: 'وصل حديثاً',
     prev: 'السابق', next: 'التالي',
     offersH: 'عروض حالية', offersP: (n, m) => `${n === 1 ? 'منتج واحد' : n === 2 ? 'منتجان' : n + ' منتجات'} بخصم يصل إلى ${m}%`, offersBtn: 'تسوّق العروض',
     searchPh: 'ابحث عن منتج أو علامة تجارية', searchAria: 'البحث', loading: 'جارٍ التحميل…',
@@ -1732,7 +1753,7 @@ const I18N = {
     trust1: '100% original products', trust2: 'Shipped directly from Germany', trust3: 'Delivery all over Egypt', trust4: 'Cash on delivery or InstaPay', trust5: 'Any product on special request',
     brandsH: 'Products from dm, Rossmann and well-known German and European brands', brandsAria: 'Brands',
     catsH: 'Shop by category', catsAria: 'Categories', catCount: n => `${n} product${n === 1 ? '' : 's'}`,
-    showAria: 'Featured products', storyKick: 'Our story', storyH: 'We pick every product ourselves in *Germany*', storyP: 'LUMIA is a small Egyptian shop. We buy our products ourselves from German stores such as dm and Rossmann, ship them to Egypt and deliver to every governorate. Can’t find what you want? Ask, and we’ll bring it with the next shipment.', storyBtn: 'More about us', setsH: 'Sets that save', setsSub: 'Products made to be used together, for less than buying them one by one', setsCat: 'Sets', setIn: 'Includes: ', setSave: n => `Save ${n}`, setOf: n => `${n} products`, showTitle: 'Discover our products', showTitleSale: 'Featured products & offers', newH: 'New arrivals',
+    showAria: 'Featured products', storyKick: 'Our story', storyH: 'We pick every product ourselves in *Germany*', storyP: 'LUMIA is a small Egyptian shop. We buy our products ourselves from German stores such as dm and Rossmann, ship them to Egypt and deliver to every governorate. Can’t find what you want? Ask, and we’ll bring it with the next shipment.', storyBtn: 'More about us', setsH: 'Saving bundles', setsSub: 'Products made to be used together, for less than buying them one by one', setsCat: 'Sets', setIn: 'Includes: ', setSave: n => `Save ${n}`, setOf: n => `Bundle of ${n} products`, showTitle: 'Discover our products', showTitleSale: 'Featured products & offers', newH: 'New arrivals',
     prev: 'Previous', next: 'Next',
     offersH: 'Current offers', offersP: (n, m) => `${n} product${n === 1 ? '' : 's'} up to ${m}% off`, offersBtn: 'Shop offers',
     searchPh: 'Search for a product or brand', searchAria: 'Search', loading: 'Loading…',
@@ -2246,23 +2267,25 @@ function addSets(d){
     const stock = Math.min(...its.map(x => Math.floor((x.p.stock || 0) / x.q))), all = Math.min(...its.map(x => Math.floor(((x.p.stock || 0) + (x.p.incoming || 0)) / x.q)));
     const brands = [...new Set(its.map(x => String(x.p.brand || '').trim()))];
     ps.push({ id: 'set-' + s.id, isSet: true, setItems: its.map(x => ({ id: x.p.id, q: x.q })),
-      name: s.name, nameAr: s.name, nameEn: s.nameEn || s.name, brand: brands.length === 1 ? brands[0] : '', category: 'مجموعات',
+      name: s.name, nameAr: s.name, nameEn: s.nameEn || s.name, brand: brands.length === 1 ? brands[0] : '', category: 'باقات التوفير',
       price: s.price, was: was > s.price ? was : undefined, stock: Math.max(0, stock), incoming: Math.max(0, all - Math.max(0, stock)),
       preorder: its.every(x => x.p.preorder || x.p.stock > 0 || x.p.incoming > 0) && its.some(x => x.p.preorder),
-      image: s.image || its[0].p.image, images: [s.image, ...its.map(x => x.p.image)].filter(Boolean),
+      setImg: s.image || '', image: s.image || its[0].p.image, images: [s.image, ...its.map(x => x.p.image)].filter(Boolean),
       description: its.map(x => '• ' + nm(x) + (x.p.nameAr || x.p.name)).join('\n'),
       en: { description: its.map(x => '• ' + nm(x) + (x.p.nameEn || x.p.name)).join('\n') },
       features: [], tags: [] });
   }
-  d.catEn = Object.assign({}, d.catEn, { 'مجموعات': 'Sets' });
+  d.catEn = Object.assign({}, d.catEn, { 'باقات التوفير': 'Saving bundles' });
 }
 function renderSets(){
   const el = $('setsSec'); if (!el || !D) return;
   const sets = D.products.filter(p => p.isSet && avail(p).can);
   el.hidden = !sets.length; if (!sets.length) { el.innerHTML = ''; return; }
   const item = s => { const its = s.setItems.map(x => ({ p: byId(x.id), q: x.q })).filter(x => x.p);
+    const ph = s.setImg ? `<img class="sph" src="${esc(imgSrc(s.setImg))}" alt="" loading="lazy" decoding="async">`
+      : `<span class="srow n${Math.min(its.length, 4)}">${its.slice(0, 4).map(x => `<img src="${esc(imgSrc(x.p.image))}" alt="" loading="lazy" decoding="async">`).join('')}</span>`;
     return `<article class="setc" data-id="${s.id}">
-      <a class="sim n${Math.min(its.length, 3)}" href="#p-${encodeURIComponent(s.id)}" data-a="view" data-id="${s.id}" aria-hidden="true" tabindex="-1">${its.slice(0, 3).map(x => `<img src="${esc(imgSrc(x.p.image))}" alt="" loading="lazy" decoding="async">`).join('')}${s.was ? `<i class="ssave">${T('setSave', money(s.was - s.price) + ' ' + cur())}</i>` : ''}</a>
+      <a class="sim${s.setImg ? ' has' : ''}" href="#p-${encodeURIComponent(s.id)}" data-a="view" data-id="${s.id}" aria-hidden="true" tabindex="-1">${ph}${s.was ? `<i class="ssave">${T('setSave', money(s.was - s.price) + ' ' + cur())}</i>` : ''}</a>
       <div class="stx"><span class="scount">${T('setOf', its.reduce((a, x) => a + x.q, 0))}</span>
         <h3 dir="auto"><a href="#p-${encodeURIComponent(s.id)}" data-a="view" data-id="${s.id}">${esc(pName(s))}</a></h3>
         <p dir="auto">${T('setIn')}${its.map(x => esc((x.q > 1 ? x.q + '× ' : '') + pName(x.p))).join(' + ')}</p>
