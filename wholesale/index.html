@@ -2788,7 +2788,7 @@ window.addEventListener('popstate', () => setTimeout(() => { if (D && location.h
 function orderMessage(){
   const now = [], later = [];
   // a set is written as its name, then each of its products on its own line with its code
-  const line = (p, n) => p.isSet ? [`▫️ ${n} × ${p.name} (${T('setsCat')})`, ...p.setItems.map(x => { const i = byId(x.id); return i ? `   ↳ ${n * x.q} × ${i.name}${i.size ? ' ' + i.size : ''} [${i.code}]` : ''; }).filter(Boolean)]
+  const line = (p, n) => p.isSet ? [`▫️ ${n} × ${p.name} [set:${p.id.slice(4)}]`, ...p.setItems.map(x => { const i = byId(x.id); return i ? `   ↳ ${n * x.q} × ${i.name}${i.size ? ' ' + i.size : ''} [${i.code}]` : ''; }).filter(Boolean)]
     : [`▫️ ${n} × ${p.name}${p.size ? ' ' + p.size : ''} [${p.code}]`];
   for (const [id, q] of Object.entries(cart)) { const p = byId(id); if (!p) continue; const s = split(p, q);
     if (s.now) now.push(...line(p, s.now));
@@ -2990,6 +2990,11 @@ const newOrderNo = () => { const d = new Date(), p = n => String(n).padStart(2, 
 /* after "Send on WhatsApp": keep the order in the account, save the details, ask for the email confirmation */
 async function accAfterSend(no){
   const items = Object.entries(cart).map(([id, q]) => { const p = byId(id); return { id, qty: q, name: p ? p.name : id, price: p ? +p.price || 0 : 0 }; });
+  // the order script knows only real products: a set goes as its products, and the set itself as a mark in the notes
+  const mailItems = [], setMarks = [];
+  for (const i of items) { const p = byId(i.id);
+    if (p && p.isSet) { setMarks.push(`[set:${p.id.slice(4)}×${i.qty}]`); p.setItems.forEach(x => { const m = mailItems.find(y => y.id === x.id); if (m) m.qty += x.q * i.qty; else mailItems.push({ id: x.id, qty: x.q * i.qty }); }); }
+    else { const m = mailItems.find(y => y.id === i.id); if (m) m.qty += i.qty; else mailItems.push({ id: i.id, qty: i.qty, name: i.name }); } }
   const t = totals(), pr = promoNow(), total = Math.max(0, t.sum - ((pr && pr.off) || 0));
   const mail = ACC.user ? ACC.user.email : String(form.email || '').trim();
   if (D.mailUrl) {   // every order goes to the shop's own Google script: it alerts the shop and emails the customer (if an email was given)
@@ -3000,7 +3005,7 @@ async function accAfterSend(no){
       // a simple request (no custom headers), so the browser sends it straight to the Google script; keepalive: it still goes if WhatsApp takes over the screen
       await fetch(D.mailUrl, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify({ v: 2, wholesale: WS ? 1 : 0, idToken, email: idToken || !okMail ? '' : mail, lang: EN() ? 'en' : 'ar', no, name: form.name.trim().slice(0, 60), phone: form.phone.trim().slice(0, 30),
-          addr: form.addr.trim().slice(0, 300), notes: String(form.notes || '').trim().slice(0, 300), items: items.map(i => ({ id: i.id, qty: i.qty, name: WS ? String(i.name).slice(0, 80) : undefined })), promo: (pr && pr.code) || '' }) });
+          addr: form.addr.trim().slice(0, 300), notes: [...setMarks, String(form.notes || '').trim()].filter(Boolean).join(' ').slice(0, 300), items: mailItems.map(i => ({ id: i.id, qty: i.qty, name: WS ? String(i.name || '').slice(0, 80) : undefined })), promo: (pr && pr.code) || '' }) });
       if (okMail) U.mailed = true;
     } catch (e) { /* no email this time */ }
   }
