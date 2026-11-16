@@ -1403,6 +1403,12 @@ html[dir=rtl] .hero.ed .hsoc{padding:5px 14px 5px 6px}
 .hero.ed .hsoc .sbtn:hover{transform:translateY(-1px)}
 .hero.ed .hsoc{gap:9px}
 .hero.ed .hsoc{width:max-content;max-width:calc(100vw - 24px)}
+/* all brands are shown: three per row on phones, six on computers */
+.btiles{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (min-width:800px){.btiles{grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}}
+@media (max-width:799px){ .btile .blg{padding:14%;font-size:clamp(13px,3.6vw,18px)} .btile .blg .bmk.lg{max-height:52px} .btile small{font-size:11px} }
+.btile .blg.long{font-size:clamp(9.5px,2.55vw,13px)!important;letter-spacing:-.02em;padding-inline:6%}
+@media (min-width:800px){ .btile .blg.long{font-size:clamp(11px,1vw,14px)!important} }
 </style>
 </head>
 <body>
@@ -1973,9 +1979,10 @@ function renderSections(){
     const ph = catPhoto(c), tints = ['#ecdcd8', '#e6ddce', '#dee2dd', '#e8dcd2', '#e3dbe0'];
     return `<a class="ctile${ph ? '' : ' np'}" href="#c-${encodeURIComponent(c)}" data-a="catPage" data-k="${esc(c)}"${ph ? '' : ` style="--c:${tints[c.length % tints.length]}"`}>${ph ? `<span class="cim"><img src="${esc(asset(ph))}" alt="" loading="lazy" decoding="async"></span>` : ''}<span class="ctx"><b dir="auto">${esc(catName(c))}</b><small>${T('catCount', list.length)}</small></span></a>`; });
   $('catsSec').hidden = tiles.length < 2; $('ctiles').innerHTML = tiles.join('');
-  // brands: one tile per brand that has products (most products first), a few of its own photos + its logo
+  // brands: one tile per brand that has products (most products first), with its logo
   const brs = new Map(); ps.forEach(p => { const k = bk(p.brand); if (!k) return; const g = brs.get(k) || { list: [], names: {} }; g.list.push(p); const nm = String(p.brand).trim(); g.names[nm] = (g.names[nm] || 0) + 1; brs.set(k, g); });
-  const bt = [...brs.values()].sort((a, b) => b.list.length - a.list.length).slice(0, 8).map(g => {
+  // every brand that has products gets a tile (a new brand appears by itself), most products first
+  const bt = [...brs.values()].sort((a, b) => b.list.length - a.list.length).map(g => {
     const name = Object.entries(g.names).sort((a, b) => b[1] - a[1])[0][0];
     return `<a class="btile" href="#b-${encodeURIComponent(name)}" data-a="brandPage" data-k="${esc(name)}"><span class="blg${!brandLogo(name) && name.split(/\s+/).some(w => w.length > 9) ? ' long' : ''}" dir="ltr">${brandMark(name, 'lg')}</span><small>${T('catCount', g.list.length)}</small></a>`; });
   if ($('brandTiles')) { $('brandTiles').hidden = bt.length < 2; $('btiles').innerHTML = bt.join(''); }
