@@ -12,13 +12,13 @@
 <meta property="og:image" content="https://lumia-store.github.io/icon-512.png">
 <meta property="og:locale" content="ar_EG">
 <meta property="og:locale:alternate" content="en_US">
-<link rel="alternate" hreflang="ar" href="https://lumia-store.github.io/">
-<link rel="alternate" hreflang="en" href="https://lumia-store.github.io/?lang=en">
+<link rel="alternate" hreflang="ar" href="https://lumia-store.github.io/?lang=ar">
+<link rel="alternate" hreflang="en" href="https://lumia-store.github.io/">
 <link rel="alternate" hreflang="x-default" href="https://lumia-store.github.io/">
 <meta name="robots" content="index">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"OnlineStore","name":"LUMIA Care","alternateName":"LUMIA – Imported Gems","url":"https://lumia-store.github.io/","logo":"https://lumia-store.github.io/icon-512.png","description":"Original German and European beauty, care and wellness products imported to Egypt. Orders on WhatsApp.","areaServed":{"@type":"Country","name":"Egypt"},"currenciesAccepted":"EGP","paymentAccepted":"Cash on delivery, InstaPay, e-wallets"}</script>
 <script>/* language before the page draws, so Arabic/English and right/left are right from the start */
-(function(){var l='ar';try{var q=new URLSearchParams(location.search).get('lang');var s=JSON.parse(localStorage.getItem('lumia_lang'));l=q==='en'||q==='ar'?q:(s==='en'?'en':'ar');}catch(e){}if(l==='en'){document.documentElement.lang='en';document.documentElement.dir='ltr';}})();</script>
+(function(){var d=(window.SHOP_MODE==='wholesale'||/\/wholesale\//.test(location.pathname))?'ar':'en',l=d;try{var q=new URLSearchParams(location.search).get('lang');var s=JSON.parse(localStorage.getItem('lumia_lang'));l=q==='en'||q==='ar'?q:(s==='en'||s==='ar'?s:d);}catch(e){}if(l==='en'){document.documentElement.lang='en';document.documentElement.dir='ltr';}})();</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -1541,6 +1541,28 @@ html[lang=ar] .wl-by small{letter-spacing:0;font-size:12.5px}
 .wl-by .mnv{display:inline-flex;align-items:center;gap:10px}
 .wl-by .mnv img{height:22px;width:auto;display:block}
 a.wl-by[href]:hover .mnv{color:var(--lm-rose,#924f43)}
+.wl-ct{display:flex;flex-direction:column;align-items:center;gap:12px}
+/* phones: the whole welcome page fits one screen, no scrolling (sizes follow the screen height) */
+@media (max-width:760px){
+  .welcome{overflow:hidden}
+  .wl-top{position:absolute;top:env(safe-area-inset-top);inset-inline-end:0;z-index:1;padding:12px 14px 0}
+  .wl-in{height:100vh;height:100dvh;min-height:0;padding:max(3.2dvh,14px) 22px max(1.6dvh,10px);box-sizing:border-box}
+  .wl-medal{width:min(44vw,19dvh);margin-top:max(3.5dvh,26px);box-shadow:0 0 0 min(6px,0.9dvh) var(--lm-ivory,#f7f2eb),0 0 0 calc(min(6px,0.9dvh) + 1px) #e4cfc1,0 14px 30px -22px rgba(110,70,55,.55)}
+  .wl-name{margin-top:2.2dvh;font-size:min(12vw,6.2dvh);gap:min(10px,1.2dvh)}
+  .wl-name small{font-size:min(12px,1.6dvh)}
+  .wl-div{margin:1.8dvh 0 1.4dvh}
+  .wl-tag{font-size:min(5.8vw,3dvh);line-height:1.4}
+  html[lang=ar] .wl-tag{font-size:min(5.6vw,2.9dvh);line-height:1.6}
+  .wl-p{margin-top:1.2dvh;font-size:min(14.5px,2dvh);line-height:1.7}
+  .wl-btn{margin-top:2.4dvh;min-height:min(52px,6.6dvh)}
+  .wl-foot{padding-top:1.6dvh;gap:min(10px,1.2dvh);min-height:0}
+  .wl-soc{min-height:0;margin-bottom:min(8px,1dvh);gap:12px}
+  .wl-soc a{width:min(46px,5.8dvh);height:min(46px,5.8dvh)}
+  .wl-ct{gap:min(8px,1dvh)}
+  .wl-in>*,.wl-foot>*{flex-shrink:0}
+  .wl-by{margin-top:1.4dvh;padding:1.2dvh 10px 0;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:8px;min-width:0}
+  .wl-by .mnv{font-size:13px}.wl-by .mnv img{height:18px}
+}
 </style>
 </head>
 <body>
@@ -1561,7 +1583,7 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
     <button class="wl-btn" type="button" data-a="enterStore"><span data-t="wlBtn">ادخل المتجر</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     <div class="wl-foot">
       <b class="wl-k" data-t="wlFollow">تابع LUMIA</b><div class="wl-soc" id="wlSoc"></div>
-      <b class="wl-k" data-t="wlContact">تواصل معنا</b><a class="wl-wa" id="wlWa" href="#" target="_blank" rel="noopener" dir="ltr"></a>
+      <div class="wl-ct" id="wlCt"><b class="wl-k" data-t="wlContact">تواصل معنا</b><a class="wl-wa" id="wlWa" href="#" target="_blank" rel="noopener" dir="ltr"></a></div>
     </div>
     <a class="wl-by" id="wlBy" target="_blank" rel="noopener" data-ta="wlByAria" aria-label="Minova"><small data-t="wlBy">تصميم وتطوير الموقع والأنظمة</small><span class="mnv" dir="ltr"><img src="minova-mark.webp" alt="" width="220" height="91" loading="lazy">MINOVA</span></a>
   </div>
@@ -1692,8 +1714,21 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
 <div id="sheet"></div>
 
 <script>
+/* phones: keep the welcome page on one screen — first leave out the phone number (the WhatsApp icon is there), then show
+   only as many whole sentences of the story as fit */
+function fitWelcome(){
+  const w = $('welcome'), p = w && w.querySelector('.wl-p'); if (!w || w.hidden || !p) return;
+  const ct = $('wlCt'), over = () => w.scrollHeight > w.clientHeight + 1;
+  if (ct) ct.hidden = false; p.textContent = T('storyP');
+  if (!matchMedia('(max-width:760px)').matches || !over()) return;
+  if (ct && $('wlSoc') && $('wlSoc').children.length) { ct.hidden = true; if (!over()) return; }
+  const parts = String(T('storyP')).split(/(?<=[.!?؟])\s+/);
+  while (parts.length > 1 && over()) { parts.pop(); p.textContent = parts.join(' '); }
+}
+addEventListener('resize', () => fitWelcome());
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => fitWelcome());
 /* Minova — the studio that built this website (credit on the welcome page) */
-const MINOVA_WA = '';
+const MINOVA_WA = '201021742187';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money = v => Math.round(v).toLocaleString('en-US');
 const $ = id => document.getElementById(id);
@@ -1913,7 +1948,9 @@ const I18N = {
     fShop: 'Shop', fHelp: 'Help', fContact: 'Contact', fHow: 'How to order', fDeliv: 'Delivery & payment', fSpecial: 'Special order', fReturns: 'Returns & refunds', fDelivPol: 'Delivery & payment policy', fTerms: 'Terms & conditions', fAbout: 'About us'
   }
 };
-let LANG = (() => { let q = ''; try { q = new URLSearchParams(location.search).get('lang') || ''; } catch (e) {} if (q === 'en' || q === 'ar') return q; try { const s = JSON.parse(localStorage.getItem('lumia_lang')); if (s === 'en' || s === 'ar') return s; } catch (e) {} return 'ar'; })();
+/* first visit with no language chosen: English on the shop, Arabic on the wholesale page */
+const LANG_DEF = (window.SHOP_MODE === 'wholesale' || /\/wholesale\//.test(location.pathname)) ? 'ar' : 'en';
+let LANG = (() => { let q = ''; try { q = new URLSearchParams(location.search).get('lang') || ''; } catch (e) {} if (q === 'en' || q === 'ar') return q; try { const s = JSON.parse(localStorage.getItem('lumia_lang')); if (s === 'en' || s === 'ar') return s; } catch (e) {} return LANG_DEF; })();
 const EN = () => LANG === 'en';
 /* the owner's own wording (LUMIA app → Website texts) replaces the standard text, per language; empty = standard text */
 const TX_RICH = { heroH: 1, storyH: 1 };
@@ -1975,7 +2012,7 @@ function setLang(l){
   if (l === LANG) return;
   LANG = l; try { localStorage.setItem('lumia_lang', JSON.stringify(l)); } catch (e) {}
   // keep the language in the link, so a shared link opens in the same language
-  try { const u = new URL(location.href); if (EN()) u.searchParams.set('lang', 'en'); else u.searchParams.delete('lang'); history.replaceState(history.state, '', u.pathname + u.search + u.hash); } catch (e) {}
+  try { const u = new URL(location.href); if (LANG !== LANG_DEF) u.searchParams.set('lang', LANG); else u.searchParams.delete('lang'); history.replaceState(history.state, '', u.pathname + u.search + u.hash); } catch (e) {}
   applyLang();
   if (D) { if (!WS && !D.intro && !D.introEn) $('tag').textContent = T('tag'); fillStatic(); renderBanners(); brandStrip(); showStrip(); renderSections(); renderFilters(); renderGrid(); renderCart(); if (U.list) renderList(true); renderPage(); if (U.sheet) renderSheet(); relangChat(); }
   else if (WS && $('gate')) { $('gate').remove(); gate(''); }
@@ -2390,6 +2427,7 @@ function start(d){
   if ($('yr')) $('yr').textContent = new Date().getFullYear();
   $('wa').textContent = num ? '+' + num.replace(/^(\d{2})(\d{2})(\d{4})(\d+)$/, '$1 $2 $3 $4') : '';
   if ($('wlBy')) { const mw = String(MINOVA_WA || '').replace(/\D/g, ''); if (mw) $('wlBy').href = 'https://wa.me/' + mw + '?text=' + encodeURIComponent(EN() ? 'Hello Minova, I saw the LUMIA website and I want a website like it' : 'مرحباً Minova، رأيت موقع LUMIA وأرغب في موقع مثله'); else $('wlBy').removeAttribute('href'); }
+  setTimeout(fitWelcome, 0);
   if ($('wlSoc')) { $('wlSoc').innerHTML = socialLinks().map(l => `<a href="${esc(l.href)}" target="_blank" rel="noopener" aria-label="${esc(l.label)}">${l.icon}</a>`).join(''); $('wlWa').textContent = $('wa').textContent; $('wlWa').href = num ? 'https://wa.me/' + num : '#'; $('wlWa').hidden = !num; }
   Object.keys(cart).forEach(id => { if (!byId(id) || !avail(byId(id)).can) delete cart[id]; });
   store.set(CART_KEY, cart);
