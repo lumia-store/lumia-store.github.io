@@ -3347,7 +3347,7 @@ $('goShop').addEventListener('click', e => { e.preventDefault(); $('allH').scrol
   const run = () => { tick = false; const y = scrollY, d = y - last; last = y;
     if (!mq.matches || y < start() || document.activeElement === $('q')) { acc = 0; b.classList.remove('roomy', 'peek'); return; }
     acc = (d > 0) === (acc > 0) ? acc + d : d;
-    if (acc > 24) b.classList.add('roomy'); else if (acc < -14 && b.classList.contains('roomy')) { b.classList.remove('roomy'); b.classList.add('peek'); } };
+    if (acc > 24) { b.classList.remove('peek'); b.classList.add('roomy'); } else if (acc < -14 && b.classList.contains('roomy')) { b.classList.remove('roomy'); b.classList.add('peek'); } };
   addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(run); } }, { passive: true });
   mq.addEventListener && mq.addEventListener('change', () => b.classList.remove('roomy', 'peek')); })();
 
