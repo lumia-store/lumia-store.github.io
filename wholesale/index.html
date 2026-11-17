@@ -1490,6 +1490,17 @@ html[lang=ar] .setc .scount{letter-spacing:0;font-size:12.5px;text-transform:non
 @media (max-width:479px){.setc .sim{aspect-ratio:4/3;min-height:0}.setc h3{font-size:19px}}
 .setg>.setc:only-child{width:100%;max-width:560px;justify-self:center}
 @media (min-width:640px){.setg:has(>.setc:only-child){grid-template-columns:1fr}}
+/* phones: while scrolling down through products, the header, search/filter bar and order bar slide away; scrolling up brings them back */
+@media (max-width:760px){
+  .site,.bar,.cartbar{transition:transform .28s cubic-bezier(.2,.7,.2,1),opacity .2s ease}
+  body.roomy:not(.ovl) .site{transform:translateY(-100%)}
+  body.roomy:not(.ovl) .bar{transform:translateY(calc(-100% - var(--hh)))}
+  body.roomy:not(.ovl) .cartbar{transform:translateY(24px);opacity:0}
+  body.roomy:not(.ovl) .cartbar button{pointer-events:none}
+  body.peek:not(.ovl) .site{transform:translateY(-100%)}
+  body.peek:not(.ovl) .bar{transform:translateY(calc(-1 * var(--hh)))}
+}
+@media (max-width:760px) and (prefers-reduced-motion:reduce){.site,.bar,.cartbar{transition:none}}
 </style>
 <meta name="robots" content="noindex, nofollow">
 <script>window.SHOP_MODE = "wholesale";</script>
@@ -2419,7 +2430,7 @@ function flyTo(fx){
     an.onfinish = an.oncancel = () => { ghost.remove(); const n = vis(bar) ? bar : $('hdN'); [n, to].forEach(x => { if (!x) return; x.classList.remove('pop'); void x.offsetWidth; x.classList.add('pop'); }); };
   });
 }
-function bump(){ const b = document.querySelector('.cartbar button'); if (!b || matchMedia('(prefers-reduced-motion:reduce)').matches) return; b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); }
+function bump(){ if (document.body.classList.contains('roomy')) document.body.classList.replace('roomy', 'peek'); const b = document.querySelector('.cartbar button'); if (!b || matchMedia('(prefers-reduced-motion:reduce)').matches) return; b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); }
 
 /* ---------- filters + grid ---------- */
 const fi = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
@@ -3331,6 +3342,16 @@ $('goShop').addEventListener('click', e => { e.preventDefault(); $('allH').scrol
 (function(){ const h = $('siteHd'); if (!h) return; const set = () => document.documentElement.style.setProperty('--hh', h.offsetHeight + 'px'); set();
   if ('ResizeObserver' in window) new ResizeObserver(set).observe(h); else addEventListener('resize', set);
   new IntersectionObserver(([en]) => h.classList.toggle('up', !en.isIntersecting), { threshold: 0 }).observe($('ann')); })();
+
+/* phones: give the products the screen while scrolling down (see .roomy) */
+(function(){ const mq = matchMedia('(max-width:760px)'), b = document.body; let last = scrollY, acc = 0, tick = false;
+  const ref = $('allH') || $('grid'), start = () => ref ? ref.getBoundingClientRect().top + scrollY : 400;
+  const run = () => { tick = false; const y = scrollY, d = y - last; last = y;
+    if (!mq.matches || y < start() || document.activeElement === $('q')) { acc = 0; b.classList.remove('roomy', 'peek'); return; }
+    acc = (d > 0) === (acc > 0) ? acc + d : d;
+    if (acc > 24) b.classList.add('roomy'); else if (acc < -14 && b.classList.contains('roomy')) { b.classList.remove('roomy'); b.classList.add('peek'); } };
+  addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(run); } }, { passive: true });
+  mq.addEventListener && mq.addEventListener('change', () => b.classList.remove('roomy', 'peek')); })();
 
 /* sections fade in softly as they scroll into view (never hides content when motion is reduced or the browser is old) */
 (function(){
