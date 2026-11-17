@@ -2462,10 +2462,33 @@ function filterList(src, f){
   if (f.sort === 'low') return list.sort((a, b) => price(a) - price(b) || rank(a) - rank(b));
   if (f.sort === 'high') return list.sort((a, b) => price(b) - price(a) || rank(a) - rank(b));
   const cmp = (x, y) => String(x || '￿').localeCompare(String(y || '￿'));
-  if (f.sort === 'group') return list.sort((a, b) => cmp(a.category, b.category) || cmp(a.brand, b.brand) || rank(a) - rank(b) || a.name.localeCompare(b.name));
+  // no category chosen: inside each category similar products sit together (type), then brand; inside one category the brand headings stay
+  if (f.sort === 'group') { const ty = new Map(list.map(p => [p, f.cat ? 0 : ptype(p)]));
+    return list.sort((a, b) => cmp(a.category, b.category) || ty.get(a) - ty.get(b) || cmp(a.brand, b.brand) || rank(a) - rank(b) || a.name.localeCompare(b.name)); }
   if (f.sort === 'brand') return list.sort((a, b) => String(a.brand).localeCompare(String(b.brand)) || a.name.localeCompare(b.name));
   return list.sort((a, b) => rank(a) - rank(b) || String(a.brand).localeCompare(String(b.brand)) || a.name.localeCompare(b.name));
 }
+/* product type from the name, so similar products sit together (order = related types next to each other) */
+const PTYPES = [
+  ['dryshampoo', /dry ?shampoo|trockenshampoo|شامبو جاف/], ['shampoo', /shampoo|شامبو/], ['conditioner', /conditioner|spülung|بلسم/],
+  ['hairmask', /hair mask|leave-in|hair treatment|haarkur|ماسك (لل)?شعر/], ['hairoil', /hair ?oil|haaröl|زيت (لل)?شعر/],
+  ['hairserum', /hair serum|plex care serum|frizz|spitzenserum|ends serum/], ['hairtonic', /tonic|scalp|فروة/],
+  ['heat', /heat protect|حماية من الحرارة/], ['hairperfume', /hair perfume|عطر (لل)?شعر/], ['styling', /(?<!un)wax|styling/],
+  ['deo', /deo|antiperspirant|مزيل (ل)?(ال)?عرق/], ['hand', /hand (cream|serum)|كريم (لل)?يد/], ['foot', /foot|heel|قدم|كعب/],
+  ['bodylotion', /body lotion|body essence|körperlotion|لوشن/], ['bodyoil', /care oil|massage oil|body oil|زيت (لل)?جسم/], ['scrub', /scrub|peeling|مقشر/],
+  ['petroleum', /vaseline|petroleum|ointment|zinc cream|zinkcreme|wundschutz|panthenol|مرهم/],
+  ['sun', /sun|spf ?50|uv fluid|واقي/], ['facewash', /cleanser|wash|غسول/], ['faceserum', /serum|concentrate|konzentrat|corrector|سيروم/],
+  ['facecream', /night cream|day cream|moisturi[sz]er|cream|كريم/], ['facemask', /sheet mask|mask|patches|eye pads|ماسك|قناع/],
+  ['mascara', /mascara|lash|ماسكارا/], ['eyeliner', /kajal|eyeliner|eye pencil|كحل/], ['blush', /blush|بلاشر/],
+  ['lips', /gloss|lip|شفا/], ['face', /concealer|powder|teint|perfection|foundation|setting spray|كونسيلر|بودرة/],
+  ['toothpaste', /toothpaste|معجون/], ['floss', /floss|tongue|خيط/], ['gum', /chewing gum|kaugummi|لبان|علكة/],
+  ['shake', /shake|meal replacement/], ['sweetener', /sweetener|fat blocker/],
+  ['efferv', /effervescent|فوار/], ['gummies', /gumm|bears|chewable|pastilles|strips/], ['capsules', /capsule|كبسول/],
+  ['tablets', /tablet|أقراص|اقراص/], ['powder2', /vitamin c powder|collagen.*powder|powder.*flavou?r|granules|husks/],
+  ['wipes', /washcloth|wipes|مناديل/], ['tools', /comb|brush|scissors|file|remover|shaper|cutlery|bottle|مشط|فرشاة|مقص/]];
+/* which type wins when a name fits several (most specific first); the list above is only the display order */
+const PMATCH = ['toothpaste', 'floss', 'gum', 'wipes', 'tools', 'dryshampoo', 'shampoo', 'conditioner', 'hairperfume', 'hairmask', 'hairoil', 'heat', 'deo', 'hand', 'foot', 'hairserum', 'hairtonic', 'facemask', 'mascara', 'blush', 'lips', 'eyeliner', 'powder2', 'face', 'sun', 'shake', 'sweetener', 'efferv', 'gummies', 'capsules', 'tablets', 'styling', 'petroleum', 'bodylotion', 'bodyoil', 'scrub', 'facewash', 'faceserum', 'facecream'];
+const ptype = p => { const t = (String(p.nameEn || '') + ' ' + String(p.name || '')).toLowerCase(); const k = PMATCH.find(k => PTYPES.find(x => x[0] === k)[1].test(t)); return k ? PTYPES.findIndex(x => x[0] === k) : 99; };
 const visible = () => filterList(D.products, U);
 /* product cards with group headings (by category, or by brand inside one category) — used by every list */
 function gridHtml(list, f){
@@ -2481,6 +2504,10 @@ const chipRow = (items, act, allAct, allLabel) => items.length ? `<div class="fc
 /* after a chip is removed its button is gone: move focus to the next chip, else to the count line */
 const chipFocus = (box, cnt) => { const b = document.querySelector(box + ' .fchip') || $(cnt); b && b.focus({ preventScroll: true }); };
 /* a filter button is redrawn when tapped: keep the keyboard focus on its new copy */
+/* after a filter / sort / search change: if the shopper is down inside the list, start the new results from the top
+   (a shorter list would otherwise leave the page at the very bottom); search and filters stay showing */
+const listTop = () => { const r = $('allH') || $('shop'); if (!r) return; const top = Math.max(0, r.getBoundingClientRect().top + scrollY);
+  if (scrollY <= top + 4) return; window.__holdBars = Date.now() + 700; scrollTo({ top, behavior: 'auto' }); const b = document.body; b.classList.remove('roomy'); if (matchMedia('(max-width:760px)').matches) b.classList.add('peek'); };
 const keepFocus = (box, d) => { const b = document.querySelector(`${box} [data-a="${d.a}"][data-k="${CSS.escape(d.k)}"]`); b && b.focus({ preventScroll: true }); };
 function control(p){
   const q = cart[p.id] || 0, a = avail(p);
@@ -3079,8 +3106,8 @@ const A = {
   lunf: d => { const L = U.list; if (d.k === 'sub') L.brand = L.cat = ''; if (d.k === 'av') L.av = 'all'; if (d.k === 'q') { L.q = ''; $('lq').value = ''; } listFilters(); listGrid(); chipFocus('#lpg', 'lpH'); },
   lunfAll: () => { Object.assign(U.list, { brand: '', cat: '', av: 'all', q: '' }); $('lq').value = ''; listFilters(); listGrid(); $('lpH').focus({ preventScroll: true }); },
   // main list: remove one filter chip / all of them
-  unf: d => { if (d.k === 'cat') U.cat = ''; if (d.k === 'av') U.av = 'all'; if (d.k === 'q') { U.q = ''; $('q').value = ''; } renderFilters(); renderGrid(); chipFocus('#grid', 'cnt'); },
-  unfAll: () => { U.cat = ''; U.av = 'all'; U.q = ''; $('q').value = ''; renderFilters(); renderGrid(); $('cnt')?.focus({ preventScroll: true }); },
+  unf: d => { if (d.k === 'cat') U.cat = ''; if (d.k === 'av') U.av = 'all'; if (d.k === 'q') { U.q = ''; $('q').value = ''; } renderFilters(); renderGrid(); listTop(); chipFocus('#grid', 'cnt'); },
+  unfAll: () => { U.cat = ''; U.av = 'all'; U.q = ''; $('q').value = ''; renderFilters(); renderGrid(); listTop(); $('cnt')?.focus({ preventScroll: true }); },
   // empty the basket (name/phone/address stay); the toast offers Undo for 6 seconds
   emptyCart: () => {
     const prev = Object.assign({}, cart);
@@ -3176,8 +3203,8 @@ const A = {
   close: () => closeSheet(),
   scrim: (d, el, e) => { if (e.target === el) closeSheet(); },
   // (from the homepage tiles/banner: also jump down to the products)
-  av: d => { U.av = d.k; renderFilters(); renderGrid(); if (d.go) $('shop').scrollIntoView({ behavior: 'smooth' }); else keepFocus('#filters', d); },
-  cat: d => { U.cat = d.k; renderFilters(); renderGrid(); if (d.go) $('shop').scrollIntoView({ behavior: 'smooth' }); else keepFocus('#filters', d); },
+  av: d => { U.av = d.k; renderFilters(); renderGrid(); if (!d.go) listTop(); if (d.go) $('shop').scrollIntoView({ behavior: 'smooth' }); else keepFocus('#filters', d); },
+  cat: d => { U.cat = d.k; renderFilters(); renderGrid(); if (!d.go) listTop(); if (d.go) $('shop').scrollIntoView({ behavior: 'smooth' }); else keepFocus('#filters', d); },
   clear: () => { U.promo = ''; store.set('lumia_promo', ''); cart = {}; store.set(CART_KEY, cart); U.sent = false; U.orderNo = ''; U.mailed = false; closeSheet(); renderGrid(); if (U.list) { listGrid(); listBag(); } toast(T('thanks')); },
   send: () => {
     if (!form.name.trim()) { toast(T('needName')); $('fn')?.focus(); return; }
@@ -3280,8 +3307,8 @@ document.addEventListener('keydown', e => {
 });
 document.addEventListener('input', e => { const f = e.target.dataset.f; if (f) form[f] = e.target.value;
   if (e.target.id === 'lq' && U.list) { U.list.q = e.target.value; listGrid(); } });   // search inside a category/brand page
-$('q').addEventListener('input', e => { U.q = e.target.value; renderGrid(); });
-document.addEventListener('change', e => { if (e.target.id === 'sort') { U.sort = e.target.value; renderGrid(); } if (e.target.id === 'lsort' && U.list) { U.list.sort = e.target.value; listGrid(); } });
+$('q').addEventListener('input', e => { U.q = e.target.value; renderGrid(); listTop(); });
+document.addEventListener('change', e => { if (e.target.id === 'sort') { U.sort = e.target.value; renderGrid(); listTop(); } if (e.target.id === 'lsort' && U.list) { U.list.sort = e.target.value; listGrid(); } });
 new IntersectionObserver(([en]) => $('shop').classList.toggle('stuck', !en.isIntersecting), { threshold: 0 }).observe(document.querySelector('.hero'));
 
 /* sample data, only used when the page is opened without its data file */
@@ -3346,7 +3373,7 @@ $('goShop').addEventListener('click', e => { e.preventDefault(); $('allH').scrol
 /* phones: give the products the screen while scrolling down (see .roomy) */
 (function(){ const mq = matchMedia('(max-width:760px)'), b = document.body; let last = scrollY, acc = 0, tick = false;
   const ref = $('allH') || $('grid'), start = () => ref ? ref.getBoundingClientRect().top + scrollY : 400;
-  const run = () => { tick = false; const y = scrollY, d = y - last; last = y;
+  const run = () => { tick = false; const y = scrollY, d = y - last; last = y; if (Date.now() < (window.__holdBars || 0)) { acc = 0; return; }
     if (!mq.matches || y < start() || document.activeElement === $('q')) { acc = 0; b.classList.remove('roomy', 'peek'); return; }
     acc = (d > 0) === (acc > 0) ? acc + d : d;
     if (acc > 24) { b.classList.remove('peek'); b.classList.add('roomy'); } else if (acc < -14 && b.classList.contains('roomy')) { b.classList.remove('roomy'); b.classList.add('peek'); } };
