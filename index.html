@@ -1501,6 +1501,46 @@ html[lang=ar] .setc .scount{letter-spacing:0;font-size:12.5px;text-transform:non
   body.peek:not(.ovl) .bar{transform:translateY(calc(-1 * var(--hh)))}
 }
 @media (max-width:760px) and (prefers-reduced-motion:reduce){.site,.bar,.cartbar{transition:none}}
+/* ---------- welcome page (before the shop) ---------- */
+.welcome{position:fixed;inset:0;z-index:2000;overflow-y:auto;-webkit-overflow-scrolling:touch;background:radial-gradient(120% 70% at 50% 0,#fbf5ef 0,var(--lm-ivory,#f7f2eb) 55%,#f1e7dc 100%);color:var(--lm-ink,#2b211e);transition:opacity .45s ease,visibility .45s;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.welcome[hidden]{display:block;opacity:0;visibility:hidden;pointer-events:none}
+html.wl,html.wl body{overflow:hidden}
+html.wl .chatfab,html.wl .cartbar,html.wl .tabbar{visibility:hidden}
+.wl-top{display:flex;justify-content:flex-end;padding:14px 18px 0}
+.wl-in{min-height:calc(100svh - 70px);max-width:520px;margin:0 auto;padding:6px 26px 40px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.wl-medal{width:min(56vw,220px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;margin-top:min(4vh,28px);background:radial-gradient(circle at 50% 40%,#fbf3ee,#f1e2d9);border:1px solid #d9bfae;box-shadow:0 0 0 8px var(--lm-ivory,#f7f2eb),0 0 0 9px #e4cfc1,0 18px 40px -26px rgba(110,70,55,.55)}
+.wl-medal img{width:70%;height:auto}
+.wl-name{margin:clamp(22px,4vh,34px) 0 0;font:400 clamp(44px,13vw,60px)/1 "Cormorant Garamond",Georgia,serif;letter-spacing:.2em;padding-inline-start:.2em;color:var(--lm-ink,#2b211e);display:flex;flex-direction:column;align-items:center;gap:10px}
+.wl-name small{font:500 12px/1 "Jost","IBM Plex Sans Arabic",system-ui,sans-serif;letter-spacing:.55em;padding-inline-start:.55em;color:var(--lm-taupe,#916657)}
+.wl-div{display:flex;align-items:center;gap:14px;margin:clamp(18px,3vh,26px) 0 clamp(14px,2.4vh,20px);color:var(--lm-champagne,#c4a57a)}
+.wl-div::before,.wl-div::after{content:"";width:64px;height:1px;background:currentColor;opacity:.8}
+.wl-div i{width:8px;height:8px;background:currentColor;transform:rotate(45deg)}
+.wl-tag{text-wrap:balance;margin:0;font:italic 400 clamp(22px,6vw,27px)/1.45 "Cormorant Garamond",Georgia,serif;color:var(--lm-ink,#2b211e);max-width:22em}
+html[lang=ar] .wl-tag{font:400 clamp(21px,5.6vw,25px)/1.7 "Amiri","IBM Plex Sans Arabic",serif}
+.wl-p{text-wrap:pretty;margin:14px 0 0;font:400 15px/1.85 var(--f-body);color:var(--lm-ink-2,#6b5b52);max-width:30em}
+.wl-btn{margin-top:clamp(24px,4.5vh,38px);display:inline-flex;align-items:center;gap:14px;min-height:54px;padding:0 34px;border:0;border-radius:2px;background:var(--lm-espresso-2,#3b2e29);color:#f7efe6;font:500 14px/1 var(--f-body);letter-spacing:.24em;text-transform:uppercase;cursor:pointer;box-shadow:0 16px 30px -18px rgba(40,25,20,.7);transition:transform .2s,background .2s}
+html[lang=ar] .wl-btn{letter-spacing:0;font-size:17px}
+html[dir=rtl] .wl-btn svg{transform:scaleX(-1)}
+.wl-btn svg{width:20px;height:20px}
+.wl-btn:hover{background:#2b211e}.wl-btn:active{transform:scale(.98)}
+.wl-btn:focus-visible,.welcome .langbtn:focus-visible,.wl-soc a:focus-visible,.wl-wa:focus-visible{outline:2px solid var(--lm-rose,#924f43);outline-offset:3px}
+.wl-foot{margin-top:auto;padding-top:clamp(30px,6vh,52px);display:flex;flex-direction:column;align-items:center;gap:12px;min-height:150px}
+.wl-k{font:600 11.5px/1 var(--f-body);letter-spacing:.3em;text-transform:uppercase;color:var(--lm-champagne,#b8955f)}
+html[lang=ar] .wl-k{letter-spacing:0;font-size:13.5px}
+.wl-soc{display:flex;gap:14px;min-height:50px;margin-bottom:12px}
+.wl-soc a{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;border:1px solid #dcc9b8;color:var(--lm-ink,#2b211e);background:rgba(255,255,255,.35)}
+.wl-soc a svg{width:21px;height:21px}
+.wl-wa{font:400 17px/1.4 "Cormorant Garamond",Georgia,serif;color:var(--lm-ink,#2b211e);text-decoration:none;letter-spacing:.04em;min-height:24px}
+.welcome.out{opacity:0;visibility:hidden}
+@media (prefers-reduced-motion:reduce){.welcome{transition:none}}
+@media (min-width:900px){.wl-in{min-height:calc(100vh - 70px)}}
+.wl-by{margin-top:26px;padding:14px 18px 4px;border-top:1px solid #e3d3c4;display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--lm-ink-2,#6b5b52);min-width:220px}
+.wl-by small{font:400 11.5px/1.3 var(--f-body);letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+html[lang=ar] .wl-by small{letter-spacing:0;font-size:12.5px}
+.wl-by .mnv{font:600 15px/1 "Jost","IBM Plex Sans Arabic",system-ui,sans-serif;letter-spacing:.42em;padding-inline-start:.42em;color:var(--lm-ink,#2b211e)}
+.wl-by .mnv{display:inline-flex;align-items:center;gap:10px}
+.wl-by .mnv img{height:22px;width:auto;display:block}
+a.wl-by[href]:hover .mnv{color:var(--lm-rose,#924f43)}
 </style>
 </head>
 <body>
@@ -1510,6 +1550,26 @@ html[lang=ar] .setc .scount{letter-spacing:0;font-size:12.5px;text-transform:non
 document.documentElement.classList.add('ld'); setTimeout(function(){ document.documentElement.classList.remove('ld'); }, 4000);
 if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s = document.createElement('script'); s.src = 'data.js?v=' + Date.now(); s.async = true; s.id = 'dataJs';
   s.onload = function(){ s.dataset.st = 'ok'; }; s.onerror = function(){ s.dataset.st = 'err'; }; document.head.appendChild(s); })(); }</script>
+<div class="welcome" id="welcome" role="dialog" aria-modal="true" data-ta="wlAria" aria-label="مرحباً بكِ في LUMIA" hidden>
+  <div class="wl-top"><button class="langbtn" type="button" data-a="lang" data-ta="langAria" aria-label="Switch to English"><span data-t="langBtn">English</span></button></div>
+  <div class="wl-in">
+    <div class="wl-medal" aria-hidden="true"><img src="emblem-rose.webp" alt="" width="360" height="360" fetchpriority="high"></div>
+    <h1 class="wl-name" dir="ltr">LUMIA<small>CARE</small></h1>
+    <div class="wl-div" aria-hidden="true"><i></i></div>
+    <p class="wl-tag" data-t="wlTag">جواهر الجمال الاوروبي، من المانيا إلى باب بيتك</p>
+    <p class="wl-p" data-t="storyP"></p>
+    <button class="wl-btn" type="button" data-a="enterStore"><span data-t="wlBtn">ادخل المتجر</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    <div class="wl-foot">
+      <b class="wl-k" data-t="wlFollow">تابع LUMIA</b><div class="wl-soc" id="wlSoc"></div>
+      <b class="wl-k" data-t="wlContact">تواصل معنا</b><a class="wl-wa" id="wlWa" href="#" target="_blank" rel="noopener" dir="ltr"></a>
+    </div>
+    <a class="wl-by" id="wlBy" target="_blank" rel="noopener" data-ta="wlByAria" aria-label="Minova"><small data-t="wlBy">تصميم وتطوير الموقع والأنظمة</small><span class="mnv" dir="ltr"><img src="minova-mark.webp" alt="" width="220" height="91" loading="lazy">MINOVA</span></a>
+  </div>
+</div>
+<script>/* the welcome page: once per visit; never for a link to a product / category / brand, nor on the wholesale page */
+(function(){ try { var q = location.search;
+  if (window.SHOP_MODE === 'wholesale' || location.hash || /[?&](p|c|b|q|cart|order|ref)=/.test(q) || sessionStorage.getItem('lumia_in')) return;
+  document.getElementById('welcome').hidden = false; document.documentElement.classList.add('wl'); } catch (e) {} })();</script>
 <div class="ann" id="ann"><div class="wrap"><span data-t="ann1">التوصيل إلى جميع محافظات مصر، والدفع عند الاستلام</span></div></div>
 <header class="site" id="siteHd">
   <div class="wrap shd">
@@ -1632,6 +1692,8 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
 <div id="sheet"></div>
 
 <script>
+/* Minova — the studio that built this website (credit on the welcome page) */
+const MINOVA_WA = '';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money = v => Math.round(v).toLocaleString('en-US');
 const $ = id => document.getElementById(id);
@@ -1663,7 +1725,8 @@ const I18N = {
     trust1: 'منتجات أصلية 100%', trust2: 'شحن مباشر من المانيا', trust3: 'التوصيل إلى جميع محافظات مصر', trust4: 'الدفع عند الاستلام أو InstaPay', trust5: 'نوفّر أي منتج بطلب خاص',
     brandsH: 'منتجات من dm وRossmann وأشهر العلامات الالمانية والاوروبية', brandsAria: 'العلامات التجارية',
     catsH: 'تسوّق حسب القسم', catsAria: 'الأقسام', catCount: n => `${n} منتج`,
-    showAria: 'منتجات مختارة', storyKick: 'قصتنا', storyH: 'نختار كل منتج بأنفسنا من *المانيا*', storyP: 'LUMIA متجر مصري صغير. نشتري منتجاتنا بأنفسنا من المتاجر الالمانية مثل dm وRossmann، ونشحنها إلى مصر، ثم نوصلها إلى جميع المحافظات. لم تجدي ما تبحثين عنه؟ اطلبيه ونحضره لكِ مع الشحنة القادمة.', storyBtn: 'اعرفي المزيد عنّا', setsH: 'باقات التوفير', setsSub: 'منتجات تُستخدم معاً، بسعر أقل من شرائها منفردة', setsCat: 'مجموعات', setIn: 'تضم: ', setSave: n => `توفير ${n}`, setOf: n => `باقة من ${n} منتجات`, showTitle: 'اكتشفي منتجاتنا', showTitleSale: 'منتجات مختارة وعروض', newH: 'وصل حديثاً',
+    showAria: 'منتجات مختارة', wlTag: 'جواهر الجمال الاوروبي، من المانيا إلى باب بيتك', wlBtn: 'ادخل المتجر', wlFollow: 'تابع LUMIA', wlContact: 'تواصل معنا', wlAria: 'مرحباً بكِ في LUMIA', wlBy: 'تصميم وتطوير الموقع والأنظمة', wlByAria: 'Minova: تصميم وتطوير المواقع والأنظمة — تواصل عبر واتساب',
+    storyKick: 'قصتنا', storyH: 'نختار كل منتج بأنفسنا من *المانيا*', storyP: 'LUMIA متجر مصري. نشتري منتجاتنا بأنفسنا من المتاجر الالمانية مثل dm وRossmann، ونشحنها إلى مصر، ثم نوصلها إلى جميع المحافظات. لم تجدي ما تبحثين عنه؟ اطلبيه ونحضره لكِ مع الشحنة القادمة.', storyBtn: 'اعرفي المزيد عنّا', setsH: 'باقات التوفير', setsSub: 'منتجات تُستخدم معاً، بسعر أقل من شرائها منفردة', setsCat: 'مجموعات', setIn: 'تضم: ', setSave: n => `توفير ${n}`, setOf: n => `باقة من ${n} منتجات`, showTitle: 'اكتشفي منتجاتنا', showTitleSale: 'منتجات مختارة وعروض', newH: 'وصل حديثاً',
     prev: 'السابق', next: 'التالي',
     offersH: 'عروض حالية', offersP: (n, m) => `${n === 1 ? 'منتج واحد' : n === 2 ? 'منتجان' : n + ' منتجات'} بخصم يصل إلى ${m}%`, offersBtn: 'تسوّق العروض',
     searchPh: 'ابحث عن منتج أو علامة تجارية', searchAria: 'البحث', loading: 'جارٍ التحميل…',
@@ -1726,7 +1789,7 @@ const I18N = {
     chatImgOk: 'صورة مرفقة — اكتبي سؤالك ثم أرسلي', chatImgErr: 'تعذّر قراءة الصورة',
     chatHello: s => `أهلاً بكِ في ${s} ✨\nأنا مساعدتكِ للعناية بالبشرة والشعر. أخبريني عن نوع بشرتكِ أو المشكلة التي تودّين علاجها، ويمكنكِ إرفاق صورة لمنتج أو للمنطقة التي تقلقكِ، وسأقترح عليكِ الأنسب من منتجاتنا.`,
     chatTyping: 'مساعدة LUMIA تكتب…', chatChips: ['بشرتي دهنية وعندي حبوب', 'بشرتي جافة وحساسة', 'شعري متساقط', 'أبحث عن واقي شمس'],
-    chatErr: 'عذراً، حدث خطأ. حاولي مرة أخرى.', chatOff: 'تعذّر الاتصال الآن. تحققي من الإنترنت ثم حاولي مرة أخرى، أو تواصلي معنا عبر واتساب.', chatView: 'عرض', chatAdd: 'أضف',
+    chatErr: 'عذراً، حدث خطأ. حاولي مرة أخرى.', chatOff: 'تعذّر الاتصال الآن. تحققي من الإنترنت ثم حاولي مرة أخرى، أو تواصل معنا عبر واتساب.', chatView: 'عرض', chatAdd: 'أضف',
     wsBadge: 'أسعار الجملة', gateP: 'هذه الصفحة مخصّصة لعملاء الجملة. يُرجى إدخال كود الدخول الذي حصلت عليه منّا.', gateCode: 'كود الدخول', gateGo: 'دخول', gateOpening: 'جارٍ الفتح…', gateShop: 'الانتقال إلى المتجر',
     gateLoad: 'تعذّر تحميل قائمة الأسعار. يُرجى التحقق من الاتصال بالإنترنت ثم إعادة المحاولة.', gateOffline: 'صفحة الجملة غير مفعّلة حالياً.',
     gateOld: 'متصفح الهاتف قديم ولا يمكنه فتح قائمة الأسعار. يُرجى فتح الرابط في Google Chrome.', gateBroke: 'الكود صحيح، لكن حدث خطأ أثناء فتح الأسعار. يُرجى إعادة تحميل الصفحة أو فتح الرابط في Google Chrome.',
@@ -1762,7 +1825,8 @@ const I18N = {
     trust1: '100% original products', trust2: 'Shipped directly from Germany', trust3: 'Delivery all over Egypt', trust4: 'Cash on delivery or InstaPay', trust5: 'Any product on special request',
     brandsH: 'Products from dm, Rossmann and well-known German and European brands', brandsAria: 'Brands',
     catsH: 'Shop by category', catsAria: 'Categories', catCount: n => `${n} product${n === 1 ? '' : 's'}`,
-    showAria: 'Featured products', storyKick: 'Our story', storyH: 'We pick every product ourselves in *Germany*', storyP: 'LUMIA is a small Egyptian shop. We buy our products ourselves from German stores such as dm and Rossmann, ship them to Egypt and deliver to every governorate. Can’t find what you want? Ask, and we’ll bring it with the next shipment.', storyBtn: 'More about us', setsH: 'Saving bundles', setsSub: 'Products made to be used together, for less than buying them one by one', setsCat: 'Sets', setIn: 'Includes: ', setSave: n => `Save ${n}`, setOf: n => `Bundle of ${n} products`, showTitle: 'Discover our products', showTitleSale: 'Featured products & offers', newH: 'New arrivals',
+    showAria: 'Featured products', wlTag: 'European beauty gems, from Germany to your door', wlBtn: 'Enter the store', wlFollow: 'Follow LUMIA', wlContact: 'Contact us', wlAria: 'Welcome to LUMIA', wlBy: 'Website & systems by', wlByAria: 'Minova: websites and systems — chat on WhatsApp',
+    storyKick: 'Our story', storyH: 'We pick every product ourselves in *Germany*', storyP: 'LUMIA is an Egyptian shop. We buy our products ourselves from German stores such as dm and Rossmann, ship them to Egypt and deliver to every governorate. Can’t find what you want? Ask, and we’ll bring it with the next shipment.', storyBtn: 'More about us', setsH: 'Saving bundles', setsSub: 'Products made to be used together, for less than buying them one by one', setsCat: 'Sets', setIn: 'Includes: ', setSave: n => `Save ${n}`, setOf: n => `Bundle of ${n} products`, showTitle: 'Discover our products', showTitleSale: 'Featured products & offers', newH: 'New arrivals',
     prev: 'Previous', next: 'Next',
     offersH: 'Current offers', offersP: (n, m) => `${n} product${n === 1 ? '' : 's'} up to ${m}% off`, offersBtn: 'Shop offers',
     searchPh: 'Search for a product or brand', searchAria: 'Search', loading: 'Loading…',
@@ -2325,6 +2389,8 @@ function start(d){
   const num = String(D.whatsapp || '').replace(/\D/g, '');
   if ($('yr')) $('yr').textContent = new Date().getFullYear();
   $('wa').textContent = num ? '+' + num.replace(/^(\d{2})(\d{2})(\d{4})(\d+)$/, '$1 $2 $3 $4') : '';
+  if ($('wlBy')) { const mw = String(MINOVA_WA || '').replace(/\D/g, ''); if (mw) $('wlBy').href = 'https://wa.me/' + mw + '?text=' + encodeURIComponent(EN() ? 'Hello Minova, I saw the LUMIA website and I want a website like it' : 'مرحباً Minova، رأيت موقع LUMIA وأرغب في موقع مثله'); else $('wlBy').removeAttribute('href'); }
+  if ($('wlSoc')) { $('wlSoc').innerHTML = socialLinks().map(l => `<a href="${esc(l.href)}" target="_blank" rel="noopener" aria-label="${esc(l.label)}">${l.icon}</a>`).join(''); $('wlWa').textContent = $('wa').textContent; $('wlWa').href = num ? 'https://wa.me/' + num : '#'; $('wlWa').hidden = !num; }
   Object.keys(cart).forEach(id => { if (!byId(id) || !avail(byId(id)).can) delete cart[id]; });
   store.set(CART_KEY, cart);
   renderFilters(); renderGrid(); renderCart(); route();
@@ -3080,6 +3146,8 @@ async function accAfterSend(no){
 
 const A = {
   inc: (d, el) => { const first = !cart[d.id], fx = first && !U.sheet ? flyFrom(el) : null; setQty(d.id, (cart[d.id] || 0) + 1); if (first && cart[d.id] && !U.sheet) { toast(T('added')); flyTo(fx); } },
+  enterStore: () => { const w = $('welcome'); try { sessionStorage.setItem('lumia_in', '1'); } catch (e) {} if (!w || w.hidden) return;
+    w.classList.add('out'); document.documentElement.classList.remove('wl'); setTimeout(() => { w.hidden = true; w.classList.remove('out'); }, 460); scrollTo(0, 0); const t = document.querySelector('.wm'); t && t.focus({ preventScroll: true }); },
   lang: (d, el, e) => { if (e) e.preventDefault(); setLang(EN() ? 'ar' : 'en'); },
   dec: d => setQty(d.id, (cart[d.id] || 0) - 1),
   view: (d, el, e) => { if (e && el && el.tagName === 'A') e.preventDefault(); saveList(); U.fromGrid = true; location.hash = 'p-' + encodeURIComponent(d.id); },
