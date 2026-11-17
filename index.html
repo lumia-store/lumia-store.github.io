@@ -1563,6 +1563,22 @@ a.wl-by[href]:hover .mnv{color:var(--lm-rose,#924f43)}
   .wl-by{margin-top:1.4dvh;padding:1.2dvh 10px 0;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:8px;min-width:0}
   .wl-by .mnv{font-size:13px}.wl-by .mnv img{height:18px}
 }
+/* install-the-app: welcome page button + a labelled strip under the header (never an icon in the crowded header) */
+.wl-app{margin-top:12px;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border:1.5px solid var(--lm-rose,#924f43);border-radius:2px;background:rgba(255,255,255,.55);color:var(--lm-rose,#924f43);font:600 14.5px/1 var(--f-body);cursor:pointer}
+.wl-app[hidden]{display:none}
+.wl-app svg{width:20px;height:20px}
+.wl-app:hover{background:#fff}
+.wl-app:focus-visible{outline:2px solid var(--lm-rose,#924f43);outline-offset:3px}
+@media (max-width:760px){.wl-app{margin-top:min(12px,1.4dvh);min-height:min(48px,6dvh)}}
+.appbar{background:var(--lm-blush,#efddd4);border-bottom:1px solid #e4cbbd;color:var(--lm-ink,#2b211e)}
+.appbar[hidden]{display:none}
+.appbar .wrap{display:flex;align-items:center;gap:10px;padding-block:8px}
+.appbar .ab-ic{width:22px;height:22px;flex:none;color:var(--lm-rose,#924f43)}
+.appbar .ab-t{flex:1;min-width:0;font:500 13.5px/1.35 var(--f-body)}
+.appbar .ab-btn{flex:none;min-height:36px;padding:0 14px;border:0;border-radius:2px;background:var(--lm-rose,#924f43);color:#fff;font:600 13px/1 var(--f-body);cursor:pointer;white-space:nowrap}
+.appbar .ab-btn:hover{background:#7d4136}
+.appbar .ab-x{flex:none;width:32px;height:32px;border:0;background:none;color:var(--lm-ink-2,#6b5b52);font-size:22px;line-height:1;cursor:pointer}
+.appbar button:focus-visible{outline:2px solid var(--lm-rose,#924f43);outline-offset:2px}
 </style>
 </head>
 <body>
@@ -1580,7 +1596,8 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
     <div class="wl-div" aria-hidden="true"><i></i></div>
     <p class="wl-tag" data-t="wlTag">جواهر الجمال الاوروبي، من المانيا إلى باب بيتك</p>
     <p class="wl-p" data-t="storyP"></p>
-    <button class="wl-btn" type="button" data-a="enterStore"><span data-t="wlBtn">ادخل المتجر</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <button class="wl-btn" type="button" data-a="enterStore"><span data-t="wlBtn">ادخل المتجر</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    <button class="wl-app" id="installBtn3" type="button" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M12 7v7M9.2 11.4 12 14.2l2.8-2.8M10.5 18.5h3"/></svg><span data-t="wlApp">تثبيت تطبيق LUMIA</span></button>
     <div class="wl-foot">
       <b class="wl-k" data-t="wlFollow">تابع LUMIA</b><div class="wl-soc" id="wlSoc"></div>
       <div class="wl-ct" id="wlCt"><b class="wl-k" data-t="wlContact">تواصل معنا</b><a class="wl-wa" id="wlWa" href="#" target="_blank" rel="noopener" dir="ltr"></a></div>
@@ -1608,6 +1625,7 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
   </div>
   <nav class="mnav" data-ta="navAria" aria-label="أقسام الموقع"><div class="wrap"><a href="#catsSec" data-a="goSec" data-k="catsSec" data-t="navCats">الأقسام</a><a href="#brandTiles" data-a="goSec" data-k="brandTiles" data-t="navBrands">العلامات التجارية</a><a href="#shop" data-a="av" data-k="sale" data-go="1" class="navSale" hidden data-t="navSale">العروض</a><a href="#shop" data-a="goSec" data-k="allH" data-t="navAll">جميع المنتجات</a></div></nav>
 </header>
+<div class="appbar" id="appBar" hidden><div class="wrap"><svg class="ab-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M12 7v7M9.2 11.4 12 14.2l2.8-2.8M10.5 18.5h3"/></svg><span class="ab-t" data-t="abT">Get the LUMIA app on your phone</span><button class="ab-btn" id="installBtn4" type="button" data-t="install">Install app</button><button class="ab-x" id="appBarX" type="button" data-ta="abX" aria-label="Hide">×</button></div></div>
 <section class="hero ed" id="top">
   <div class="hmedia" aria-hidden="true"><img src="hero-home-2.webp" alt="" width="1080" height="1341" fetchpriority="high"></div>
   <div class="wrap hero-in">
@@ -1754,7 +1772,7 @@ const I18N = {
     title: 'LUMIA Care · Imported Gems', wsTitle: 'LUMIA · أسعار الجملة',
     metaDesc: 'منتجات أصلية مستوردة من المانيا: Balea وMivolis وEssence وغيرها. تصفّح المنتجات واطلب عبر واتساب.',
     langBtn: 'English', langAria: 'Switch to English',
-    install: 'تثبيت التطبيق', installAria: 'تثبيت تطبيق LUMIA على جهازك',
+    wlApp: 'تثبيت تطبيق LUMIA', abT: 'حمّل تطبيق LUMIA على هاتفك', abX: 'إخفاء', install: 'تثبيت التطبيق', installAria: 'تثبيت تطبيق LUMIA على جهازك',
     tag: 'منتجات أصلية نستوردها خصيصاً من المانيا إلى مصر، لتصل إليك حتى باب منزلك',
     de: 'المانيا', eg: 'مصر', shopNow: 'تسوّق المنتجات', waContact: 'تواصل عبر واتساب',
     trust1: 'منتجات أصلية 100%', trust2: 'شحن مباشر من المانيا', trust3: 'التوصيل إلى جميع محافظات مصر', trust4: 'الدفع عند الاستلام أو InstaPay', trust5: 'نوفّر أي منتج بطلب خاص',
@@ -1854,7 +1872,7 @@ const I18N = {
     title: 'LUMIA Care · Imported Gems', wsTitle: 'LUMIA · Wholesale prices',
     metaDesc: 'Original products imported from Germany: Balea, Mivolis, essence and more. Browse and order on WhatsApp.',
     langBtn: 'عربي', langAria: 'التحويل إلى العربية',
-    install: 'Install app', installAria: 'Install the LUMIA app on your device',
+    wlApp: 'Install the LUMIA app', abT: 'Get the LUMIA app on your phone', abX: 'Hide', install: 'Install app', installAria: 'Install the LUMIA app on your device',
     tag: 'Original products we import from Germany to Egypt, delivered to your door',
     de: 'Germany', eg: 'Egypt', shopNow: 'Shop products', waContact: 'Chat on WhatsApp',
     trust1: '100% original products', trust2: 'Shipped directly from Germany', trust3: 'Delivery all over Egypt', trust4: 'Cash on delivery or InstaPay', trust5: 'Any product on special request',
@@ -3433,7 +3451,8 @@ function demoShop(){
    - Inside the installed app: never. */
 let installEvt = null;
 const INSTALLED_KEY = 'lumia_installed';
-const showInstall = on => { $('installBtn').hidden = !on; $('installBtn2').hidden = !on; };
+const AB_KEY = 'lumia_appbar_x', abOff = () => Date.now() - (+store.get(AB_KEY, 0) || 0) < 7 * 864e5;
+const showInstall = on => { $('installBtn').hidden = true; $('installBtn2').hidden = true; if ($('appBar')) $('appBar').hidden = !on || abOff(); if ($('installBtn3')) { $('installBtn3').hidden = !on; setTimeout(() => typeof fitWelcome === 'function' && fitWelcome(), 0); } };
 const standalone = () => ['standalone', 'fullscreen', 'minimal-ui', 'window-controls-overlay'].some(m => matchMedia(`(display-mode: ${m})`).matches) || navigator.standalone === true;
 const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const inAppBrowser = /FBAN|FBAV|Instagram|WhatsApp|Line\//i.test(navigator.userAgent);
@@ -3468,6 +3487,9 @@ const doInstall = async () => {
 };
 $('installBtn').addEventListener('click', doInstall);
 $('installBtn2').addEventListener('click', doInstall);
+if ($('installBtn3')) $('installBtn3').addEventListener('click', doInstall);
+if ($('installBtn4')) $('installBtn4').addEventListener('click', doInstall);
+if ($('appBarX')) $('appBarX').addEventListener('click', () => { store.set(AB_KEY, Date.now()); $('appBar').hidden = true; });
 $('goShop').addEventListener('click', e => { e.preventDefault(); $('allH').scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth' }); });
 /* the header stays on top while scrolling; the search bar sticks just under it */
 (function(){ const h = $('siteHd'); if (!h) return; const set = () => document.documentElement.style.setProperty('--hh', h.offsetHeight + 'px'); set();
