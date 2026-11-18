@@ -751,6 +751,63 @@
    "changedAt": "2026-11-16T14:02:17.618Z"
   },
   {
+   "id": "ad-2026-11-18",
+   "date": "2026-11-18",
+   "type": "ad",
+   "title": "Ad suggestion for this week",
+   "products": [
+    "p35gftejf4"
+   ],
+   "reason": "in stock (15), on offer 300 instead of 330 EGP, good photos",
+   "snapshot": {
+    "p35gftejf4": {
+     "price": 300,
+     "was": 330,
+     "avail": "in"
+    }
+   },
+   "words": {
+    "headline": "تصفيفة ناعمة ولامعة بخطوة سريعة",
+    "headline_en": "Sleek, shiny styling in one quick step",
+    "chips": [
+     "تثبيت سهل وفعّال",
+     "تشطيب ناعم ولامع",
+     "حجم صغير للحقيبة"
+    ],
+    "chips_en": [
+     "Easy, lasting hold",
+     "Smooth, glossy finish",
+     "Compact for your bag"
+    ],
+    "ad_text": "تصفيفة ناعمة ولامعة بخطوة سريعة ✨\nستيك شمع Balea يروّض الخصلات المتطايرة بتشطيب ناعم، أصلي من ألمانيا.\nعملي للحقيبة ولتسريحة Sleek-Look في أي وقت.",
+    "ad_text_en": "Sleek, shiny styling in one quick step ✨\nBalea's styling wax stick tames flyaways with a smooth finish, original from Germany.\nCompact enough for your bag, perfect for a Sleek-Look anytime.",
+    "caption": "ستيك شمع لتصفيف الشعر من Balea يمنح الشعر مظهراً ناعماً لامعاً.\nيساعد على تثبيت الخصلات المتطايرة وخصلات الأطفال بسهولة.\nحجمه الصغير يجعله رفيقاً عملياً لكل يوم وللسفر.",
+    "caption_en": "Balea's styling wax stick gives hair a smooth, glossy look.\nIt helps settle flyaways and baby hairs with ease.\nIts compact size makes it a practical companion for daily life and travel.",
+    "hashtags": [
+     "#عناية_بالشعر",
+     "#شعر_صحي",
+     "#haircare",
+     "#منتجات_المانية",
+     "#منتجات_أصلية",
+     "#Balea"
+    ],
+    "alt_en": "Balea Styling Wax Stick for sleek, smooth hair, shown with a compact travel-friendly size."
+   },
+   "media": {
+    "images": [
+     "https://lumia-store.github.io/media/social/ad-2026-11-18-1.jpg"
+    ]
+   },
+   "files": [
+    "ad-2026-11-18-1.jpg"
+   ],
+   "status": "waiting",
+   "createdAt": "2026-11-18T08:29:42.458Z",
+   "adText": "تصفيفة ناعمة ولامعة بخطوة سريعة ✨\nستيك شمع Balea يروّض الخصلات المتطايرة بتشطيب ناعم، أصلي من ألمانيا.\nعملي للحقيبة ولتسريحة Sleek-Look في أي وقت.\n\n✨ Balea · ستيك شمع لتصفيف الشعر\n🛍️ الطلب من الموقع بسهولة — توصيل لجميع المحافظات والدفع عند الاستلام",
+   "link": "https://lumia-store.github.io/p/balea-styling-wax-stick-p35gf/",
+   "headline": "تصفيفة ناعمة ولامعة بخطوة سريعة"
+  },
+  {
    "id": "2026-11-19-offer",
    "date": "2026-11-19",
    "postAt": "2026-11-19T18:30:00.000Z",
@@ -817,12 +874,79 @@
    "createdAt": "2026-11-17T10:38:34.923Z",
    "sharedAt": "2026-11-17T11:32:56.268Z",
    "changedAt": "2026-11-17T11:32:56.982Z"
+  },
+  {
+   "id": "2026-11-20-trust",
+   "date": "2026-11-20",
+   "postAt": "2026-11-20T18:30:00.000Z",
+   "type": "trust",
+   "title": "Why LUMIA",
+   "occasion": null,
+   "products": [
+    "oyf5whb6kt",
+    "msw2v0dtue",
+    "efsw0dd37a"
+   ],
+   "snapshot": {
+    "oyf5whb6kt": {
+     "price": 290,
+     "was": 330,
+     "avail": "in"
+    },
+    "msw2v0dtue": {
+     "price": 380,
+     "was": 0,
+     "avail": "in"
+    },
+    "efsw0dd37a": {
+     "price": 450,
+     "was": 0,
+     "avail": "in"
+    }
+   },
+   "words": {
+    "title": "أصلية من ألمانيا… بعناية وثقة",
+    "caption": "منتجات أصلية ومغلّفة، اشتريناها من متاجر ألمانية مثل dm وRossmann.\nاخترناها بعناية، لتصلك كما خرجت من متاجرها. ✨",
+    "hashtags": [
+     "#منتجات_المانية",
+     "#منتجات_أصلية",
+     "#germanbeauty",
+     "#dmproducts",
+     "#جمال",
+     "#عناية_بالبشرة",
+     "#skincareegypt"
+    ],
+    "alt_en": "Original German beauty products from dm and Rossmann, arranged on a soft neutral background.",
+    "title_en": "Original products, straight from Germany",
+    "caption_en": "Original, sealed products bought from German drugstores such as dm and Rossmann, and brought to Egypt with care.\nEach piece is chosen thoughtfully, just as it left the shelf. ✨"
+   },
+   "media": {
+    "images": [
+     "https://lumia-store.github.io/media/social/2026-11-20-trust-1.jpg"
+    ],
+    "story": "",
+    "video": "",
+    "cover": ""
+   },
+   "files": [
+    "2026-11-20-trust-1.jpg"
+   ],
+   "preview": {
+    "fb": "منتجات أصلية ومغلّفة، اشتريناها من متاجر ألمانية مثل dm وRossmann.\nاخترناها بعناية، لتصلك كما خرجت من متاجرها. ✨\n\nOriginal, sealed products bought from German drugstores such as dm and Rossmann, and brought to Egypt with care.\nEach piece is chosen thoughtfully, just as it left the shelf. ✨\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 https://lumia-store.github.io/\n📲 https://wa.me/201061227556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#منتجات_المانية #منتجات_أصلية #germanbeauty #dmproducts #جمال",
+    "ig": "منتجات أصلية ومغلّفة، اشتريناها من متاجر ألمانية مثل dm وRossmann.\nاخترناها بعناية، لتصلك كما خرجت من متاجرها. ✨\n\nOriginal, sealed products bought from German drugstores such as dm and Rossmann, and brought to Egypt with care.\nEach piece is chosen thoughtfully, just as it left the shelf. ✨\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 lumia-store.github.io (الرابط في البايو · link in bio)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#منتجات_المانية #منتجات_أصلية #germanbeauty #dmproducts #جمال #عناية_بالبشرة #skincareegypt #LUMIACare #منتجات_المانية_أصلية",
+    "igTail": "Original, sealed products bought from German drugstores such as dm and Rossmann, and brought to Egypt with care.\nEach piece is chosen thoughtfully, just as it left the shelf. ✨\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 lumia-store.github.io (الرابط في البايو · link in bio)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#منتجات_المانية #منتجات_أصلية #germanbeauty #dmproducts #جمال #عناية_بالبشرة #skincareegypt #LUMIACare #منتجات_المانية_أصلية"
+   },
+   "status": "waiting",
+   "cleanV": 6,
+   "ai": "Claude Haiku",
+   "aiNote": "",
+   "createdAt": "2026-11-18T08:29:31.827Z"
   }
  ],
  "robot": {
-  "lastPrepare": "2026-11-17T10:38:34.973Z",
-  "lastPrepareMade": 1,
-  "aiCostUsd": 0.0083,
+  "lastPrepare": "2026-11-18T08:29:42.510Z",
+  "lastPrepareMade": 2,
+  "aiCostUsd": 0.0095,
   "lastError": "",
   "lastPostCheck": "2026-11-17T23:56:09.933Z",
   "lastErrorAt": "2026-11-12T09:37:55.021Z",
