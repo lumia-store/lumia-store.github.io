@@ -295,9 +295,10 @@ async function translateProducts({ claudeKey, geminiKey, items, prefer = 'gemini
 }
 
 /* General "ask for JSON" call used by the social media robot: same Claude/Gemini choice and backup as everywhere else. */
-async function askJson({ claudeKey, geminiKey, prompt: text, prefer = 'claude', temperature = 0.6, maxTokens = 6000, fetchImpl = fetch }) {
+async function askJson({ claudeKey, geminiKey, prompt: text, prefer = 'claude', temperature = 0.6, maxTokens = 6000, fetchImpl = fetch, files = [] }) {
+  // files: [{ mime: 'application/pdf' | 'image/jpeg' | 'image/png', b64 }] — e.g. a store invoice
   const viaGemini = async () => {
-    const body = { contents: [{ role: 'user', parts: [{ text }] }], generationConfig: { temperature, responseMimeType: 'application/json' } };
+    const body = { contents: [{ role: 'user', parts: [{ text }, ...files.map(f => ({ inline_data: { mime_type: f.mime, data: f.b64 } }))] }], generationConfig: { temperature, responseMimeType: 'application/json', maxOutputTokens: Math.max(8192, maxTokens) } };
     let last = '';
     for (const model of MODELS) {
       let res, t;
@@ -313,7 +314,7 @@ async function askJson({ claudeKey, geminiKey, prompt: text, prefer = 'claude', 
   const viaClaude = async () => {
     const m = CLAUDE.fast;
     const res = await fetchImpl('https://api.anthropic.com/v1/messages', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-api-key': claudeKey, 'anthropic-version': '2023-06-01' },
-      body: JSON.stringify({ model: m.model, max_tokens: maxTokens, messages: [{ role: 'user', content: text + '\nAnswer with the JSON only.' }] }) });   // (no temperature: the current Haiku no longer accepts it)
+      body: JSON.stringify({ model: m.model, max_tokens: maxTokens, messages: [{ role: 'user', content: files.length ? [...files.map(f => f.mime === 'application/pdf' ? { type: 'document', source: { type: 'base64', media_type: 'application/pdf', data: f.b64 } } : { type: 'image', source: { type: 'base64', media_type: f.mime, data: f.b64 } }), { type: 'text', text: text + '\nAnswer with the JSON only.' }] : text + '\nAnswer with the JSON only.' }] }) });   // (no temperature: the current Haiku no longer accepts it)
     const json = await res.json().catch(() => null);
     const why = String(((json || {}).error || {}).message || '').slice(0, 140);
     if (!res.ok) fail('Claude answered with error ' + res.status + (why ? ' — ' + why : '') + (res.status === 401 ? ' (the Claude key was not accepted)' : res.status === 400 && /credit/i.test(JSON.stringify(json || {})) ? ' (no credit left on the Claude account)' : res.status === 404 ? ' (model not found)' : '') + '.');
@@ -330,4 +331,37 @@ async function askJson({ claudeKey, geminiKey, prompt: text, prefer = 'claude', 
   }
 }
 
-module.exports = { fillProduct, claudeFill, geminiFill, clean, CLAUDE, translateProducts, rewriteProducts, askJson, COPY_GUIDE };
+/* ---------------- store invoices (dm, Rossmann, Müller…): PDF or photos → the bought lines ---------------- */
+const INVOICE_PROMPT = `You read a German drugstore invoice or receipt (dm, Rossmann, Müller…). It may have several pages: read ALL of them.
+Return ONLY this JSON:
+{"store": "dm", "invoiceNo": "AB961194", "date": "2026-11-14",
+ "lines": [{"brand": "Mivolis", "name": "A-Z Komplett Tabletten 100 St, 144 g", "unitEUR": 2.95, "qty": 4, "totalEUR": 11.80}],
+ "coupons": [{"label": "Coupon 20% Mivolis", "amountEUR": 2.36}],
+ "totalEUR": 56.29}
+Rules:
+- "lines": every bought product exactly once, in the order printed. "brand" = the brand line (e.g. Dontodent, Mivolis, essence, Balea); "name" = the product text after the brand, exactly as printed (with size).
+- "unitEUR" = the single-piece price (Einzelpreis), "qty" = the quantity (Menge), "totalEUR" = the line total (Gesamtpreis). Numbers with a dot, no € sign.
+- Ignore the "per kg / per litre / je 1 St" helper prices.
+- "coupons": every discount, coupon or Rabatt line, as a POSITIVE amount. Do not subtract them from the products.
+- "totalEUR" = the final amount to pay (Rechnungsbetrag / Summe / Zahlbetrag).
+- "invoiceNo" = Rechnungsnummer (or Bon/Beleg number on a receipt); "date" = invoice date as YYYY-MM-DD.
+- Never include names, addresses, customer or card numbers.
+- If something is not printed, use null.`;
+const num = v => { const x = typeof v === 'number' ? v : parseFloat(String(v == null ? '' : v).replace(/[^\d,.-]/g, '').replace(/\.(?=\d{3}\b)/g, '').replace(',', '.')); return isFinite(x) ? Math.round(x * 100) / 100 : null; };
+async function readInvoice({ claudeKey, geminiKey, files, prefer = 'gemini', fetchImpl = fetch }) {
+  if (!files || !files.length) fail('Choose the invoice (PDF) or photos of it first.');
+  const r = await askJson({ claudeKey, geminiKey, prompt: INVOICE_PROMPT, prefer, temperature: 0, maxTokens: 8000, fetchImpl, files });
+  const d = r.data || {};
+  const lines = (Array.isArray(d.lines) ? d.lines : []).map(l => {
+    const qty = Math.max(1, Math.round(num(l.qty) || 1)), unit = num(l.unitEUR), tot = num(l.totalEUR);
+    return { brand: String(l.brand || '').trim(), name: String(l.name || '').trim(), qty, unitEUR: unit != null ? unit : (tot != null ? Math.round(tot / qty * 100) / 100 : null), totalEUR: tot != null ? tot : (unit != null ? Math.round(unit * qty * 100) / 100 : null) };
+  }).filter(l => l.name || l.brand);
+  if (!lines.length) fail('No products were found on this invoice. Try the PDF from the e-mail, or clearer photos.');
+  const coupons = (Array.isArray(d.coupons) ? d.coupons : []).map(c => ({ label: String(c.label || 'Coupon').trim(), amountEUR: Math.abs(num(c.amountEUR) || 0) })).filter(c => c.amountEUR > 0);
+  const sum = Math.round(lines.reduce((a, l) => a + (l.totalEUR || 0), 0) * 100) / 100, couponEUR = Math.round(coupons.reduce((a, c) => a + c.amountEUR, 0) * 100) / 100;
+  const totalEUR = num(d.totalEUR);
+  return { ok: true, store: String(d.store || '').trim(), invoiceNo: String(d.invoiceNo || '').trim(), date: String(d.date || '').slice(0, 10), lines, coupons, couponEUR, linesEUR: sum, totalEUR,
+    addsUp: totalEUR == null ? null : Math.abs(sum - couponEUR - totalEUR) < 0.05, provider: r.provider, cost: r.cost || 0 };
+}
+
+module.exports = { readInvoice, fillProduct, claudeFill, geminiFill, clean, CLAUDE, translateProducts, rewriteProducts, askJson, COPY_GUIDE };

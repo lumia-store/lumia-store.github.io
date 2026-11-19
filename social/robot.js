@@ -77,7 +77,7 @@ function fakeWords(item, ps) {
   const ids = ps.map(p => p.id);
   return {
     headline: 'إشراقة ناعمة تدوم طوال اليوم', chips: ['تركيبة خفيفة', 'للاستخدام اليومي', 'أصلي من المانيا'],
-    caption: 'تركيبة خفيفة يمتصها الجلد بسرعة ✨\nتمنح البشرة مظهراً أكثر نضارة.\nمناسبة للاستخدام اليومي صباحاً ومساءً.',
+    caption: 'بصوا يا بنات وصلنا إيه 😍✨\nتركيبة خفيفة أوي بتتشرب بسرعة ومش بتسيب ملمس دهني 💧\n✨ مميزاته:\n💗 بتدي البشرة مظهر أنضر\n💗 مناسبة للاستخدام كل يوم صباحاً ومساءً\nأصلي من المانيا 🇩🇪 ويستاهل يبقى في روتينك 🤍',
     lines: ['نضارة كل صباح', 'ملمس خفيف سريع الامتصاص', 'لروتين بسيط وأنيق'],
     headline_en: 'A soft glow that lasts all day', caption_en: 'A light texture that sinks in quickly ✨\nFor a fresher-looking complexion, morning and evening.',
     lines_en: ['A fresh glow every morning', 'Light and quick to absorb', 'For a simple, elegant routine'], title_en: 'Which one suits your routine?', sub_en: 'See the difference',
