@@ -1011,12 +1011,129 @@
    "ai": "Claude Haiku",
    "aiNote": "",
    "createdAt": "2026-11-19T10:14:20.010Z"
+  },
+  {
+   "id": "2026-11-22-guide",
+   "date": "2026-11-22",
+   "postAt": "2026-11-22T18:30:00.000Z",
+   "type": "guide",
+   "title": "Care guide (carousel)",
+   "occasion": {
+    "ar": "الجمعة البيضاء",
+    "en": "White Friday",
+    "inDays": 5
+   },
+   "products": [
+    "q0od7ifnll",
+    "15q73n0jf7",
+    "w550ox0b3x"
+   ],
+   "snapshot": {
+    "q0od7ifnll": {
+     "price": 500,
+     "was": 0,
+     "avail": "pre"
+    },
+    "15q73n0jf7": {
+     "price": 180,
+     "was": 0,
+     "avail": "pre"
+    },
+    "w550ox0b3x": {
+     "price": 350,
+     "was": 0,
+     "avail": "pre"
+    }
+   },
+   "words": {
+    "chosen": [
+     "q0od7ifnll",
+     "15q73n0jf7",
+     "w550ox0b3x"
+    ],
+    "title": "دليل العناية بالبشرة الحساسة",
+    "title_en": "A Guide to Sensitive Skin Care",
+    "sub": "منتجات لطيفة لبشرتك الحساسة والجافة كل يوم",
+    "sub_en": "Gentle picks for sensitive and dry skin, every day 🌿",
+    "slides": [
+     {
+      "id": "q0od7ifnll",
+      "title": "حماية يومية لطيفة للبشرة",
+      "title_en": "Gentle Daily Protection",
+      "points": [
+       "حماية من UVA وUVB بعامل 50+",
+       "ترطيب يدوم حتى 48 ساعة",
+       "خالي من العطور وغني بالبانثينول"
+      ]
+     },
+     {
+      "id": "15q73n0jf7",
+      "title": "ترطيب مكثف وراحة للبشرة",
+      "title_en": "Intense Hydration and Comfort",
+      "points": [
+       "ترطيب مكثف يدوم طويلاً",
+       "يساعد على تخفيف إحساس الشد",
+       "خالٍ من العطور والبارابين والأصباغ"
+      ]
+     },
+     {
+      "id": "w550ox0b3x",
+      "title": "عناية مريحة للبشرة الجافة",
+      "title_en": "Soothing Care for Dry Skin",
+      "points": [
+       "7% ديكسبانثينول لترطيب مريح",
+       "مناسب للعناية المنتظمة بالبشرة الجافة",
+       "خالٍ من الصبغات والعطور"
+      ]
+     }
+    ],
+    "caption": "دليل سريع لبشرتك الحساسة 🌿💗\nواقي شمس للبشرة الحساسة بعامل حماية 50+ 🌸\nوقناع ترطيب بيساعد على تخفيف إحساس الشد 💧\nومرهم البانثينول بيدي ترطيب مريح للبشرة الجافة 🤍\nكل دول خاليين من العطور، أصليين من المانيا 🇩🇪\nهدية حلوة أوي لـالجمعة البيضاء 🎁",
+    "caption_en": "A quick guide to your sensitive skin 🌿💗\nA sensitive-skin sun fluid with SPF 50+ 🌸\nAnd a hydrating mask that helps ease tightness 💧\nPlus a panthenol ointment for comfortable hydration 🤍\nAll fragrance-free and original from Germany 🇩🇪\nA lovely gift idea for White Friday 🎁",
+    "hashtags": [
+     "#بشرة_حساسة",
+     "#عناية_بالبشرة",
+     "#واقي_شمس",
+     "#ترطيب",
+     "#منتجات_المانية",
+     "#germanbeauty"
+    ],
+    "alt_en": "Three German skincare products for sensitive skin: a sun fluid, a sheet mask and a panthenol ointment, arranged together on a soft pastel background."
+   },
+   "media": {
+    "images": [
+     "https://lumia-store.github.io/media/social/2026-11-22-guide-1.jpg",
+     "https://lumia-store.github.io/media/social/2026-11-22-guide-2.jpg",
+     "https://lumia-store.github.io/media/social/2026-11-22-guide-3.jpg",
+     "https://lumia-store.github.io/media/social/2026-11-22-guide-4.jpg",
+     "https://lumia-store.github.io/media/social/2026-11-22-guide-5.jpg"
+    ],
+    "story": "",
+    "video": "",
+    "cover": ""
+   },
+   "files": [
+    "2026-11-22-guide-1.jpg",
+    "2026-11-22-guide-2.jpg",
+    "2026-11-22-guide-3.jpg",
+    "2026-11-22-guide-4.jpg",
+    "2026-11-22-guide-5.jpg"
+   ],
+   "preview": {
+    "fb": "دليل سريع لبشرتك الحساسة 🌿💗\nواقي شمس للبشرة الحساسة بعامل حماية 50+ 🌸\nوقناع ترطيب بيساعد على تخفيف إحساس الشد 💧\nومرهم البانثينول بيدي ترطيب مريح للبشرة الجافة 🤍\nكل دول خاليين من العطور، أصليين من المانيا 🇩🇪\nهدية حلوة أوي لـالجمعة البيضاء 🎁\n\nA quick guide to your sensitive skin 🌿💗\nA sensitive-skin sun fluid with SPF 50+ 🌸\nAnd a hydrating mask that helps ease tightness 💧\nPlus a panthenol ointment for comfortable hydration 🤍\nAll fragrance-free and original from Germany 🇩🇪\nA lovely gift idea for White Friday 🎁\n\n• Sundance · واقي شمس سائل للبشرة الحساسة · Sensitive Sun Fluid for Face SPF 50+ · 50 ml\n• Balea · قناع ورقي للبشرة الحساسة · Ultra Sensitive Sheet Mask · 1 piece\n• Mivolis · مرهم البانثينول للعناية بالبشرة · Panthenol Protective and Care Ointment · 75 ml\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 https://lumia-store.github.io/\n📲 https://wa.me/201061227556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#بشرة_حساسة #عناية_بالبشرة #واقي_شمس #ترطيب #منتجات_المانية",
+    "ig": "دليل سريع لبشرتك الحساسة 🌿💗\nواقي شمس للبشرة الحساسة بعامل حماية 50+ 🌸\nوقناع ترطيب بيساعد على تخفيف إحساس الشد 💧\nومرهم البانثينول بيدي ترطيب مريح للبشرة الجافة 🤍\nكل دول خاليين من العطور، أصليين من المانيا 🇩🇪\nهدية حلوة أوي لـالجمعة البيضاء 🎁\n\nA quick guide to your sensitive skin 🌿💗\nA sensitive-skin sun fluid with SPF 50+ 🌸\nAnd a hydrating mask that helps ease tightness 💧\nPlus a panthenol ointment for comfortable hydration 🤍\nAll fragrance-free and original from Germany 🇩🇪\nA lovely gift idea for White Friday 🎁\n\n• Sundance · واقي شمس سائل للبشرة الحساسة · Sensitive Sun Fluid for Face SPF 50+ · 50 ml\n• Balea · قناع ورقي للبشرة الحساسة · Ultra Sensitive Sheet Mask · 1 piece\n• Mivolis · مرهم البانثينول للعناية بالبشرة · Panthenol Protective and Care Ointment · 75 ml\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 lumia-store.github.io (الرابط في البايو · link in bio)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#بشرة_حساسة #عناية_بالبشرة #واقي_شمس #ترطيب #منتجات_المانية #germanbeauty #LUMIACare #منتجات_المانية_أصلية",
+    "igTail": "A quick guide to your sensitive skin 🌿💗\nA sensitive-skin sun fluid with SPF 50+ 🌸\nAnd a hydrating mask that helps ease tightness 💧\nPlus a panthenol ointment for comfortable hydration 🤍\nAll fragrance-free and original from Germany 🇩🇪\nA lovely gift idea for White Friday 🎁\n\n• Sundance · واقي شمس سائل للبشرة الحساسة · Sensitive Sun Fluid for Face SPF 50+ · 50 ml\n• Balea · قناع ورقي للبشرة الحساسة · Ultra Sensitive Sheet Mask · 1 piece\n• Mivolis · مرهم البانثينول للعناية بالبشرة · Panthenol Protective and Care Ointment · 75 ml\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 lumia-store.github.io (الرابط في البايو · link in bio)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#بشرة_حساسة #عناية_بالبشرة #واقي_شمس #ترطيب #منتجات_المانية #germanbeauty #LUMIACare #منتجات_المانية_أصلية"
+   },
+   "status": "waiting",
+   "cleanV": 6,
+   "ai": "Claude Haiku",
+   "aiNote": "",
+   "createdAt": "2026-11-20T09:57:40.355Z"
   }
  ],
  "robot": {
-  "lastPrepare": "2026-11-19T17:44:36.022Z",
-  "lastPrepareMade": 0,
-  "aiCostUsd": 0.011,
+  "lastPrepare": "2026-11-20T09:57:40.421Z",
+  "lastPrepareMade": 1,
+  "aiCostUsd": 0.0132,
   "lastError": "",
   "lastPostCheck": "2026-11-19T23:45:15.393Z",
   "lastErrorAt": "2026-11-12T09:37:55.021Z",
