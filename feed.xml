@@ -21,7 +21,7 @@
 <item><g:id>jss6d</g:id><g:title>Mivolis Sweetener Tablets 1200 tablets</g:title>
 <g:description>أقراص محلية منخفضة السعرات الحرارية من ميفوليس، تحلّي المشروبات الساخنة والباردة بسهولة. القرص الواحد يعادل قطعة سكر واحدة، ليمنح المشروب حلاوته بخفة.</g:description><g:link>https://lumia-store.github.io/p/mivolis-sussstoff-tabletten-jss6d/</g:link><g:image_link>https://lumia-store.github.io/images/mivolis-s-stoff-tabletten-1a7954.jpg</g:image_link>
 <g:additional_image_link>https://lumia-store.github.io/images/mivolis-s-stoff-tabletten-f93d36.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/mivolis-s-stoff-tabletten-c64572.jpg</g:additional_image_link>
-<g:availability>preorder</g:availability><g:availability_date>2026-12-05T12:00:00+02:00</g:availability_date><g:price>250 EGP</g:price>
+<g:availability>in_stock</g:availability><g:price>250 EGP</g:price>
 <g:brand>Mivolis</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists>
 <g:product_type>Weight management</g:product_type><g:google_product_category>Health &amp; Beauty &gt; Personal Care</g:google_product_category></item>
 <item><g:id>ksbme</g:id><g:title>Dontodent Strong Mint Refreshing Chewing Gum 50 pcs</g:title>
@@ -75,13 +75,13 @@
 <item><g:id>kqidr</g:id><g:title>Balea Hyaluron Face Serum 30 ml</g:title>
 <g:description>ترطيب ونضارة بسبعة أنواع من حمض الهيالورونيك، لبشرة تبدو أنعم وأكثر امتلاءً. سيروم خفيف يمتصه الجلد بسرعة، ويناسب العناية اليومية.</g:description><g:link>https://lumia-store.github.io/p/balea-beauty-hyaluron-serum-kqidr/</g:link><g:image_link>https://lumia-store.github.io/images/balea-beauty-hyaluron-serum-458e52.jpg</g:image_link>
 <g:additional_image_link>https://lumia-store.github.io/images/balea-beauty-hyaluron-serum-99f149.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/balea-beauty-hyaluron-serum-710805.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/balea-beauty-hyaluron-serum-78d31b.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/balea-beauty-hyaluron-serum-59941b.jpg</g:additional_image_link>
-<g:availability>preorder</g:availability><g:availability_date>2026-12-05T12:00:00+02:00</g:availability_date><g:price>500 EGP</g:price><g:sale_price>470 EGP</g:sale_price>
+<g:availability>in_stock</g:availability><g:price>500 EGP</g:price><g:sale_price>470 EGP</g:sale_price>
 <g:brand>Balea</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists>
 <g:product_type>Skin care</g:product_type><g:google_product_category>Health &amp; Beauty &gt; Personal Care</g:google_product_category></item>
 <item><g:id>soiey</g:id><g:title>Balea Collagen Retinol Face Serum 30 ml</g:title>
 <g:description>سيروم مكثف بالريتينول وأكاسيا الكولاجين، يدعم إنتاج الكولاجين الطبيعي في البشرة ويُعنى بمظهر الخطوط الدقيقة. يمنح البشرة مظهراً أكثر نضارة وتماسكاً ضمن روتين عناية يومي.</g:description><g:link>https://lumia-store.github.io/p/balea-beauty-collagen-retinol-serum-soiey/</g:link><g:image_link>https://lumia-store.github.io/images/balea-beauty-collagen-retinol-serum-d492fd.jpg</g:image_link>
 <g:additional_image_link>https://lumia-store.github.io/images/balea-beauty-collagen-retinol-serum-154283.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/balea-beauty-collagen-retinol-serum-b85e01.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/balea-beauty-collagen-retinol-serum-41e8e0.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/balea-beauty-collagen-retinol-serum-754e9d.jpg</g:additional_image_link>
-<g:availability>preorder</g:availability><g:availability_date>2026-12-05T12:00:00+02:00</g:availability_date><g:price>500 EGP</g:price><g:sale_price>450 EGP</g:sale_price>
+<g:availability>in_stock</g:availability><g:price>500 EGP</g:price><g:sale_price>450 EGP</g:sale_price>
 <g:brand>Balea</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists>
 <g:product_type>Skin care</g:product_type><g:google_product_category>Health &amp; Beauty &gt; Personal Care</g:google_product_category></item>
 <item><g:id>0x2bc</g:id><g:title>Balea Niacinamide Face Serum 30 ml</g:title>
@@ -93,7 +93,7 @@
 <item><g:id>xmqpj</g:id><g:title>Balea Vitamin C Face Serum 30 ml</g:title>
 <g:description>إشراقة ناعمة وبشرة أكثر توحداً في المظهر مع سيروم فيتامين C من Balea، المخصص للعناية اليومية. تركيبة خفيفة تمنح البشرة إحساساً بالترطيب والانتعاش، وتناسب من تبحث عن نضارة متجددة كل صباح.</g:description><g:link>https://lumia-store.github.io/p/balea-vitamin-c-serum-xmqpj/</g:link><g:image_link>https://lumia-store.github.io/images/balea-vitamin-c-serum-cdc19d.jpg</g:image_link>
 <g:additional_image_link>https://lumia-store.github.io/images/balea-vitamin-c-serum-d1cb65.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/balea-vitamin-c-serum-51998f.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/balea-vitamin-c-serum-b9929a.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/balea-vitamin-c-serum-c424eb.jpg</g:additional_image_link>
-<g:availability>preorder</g:availability><g:availability_date>2026-12-05T12:00:00+02:00</g:availability_date><g:price>500 EGP</g:price>
+<g:availability>in_stock</g:availability><g:price>500 EGP</g:price>
 <g:brand>Balea</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists>
 <g:product_type>Skin care</g:product_type><g:google_product_category>Health &amp; Beauty &gt; Personal Care</g:google_product_category></item>
 <item><g:id>5a4xz</g:id><g:title>Balea Deodorant Cream with Soda and Zinc 50 ml</g:title>
@@ -117,7 +117,7 @@
 <item><g:id>bno5n</g:id><g:title>Mivolis Omega-3 1000 Capsules 60 capsules</g:title>
 <g:description>مكمل غذائي من زيت السمك البحري الغني بأحماض أوميغا-3 غير المشبعة، وبخاصة EPA وDHA. يناسب من يرغب في تعزيز تناوله لهذه الأحماض ضمن نظام غذائي متوازن ونمط حياة صحي.</g:description><g:link>https://lumia-store.github.io/p/mivolis-omega-3-1000-bno5n/</g:link><g:image_link>https://lumia-store.github.io/images/mivolis-omega-3-1000-fb52bb.jpg</g:image_link>
 <g:additional_image_link>https://lumia-store.github.io/images/mivolis-omega-3-1000-3b48cf.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/mivolis-omega-3-1000-435858.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/mivolis-omega-3-1000-af78bc.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/mivolis-omega-3-1000-a50b16.jpg</g:additional_image_link>
-<g:availability>preorder</g:availability><g:availability_date>2026-12-05T12:00:00+02:00</g:availability_date><g:price>500 EGP</g:price><g:sale_price>470 EGP</g:sale_price>
+<g:availability>in_stock</g:availability><g:price>500 EGP</g:price><g:sale_price>470 EGP</g:sale_price>
 <g:brand>Mivolis</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists>
 <g:product_type>Vitamins &amp; supplements</g:product_type><g:google_product_category>Health &amp; Beauty &gt; Personal Care</g:google_product_category></item>
 <item><g:id>l1j91</g:id><g:title>Mivolis Fat Blocker Tablets 30 tablets</g:title>
@@ -189,7 +189,7 @@
 <item><g:id>mx6h3</g:id><g:title>Balea Hyaluron Hand Serum 75 ml</g:title>
 <g:description>ملمس سيروم خفيف يُمتص بسرعة دون أن يترك طبقة دهنية، ليمنح اليدين ترطيباً مكثفاً ونضارة. تجمع التركيبة النباتية بين مركب مضاد للشيخوخة وحمض الهيالورونيك قصير وطويل السلسلة، وصُمّمت خصيصاً للأيدي التي تحتاج إلى عناية مكثفة.</g:description><g:link>https://lumia-store.github.io/p/balea-hyaluron-handserum-mx6h3/</g:link><g:image_link>https://lumia-store.github.io/images/balea-hyaluron-handserum-c0b66c.jpg</g:image_link>
 <g:additional_image_link>https://lumia-store.github.io/images/balea-hyaluron-handserum-38619b.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/balea-hyaluron-handserum-66b2ae.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/balea-hyaluron-handserum-410a79.jpg</g:additional_image_link>
-<g:availability>preorder</g:availability><g:availability_date>2026-12-05T12:00:00+02:00</g:availability_date><g:price>350 EGP</g:price>
+<g:availability>in_stock</g:availability><g:price>350 EGP</g:price>
 <g:brand>Balea</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists>
 <g:product_type>Body care</g:product_type><g:google_product_category>Health &amp; Beauty &gt; Personal Care</g:google_product_category></item>
 <item><g:id>l2lfm</g:id><g:title>Balea Q10 Anti-Wrinkle Serum</g:title>
@@ -645,7 +645,7 @@
 <item><g:id>lff3g</g:id><g:title>Balea Foot File 1 pcs</g:title>
 <g:description>قدمان أنعم مع ملف يزيل الجلد الميت والكالس من القدمين، ويمكن استخدامه على الجلد الجاف أو المبلل. يناسب كل من يرغب في الحفاظ على نعومة قدميه ضمن روتين العناية بهما.</g:description><g:link>https://lumia-store.github.io/p/balea-hornhautfeile-lff3g/</g:link><g:image_link>https://lumia-store.github.io/images/balea-hornhautfeile-3c2503.jpg</g:image_link>
 <g:additional_image_link>https://lumia-store.github.io/images/balea-hornhautfeile-1a54ac.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/balea-hornhautfeile-3a329d.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/balea-hornhautfeile-7da85a.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/balea-hornhautfeile-f9f762.jpg</g:additional_image_link>
-<g:availability>preorder</g:availability><g:availability_date>2026-12-05T12:00:00+02:00</g:availability_date><g:price>170 EGP</g:price>
+<g:availability>in_stock</g:availability><g:price>170 EGP</g:price>
 <g:brand>Balea</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists>
 <g:product_type>Body care</g:product_type><g:google_product_category>Health &amp; Beauty &gt; Personal Care</g:google_product_category></item>
 <item><g:id>mt2cl</g:id><g:title>Balea Anti-Blemish 24h Moisturiser 50 ml</g:title>
@@ -681,7 +681,7 @@
 <item><g:id>juwnh</g:id><g:title>Balea Pure Petroleum Jelly Vaseline 125 ml</g:title>
 <g:description>فازلين لطيف الترطيب، يناسب البشرة المتضررة والمجهدة على الجسم والوجه واليدين والقدمين. عناية بسيطة ولطيفة تمنح البشرة ترطيباً مريحاً.</g:description><g:link>https://lumia-store.github.io/p/balea-vaseline-juwnh/</g:link><g:image_link>https://lumia-store.github.io/images/balea-vaseline-fffba0.jpg</g:image_link>
 <g:additional_image_link>https://lumia-store.github.io/images/balea-vaseline-cdd122.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/balea-vaseline-8052a2.jpg</g:additional_image_link>
-<g:availability>preorder</g:availability><g:availability_date>2026-12-05T12:00:00+02:00</g:availability_date><g:price>280 EGP</g:price>
+<g:availability>in_stock</g:availability><g:price>280 EGP</g:price>
 <g:brand>Balea</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists>
 <g:product_type>Body care</g:product_type><g:google_product_category>Health &amp; Beauty &gt; Personal Care</g:google_product_category></item>
 <item><g:id>i030j</g:id><g:title>ISANA 13in1 Intensive &amp; Care Hair Treatment 100 ml</g:title>
@@ -711,7 +711,7 @@
 <item><g:id>q223p</g:id><g:title>ISANA Caffeine Hair Tonic 150 ml</g:title>
 <g:description>عناية مركّزة لفروة الرأس والشعر الرفيع الضعيف، بتركيبة تحتوي على الكافيين ومكوّن AnaGain™. تُخصص للشعر الذي يعاني من تساقط الشعر الموروث، وتُستخدم على فروة رأس سليمة.</g:description><g:link>https://lumia-store.github.io/p/isana-tonikum-coffein-q223p/</g:link><g:image_link>https://lumia-store.github.io/images/isana-tonikum-coffein-a81f55.jpg</g:image_link>
 
-<g:availability>preorder</g:availability><g:availability_date>2026-12-05T12:00:00+02:00</g:availability_date><g:price>460 EGP</g:price>
+<g:availability>in_stock</g:availability><g:price>460 EGP</g:price>
 <g:brand>ISANA</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists>
 <g:product_type>Hair care</g:product_type><g:google_product_category>Health &amp; Beauty &gt; Personal Care</g:google_product_category></item>
 <item><g:id>hiz5k</g:id><g:title>PHILIPS AVENT Natural Response Trainer Bottle with Handles 150 ml</g:title>
@@ -1083,43 +1083,43 @@
 <item><g:id>g5ezc</g:id><g:title>essence Super Peptide Glossy Lip Treatment 10 ml</g:title>
 <g:description>ليب جلوس مغذٍّ بلمعة وردية ناعمة تتلألأ بخفة على الشفاه. يُعنى بتنعيم الشفاه وتغذيتها بفضل فيتامين E والببتيدات وزبدة الشيا، ويمنحها مظهراً لامعاً وممتلئاً. يناسب الاستخدام اليومي كما يناسب الإطلالات المسائية الأنيقة.</g:description><g:link>https://lumia-store.github.io/p/essence-the-super-peptide-glossy-lip-treatment-05-holomazing-g5ezc/</g:link><g:image_link>https://lumia-store.github.io/images/essence-the-super-peptide-glossy-lip-tre-11b987.jpg</g:image_link>
 <g:additional_image_link>https://lumia-store.github.io/images/essence-the-super-peptide-glossy-lip-tre-16c820.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/essence-the-super-peptide-glossy-lip-tre-3e4783.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/essence-the-super-peptide-glossy-lip-tre-7f41ad.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/essence-the-super-peptide-glossy-lip-tre-d2a9a5.jpg</g:additional_image_link>
-<g:availability>preorder</g:availability><g:availability_date>2026-12-05T12:00:00+02:00</g:availability_date><g:price>340 EGP</g:price>
+<g:availability>in_stock</g:availability><g:price>340 EGP</g:price>
 <g:brand>essence</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists>
 <g:product_type>Makeup</g:product_type><g:google_product_category>Health &amp; Beauty &gt; Personal Care</g:google_product_category></item>
 <item><g:id>cjmyo</g:id><g:title>Balea Pink Blossom Hair Perfume 100 ml</g:title>
 <g:description>عطر شعر خفيف بنفحات مزهرة بودرية، يمنح الشعر رائحة ناعمة تدوم وإشراقة طبيعية دون أن يثقله. تركيبته خالية من السيليكون، ويصلح للاستخدام اليومي لمسةً أخيرة بين غسلتين للحفاظ على الشعر معطراً وأنيقاً.</g:description><g:link>https://lumia-store.github.io/p/balea-haarparfum-pink-blossom-cjmyo/</g:link><g:image_link>https://lumia-store.github.io/images/balea-haarparfum-pink-blossom-c948aa.jpg</g:image_link>
 <g:additional_image_link>https://lumia-store.github.io/images/balea-haarparfum-pink-blossom-99d3ab.jpg</g:additional_image_link>
-<g:availability>preorder</g:availability><g:availability_date>2026-12-05T12:00:00+02:00</g:availability_date><g:price>250 EGP</g:price>
+<g:availability>in_stock</g:availability><g:price>250 EGP</g:price>
 <g:brand>Balea</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists>
 <g:product_type>Hair care</g:product_type><g:google_product_category>Health &amp; Beauty &gt; Personal Care</g:google_product_category></item>
 <item><g:id>zvddj</g:id><g:title>Balea Brazilian Nights Hair Perfume 100 ml</g:title>
 <g:description>عطر شعر بنفحة استوائية صيفية يمنح الشعر رائحة ناعمة تدوم، مع لمعان طبيعي خفيف لا يُثقل الخصلات. يحتوي على البانثينول للعناية بالشعر وتحسين قابليته للتمشيط، ويناسب مختلف أنواع الشعر.</g:description><g:link>https://lumia-store.github.io/p/balea-brazilian-nights-haarparfum-zvddj/</g:link><g:image_link>https://lumia-store.github.io/images/balea-brazilian-nights-haarparfum-7e2149.jpg</g:image_link>
 <g:additional_image_link>https://lumia-store.github.io/images/balea-brazilian-nights-haarparfum-40beaf.jpg</g:additional_image_link>
-<g:availability>preorder</g:availability><g:availability_date>2026-12-05T12:00:00+02:00</g:availability_date><g:price>360 EGP</g:price>
+<g:availability>in_stock</g:availability><g:price>360 EGP</g:price>
 <g:brand>Balea</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists>
 <g:product_type>Hair care</g:product_type><g:google_product_category>Health &amp; Beauty &gt; Personal Care</g:google_product_category></item>
 <item><g:id>lyjhv</g:id><g:title>Balea MEN Men&#39;s Extra Dry Antiperspirant Deostick 50 ml</g:title>
 <g:description>مزيل عرق على شكل ستيك مصمم خصيصاً للرجال، يمنح شعوراً بالجفاف ويوفّر حماية تدوم حتى 72 ساعة من تعرق الإبطين ورائحته. تركيبته المنعشة لطيفة على البشرة، وتسمح بتطبيق دقيق ومريح يناسب الاستخدام اليومي في الرياضة والعمل.</g:description><g:link>https://lumia-store.github.io/p/balea-men-antitranspirant-deostick-extra-dry-lyjhv/</g:link><g:image_link>https://lumia-store.github.io/images/balea-men-antitranspirant-deostick-extra-1747dd.jpg</g:image_link>
 <g:additional_image_link>https://lumia-store.github.io/images/balea-men-antitranspirant-deostick-extra-af684c.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/balea-men-antitranspirant-deostick-extra-3936d8.jpg</g:additional_image_link>
-<g:availability>preorder</g:availability><g:availability_date>2026-12-05T12:00:00+02:00</g:availability_date><g:price>250 EGP</g:price>
+<g:availability>in_stock</g:availability><g:price>250 EGP</g:price>
 <g:brand>Balea MEN</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists>
 <g:product_type>Body care</g:product_type><g:google_product_category>Health &amp; Beauty &gt; Personal Care</g:google_product_category></item>
 <item><g:id>lcl71</g:id><g:title>NYX Professional Makeup Matte Finish Makeup Setting Spray 60 ml</g:title>
 <g:description>رذاذ تثبيت شفاف يمنح المكياج لمسة نهائية مطفية، ويساعد على الحفاظ على ثباته لفترة طويلة. يناسب جميع أنواع البشرة ودرجات الألوان، ويُعدّ خياراً عملياً للحمل في الحقيبة واستخدامه أثناء التنقل.</g:description><g:link>https://lumia-store.github.io/p/nyx-professional-makeup-matte-finish-makeup-setting-spray-lcl71/</g:link><g:image_link>https://lumia-store.github.io/images/nyx-professional-makeup-matte-finish-mak-976844.jpg</g:image_link>
 <g:additional_image_link>https://lumia-store.github.io/images/nyx-professional-makeup-matte-finish-mak-b1587c.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/nyx-professional-makeup-matte-finish-mak-38fae8.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/nyx-professional-makeup-matte-finish-mak-cdf3aa.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/nyx-professional-makeup-matte-finish-mak-02d63f.jpg</g:additional_image_link>
-<g:availability>preorder</g:availability><g:availability_date>2026-12-05T12:00:00+02:00</g:availability_date><g:price>900 EGP</g:price>
+<g:availability>in_stock</g:availability><g:price>900 EGP</g:price>
 <g:brand>NYX Professional Makeup</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists>
 <g:product_type>Makeup</g:product_type><g:google_product_category>Health &amp; Beauty &gt; Personal Care</g:google_product_category></item>
 <item><g:id>1m1or</g:id><g:title>NYX Professional Makeup Buttermelt Cream Blush 5 g</g:title>
 <g:description>أحمر خدود كريمي يمنح الخدود إشراقة منعشة وطبيعية، إذ يندمج مع البشرة كالبودرة ليترك لمسة ناعمة ومتجانسة. يحتوي على زبدة الشيا والمانجو واللوز المغذية، ويمكن بناء كثافة اللون تدريجياً بحسب الرغبة، فيناسب الإطلالات اليومية وإطلالات المكياج الكامل.</g:description><g:link>https://lumia-store.github.io/p/nyx-professional-makeup-buttermelt-blush-06-for-the-butta-1m1or/</g:link><g:image_link>https://lumia-store.github.io/images/nyx-professional-makeup-buttermelt-blush-b560ae.jpg</g:image_link>
 <g:additional_image_link>https://lumia-store.github.io/images/nyx-professional-makeup-buttermelt-blush-2ee841.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/nyx-professional-makeup-buttermelt-blush-65133d.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/nyx-professional-makeup-buttermelt-blush-37b3cd.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/nyx-professional-makeup-buttermelt-blush-dcafd6.jpg</g:additional_image_link>
-<g:availability>preorder</g:availability><g:availability_date>2026-12-05T12:00:00+02:00</g:availability_date><g:price>900 EGP</g:price>
+<g:availability>in_stock</g:availability><g:price>900 EGP</g:price>
 <g:brand>NYX Professional Makeup</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists>
 <g:product_type>Makeup</g:product_type><g:google_product_category>Health &amp; Beauty &gt; Personal Care</g:google_product_category></item>
 <item><g:id>l9aij</g:id><g:title>NYX Professional Makeup Buttermelt Creamy Blush 5 g</g:title>
 <g:description>ملمس كريمي يندمج مع البشرة كالبودرة ليمنح الخدود إشراقة وردية نضرة. يمكن بناء الكثافة تدريجياً حسب الرغبة، وتُضاف زبدة الشيا والمانجو واللوز لمنح إحساساً مريحاً ومغذياً. مناسب لإطلالة مكياج متكاملة.</g:description><g:link>https://lumia-store.github.io/p/nyx-professional-makeup-buttermelt-blush-04-u-know-butta-l9aij/</g:link><g:image_link>https://lumia-store.github.io/images/nyx-professional-makeup-buttermelt-blush-126350.jpg</g:image_link>
 <g:additional_image_link>https://lumia-store.github.io/images/nyx-professional-makeup-buttermelt-blush-0a5b82.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/nyx-professional-makeup-buttermelt-blush-2660a6.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/nyx-professional-makeup-buttermelt-blush-5442f8.jpg</g:additional_image_link><g:additional_image_link>https://lumia-store.github.io/images/nyx-professional-makeup-buttermelt-blush-cdcc97.jpg</g:additional_image_link>
-<g:availability>preorder</g:availability><g:availability_date>2026-12-05T12:00:00+02:00</g:availability_date><g:price>900 EGP</g:price>
+<g:availability>in_stock</g:availability><g:price>900 EGP</g:price>
 <g:brand>NYX Professional Makeup</g:brand><g:condition>new</g:condition><g:identifier_exists>no</g:identifier_exists>
 <g:product_type>Makeup</g:product_type><g:google_product_category>Health &amp; Beauty &gt; Personal Care</g:google_product_category></item>
 </channel></rss>
