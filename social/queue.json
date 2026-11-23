@@ -936,11 +936,12 @@
     "ig": "منتجات أصلية ومغلّفة، اشتريناها من متاجر ألمانية مثل dm وRossmann.\nاخترناها بعناية، لتصلك كما خرجت من متاجرها. ✨\n\nOriginal, sealed products bought from German drugstores such as dm and Rossmann, and brought to Egypt with care.\nEach piece is chosen thoughtfully, just as it left the shelf. ✨\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 lumia-store.github.io (الرابط في البايو · link in bio)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#منتجات_المانية #منتجات_أصلية #germanbeauty #dmproducts #جمال #عناية_بالبشرة #skincareegypt #LUMIACare #منتجات_المانية_أصلية",
     "igTail": "Original, sealed products bought from German drugstores such as dm and Rossmann, and brought to Egypt with care.\nEach piece is chosen thoughtfully, just as it left the shelf. ✨\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 lumia-store.github.io (الرابط في البايو · link in bio)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#منتجات_المانية #منتجات_أصلية #germanbeauty #dmproducts #جمال #عناية_بالبشرة #skincareegypt #LUMIACare #منتجات_المانية_أصلية"
    },
-   "status": "waiting",
+   "status": "expired",
    "cleanV": 6,
    "ai": "Claude Haiku",
    "aiNote": "",
-   "createdAt": "2026-11-18T08:29:31.827Z"
+   "createdAt": "2026-11-18T08:29:31.827Z",
+   "note": "Not approved in time"
   },
   {
    "id": "2026-11-21-spotlight",
@@ -1287,12 +1288,91 @@
    "ai": "Claude Haiku",
    "aiNote": "",
    "createdAt": "2026-11-22T09:42:28.398Z"
+  },
+  {
+   "id": "2026-11-25-compare",
+   "date": "2026-11-25",
+   "postAt": "2026-11-25T18:30:00.000Z",
+   "type": "compare",
+   "title": "Which one suits you?",
+   "occasion": {
+    "ar": "الجمعة البيضاء",
+    "en": "White Friday",
+    "inDays": 2
+   },
+   "products": [
+    "5xz6zpiya6",
+    "0dqjs6jweh"
+   ],
+   "snapshot": {
+    "5xz6zpiya6": {
+     "price": 180,
+     "was": 0,
+     "avail": "pre"
+    },
+    "0dqjs6jweh": {
+     "price": 350,
+     "was": 0,
+     "avail": "pre"
+    }
+   },
+   "words": {
+    "chosen": [
+     "5xz6zpiya6",
+     "0dqjs6jweh"
+    ],
+    "title": "لصقات ولا كريم للبثور؟",
+    "sub": "كل واحد ليه دور مختلف في روتينك 🌿",
+    "labels": {
+     "5xz6zpiya6": "لصقات للبثور الفردية",
+     "0dqjs6jweh": "كريم مهدئ للاحمرار والبثور"
+    },
+    "caption": "بصوا يا بنات، لو البثور بتزعجك، الاتنين دول يستاهلوا تعرفيهم 😍\nاللصقات بتتحط على البثرة الواحدة بالليل، بتغطيها وبتمتص إفرازاتها 💧\nالكريم بيساعد على تهدئة الاحمرار وبيغذي البشرة المتهيجة 🌿\nاللصقات مناسبة للبثور الفردية، والكريم مناسب للبشرة اللي محتاجة تهدئة 🤍\nهدية حلوة أوي لـالجمعة البيضاء 🎁 تختاري أنهي واحد لروتينك؟ 😍",
+    "hashtags": [
+     "#عناية_بالبشرة",
+     "#بشرة_دهنية",
+     "#بشرة_حساسة",
+     "#روتين_العناية",
+     "#منتجات_المانية",
+     "#Balea"
+    ],
+    "alt_en": "Two Balea products side by side: hydrocolloid pimple patches for single spots and a calming zinc cream for redness and blemishes.",
+    "headline_en": "Patches or cream for blemishes?",
+    "title_en": "Patches or cream for blemishes? 😍",
+    "sub_en": "Each one has its own role in your routine 🌿",
+    "labels_en": {
+     "5xz6zpiya6": "Patches for single spots",
+     "0dqjs6jweh": "Calming cream for redness & blemishes"
+    },
+    "caption_en": "Girls, if breakouts are bugging you, these two are worth knowing 😍\nHydrocolloid patches go on one pimple at a time overnight, covering it and absorbing what comes out 💧\nThe zinc cream helps soothe redness and nourishes irritated skin 🌿\nPatches suit single spots, while the cream suits skin that needs calming 🤍\nA lovely gift idea for White Friday 🎁 Which one fits your routine? 😍"
+   },
+   "media": {
+    "images": [
+     "https://lumia-store.github.io/media/social/2026-11-25-compare-1.jpg"
+    ],
+    "story": "",
+    "video": "",
+    "cover": ""
+   },
+   "files": [
+    "2026-11-25-compare-1.jpg"
+   ],
+   "preview": {
+    "fb": "بصوا يا بنات، لو البثور بتزعجك، الاتنين دول يستاهلوا تعرفيهم 😍\nاللصقات بتتحط على البثرة الواحدة بالليل، بتغطيها وبتمتص إفرازاتها 💧\nالكريم بيساعد على تهدئة الاحمرار وبيغذي البشرة المتهيجة 🌿\nاللصقات مناسبة للبثور الفردية، والكريم مناسب للبشرة اللي محتاجة تهدئة 🤍\nهدية حلوة أوي لـالجمعة البيضاء 🎁 تختاري أنهي واحد لروتينك؟ 😍\n\nGirls, if breakouts are bugging you, these two are worth knowing 😍\nHydrocolloid patches go on one pimple at a time overnight, covering it and absorbing what comes out 💧\nThe zinc cream helps soothe redness and nourishes irritated skin 🌿\nPatches suit single spots, while the cream suits skin that needs calming 🤍\nA lovely gift idea for White Friday 🎁 Which one fits your routine? 😍\n\n• Balea · لصقات الهيدروكولويد للعناية بالبشرة والبثور · Hydrocolloid Pimple Patches · 24 pieces\n• Balea · كريم الزنك المهدئ للبشرة · Zinc Cream · 50 ml\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 https://lumia-store.github.io/\n📲 https://wa.me/201061227556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#عناية_بالبشرة #بشرة_دهنية #بشرة_حساسة #روتين_العناية #منتجات_المانية",
+    "ig": "بصوا يا بنات، لو البثور بتزعجك، الاتنين دول يستاهلوا تعرفيهم 😍\nاللصقات بتتحط على البثرة الواحدة بالليل، بتغطيها وبتمتص إفرازاتها 💧\nالكريم بيساعد على تهدئة الاحمرار وبيغذي البشرة المتهيجة 🌿\nاللصقات مناسبة للبثور الفردية، والكريم مناسب للبشرة اللي محتاجة تهدئة 🤍\nهدية حلوة أوي لـالجمعة البيضاء 🎁 تختاري أنهي واحد لروتينك؟ 😍\n\nGirls, if breakouts are bugging you, these two are worth knowing 😍\nHydrocolloid patches go on one pimple at a time overnight, covering it and absorbing what comes out 💧\nThe zinc cream helps soothe redness and nourishes irritated skin 🌿\nPatches suit single spots, while the cream suits skin that needs calming 🤍\nA lovely gift idea for White Friday 🎁 Which one fits your routine? 😍\n\n• Balea · لصقات الهيدروكولويد للعناية بالبشرة والبثور · Hydrocolloid Pimple Patches · 24 pieces\n• Balea · كريم الزنك المهدئ للبشرة · Zinc Cream · 50 ml\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 lumia-store.github.io (الرابط في البايو · link in bio)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#عناية_بالبشرة #بشرة_دهنية #بشرة_حساسة #روتين_العناية #منتجات_المانية #Balea #LUMIACare #منتجات_المانية_أصلية",
+    "igTail": "Girls, if breakouts are bugging you, these two are worth knowing 😍\nHydrocolloid patches go on one pimple at a time overnight, covering it and absorbing what comes out 💧\nThe zinc cream helps soothe redness and nourishes irritated skin 🌿\nPatches suit single spots, while the cream suits skin that needs calming 🤍\nA lovely gift idea for White Friday 🎁 Which one fits your routine? 😍\n\n• Balea · لصقات الهيدروكولويد للعناية بالبشرة والبثور · Hydrocolloid Pimple Patches · 24 pieces\n• Balea · كريم الزنك المهدئ للبشرة · Zinc Cream · 50 ml\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 lumia-store.github.io (الرابط في البايو · link in bio)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#عناية_بالبشرة #بشرة_دهنية #بشرة_حساسة #روتين_العناية #منتجات_المانية #Balea #LUMIACare #منتجات_المانية_أصلية"
+   },
+   "status": "waiting",
+   "cleanV": 6,
+   "ai": "Claude Haiku",
+   "aiNote": "",
+   "createdAt": "2026-11-23T10:40:55.485Z"
   }
  ],
  "robot": {
-  "lastPrepare": "2026-11-22T09:42:28.465Z",
+  "lastPrepare": "2026-11-23T10:40:55.554Z",
   "lastPrepareMade": 1,
-  "aiCostUsd": 0.017,
+  "aiCostUsd": 0.0191,
   "lastError": "",
   "lastPostCheck": "2026-11-22T22:44:10.420Z",
   "lastErrorAt": "2026-11-12T09:37:55.021Z",
