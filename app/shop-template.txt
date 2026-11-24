@@ -1579,6 +1579,12 @@ a.wl-by[href]:hover .mnv{color:var(--lm-rose,#924f43)}
 .appbar .ab-btn:hover{background:#7d4136}
 .appbar .ab-x{flex:none;width:32px;height:32px;border:0;background:none;color:var(--lm-ink-2,#6b5b52);font-size:22px;line-height:1;cursor:pointer}
 .appbar button:focus-visible{outline:2px solid var(--lm-rose,#924f43);outline-offset:2px}
+/* Minova credit at the very bottom of the site */
+.fby{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:4px 0 0;padding:14px 10px 2px;border-top:1px solid #64413b;color:#c4a99e;text-decoration:none;font-size:12px}
+.fby small{font:inherit;letter-spacing:.06em}
+.fby .mnv{display:inline-flex;align-items:center;gap:8px;font:600 12.5px/1 "Jost",system-ui,sans-serif;letter-spacing:.38em;padding-inline-start:.38em;color:#f3e7de}
+.fby .mnv img{height:16px;width:auto}
+a.fby[href]:hover .mnv{color:#fff}
 </style>
 </head>
 <body>
@@ -1588,27 +1594,6 @@ a.wl-by[href]:hover .mnv{color:var(--lm-rose,#924f43)}
 document.documentElement.classList.add('ld'); setTimeout(function(){ document.documentElement.classList.remove('ld'); }, 4000);
 if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s = document.createElement('script'); s.src = 'data.js?v=' + Date.now(); s.async = true; s.id = 'dataJs';
   s.onload = function(){ s.dataset.st = 'ok'; }; s.onerror = function(){ s.dataset.st = 'err'; }; document.head.appendChild(s); })(); }</script>
-<div class="welcome" id="welcome" role="dialog" aria-modal="true" data-ta="wlAria" aria-label="مرحباً بكِ في LUMIA" hidden>
-  <div class="wl-top"><button class="langbtn" type="button" data-a="lang" data-ta="langAria" aria-label="Switch to English"><span data-t="langBtn">English</span></button></div>
-  <div class="wl-in">
-    <div class="wl-medal" aria-hidden="true"><img src="emblem-rose.webp" alt="" width="360" height="360" fetchpriority="high"></div>
-    <h1 class="wl-name" dir="ltr">LUMIA<small>CARE</small></h1>
-    <div class="wl-div" aria-hidden="true"><i></i></div>
-    <p class="wl-tag" data-t="wlTag">جواهر الجمال الاوروبي، من المانيا إلى باب بيتك</p>
-    <p class="wl-p" data-t="storyP"></p>
-        <button class="wl-btn" type="button" data-a="enterStore"><span data-t="wlBtn">ادخل المتجر</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-    <button class="wl-app" id="installBtn3" type="button" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M12 7v7M9.2 11.4 12 14.2l2.8-2.8M10.5 18.5h3"/></svg><span data-t="wlApp">تثبيت تطبيق LUMIA</span></button>
-    <div class="wl-foot">
-      <b class="wl-k" data-t="wlFollow">تابع LUMIA</b><div class="wl-soc" id="wlSoc"></div>
-      <div class="wl-ct" id="wlCt"><b class="wl-k" data-t="wlContact">تواصل معنا</b><a class="wl-wa" id="wlWa" href="#" target="_blank" rel="noopener" dir="ltr"></a></div>
-    </div>
-    <a class="wl-by" id="wlBy" target="_blank" rel="noopener" data-ta="wlByAria" aria-label="Minova"><small data-t="wlBy">تصميم وتطوير الموقع والأنظمة</small><span class="mnv" dir="ltr"><img src="minova-mark.webp" alt="" width="220" height="91" loading="lazy">MINOVA</span></a>
-  </div>
-</div>
-<script>/* the welcome page: once per visit; never for a link to a product / category / brand, nor on the wholesale page */
-(function(){ try { var q = location.search;
-  if (window.SHOP_MODE === 'wholesale' || location.hash || /[?&](p|c|b|q|cart|order|ref)=/.test(q) || sessionStorage.getItem('lumia_in')) return;
-  document.getElementById('welcome').hidden = false; document.documentElement.classList.add('wl'); } catch (e) {} })();</script>
 <div class="ann" id="ann"><div class="wrap"><span data-t="ann1">التوصيل إلى جميع محافظات مصر، والدفع عند الاستلام</span></div></div>
 <header class="site" id="siteHd">
   <div class="wrap shd">
@@ -1723,6 +1708,7 @@ if (window.SHOP_MODE !== 'wholesale' && !window.SHOP_DATA) { (function(){ var s 
   <div class="fcol"><b data-t="fHelp">المساعدة</b><a href="#howSec" data-a="goSec" data-k="howSec" data-t="fHow">طريقة الطلب</a><a href="#dpH" data-a="goSec" data-k="dpH" data-t="fDeliv">التوصيل والدفع</a><button type="button" class="flink" data-a="special" data-t="fSpecial">طلب منتج خاص</button><a href="returns/" class="pol" data-t="fReturns">الاستبدال والاسترجاع</a><a href="delivery/" class="pol" data-t="fDelivPol">سياسة التوصيل والدفع</a><a href="terms/" class="pol" data-t="fTerms">الشروط والأحكام</a><a href="about/" class="pol" data-t="fAbout">من نحن</a></div>
   <div class="fcol"><b data-t="fContact">تواصل معنا</b><span><span data-t="waLabel">واتساب:</span> <span class="num" id="wa"></span></span><span class="soc" id="soc"></span><button type="button" class="flang" data-a="lang"><span data-t="langBtn">English</span></button></div>
   <div class="fbot"><span>© <span id="yr"></span> LUMIA Care</span><span id="upd"></span></div>
+  <a class="fby" id="wlBy" target="_blank" rel="noopener" data-ta="wlByAria" aria-label="Minova"><small data-t="wlBy">تصميم وتطوير الموقع والأنظمة</small><span class="mnv" dir="ltr"><img src="minova-mark.webp" alt="" width="220" height="91" loading="lazy">MINOVA</span></a>
 </div></footer>
 
 <nav class="tabbar" id="tabbar" data-ta="tabAria" aria-label="التنقّل"><a href="#top" data-a="goTop" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20h-5v-6H9v6H4z"/></svg><span data-t="tabHome">الرئيسية</span></a><a href="#allH" data-a="goSec" data-k="allH"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg><span data-t="tabShop">تسوّق</span></a><button type="button" class="ask" id="tabAsk" data-a="chatOpen" hidden><span class="orb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l1.8 4.7 4.7 1.8-4.7 1.8L12 16.5l-1.8-4.7L5.5 10l4.7-1.8z"/><path d="M18.5 15.5l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span><span data-t="chatFab">اسألي LUMIA</span></button><button type="button" id="tabWish" data-a="tabWish" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span class="tl">المفضلة</span><span class="n" hidden></span></button><button type="button" id="tabAcc" data-a="acct" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.2-3.9 4.1-5.8 7.5-5.8s6.3 1.9 7.5 5.8"/></svg><span class="tl">حسابي</span></button></nav>
