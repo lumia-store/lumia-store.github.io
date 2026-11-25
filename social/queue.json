@@ -1370,6 +1370,63 @@
    "createdAt": "2026-11-23T10:40:55.485Z"
   },
   {
+   "id": "ad-2026-11-25",
+   "date": "2026-11-25",
+   "type": "ad",
+   "title": "Ad suggestion for this week",
+   "products": [
+    "zd6ir27sd4"
+   ],
+   "reason": "in stock (11), on offer 300 instead of 330 EGP, good photos",
+   "snapshot": {
+    "zd6ir27sd4": {
+     "price": 300,
+     "was": 330,
+     "avail": "in"
+    }
+   },
+   "words": {
+    "headline": "بودرة تثبت المكياج بلمسة مطفية",
+    "headline_en": "A powder that sets makeup with a soft matte finish",
+    "chips": [
+     "خالية من العطور",
+     "خالية من البارابين والكحول",
+     "تناسب تقنية Concealer Baking"
+    ],
+    "chips_en": [
+     "Fragrance-free",
+     "Paraben- and alcohol-free",
+     "Suits Concealer Baking"
+    ],
+    "ad_text": "لمسة نهائية متقنة لمكياجك تبان منعشة ومتوازنة ✨\nبودرة مضغوطة شفافة بدرجة أصفر ناعمة من essence، أصلية من المانيا، بتثبت الكونسيلر بلمسة مطفية ناعمة\nمناسبة لتقنية Concealer Baking ولكل اللي بتحب مكياج متقن وبسيط في يومها",
+    "ad_text_en": "A fresh, balanced final touch for your makeup ✨\nA sheer, soft-yellow pressed powder from essence, original from Germany, that sets concealer with a soft matte finish\nSuits the Concealer Baking technique and anyone who loves polished, simple makeup for their day",
+    "caption": "بودرة بتخلي لمسة المكياج النهائية منعشة ومتوازنة 💗✨\nمضغوطة وشفافة بدرجة أصفر ناعمة من essence، أصلية من المانيا 🇩🇪\nمناسبة لتقنية Concealer Baking وتثبيت الكونسيلر 🌸",
+    "caption_en": "A powder that makes your final makeup look fresh and balanced 💗✨\nSheer, soft-yellow pressed powder from essence, original from Germany 🇩🇪\nSuits the Concealer Baking technique for setting concealer 🌸",
+    "hashtags": [
+     "#مكياج",
+     "#منتجات_المانية",
+     "#منتجات_أصلية",
+     "#makeup",
+     "#germanbeauty",
+     "#essence"
+    ],
+    "alt_en": "essence Brighten Up! Banana pressed powder compact on a clean, light background."
+   },
+   "media": {
+    "images": [
+     "https://lumia-store.github.io/media/social/ad-2026-11-25-1.jpg"
+    ]
+   },
+   "files": [
+    "ad-2026-11-25-1.jpg"
+   ],
+   "status": "waiting",
+   "createdAt": "2026-11-25T11:12:33.724Z",
+   "adText": "لمسة نهائية متقنة لمكياجك تبان منعشة ومتوازنة ✨\nبودرة مضغوطة شفافة بدرجة أصفر ناعمة من essence، أصلية من المانيا، بتثبت الكونسيلر بلمسة مطفية ناعمة\nمناسبة لتقنية Concealer Baking ولكل اللي بتحب مكياج متقن وبسيط في يومها\n\n✨ essence · بودرة مضغوطة لتفتيح وتثبيت الكونسيلر\n🛍️ الطلب من الموقع بسهولة — توصيل لجميع المحافظات والدفع عند الاستلام",
+   "link": "https://lumia-store.github.io/p/essence-kompakt-puder-brighten-up-20-banana-zd6ir/",
+   "headline": "بودرة تثبت المكياج بلمسة مطفية"
+  },
+  {
    "id": "2026-11-26-offer",
    "date": "2026-11-26",
    "postAt": "2026-11-26T18:30:00.000Z",
@@ -1437,12 +1494,82 @@
    "ai": "Claude Haiku",
    "aiNote": "",
    "createdAt": "2026-11-24T12:24:26.883Z"
+  },
+  {
+   "id": "2026-11-27-trust",
+   "date": "2026-11-27",
+   "postAt": "2026-11-27T18:30:00.000Z",
+   "type": "trust",
+   "title": "Why LUMIA",
+   "occasion": {
+    "ar": "الجمعة البيضاء",
+    "en": "White Friday",
+    "inDays": 0
+   },
+   "products": [
+    "mx6h3akoho",
+    "l9aijnyg1o",
+    "g5ezci4t6h"
+   ],
+   "snapshot": {
+    "mx6h3akoho": {
+     "price": 350,
+     "was": 0,
+     "avail": "in"
+    },
+    "l9aijnyg1o": {
+     "price": 900,
+     "was": 0,
+     "avail": "in"
+    },
+    "g5ezci4t6h": {
+     "price": 340,
+     "was": 0,
+     "avail": "in"
+    }
+   },
+   "words": {
+    "title": "أصلية من المانيا… ومختارة بعناية",
+    "title_en": "Original from Germany, chosen with care",
+    "caption": "بصوا يا بنات، كل منتج عندنا أصلي ومقفول من المانيا 🇩🇪\nاتجاب من محلات زي dm وRossmann، وكل واحد اتختار بعناية 🤍\nهدفنا إن الجمال الحلو يوصلك وإنتي مطمّنة 🌸",
+    "caption_en": "Girls, every product here is original and sealed, straight from Germany 🇩🇪\nBought from German shops like dm and Rossmann, and carefully chosen for you 🤍\nOur goal is simple: good beauty you can feel confident about 🌸",
+    "hashtags": [
+     "#منتجات_المانية",
+     "#منتجات_أصلية",
+     "#جمال",
+     "#germanbeauty",
+     "#dmproducts",
+     "#skincareegypt"
+    ],
+    "alt_en": "Original German drugstore beauty products from LUMIA Care"
+   },
+   "media": {
+    "images": [
+     "https://lumia-store.github.io/media/social/2026-11-27-trust-1.jpg"
+    ],
+    "story": "",
+    "video": "",
+    "cover": ""
+   },
+   "files": [
+    "2026-11-27-trust-1.jpg"
+   ],
+   "preview": {
+    "fb": "بصوا يا بنات، كل منتج عندنا أصلي ومقفول من المانيا 🇩🇪\nاتجاب من محلات زي dm وRossmann، وكل واحد اتختار بعناية 🤍\nهدفنا إن الجمال الحلو يوصلك وإنتي مطمّنة 🌸\n\nGirls, every product here is original and sealed, straight from Germany 🇩🇪\nBought from German shops like dm and Rossmann, and carefully chosen for you 🤍\nOur goal is simple: good beauty you can feel confident about 🌸\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 https://lumia-store.github.io/\n📲 https://wa.me/201061227556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#منتجات_المانية #منتجات_أصلية #جمال #germanbeauty #dmproducts",
+    "ig": "بصوا يا بنات، كل منتج عندنا أصلي ومقفول من المانيا 🇩🇪\nاتجاب من محلات زي dm وRossmann، وكل واحد اتختار بعناية 🤍\nهدفنا إن الجمال الحلو يوصلك وإنتي مطمّنة 🌸\n\nGirls, every product here is original and sealed, straight from Germany 🇩🇪\nBought from German shops like dm and Rossmann, and carefully chosen for you 🤍\nOur goal is simple: good beauty you can feel confident about 🌸\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 lumia-store.github.io (الرابط في البايو · link in bio)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#منتجات_المانية #منتجات_أصلية #جمال #germanbeauty #dmproducts #skincareegypt #LUMIACare #منتجات_المانية_أصلية",
+    "igTail": "Girls, every product here is original and sealed, straight from Germany 🇩🇪\nBought from German shops like dm and Rossmann, and carefully chosen for you 🤍\nOur goal is simple: good beauty you can feel confident about 🌸\n\n🛍️ للطلب عبر الموقع أو واتساب · Order on our website or WhatsApp:\n🌐 lumia-store.github.io (الرابط في البايو · link in bio)\n📲 +20 10 6122 7556\n🚚 التوصيل لجميع المحافظات · الدفع عند الاستلام\n🚚 Delivery all over Egypt · Cash on delivery\n\n#منتجات_المانية #منتجات_أصلية #جمال #germanbeauty #dmproducts #skincareegypt #LUMIACare #منتجات_المانية_أصلية"
+   },
+   "status": "waiting",
+   "cleanV": 6,
+   "ai": "Claude Haiku",
+   "aiNote": "",
+   "createdAt": "2026-11-25T11:12:21.716Z"
   }
  ],
  "robot": {
-  "lastPrepare": "2026-11-24T12:24:26.934Z",
-  "lastPrepareMade": 1,
-  "aiCostUsd": 0.0209,
+  "lastPrepare": "2026-11-25T11:12:33.793Z",
+  "lastPrepareMade": 2,
+  "aiCostUsd": 0.0221,
   "lastError": "",
   "lastPostCheck": "2026-11-25T01:32:22.009Z",
   "lastErrorAt": "2026-11-12T09:37:55.021Z",
